@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="edison">
+    <head>
+        <meta charset="utf-8">
+        <title>gPullR</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="icon" href="bower_components/ecosystem-main-frontend/images/macmillan.ico" type="image/x-icon"/>
+        <!-- build:css styles/css/base.min.css -->
+            <!-- bower:css -->
+            <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+            <!-- endbower -->
+            <link rel="stylesheet" href="static/less/.tmp/base.css" />
+        <!-- endbuild -->
+    </head>
+    <body>
+        <div id="wrapper" class="edison">
+            <!-- from AngularJS pageModule -->
+            <page-header></page-header>
+            <div id="content" class="container" ui-view></div>
+
+            <!-- from AngularJS pageModule -->
+            <page-footer></page-footer>
+        </div>
+        <!-- build:js scripts/scripts.js -->
+            <!-- bower:js -->
+            <script src="bower_components/jquery/dist/jquery.js"></script>
+            <script src="bower_components/angular/angular.js"></script>
+            <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+            <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+            <script src="bower_components/bootstrap-modal-handler/app/src/app.js"></script>
+            <!-- endbower -->
+            <script src="src/app.js"></script>
+            <script src="src/config/routeConfig.js"></script>
+
+            <script src="edison_components/project_module/module.js"></script>
+            <script src="edison_components/project_module/controllers/ProjectListController.js"></script>
+            <script src="edison_components/project_module/controllers/DetailsMainController.js"></script>
+            <script src="edison_components/project_module/controllers/ProjectFormController.js"></script>
+            <script src="edison_components/project_module/controllers/LearningEntityFormController.js"></script>
+            <script src="edison_components/project_module/controllers/LearningEntityTreeController.js"></script>
+            <script src="edison_components/project_module/directives/EntityListTreeItemDirective.js"></script>
+            <script src="edison_components/project_module/directives/EntityListTreeElementCssDirective.js"></script>
+            <script src="edison_components/project_module/directives/DraggableDirective.js"></script>
+            <script src="edison_components/project_module/directives/DroppableDirective.js"></script>
+            <script src="edison_components/project_module/services/ProjectService.js"></script>
+            <script src="edison_components/project_module/services/LearningEntityTypeService.js"></script>
+            <script src="edison_components/project_module/services/LearningEntityService.js"></script>
+
+            <script src="edison_components/qti_module/module.js"></script>
+            <script src="edison_components/qti_module/controllers/QtiController.js"></script>
+            <script src="edison_components/qti_module/services/QtiService.js"></script>
+            <script src="edison_components/qti_module/models/Choice.js"></script>
+            <script src="edison_components/qti_module/models/SingleChoiceAssessmentItem.js"></script>
+
+            <script src="src/util/ErrorResponseHandler.js"></script>
+            <script src="edison_components/project_module/directives/bootstrap/ClassToggleDirective.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
