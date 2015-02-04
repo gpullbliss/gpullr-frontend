@@ -8,3 +8,5 @@ dist/
 app/bower_components/
 app/static/less/fonts/
 spec/results/
+/nbproject/private/
+/nbproject/
