@@ -1,0 +1,10 @@
+idea/
+*.iml
+.vagrant/
+.tmp/
+dist/
+.DS_Store
+**/node_modules/
+app/bower_components/
+app/static/less/fonts/
+spec/results/
