@@ -1,38 +1,39 @@
 {
-    "name": "gPullR-frontend",
-    "version": "0.1.0-SNAPSHOT",
-    "description": "Frontend for the gPullR pullrequest administration tool",
-    "main": "app/index.html",
-    "private": true,
-    "scripts": {
-        "test": "test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/devbliss/gpullr-frontend"
-    },
-    "bugs": {
-        "url": "https://github.com/devbliss/gpullr-frontend/issues"
-    },
-    "homepage": "https://github.com/devbliss/gpullr-frontend",
-    "devDependencies": {
-        "grunt": "0.4.5",
-        "grunt-contrib-clean": "0.6.0",
-        "grunt-contrib-cssmin": "0.10.0",
-        "grunt-contrib-htmlmin": "0.3.0",
-        "grunt-contrib-uglify": "0.6.0",
-        "grunt-devbliss": "0.4.0",
-        "grunt-karma": "^0.9.0",
-        "grunt-rev": "0.1.0",
-        "grunt-usemin": "2.6.2",
-        "jasmine": "^2.1.0",
-        "jasmine-core": "^2.1.2",
-        "karma": "^0.12.25",
-        "karma-chrome-launcher": "^0.1.5",
-        "karma-firefox-launcher": "^0.1.3",
-        "karma-jasmine": "^0.3.0",
-        "karma-phantomjs-launcher": "^0.1.4",
-        "karma-spec-reporter": "0.0.13",
-        "load-grunt-tasks": "1.0.0"
-    }
+  "name": "gPullR-frontend",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "Frontend for the gPullR pullrequest administration tool",
+  "main": "app/index.html",
+  "private": true,
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devbliss/gpullr-frontend"
+  },
+  "bugs": {
+    "url": "https://github.com/devbliss/gpullr-frontend/issues"
+  },
+  "homepage": "https://github.com/devbliss/gpullr-frontend",
+  "devDependencies": {
+    "grunt": "0.4.5",
+    "grunt-contrib-clean": "0.6.0",
+    "grunt-contrib-cssmin": "0.10.0",
+    "grunt-contrib-htmlmin": "0.3.0",
+    "grunt-contrib-uglify": "0.6.0",
+    "grunt-devbliss": "0.4.0",
+    "grunt-karma": "^0.9.0",
+    "grunt-recess": "^1.0.0",
+    "grunt-rev": "0.1.0",
+    "grunt-usemin": "2.6.2",
+    "jasmine": "^2.1.0",
+    "jasmine-core": "^2.1.2",
+    "karma": "^0.12.25",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.3.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-spec-reporter": "0.0.13",
+    "load-grunt-tasks": "1.0.0"
+  }
 }
