@@ -10,21 +10,5 @@ module.exports = function (grunt) {
           testport: 9091,
           livereload: 9999
       },
-    });    
-    
-    grunt.registerTask('build', [
-        //'test',
-        'jshint',
-        'clean',
-        'copy',
-        'less',
-        'bowerInstall',
-        'useminPrepare',
-        'concat',
-        'uglify',
-        'cssmin',
-        'rev',
-        'usemin',
-        'htmlmin'
-    ]);    
+    });       
 };
