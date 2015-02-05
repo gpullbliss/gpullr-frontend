@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         devbliss: {
-            port: 8081,
+            port: 8888,
             testport: 9091,
             livereload: 9999
         },
