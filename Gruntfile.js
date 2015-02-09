@@ -5,10 +5,17 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-devbliss');
 
     grunt.initConfig({
+        connect: {
+            rules: [{
+                from: '^.*$',
+                to: '/index.html'
+            }]
+        },
+
         devbliss: {
             port: 8888,
             testport: 9091,
             livereload: 9999
-        },
+        }
     });
 };
