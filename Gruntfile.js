@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         connect: {
             rules: [{
-                from: '^.*$',
+                from: '^(.(?!\\.(css|jpg|js|png)))*$',
                 to: '/index.html'
             }],
             proxies: [{
