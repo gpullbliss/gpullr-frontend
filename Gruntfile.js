@@ -9,6 +9,14 @@ module.exports = function (grunt) {
             rules: [{
                 from: '^.*$',
                 to: '/index.html'
+            }],
+            proxies: [{
+                context: '/api',
+                host: 'localhost',
+                port: 8889,
+                rewrite: {
+                    '^/api': ''
+                }
             }]
         },
 
