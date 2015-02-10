@@ -5,10 +5,25 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-devbliss');
 
     grunt.initConfig({
+        connect: {
+            rules: [{
+                from: '^(.(?!\\.(css|html|jpg|js|png)))*$',
+                to: '/index.html'
+            }],
+            proxies: [{
+                context: '/api',
+                host: 'localhost',
+                port: 8889,
+                rewrite: {
+                    '^/api': ''
+                }
+            }]
+        },
+
         devbliss: {
             port: 8888,
             testport: 9091,
             livereload: 9999
-        },
+        }
     });
 };
