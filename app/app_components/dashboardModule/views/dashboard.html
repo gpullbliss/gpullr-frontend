@@ -19,13 +19,13 @@
             <tr ng-repeat="pr in pullRequestCollection">
                 <td><a ng-href="{{pr.url}}" target="_blank">{{pr.title}}</a></td>
                 <td>{{pr.repository}}</td>
-                <td><img class="avatar" src="{{pr.authorAvatarUrl}}"> {{pr.authorName}}</td>
+                <td><img class="avatar" ng-src="{{pr.authorAvatarUrl}}"> {{pr.authorName}}</td>
                 <td class="creationDate"><span am-time-ago="pr.creationDate"></span></td>
                 <td>{{pr.filesChanged}}</td>
                 <td>+{{pr.linesAdded}} / -{{pr.linesRemoved}}</td>
                 <td class="assignee">
                     <button title="Assign me">+</button>
-                    <img ng-if="pr.assigneeAvatarUrl !== ''" class="avatar" src="{{pr.assigneeAvatarUrl}}">
+                    <img ng-if="pr.assigneeAvatarUrl !== ''" class="avatar" ng-src="{{pr.assigneeAvatarUrl}}">
                     <span ng-if="pr.assigneeName !== ''">{{pr.assigneeName}}</span>
                 </td>
                 <td>{{pr.commentCount}}</td>
