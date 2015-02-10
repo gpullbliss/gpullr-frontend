@@ -1,3 +1,37 @@
 <div id="dashboard" ui-view>
     <h2>Dashboard</h2>
+
+    <table st-table="pullRequestCollection" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Repository</th>
+                <th>Author</th>
+                <th>Created</th> <!-- vor 8 Stunden usw. -->
+                <th>Files changed</th>
+                <th>Lines changed</th>
+                <th>Assignee</th>
+                <th>Comments</th>
+                <th>Status</th><!-- Open, Merged, Closed, Deleted = ausblenden -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pr in pullRequestCollection">
+                <td><a ng-href="{{pr.url}}" target="_blank">{{pr.title}}</a></td>
+                <td>{{pr.repository}}</td>
+                <td><img class="avatar" src="{{pr.authorAvatarUrl}}"> {{pr.authorName}}</td>
+                <td class="creationDate"><span am-time-ago="pr.creationDate"></span></td>
+                <td>{{pr.filesChanged}}</td>
+                <td>+{{pr.linesAdded}} / -{{pr.linesRemoved}}</td>
+                <td class="assignee">
+                    <button title="Assign me">+</button>
+                    <img ng-if="pr.assigneeAvatarUrl !== ''" class="avatar" src="{{pr.assigneeAvatarUrl}}">
+                    <span ng-if="pr.assigneeName !== ''">{{pr.assigneeName}}</span>
+                </td>
+                <td>{{pr.commentCount}}</td>
+                <td>{{pr.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
