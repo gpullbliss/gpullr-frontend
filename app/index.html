@@ -2,6 +2,7 @@
 <html lang="en" ng-app="gpullr">
     <head>
         <meta charset="utf-8">
+        <base href="/">
         <title>gPullR</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
@@ -13,23 +14,23 @@
         <!-- build:css styles/css/base.min.css -->
         <!-- bower:css -->
         <!-- endbower -->
-            <link rel="stylesheet" href="styles/less/.tmp/base.css" />
+            <link rel="stylesheet" href="styles/.tmp/Base.css" />
         <!-- endbuild -->
     </head>
     <body>
         <div id="wrapper">
-            <div id="content" class="container" ui-view><h2><b>Hello gPullR</b></h2></div>
+            <div id="content" class="container" ui-view></div>
         </div>
         <!-- build:js scripts/scripts.js -->
             <!-- bower:js -->
             <script src="bower_components/angular/angular.js"></script>
             <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
             <!-- endbower -->
-            <script src="src/app.js"></script>
-            <script src="src/config/routeConfig.js"></script>
+            <script src="scripts/app.js"></script>
+            <script src="scripts/config/routeConfig.js"></script>
 
-            <script src="gpullr_components/sample_module/module.js"></script>
-            <script src="gpullr_components/sample_module/controllers/SampleController.js"></script>
+            <script src="app_components/dashboardModule/module.js"></script>
+            <script src="app_components/dashboardModule/controllers/dashboardCtrl.js"></script>
         <!-- endbuild -->
     </body>
 </html>
