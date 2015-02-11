@@ -11,7 +11,6 @@
                 <th>Files changed</th>
                 <th>Lines changed</th>
                 <th>Assignee</th>
-                <th>Comments</th>
                 <th>Status</th><!-- Open, Merged, Closed, Deleted = ausblenden -->
             </tr>
         </thead>
@@ -19,16 +18,13 @@
             <tr ng-repeat="pr in pullRequestCollection">
                 <td><a ng-href="{{pr.url}}" target="_blank">{{pr.title}}</a></td>
                 <td>{{pr.repository}}</td>
-                <td><img class="avatar" ng-src="{{pr.authorAvatarUrl}}"> {{pr.authorName}}</td>
+                <td><img class="avatar" ng-src="{{pr.author.avatarUrl}}"> {{pr.author.name}}</td>
                 <td class="creationDate"><span am-time-ago="pr.creationDate"></span></td>
                 <td>{{pr.filesChanged}}</td>
-                <td>+{{pr.linesAdded}} / -{{pr.linesRemoved}}</td>
+                <td><span class="linesAdded">+{{pr.linesAdded}}</span> <span class="linesRemoved">-{{pr.linesRemoved}}</span></td>
                 <td class="assignee">
                     <button title="Assign me">+</button>
-                    <img ng-if="pr.assigneeAvatarUrl !== ''" class="avatar" ng-src="{{pr.assigneeAvatarUrl}}">
-                    <span ng-if="pr.assigneeName !== ''">{{pr.assigneeName}}</span>
                 </td>
-                <td>{{pr.commentCount}}</td>
                 <td>{{pr.status}}</td>
             </tr>
         </tbody>
