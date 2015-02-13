@@ -34,7 +34,6 @@ describe('dashboardCtrl', function () {
     });
 
     describe('$scope.pullRequests', function () {
-
         it('is set to the return value of pullRequestService.getPullRequests() on startup', function () {
             $scope.$digest();
 
