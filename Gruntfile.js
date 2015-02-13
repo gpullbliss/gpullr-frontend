@@ -13,7 +13,7 @@ module.exports = function (grunt) {
             proxies: [{
                 context: '/api',
                 host: 'localhost',
-                port: 8889,
+                port: 8888,
                 rewrite: {
                     '^/api': ''
                 }
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         },
 
         devbliss: {
-            port: 8888,
+            port: 8889,
             testport: 9091,
             livereload: 9999
         }
