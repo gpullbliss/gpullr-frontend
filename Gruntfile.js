@@ -20,6 +20,15 @@ module.exports = function (grunt) {
             }]
         },
 
+        karma: {
+            options: {
+                configFile: 'test/karma.conf.js'
+            },
+            app: {
+                browsers: ['PhantomJS']
+            }
+        },
+
         devbliss: {
             port: 8888,
             testport: 9091,
