@@ -57,7 +57,7 @@ describe('pullRequestService', function () {
         it('calls correct URL', function () {
             $httpBackend.expectGET(endpointUrl).respond(200, '');
 
-            service.getPullRequests();
+            expect(service.getPullRequests()).toBeDefined();
 
             $httpBackend.flush();
         });
