@@ -26,6 +26,11 @@ module.exports = function (grunt) {
             },
             app: {
                 browsers: ['PhantomJS']
+            },
+            jenkins: {
+                autoWatch: false,
+                browsers: ['PhantomJS'],
+                singleRun: true
             }
         },
 
@@ -35,4 +40,6 @@ module.exports = function (grunt) {
             livereload: 9999
         }
     });
+
+    grunt.registerTask('test', ['devbliss-karma:jenkins']);
 };
