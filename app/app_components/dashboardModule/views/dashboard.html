@@ -1,7 +1,7 @@
 <div id="dashboard" ui-view>
     <h2>Dashboard</h2>
 
-    <table st-table="pullRequestCollection" class="table table-striped">
+    <table st-table="displayedPullRequests" st-safe-src="pullRequests" class="table table-striped">
         <thead>
             <tr>
                 <th>Title</th>
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="pr in pullRequestCollection">
+        <tr ng-repeat="pr in displayedPullRequests">
                 <td><a ng-href="{{pr.url}}" target="_blank">{{pr.title}}</a></td>
                 <td>{{pr.repository}}</td>
                 <td><img class="avatar" ng-src="{{pr.author.avatarUrl}}"> {{pr.author.name}}</td>
