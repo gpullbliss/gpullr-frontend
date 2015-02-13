@@ -63,13 +63,15 @@ describe('pullRequestService', function () {
         });
 
         it('returns data', function () {
+            var result = null;
             $httpBackend.expectGET(endpointUrl).respond(200, responseData);
 
             service.getPullRequests().then(function (pullRequests) {
-                expect(pullRequests).toEqual(responseData);
+                result = pullRequests;
             });
 
             $httpBackend.flush();
+            expect(result).toEqual(responseData);
         });
 
     });
