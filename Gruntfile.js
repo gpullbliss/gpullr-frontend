@@ -20,6 +20,12 @@ module.exports = function (grunt) {
             }]
         },
 
+        jshint: {
+            options: {
+                jshintrc: true
+            }
+        },
+
         karma: {
             options: {
                 configFile: 'test/karma.conf.js'
