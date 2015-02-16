@@ -1,3 +1,33 @@
 <div id="dashboard" ui-view>
     <h2>Dashboard</h2>
+
+    <table st-table="displayedPullRequests" st-safe-src="pullRequests" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Repository</th>
+                <th>Author</th>
+                <th>Created</th>
+                <th>Files changed</th>
+                <th>Lines changed</th>
+                <th>Assignee</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="pr in displayedPullRequests">
+                <td><a ng-href="{{pr.url}}" target="_blank">{{pr.title}}</a></td>
+                <td>{{pr.repository}}</td>
+                <td><img class="avatar" ng-src="{{pr.author.avatarUrl}}"> {{pr.author.name}}</td>
+                <td class="creationDate"><span am-time-ago="pr.creationDate"></span></td>
+                <td>{{pr.filesChanged}}</td>
+                <td><span class="linesAdded">+{{pr.linesAdded}}</span> <span class="linesRemoved">-{{pr.linesRemoved}}</span></td>
+                <td class="assignee">
+                    <button title="Assign me">+</button>
+                </td>
+                <td>{{pr.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

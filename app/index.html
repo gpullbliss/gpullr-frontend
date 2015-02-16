@@ -24,6 +24,9 @@
         <!-- build:js scripts/scripts.js -->
             <!-- bower:js -->
             <script src="bower_components/angular/angular.js"></script>
+            <script src="bower_components/moment/moment.js"></script>
+            <script src="bower_components/angular-moment/angular-moment.js"></script>
+            <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
             <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
             <!-- endbower -->
             <script src="scripts/app.js"></script>
@@ -31,6 +34,7 @@
 
             <script src="app_components/dashboardModule/module.js"></script>
             <script src="app_components/dashboardModule/controllers/dashboardCtrl.js"></script>
+        <script src="app_components/dashboardModule/services/pullRequestService.js"></script>
         <!-- endbuild -->
     </body>
 </html>

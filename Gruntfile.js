@@ -13,17 +13,39 @@ module.exports = function (grunt) {
             proxies: [{
                 context: '/api',
                 host: 'localhost',
-                port: 8889,
+                port: 8888,
                 rewrite: {
                     '^/api': ''
                 }
             }]
         },
 
+        jshint: {
+            options: {
+                jshintrc: true
+            }
+        },
+
+        karma: {
+            options: {
+                configFile: 'test/karma.conf.js'
+            },
+            app: {
+                browsers: ['PhantomJS']
+            },
+            jenkins: {
+                autoWatch: false,
+                browsers: ['PhantomJS'],
+                singleRun: true
+            }
+        },
+
         devbliss: {
-            port: 8888,
+            port: 8889,
             testport: 9091,
             livereload: 9999
         }
     });
+
+    grunt.registerTask('test', ['devbliss-karma:jenkins']);
 };
