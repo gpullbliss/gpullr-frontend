@@ -13,15 +13,11 @@ angular.module('dashboardModule')
 
         getPullRequests();
 
-        if (angular.isUndefined(updatePullRequestsInterval)) {
-            updatePullRequestsInterval = $interval(getPullRequests, 60000);
-        }
+        updatePullRequestsInterval = $interval(getPullRequests, 60000);
 
         $scope.$on('$destroy', function () {
-                if (angular.isDefined(updatePullRequestsInterval)) {
-                    $interval.cancel(updatePullRequestsInterval);
-                    updatePullRequestsInterval = undefined;
-                }
+                $interval.cancel(updatePullRequestsInterval);
+                updatePullRequestsInterval = undefined;
             }
         );
     }]);
