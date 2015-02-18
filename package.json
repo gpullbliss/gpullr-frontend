@@ -17,7 +17,7 @@
   "homepage": "https://github.com/devbliss/gpullr-frontend",
   "devDependencies": {
     "grunt": "0.4.5",
-    "grunt-devbliss": "0.8.0",
+    "grunt-devbliss": "0.9.0",
     "load-grunt-tasks": "1.0.0"
   }
 }
