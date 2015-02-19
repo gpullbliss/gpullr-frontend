@@ -6,4 +6,8 @@ finish:
 release:
 	@./gradlew changelogRelease
 
+changelog:
+
+version:
+
 .PHONY: finish release
