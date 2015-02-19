@@ -1,12 +1,21 @@
-idea/
-*.iml
-.vagrant/
+# app
 .tmp/
-dist/
-.DS_Store
-**/node_modules/
+/dist/
+
+# npm
+node_modules/
+
+# bower
 app/bower_components/
-app/static/less/fonts/
-spec/results/
-/nbproject/private/
+
+# IntelliJ
+/.idea/
+
+# Netbeans
 /nbproject/
+
+# Gradle
+/.gradle/
+
+# Mac OS X
+.DS_Store
