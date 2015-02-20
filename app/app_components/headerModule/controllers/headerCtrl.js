@@ -1,5 +1,14 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', function ($scope) {
+    .controller('headerCtrl', ['$scope', 'userService', function ($scope, userService) {
+        var whoAmI;
+
+        whoAmI = function () {
+          userService.whoAmI()
+              .then(function (user) {
+                  $scope.username = user.username;        
+          });
+        };
         
+        whoAmI();
     }]);
