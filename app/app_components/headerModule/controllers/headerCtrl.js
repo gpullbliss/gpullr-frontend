@@ -6,7 +6,8 @@ angular.module('headerModule')
         whoAmI = function () {
           userService.whoAmI()
               .then(function (user) {
-                  $scope.username = user.username;        
+                  $scope.username = user.username;
+                  $scope.avatarUrl = user.avatarUrl;
           });
         };
         
