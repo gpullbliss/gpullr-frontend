@@ -1,12 +1,13 @@
 all:
 
-version:
-	@scripts/git_devbliss_hooks/angularjs-version 'CHANGELOG.md'
-
 finish:
-	@scripts/git_devbliss_hooks/finish 'gpullr-frontend' 'CHANGELOG.md'
+	@./gradlew changelogSnapshot
 
 release:
-	@scripts/git_devbliss_hooks/release
+	@./gradlew changelogRelease
 
-.PHONY: finish version release
+changelog:
+
+version:
+
+.PHONY: finish release
