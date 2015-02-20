@@ -19,6 +19,7 @@
     </head>
     <body>
         <div id="wrapper">
+            <div id="navbar" ng-controller="headerCtrl" ng-include="'app_components/headerModule/views/header.html'"></div>
             <div id="content" class="container" ui-view></div>
         </div>
         <!-- build:js scripts/scripts.js -->
@@ -34,7 +35,9 @@
 
             <script src="app_components/dashboardModule/module.js"></script>
             <script src="app_components/dashboardModule/controllers/dashboardCtrl.js"></script>
-        <script src="app_components/dashboardModule/services/pullRequestService.js"></script>
+            <script src="app_components/dashboardModule/services/pullRequestService.js"></script>
+            <script src="app_components/headerModule/module.js"></script>
+            <script src="app_components/headerModule/controllers/headerCtrl.js"></script>
         <!-- endbuild -->
     </body>
 </html>
