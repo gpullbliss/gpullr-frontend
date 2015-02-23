@@ -1,6 +1,6 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', 'userService', function ($scope, userService) {
+    .controller('headerCtrl', ['$scope', '$rootScope', 'userService', function ($scope, $rootScope, userService) {
         var whoAmI;
 
         whoAmI = function () {
@@ -10,6 +10,12 @@ angular.module('headerModule')
                   $scope.avatarUrl = user.avatarUrl;
           });
         };
+        
+        var requestCountEvent = $rootScope.$on('changeRequestCount', function (event, data) {
+                     $scope.requestCount = data ;
+                  });
+                  
+        $scope.$on('$destroy', requestCountEvent);
         
         whoAmI();
     }]);
