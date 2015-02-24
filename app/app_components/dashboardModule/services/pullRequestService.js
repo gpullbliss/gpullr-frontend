@@ -4,7 +4,7 @@ angular.module('dashboardModule')
         function getPullRequests() {
             return $http.get('/api/pulls').then(
                 function (response) {
-                    return response.data;
+                    return response.data.items;
                 }, function (error) {
                     throw error.status + ': ' + error.data;
                 }

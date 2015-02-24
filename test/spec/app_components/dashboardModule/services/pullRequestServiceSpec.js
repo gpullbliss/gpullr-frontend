@@ -22,7 +22,9 @@ describe('pullRequestService', function () {
 
     describe('getPullRequests', function () {
         var endpointUrl = '/api/pulls',
-            responseData = [
+            responseData =
+            {
+                items: [
                 {
                     id: 12345,
                     title: 'Update 3001-angularjs-styleguide.md',
@@ -57,7 +59,8 @@ describe('pullRequestService', function () {
                     },
                     status: 'Open'
                 }
-            ];
+                ]
+            };
 
         it('calls correct URL', function () {
             $httpBackend.expectGET(endpointUrl).respond(200, '');
@@ -76,7 +79,7 @@ describe('pullRequestService', function () {
             });
 
             $httpBackend.flush();
-            expect(result).toEqual(responseData);
+            expect(result).toEqual(responseData.items);
         });
 
     });
