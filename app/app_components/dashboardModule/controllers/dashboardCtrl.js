@@ -5,8 +5,7 @@ angular.module('dashboardModule')
             getPullRequests;
 
         getPullRequests = function () {
-            pullRequestService.getPullRequests()
-                .then(function (pullRequests) {
+            pullRequestService.getPullRequests().then(function (pullRequests) {
                     $scope.pullRequests = pullRequests;
                 });
         };
