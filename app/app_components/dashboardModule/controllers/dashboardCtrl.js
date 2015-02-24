@@ -7,8 +7,8 @@ angular.module('dashboardModule')
         getPullRequests = function () {
             pullRequestService.getPullRequests()
                 .then(function (pullRequests) {
-                    $scope.pullRequests = pullRequests.items;
-                    $rootScope.$emit('changeRequestCount', pullRequests.items.length);
+                    $scope.pullRequests = pullRequests;
+                    $rootScope.$emit('changeRequestCount', pullRequests.length);
                 });
         };
 
