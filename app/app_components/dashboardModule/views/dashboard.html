@@ -1,32 +1,47 @@
 <div id="dashboard" ui-view>
-    <h2>Dashboard</h2>
+    <h2>Open Pull Requests</h2>
 
     <table st-table="displayedPullRequests" st-safe-src="pullRequests" class="table table-striped">
         <thead>
-            <tr>
-                <th>Title</th>
-                <th>Repository</th>
-                <th>Author</th>
-                <th>Created</th>
-                <th>Files changed</th>
-                <th>Lines changed</th>
-                <th>Assignee</th>
-                <th>Status</th>
-            </tr>
+        <tr>
+            <th>Author</th>
+            <th>Pull Request</th>
+            <th>Stats</th>
+            <th>Reviewer</th>
+        </tr>
         </thead>
         <tbody>
         <tr ng-repeat="pr in displayedPullRequests">
-                <td><a ng-href="{{pr.url}}" target="_blank">{{pr.title}}</a></td>
-                <td>{{pr.repository}}</td>
-                <td><img class="avatar" ng-src="{{pr.author.avatarUrl}}"> {{pr.author.name}}</td>
-                <td class="creationDate"><span am-time-ago="pr.creationDate"></span></td>
-                <td>{{pr.filesChanged}}</td>
-                <td><span class="linesAdded">+{{pr.linesAdded}}</span> <span class="linesRemoved">-{{pr.linesRemoved}}</span></td>
-                <td class="assignee">
-                    <button title="Assign me">+</button>
-                </td>
-                <td>{{pr.status}}</td>
-            </tr>
+            <td>
+                <span class="avatarWrapper"><img class="avatar" ng-src="{{pr.author.avatarUrl}}"></span>
+                {{pr.author.username}}
+            </td>
+
+            <td>
+                <a ng-href="{{pr.url}}" target="_blank">#{{pr.number}} {{pr.title}}</a>
+                <br>
+                Repo: {{pr.repository}} |
+                <i class="fa fa-clock-o helpIcon" title="Created"></i> <span am-time-ago="pr.creationDate"></span> |
+                Status: {{pr.status}}
+            </td>
+
+            <td class="stats">
+                <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
+                <span class="linesAdded">+{{pr.linesAdded}}</span> <span
+                    class="linesRemoved">-{{pr.linesRemoved}}</span>
+                <br>
+                <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pr.filesChanged}}
+            </td>
+
+            <td class="assignee">
+                <span>
+                    <a class="assignMe" ng-class="{isAssigned: pr.assignee!==null}" title="Assign myself">
+                        <i class="fa fa-user-plus "></i>
+                        <img class="avatar" ng-if="pr.assignee!==null" ng-src="{{pr.assignee.avatarUrl}}">
+                    </a>
+                </span>
+            </td>
+        </tr>
         </tbody>
     </table>
 
