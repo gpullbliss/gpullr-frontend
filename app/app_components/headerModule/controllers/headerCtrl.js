@@ -1,21 +1,23 @@
 'use strict';
 angular.module('headerModule')
     .controller('headerCtrl', ['$scope', '$rootScope', 'userService', function ($scope, $rootScope, userService) {
-        var whoAmI;
-
-        whoAmI = function () {
-          userService.whoAmI()
-              .then(function (user) {
-                  $scope.username = user.username;
-                  $scope.avatarUrl = user.avatarUrl;
-          });
-        };
+        
+        $scope.userPresent = false;
+        $scope.countPresent = false;
         
         var requestCountEvent = $rootScope.$on('changeRequestCount', function (event, data) {
-                     $scope.requestCount = data ;
-                  });
+                      $scope.requestCount = data ;
+                      $scope.countPresent = true;
+        });
                   
-        $scope.$on('$destroy', requestCountEvent);
+        var updatedUser = $rootScope.$on('updateUser', function (event, data) {
+                      $scope.username = data.username;
+                      $scope.avatarUrl = data.avatarUrl;
+                      $scope.userPresent = true;
+        });
         
-        whoAmI();
+        $scope.$on('$destroy', requestCountEvent);
+        $scope.$on('$destroy', updatedUser);
+        
+        userService.whoAmI();
     }]);

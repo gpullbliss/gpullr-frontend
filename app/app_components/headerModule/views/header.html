@@ -4,11 +4,11 @@
       <div class="navbar-brand">gPullR</div>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">All Requests <span class="bubble">{{requestCount}}</span></a></li>
+      <li ng-show="countPresent" class="active"><a href="#">All Requests <span class="bubble">{{requestCount}}</span></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li>
-        <span class="navbar-text" ng-bind="username">My Name</span>
+      <li ng-show="userPresent">
+        <span class="navbar-text">{{username}}</span>
         <img class="avatar" src={{avatarUrl}}/>
       </li>
     </ul>
