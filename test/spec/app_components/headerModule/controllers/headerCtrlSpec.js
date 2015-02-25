@@ -5,12 +5,16 @@ describe('headerCtrl', function () {
         userService,
         user,
         $rootScope,
+        $state,
         $scope;
         
     beforeEach(function () {
+       module('ui.router');
+       module('loginModule');
        module('headerModule');
-       inject(function (_userService_, $controller, _$rootScope_) {
+       inject(function (_userService_, $controller, _$rootScope_, _$state_) {
           userService = _userService_;
+          $state = _$state_;
           $rootScope = _$rootScope_;
           $scope = $rootScope.$new();
           
@@ -21,7 +25,6 @@ describe('headerCtrl', function () {
              // the updateUser event.
               expect(true).toEqual(true);
           });
-          
           
           controller = $controller('headerCtrl', {
               $scope: $scope,
