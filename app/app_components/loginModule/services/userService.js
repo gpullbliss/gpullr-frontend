@@ -29,7 +29,9 @@ angular.module('loginModule')
         }
         
         function whoAmI() {
-            return $http.get('/api/users/me').then(
+            var promise = $http.get('/api/users/me');
+            
+            return promise.then(
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);
                     //return response.data;

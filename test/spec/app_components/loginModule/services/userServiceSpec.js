@@ -1,25 +1,67 @@
 'use strict';
 
-describe('pullRequestService', function () {
+describe('userService', function () {
 
     var service,
-        $httpBackend;
+        $q,
+        $http,
+        $rootScope;
 
     beforeEach(function () {
         module('gpullr');
 
-        inject(function (userService, _$httpBackend_) {
-            $httpBackend = _$httpBackend_;
-
+        inject(function (_$rootScope_, _$q_, _$http_, userService) {
+            $rootScope = _$rootScope_;
+            $q = _$q_;
+            $http = _$http_;
             service = userService;
         });
     });
 
-    afterEach(function () {
-        $httpBackend.verifyNoOutstandingExpectation();
-        $httpBackend.verifyNoOutstandingRequest();
-    });
+    describe('whoAmI', function () {
+      var expectedUrl = '/api/users/me',
+          mockedResponseData = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
+          successPayload = {
+            data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
+          },
+          errorPayload = {
+              data: { status: 403}
+          };
+         
+      function mockWhoAmIRequest(fail) {
+          var deferred = $q.defer();
+          
+            if (!fail) {
+                deferred.resolve(successPayload);
+            } else {
+                deferred.reject(errorPayload);
+            }
+          
+            spyOn($http, 'get').and.callFake(function () {
+            return deferred.promise; 
+          });
+          
+      }
+        
+      it('calls correct URL', function () {
+            mockWhoAmIRequest();
 
+            service.whoAmI();
+            expect($http.get).toHaveBeenCalledWith(expectedUrl);
+      });
+      
+      it('returns correct data', function (done) {
+          mockWhoAmIRequest();
+          spyOn($rootScope, '$emit');
+          
+          service.whoAmI().then(function (data) {
+              expect($rootScope.$emit).toHaveBeenCalledWith('updateUser', mockedResponseData);
+             done();
+          });
+          $rootScope.$digest();
+      });
+    });
+    /*
     describe('getUsersForLogin', function () {
         var endpointUrl = '/api/users',
             response = {
@@ -111,6 +153,6 @@ describe('pullRequestService', function () {
          expect(expectedError).toEqual(error);
          });
          */
-    });
-
+    //});
+    
 });
