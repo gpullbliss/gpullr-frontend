@@ -3,7 +3,8 @@ This is the frontend for the Pullrequest-Tool. It is written with JavaScript usi
 It uses the devbliss-grunt-plugin for most of the settings and task definitions.
 
 ## Prerequisites
-You need node / npm and bower to be installed at your development computer.
+You need node / npm to be installed in your development computer.
+Using `npm` you install `bower` and `grunt-cli`: `npm install -g grunt-cli bower`
 
 ## Running the project in devmode
 After cloning the project to a local folder, call 
