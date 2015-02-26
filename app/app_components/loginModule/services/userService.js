@@ -37,10 +37,10 @@ angular.module('loginModule')
                     //return response.data;
                 }, function (error) {
                     //console.log(' hier is n error geflogen: ');
-                    console.log(error.data.status);
+                    console.log(error.data);
                     $state.go('login');
-                    //return error;
-                    throw new Error(error.data);
+                    return error.data;
+                    //throw new Error(error.data);
                 }
             );
         }
