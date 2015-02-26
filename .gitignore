@@ -19,3 +19,4 @@ app/bower_components/
 
 # Mac OS X
 .DS_Store
+*.iml
