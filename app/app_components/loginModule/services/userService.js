@@ -23,9 +23,7 @@ angular.module('loginModule')
                         throw 'Got response code ' + response.status + ' instead of ' + successfulResponseStatus;
                     }
                 }, function (error) {
-                    throw error.status + ': ' + error.data;
-                    //when backend is fixed then inline
-                    //ErrorResponseHandler.log(error);
+                    ErrorResponseHandler.log(error);
                 }
             );
         }
