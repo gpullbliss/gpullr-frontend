@@ -1,13 +1,13 @@
 'use strict';
 angular.module('dashboardModule')
-    .controller('dashboardCtrl', ['$scope', '$interval', 'pullRequestService', function ($scope, $interval, pullRequestService) {
+    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', function ($scope, $rootScope, $interval, pullRequestService) {
         var updatePullRequestsInterval,
             getPullRequests;
 
         getPullRequests = function () {
-            pullRequestService.getPullRequests()
-                .then(function (pullRequests) {
+            pullRequestService.getPullRequests().then(function (pullRequests) {
                     $scope.pullRequests = pullRequests;
+                    $rootScope.$emit('changeRequestCount', pullRequests.length);
                 });
         };
 

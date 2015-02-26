@@ -7,14 +7,16 @@ describe('dashboardCtrl', function () {
         pullRequests,
         $interval,
         $q,
-        $scope;
+        $scope,
+        $rootScope;
 
     beforeEach(function () {
         module('dashboardModule');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, $rootScope, _$q_) {
+        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
+            $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $q = _$q_;
 
@@ -28,18 +30,21 @@ describe('dashboardCtrl', function () {
 
             controller = $controller('dashboardCtrl', {
                 $scope: $scope,
+                $rootScope: $rootScope,
                 pullRequestService: pullRequestService
             });
         });
     });
 
     describe('$scope.pullRequests', function () {
-        it('is set to the return value of pullRequestService.getPullRequests() on startup', function () {
-            $scope.$digest();
+        it('is set to the return value of pullRequestService.getPullRequests() and fire changeRequestCount event on startup', function () {
+           spyOn($rootScope, '$emit');
+           $scope.$digest();
 
-            expect($scope.pullRequests).toEqual(pullRequests);
+           expect($scope.pullRequests).toEqual(pullRequests);
+           expect($rootScope.$emit).toHaveBeenCalledWith('changeRequestCount', 1);
         });
-
+        
         it('calls pullRequestService.getPullRequests() via $timeout', function () {
             $scope.$digest();
 
