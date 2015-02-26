@@ -9,6 +9,7 @@ describe('headerCtrl', function () {
         $scope;
         
     beforeEach(function () {
+       module('gpullr');
        module('ui.router');
        module('loginModule');
        module('headerModule');
