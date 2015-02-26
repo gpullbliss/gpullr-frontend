@@ -26,7 +26,7 @@ describe('userService', function () {
             data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
         },
         errorPayload = {
-            data: {status: 403}
+            data: {errorKey: 'Forbidden', errorMessage: 'login required'}
         };
 
     it('calls correct URL', function () {
@@ -45,7 +45,7 @@ describe('userService', function () {
     });
 
     it('forwards error', function () {
-        response.respond(403, errorPayload);
+        response.respond(403, errorPayload.data);
         spyOn($state, 'go');
         var returnedPromise = service.whoAmI();
 

@@ -27,7 +27,7 @@ describe('userService', function () {
             data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
           },
           errorPayload = {
-              data: { status: 403, code: 'Forbidden', message: 'login required'}
+              data: { errorKey: 'Forbidden', errorMessage: 'login required'}
           };
          
       function mockWhoAmIRequest(fail) {
@@ -81,7 +81,7 @@ describe('userService', function () {
             data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
           },
           errorPayload = {
-              data: { status: 403, code: 'Forbidden', message: 'login required'}
+              data: { errorKey: 'Forbidden', errorMessage: 'login required'}
           };
           
       function mockUserForLoginRequest(fail) {
