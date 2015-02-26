@@ -5,14 +5,16 @@ describe('userService', function () {
     var service,
         $q,
         $http,
+        $state,
         $rootScope;
 
     beforeEach(function () {
         module('gpullr');
 
-        inject(function (_$rootScope_, _$q_, _$http_, userService) {
+        inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService) {
             $rootScope = _$rootScope_;
             $q = _$q_;
+            $state = _$state_;
             $http = _$http_;
             service = userService;
         });
@@ -38,7 +40,7 @@ describe('userService', function () {
             }
           
             spyOn($http, 'get').and.callFake(function () {
-            return deferred.promise; 
+              return deferred.promise; 
           });
           
       }
@@ -59,6 +61,20 @@ describe('userService', function () {
              done();
           });
           $rootScope.$digest();
+      });
+      
+      it('forwards error', function (done) {
+            mockWhoAmIRequest(true);
+            spyOn($state, 'go');
+            service.whoAmI().then(null, function (error) {
+                console.log('inside my error function');
+                console.log();
+                //expect(error).toThrow();
+                expect($state.go).toHaveBeenCalledWith('login');
+                //expect(error).toEqual(errorPayload.data.status);
+                done(); 
+            });
+            $rootScope.$digest();
       });
     });
     /*
