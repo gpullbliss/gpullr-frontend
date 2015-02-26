@@ -1,12 +1,14 @@
 'use strict';
 angular.module('loginModule')
-    .factory('userService', ['$http', '$state', '$rootScope', function ($http, $state, $rootScope) {
+    .factory('userService', ['$http', '$state', 'ErrorResponseHandler', '$rootScope', function ($http, $state, ErrorResponseHandler, $rootScope) {
         function getUsersForLogin() {
             return $http.get('/api/users').then(
                 function (response) {
                     return response.data;
                 }, function (error) {
                     throw error.status + ': ' + error.data;
+                    //when backend is fixed then inline
+                    //ErrorResponseHandler.log(error);
                 }
             );
         }
@@ -24,6 +26,8 @@ angular.module('loginModule')
                     }
                 }, function (error) {
                     throw error.status + ': ' + error.data;
+                    //when backend is fixed then inline
+                    //ErrorResponseHandler.log(error);
                 }
             );
         }
@@ -34,8 +38,12 @@ angular.module('loginModule')
             return promise.then(
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);
-                }, function () {
+                }, function (error) {
                     $state.go('login');
+                    var err = {data: {status: 403, error: 'Forbidden', message: 'login required'}}; 
+                    ErrorResponseHandler.log(err);
+                    //when backend is fixed then inline
+                    //ErrorResponseHandler.log(error);
                 }
             );
         }
