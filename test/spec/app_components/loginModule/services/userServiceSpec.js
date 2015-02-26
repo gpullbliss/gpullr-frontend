@@ -73,6 +73,38 @@ describe('userService', function () {
             $rootScope.$digest();
       });
     });
+    
+    describe('getUsersForLogin', function () {
+      var expectedUrl = '/api/users',
+          mockedResponseData = { id: 496860, username: 'testUser', avatarUrl: 'http://www.jira.de'},
+          successPayload = {
+            data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
+          },
+          errorPayload = {
+              data: { status: 403, code: 'Forbidden', message: 'login required'}
+          };
+          
+      function mockUserForLoginRequest(fail) {
+          var deferred = $q.defer();
+          
+            if (!fail) {
+                deferred.resolve(successPayload);
+            } else {
+                deferred.reject(errorPayload);
+            }
+          
+            spyOn($http, 'get').and.callFake(function () {
+              return deferred.promise; 
+          });
+      }
+      
+      it('calls correct URL', function () {
+            mockUserForLoginRequest();
+
+            service.getUsersForLogin();
+            expect($http.get).toHaveBeenCalledWith(expectedUrl);
+      });
+    });
     /*
     describe('getUsersForLogin', function () {
         var endpointUrl = '/api/users',

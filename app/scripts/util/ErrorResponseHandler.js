@@ -8,7 +8,7 @@ angular.module('gpullr')
                         intro = 'Error response: ';
                     }
 
-                    console.log(intro + err.data.status + ' ' + err.data.error + ': ' + err.data.message);
+                    console.log(intro + err.data.errorKey + ': ' + err.data.errorMessage);
                 };
 
                 return {log: log};

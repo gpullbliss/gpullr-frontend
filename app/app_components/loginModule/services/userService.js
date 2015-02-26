@@ -6,9 +6,7 @@ angular.module('loginModule')
                 function (response) {
                     return response.data;
                 }, function (error) {
-                    throw error.status + ': ' + error.data;
-                    //when backend is fixed then inline
-                    //ErrorResponseHandler.log(error);
+                    ErrorResponseHandler.log(error);
                 }
             );
         }
@@ -40,10 +38,7 @@ angular.module('loginModule')
                     $rootScope.$emit('updateUser', response.data);
                 }, function (error) {
                     $state.go('login');
-                    //when backend is fixed then remove this dummy and inline the bottom line
-                    var err = {data: {status: 403, error: 'Forbidden', message: 'login required'}}; 
-                    ErrorResponseHandler.log(err);
-                    //ErrorResponseHandler.log(error);
+                    ErrorResponseHandler.log(error);
                 }
             );
         }
