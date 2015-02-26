@@ -27,7 +27,7 @@ describe('userService', function () {
             data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
           },
           errorPayload = {
-              data: { status: 403}
+              data: { status: 403, code: 'Forbidden', message: 'login required'}
           };
          
       function mockWhoAmIRequest(fail) {
@@ -58,7 +58,7 @@ describe('userService', function () {
           
           service.whoAmI().then(function (data) {
               expect($rootScope.$emit).toHaveBeenCalledWith('updateUser', mockedResponseData);
-             done();
+              done();
           });
           $rootScope.$digest();
       });
@@ -66,12 +66,8 @@ describe('userService', function () {
       it('forwards error', function (done) {
             mockWhoAmIRequest(true);
             spyOn($state, 'go');
-            service.whoAmI().then(null, function (error) {
-                console.log('inside my error function');
-                console.log();
-                //expect(error).toThrow();
+            service.whoAmI().then(function () {
                 expect($state.go).toHaveBeenCalledWith('login');
-                //expect(error).toEqual(errorPayload.data.status);
                 done(); 
             });
             $rootScope.$digest();

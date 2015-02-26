@@ -34,13 +34,8 @@ angular.module('loginModule')
             return promise.then(
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);
-                    //return response.data;
-                }, function (error) {
-                    //console.log(' hier is n error geflogen: ');
-                    console.log(error.data);
+                }, function () {
                     $state.go('login');
-                    return error.data;
-                    //throw new Error(error.data);
                 }
             );
         }
