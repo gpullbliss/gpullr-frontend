@@ -13,7 +13,7 @@ describe('userService', function () {
         $rootScope = _$rootScope_;
         $state = _$state_;
         errorResponseHandler = ErrorResponseHandler;
-        $httpBackend.when('GET', 'app_components/dashboardModule/views/dashboard.html').respond("html");
+        $httpBackend.when('GET', 'app_components/dashboardModule/views/dashboard.html').respond('html');
         response = $httpBackend.when('GET', expectedUrl).respond(successPayload);
     }));
 

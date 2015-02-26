@@ -1,4 +1,4 @@
-'us strict';
+'use strict';
 
 describe('headerCtrl', function () {
     var controller,

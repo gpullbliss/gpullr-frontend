@@ -17,7 +17,7 @@ describe('userService', function () {
             $q = _$q_;
             $state = _$state_;
             $http = _$http_;
-            service = userService,
+            service = userService;
             errorResponseHandler = ErrorResponseHandler;
         });
     });
@@ -58,7 +58,7 @@ describe('userService', function () {
           mockWhoAmIRequest();
           spyOn($rootScope, '$emit');
           
-          service.whoAmI().then(function (data) {
+          service.whoAmI().then(function () {
               expect($rootScope.$emit).toHaveBeenCalledWith('updateUser', mockedResponseData);
               done();
           });
