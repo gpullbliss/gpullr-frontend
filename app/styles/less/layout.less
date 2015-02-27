@@ -1,5 +1,4 @@
 #dashboard {
-    .assignMe,
     .avatarWrapper {
         border: 1px solid #bbb;
         border-radius: 3px;
@@ -27,12 +26,11 @@
 
     .assignMe {
         background-color: #fff;
-        color: #000;
+        color: #47c;
         cursor: pointer;
-        font-size: @dashboardAvatarSize / 1.5;
+        font-size: @assignMeIconSize;
         height: @dashboardAvatarSize + 2px;
         width: @dashboardAvatarSize + 2px;
-        text-align: center;
 
         &.isAssigned {
             &:hover {
@@ -58,6 +56,11 @@
     .helpIcon {
         cursor: help;
     }
+}
+
+// table col style for assignee
+.assignee {
+    text-align: center;        
 }
 
 #gpullrheader {
