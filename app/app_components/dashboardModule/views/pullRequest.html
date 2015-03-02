@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-3">
+        <span class="avatarWrapper"><img class="avatar" ng-src="{{pr.author.avatarUrl}}"></span>
+        {{pr.author.username}}
+    </div>
+
+    <div class="col-md-5">
+        <a ng-href="{{pr.url}}" target="_blank">#{{pr.number}} {{pr.title}}</a>
+        <br>
+        Repo: {{pr.repoName}} |
+        <i class="fa fa-clock-o helpIcon" title="Created"></i>
+        <span am-time-ago="pr.createdAt"></span> | Status: {{pr.status}}
+    </div>
+
+    <div class="stats col-md-3">
+        <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
+        <span class="linesAdded">+{{pr.linesAdded}}</span>
+        <span class="linesRemoved">-{{pr.linesRemoved}}</span>
+        <br>
+        <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pr.filesChanged}}
+    </div>
+
+    <div class="assignee col-md-1">
+        <a class="assignMe" ng-class="{isAssigned: pr.assignee!==null}" title="Assign myself">
+            <i class="fa fa-user-plus "></i>
+            <img class="avatar" ng-if="pr.assignee!==null" ng-src="{{pr.assignee.avatarUrl}}">
+        </a>
+    </div>
+</div>
