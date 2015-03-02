@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dashboardModule')
-    .factory('pullRequestService', ['$http', function ($http) {
+    .factory('pullRequestService', ['$http', 'ErrorResponseHandler', function ($http, ErrorResponseHandler) {
         function getPullRequests() {
             return $http.get('/api/pulls').then(
                 function (response) {
@@ -10,8 +10,21 @@ angular.module('dashboardModule')
                 }
             );
         }
+        
+        function assignPullRequest(prId) {
+            var successfulResponseStatus = 204;
+            $http.post('/api/pulls/' + prId, '').then(
+                function (response) {
+                    if (response.status === successfulResponseStatus) {
+                        return true;
+                    }
+                }, function (error) {
+                    ErrorResponseHandler.log(error);
+                });
+        }
 
         return {
-            getPullRequests: getPullRequests
+            getPullRequests: getPullRequests,
+            assignPullRequest: assignPullRequest
         };
     }]);
