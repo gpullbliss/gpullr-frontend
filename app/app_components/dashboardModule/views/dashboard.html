@@ -1,47 +1,11 @@
 <div id="dashboard" ui-view>
     <h2>Open Pull Requests</h2>
-
-    <table st-table="displayedPullRequests" st-safe-src="pullRequests" class="table table-striped">
-        <thead>
-        <tr>
-            <th>Author</th>
-            <th>Pull Request</th>
-            <th>Stats</th>
-            <th>Reviewer</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="pr in displayedPullRequests">
-            <td>
-                <span class="avatarWrapper"><img class="avatar" ng-src="{{pr.author.avatarUrl}}"></span>
-                {{pr.author.username}}
-            </td>
-
-            <td>
-                <a ng-href="{{pr.url}}" target="_blank">#{{pr.number}} {{pr.title}}</a>
-                <br>
-                Repo: {{pr.repoName}} |
-                <i class="fa fa-clock-o helpIcon" title="Created"></i> <span am-time-ago="pr.createdAt"></span> |
-                Status: {{pr.status}}
-            </td>
-
-            <td class="stats">
-                <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
-                <span class="linesAdded">+{{pr.linesAdded}}</span> <span
-                    class="linesRemoved">-{{pr.linesRemoved}}</span>
-                <br>
-                <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pr.filesChanged}}
-            </td>
-
-            <td class="assignee">
-                    <a class="assignMe" ng-class="{isAssigned: pr.assignee!==null}" title="Assign myself">
-                        <i data-ng-click="assignMe(pr)" class="fa fa-user-plus "></i>
-                        <img class="avatar" ng-if="pr.assignee!==null" ng-src="{{pr.assignee.avatarUrl}}">
-                    </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="striped">
+        <pull-request
+                class="block margin hPadding"
+                prdata="pr"
+                data-ng-repeat="pr in pullRequests"></pull-request>
+    </div>
 </div>
 
 <!-- modal dialog for already assigned pull requests-->
