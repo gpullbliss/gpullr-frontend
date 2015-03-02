@@ -6,5 +6,6 @@ angular.module('gpullr', [
     'loginModule',
     'angularMoment',
     'smart-table',
-    'ui.router'
+    'ui.router',
+    'ngModal'
 ]);
