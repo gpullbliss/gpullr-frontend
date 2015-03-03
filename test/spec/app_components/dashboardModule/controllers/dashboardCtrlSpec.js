@@ -71,5 +71,15 @@ describe('dashboardCtrl', function () {
             expect($interval.cancel).toHaveBeenCalled();
         });
     });
+    
+    describe(' controller catch changeAssignee event', function () {
+        
+        it('catch event', function () {
+           $rootScope.$emit('changeAssignee');
+           $scope.$digest(); 
+           
+           expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
+        });
+    });
 
 });
