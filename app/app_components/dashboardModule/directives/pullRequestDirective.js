@@ -7,6 +7,32 @@ angular.module('dashboardModule')
             pr: '=prdata'
         },
         restrict: 'E',
+        controller: function ($scope, pullRequestService) {
+            var currentRepo = 'undefined';
+            $scope.assignToMe = function (selectedPr) {
+                currentRepo = selectedPr;
+                if (currentRepo.assignee === null) {
+                    pullRequestService.assignPullRequest(currentRepo.id);
+                } else {
+                    $scope.modalShown = true;
+                }
+            };
+            
+            $scope.confirmAssignment = function () {
+                pullRequestService.assignPullRequest(currentRepo.id);
+                currentRepo = 'undefined';
+                $scope.modalShown = false;
+            };
+        
+            $scope.abortAssignment = function () {
+                currentRepo = 'undefined';
+                $scope.modalShown = false;
+            };
+        
+            $scope.modalClose = function () {
+                $scope.modalShown = false;
+            };
+        },
         templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
         link: function(scope, element) {
 
@@ -33,9 +59,8 @@ angular.module('dashboardModule')
 
                 element.addClass(colorClass);
             };
-
+            
             changeColor();
-
         }
     };
 });

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dashboardModule')
-    .factory('pullRequestService', ['$http', 'ErrorResponseHandler', function ($http, ErrorResponseHandler) {
+    .factory('pullRequestService', ['$http', 'ErrorResponseHandler', '$rootScope', function ($http, ErrorResponseHandler, $rootScope) {
         function getPullRequests() {
             return $http.get('/api/pulls').then(
                 function (response) {
@@ -16,6 +16,7 @@ angular.module('dashboardModule')
             $http.post('/api/pulls/' + prId, '').then(
                 function (response) {
                     if (response.status === successfulResponseStatus) {
+                        $rootScope.$emit('changeAssignee');
                         return true;
                     }
                 }, function (error) {
