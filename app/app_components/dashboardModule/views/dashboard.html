@@ -7,10 +7,3 @@
                 data-ng-repeat="pr in pullRequests"></pull-request>
     </div>
 </div>
-
-<!-- modal dialog for already assigned pull requests-->
-<modal-dialog show="modalShown" dialog-title="Pullrequest is already assigned." width="500px" height="30%" on-close="modalClose()">
-    <p>Do you really want to assign it to you?</p>
-    <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
-    <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
-</modal-dialog>
