@@ -83,5 +83,48 @@ describe('pullRequestService', function () {
         });
 
     });
+    
+    describe('assignPullRequest', function () {
+        var pr = {id: 12345, repoName: 'testRepo'},
+            endpointUrl = '/api/pulls/' + pr.id,
+            responseData =
+            {
+                data: true,
+                status: 204
+            },
+            errorPayload = {
+              data: { errorKey: 'AnyErrorKey', errorMessage: 'assign pullrequest failed'}
+            };
+
+        it('calls correct URL', function () {
+            $httpBackend.expectPOST(endpointUrl, '').respond(204, '');
+            
+            expect(service.assignPullRequest(pr.id)).toBeDefined();
+
+            $httpBackend.flush();
+        });
+        
+        it('call returns data', function () {
+            var result = null;
+            $httpBackend.expectPOST(endpointUrl, '').respond(204, responseData);
+            service.assignPullRequest(pr.id).then(function (res) {
+                result = res;
+            });
+
+            $httpBackend.flush();
+            expect(result).toEqual(responseData.data);
+        });
+
+        it('return data fails', function () {
+            var result = null;
+            $httpBackend.expectPOST(endpointUrl, '').respond(400, errorPayload);
+            service.assignPullRequest(pr.id);
+            spyOn(errorResponseHandler, 'log');
+
+            $httpBackend.flush();
+            expect(errorResponseHandler.log).toHaveBeenCalled();
+        });
+
+    });
 
 });
