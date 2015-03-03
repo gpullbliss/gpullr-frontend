@@ -3,17 +3,17 @@
 describe('pullRequestService', function () {
 
     var service,
+        errorResponseHandler,
         $httpBackend;
 
-    beforeEach(function () {
-        module('gpullr');
+    // Set up the module
+    beforeEach(module('gpullr'));
 
-        inject(function (pullRequestService, _$httpBackend_) {
+    beforeEach(inject(function (pullRequestService, _$httpBackend_, ErrorResponseHandler) {
             $httpBackend = _$httpBackend_;
-
+            errorResponseHandler = ErrorResponseHandler;
             service = pullRequestService;
-        });
-    });
+    }));
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();

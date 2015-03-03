@@ -8,14 +8,17 @@ describe('dashboardCtrl', function () {
         $interval,
         $q,
         $scope,
+        errorResponseHandler,
         $rootScope;
 
     beforeEach(function () {
         module('dashboardModule');
+        module('gpullr');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
+        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_, ErrorResponseHandler) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
+            errorResponseHandler = ErrorResponseHandler;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $q = _$q_;
