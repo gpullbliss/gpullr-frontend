@@ -1,7 +1,7 @@
 'use strict';
 
 describe('pullRequestService', function () {
-
+console.log('pullRequestServiceSpec');
     var service,
         errorResponseHandler,
         $httpBackend;

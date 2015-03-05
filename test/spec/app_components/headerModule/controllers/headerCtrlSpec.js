@@ -1,6 +1,7 @@
 'use strict';
 
 describe('headerCtrl', function () {
+    console.log('headerCtrlSpec');
     var controller,
         userService,
         user,

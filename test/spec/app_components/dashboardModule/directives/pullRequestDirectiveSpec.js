@@ -1,6 +1,7 @@
 'use strict';
 
 describe('directive: pullrequest', function () {
+    console.log('pullRequestDirectiveSpec');
        var testHtml, element, testElem, scope;
        module('angularMoment');
        beforeEach(inject(function ($rootScope, $compile, $httpBackend) {

@@ -1,7 +1,7 @@
 'use strict';
 
 describe('userService', function () {
-
+console.log('userServiceSpec');
     var service,
         $q,
         $http,
