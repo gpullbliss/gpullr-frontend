@@ -4,18 +4,19 @@ describe('userService', function () {
 
     var $httpBackend, service, $rootScope, $state, response, errorResponseHandler;
 
-    // Set up the module
-    beforeEach(module('gpullr'));
+    beforeEach(function () {
+        module('gpullr');
+        module('appTemplates');
 
-    beforeEach(inject(function (userService, _$httpBackend_, _$rootScope_, _$state_, ErrorResponseHandler) {
-        service = userService;
-        $httpBackend = _$httpBackend_;
-        $rootScope = _$rootScope_;
-        $state = _$state_;
-        errorResponseHandler = ErrorResponseHandler;
-        $httpBackend.when('GET', 'app_components/dashboardModule/views/dashboard.html').respond('html');
-        response = $httpBackend.when('GET', expectedUrl).respond(successPayload);
-    }));
+        inject(function (userService, _$httpBackend_, _$rootScope_, _$state_, ErrorResponseHandler) {
+            service = userService;
+            $httpBackend = _$httpBackend_;
+            $rootScope = _$rootScope_;
+            $state = _$state_;
+            errorResponseHandler = ErrorResponseHandler;
+            response = $httpBackend.when('GET', expectedUrl).respond(successPayload);
+        });
+    });
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();

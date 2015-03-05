@@ -16,7 +16,9 @@ module.exports = function (config) {
             'app/scripts/**/*.js',
             'app/app_components/**/*module.js',
             'app/app_components/**/**/*.js',
-            'test/spec/**/*Spec.js'
+            'test/spec/**/*Spec.js',
+            'app/scripts/views/*.html',
+            'app/app_components/**/views/*.html'
         ],
 
         // list of files to exclude
@@ -24,7 +26,10 @@ module.exports = function (config) {
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {},
+        preprocessors: {
+            'app/scripts/views/*.html': ['ng-html2js'],
+            'app/app_components/**/views/*.html': ['ng-html2js']
+        },
 
         // use dots reporter, as travis terminal does not support escaping sequences
         // possible values: 'dots', 'progress'
@@ -77,7 +82,15 @@ module.exports = function (config) {
             'karma-jasmine',
             'karma-phantomjs-launcher',
             'karma-chrome-launcher',
-            'karma-junit-reporter'
-        ]
+            'karma-junit-reporter',
+            'karma-ng-html2js-preprocessor'
+        ],
+
+        ngHtml2JsPreprocessor: {
+            stripPrefix: 'app/',
+            // setting this option will create only a single module that contains templates
+            // from all the files, so you can load them all with module('appTemplates')
+            moduleName: 'appTemplates'
+        }
     });
 };

@@ -11,6 +11,7 @@ describe('userService', function () {
 
     beforeEach(function () {
         module('gpullr');
+        module('appTemplates');
 
         inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService, ErrorResponseHandler) {
             $rootScope = _$rootScope_;
@@ -26,7 +27,7 @@ describe('userService', function () {
       var expectedUrl = '/api/users/me',
           mockedResponseData = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
           successPayload = {
-            data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
+              data: mockedResponseData
           },
           errorPayload = {
               data: { errorKey: 'Forbidden', errorMessage: 'login required'}
@@ -82,7 +83,7 @@ describe('userService', function () {
       var expectedUrl = '/api/users',
           mockedResponseData = { id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
           successPayload = {
-            data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
+              data: mockedResponseData
           },
           errorPayload = {
               data: { errorKey: 'AnyErrorK', errorMessage: 'no users available'}
