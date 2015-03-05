@@ -1,7 +1,6 @@
 'use strict';
 
 describe('userService', function () {
-
     var $httpBackend, service, $rootScope, $state, response, errorResponseHandler;
 
     beforeEach(function () {

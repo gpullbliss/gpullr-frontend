@@ -22,8 +22,15 @@
 
     <div class="assignee col-md-1">
         <a class="assignMe" ng-class="{isAssigned: pr.assignee!==null}" title="Assign myself">
-            <i class="fa fa-user-plus "></i>
+            <i data-ng-click="assignToMe(pr)" class="fa fa-user-plus "></i>
             <img class="avatar" ng-if="pr.assignee!==null" ng-src="{{pr.assignee.avatarUrl}}">
         </a>
     </div>
 </div>
+
+<!-- modal dialog for already assigned pull requests-->
+<modal-dialog show="modalShown" dialog-title="Pullrequest is already assigned." width="500px" height="30%" on-close="modalClose()">
+    <p>Do you really want to assign it to you?</p>
+    <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
+    <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
+</modal-dialog>
