@@ -8,24 +8,24 @@ angular.module('dashboardModule')
         },
         restrict: 'E',
         controller: function ($scope, pullRequestService) {
-            var currentRepo = 'undefined';
+            var currentPr = 'undefined';
             $scope.assignToMe = function (selectedPr) {
-                currentRepo = selectedPr;
-                if (currentRepo.assignee === null) {
-                    pullRequestService.assignPullRequest(currentRepo.id);
+                currentPr = selectedPr;
+                if (currentPr.assignee === null) {
+                    pullRequestService.assignPullRequest(currentPr.id);
                 } else {
                     $scope.modalShown = true;
                 }
             };
             
             $scope.confirmAssignment = function () {
-                pullRequestService.assignPullRequest(currentRepo.id);
-                currentRepo = 'undefined';
+                pullRequestService.assignPullRequest(currentPr.id);
+                currentPr = 'undefined';
                 $scope.modalShown = false;
             };
         
             $scope.abortAssignment = function () {
-                currentRepo = 'undefined';
+                currentPr = 'undefined';
                 $scope.modalShown = false;
             };
         

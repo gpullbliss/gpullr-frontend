@@ -7,18 +7,18 @@ describe('directive: pullrequest', function () {
            scope = $rootScope.$new();
            $httpBackend.when('GET', 'app_components/dashboardModule/views/pullRequest.html').respond('html');
            scope.pr = {author: {
-                          username: "testUser", 
-                          avatarUrl: "http://www.jira.de/avatarUrl"
+                          username: 'testUser', 
+                          avatarUrl: 'http://www.jira.de/avatarUrl'
                           },
-                          url: "http://www.jira.de", 
+                          url: 'http://www.jira.de', 
                           number: 2,
-                          title: "testPRTitle",
-                          repoName: "testRepoName",
+                          title: 'testPRTitle',
+                          repoName: 'testRepoName',
                           createdAt: 12345,
-                          status: "OPEN",
+                          status: 'OPEN',
                           linesAdded: 42,
                           linesRemoved: 21,
-                          filesChanged: "2",
+                          filesChanged: '2',
                           assignee: null};
                       
            testHtml = '<span class="avatarWrapper"><img class="avatar" ng-src="{{pr.author.avatarUrl}}"></span>' +
