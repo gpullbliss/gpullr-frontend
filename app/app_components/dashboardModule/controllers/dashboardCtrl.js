@@ -21,7 +21,7 @@ angular.module('dashboardModule')
             }
         );
 
-        $rootScope.$on('changeAssignee', function (event) {
+        $rootScope.$on('changeAssignee', function () {
                     getPullRequests();
         });
     }]);

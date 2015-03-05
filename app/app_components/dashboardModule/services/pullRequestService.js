@@ -12,13 +12,10 @@ angular.module('dashboardModule')
         }
         
         function assignPullRequest(prId) {
-            var successfulResponseStatus = 204;
             return $http.post('/api/pulls/' + prId, '').then(
-                function (response) {
-                    if (response.status === successfulResponseStatus) {
+                function () {
                         $rootScope.$emit('changeAssignee');
                         return true;
-                    }
                 }, function (error) {
                     ErrorResponseHandler.log(error.data);
                 });

@@ -116,7 +116,6 @@ describe('pullRequestService', function () {
         });
 
         it('return data fails', function () {
-            var result = null;
             $httpBackend.expectPOST(endpointUrl, '').respond(400, errorPayload);
             service.assignPullRequest(pr.id);
             spyOn(errorResponseHandler, 'log');
