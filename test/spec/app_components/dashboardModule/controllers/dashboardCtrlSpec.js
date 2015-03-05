@@ -1,7 +1,6 @@
 'use strict';
 
 describe('dashboardCtrl', function () {
-console.log('dashboardCtrlSpec');
     var controller,
         pullRequestService,
         pullRequests,

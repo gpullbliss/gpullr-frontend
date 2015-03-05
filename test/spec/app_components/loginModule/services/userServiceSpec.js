@@ -1,7 +1,6 @@
 'use strict';
 
 describe('userService', function () {
-console.log('userServiceSpec');
     var service,
         $q,
         $http,
@@ -12,7 +11,7 @@ console.log('userServiceSpec');
     beforeEach(function () {
         module('gpullr');
 
-        inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService, ErrorResponseHandler, $httpBackend) {
+        inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService, ErrorResponseHandler) {//, $httpBackend) {
             $rootScope = _$rootScope_;
             $q = _$q_;
             $state = _$state_;
@@ -20,66 +19,10 @@ console.log('userServiceSpec');
             service = userService;
             errorResponseHandler = ErrorResponseHandler;
             
-            $httpBackend.whenGET('app_components/dashboardModule/views/dashboard.html').respond('html');
+            //$httpBackend.whenGET('app_components/dashboardModule/views/dashboard.html').respond('html');
         });
     });
-/*
-    describe('whoAmI', function () {
-      var expectedUrl = '/api/users/me',
-          mockedResponseData = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
-          successPayload = {
-            data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
-          },
-          errorPayload = {
-              data: { errorKey: 'Forbidden', errorMessage: 'login required'}
-          };
-         
-      function mockWhoAmIRequest(fail) {
-          var deferred = $q.defer();
-          
-            if (!fail) {
-                deferred.resolve(successPayload);
-            } else {
-                deferred.reject(errorPayload);
-            }
-            $httpBackend.whenGET(expectedUrl).repond(deferred.promise);
-            /*spyOn($http, 'get').and.callFake(function () {
-              return deferred.promise; 
-          });
-          
-      }
-        
-      it('calls correct URL', function () {
-            mockWhoAmIRequest();
 
-            service.whoAmI();
-            expect($http.get).toHaveBeenCalledWith(expectedUrl);
-      });
-      
-      it('returns correct data', function (done) {
-          mockWhoAmIRequest();
-          spyOn($rootScope, '$emit');
-          
-          service.whoAmI().then(function () {
-              expect($rootScope.$emit).toHaveBeenCalledWith('updateUser', mockedResponseData);
-              done();
-          });
-          $rootScope.$digest();
-      });
-      
-      it('forwards error', function (done) {
-            mockWhoAmIRequest(true);
-            spyOn($state, 'go');
-            spyOn(errorResponseHandler, 'log');
-            service.whoAmI().then(function () {
-                expect($state.go).toHaveBeenCalledWith('login');
-                expect(errorResponseHandler.log).toHaveBeenCalledWith(errorPayload);
-                done(); 
-            });
-            $rootScope.$digest();
-      });
-    });*/
-    
     describe('getUsersForLogin', function () {
       var expectedUrl = '/api/users',
           mockedResponseData = { id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},

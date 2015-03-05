@@ -1,7 +1,6 @@
 'use strict';
 
 describe('userService', function () {
-console.log('userServiceHttpBackendSpec');
     var $httpBackend, service, $rootScope, $state, response, errorResponseHandler;
 
     // Set up the module
