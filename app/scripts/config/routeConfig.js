@@ -14,11 +14,11 @@ angular.module('gpullr')
         $stateProvider
             .state('page', {
                 abstract: true,
-                templateUrl: 'scripts/views/page.html'
+                templateUrl: 'views/page.html'
             })
             .state('pageWithoutHeader', {
                 abstract: true,
-                templateUrl: 'scripts/views/pageWithoutHeader.html'
+                templateUrl: 'views/pageWithoutHeader.html'
             })
             .state('dashboard', {
                 parent: 'page',

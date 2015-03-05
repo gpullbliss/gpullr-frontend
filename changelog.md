@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [bug] Fixed grunt build after header move
  - [refactor] Moved header inclusion to page view
  - [feature] implemented assignToMe feature
  - [feature] color PRs by age
@@ -9,4 +10,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Thu Mar 05 13:36:00 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Thu Mar 05 14:48:25 CET 2015
