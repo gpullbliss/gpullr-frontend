@@ -12,13 +12,15 @@ console.log('userServiceSpec');
     beforeEach(function () {
         module('gpullr');
 
-        inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService, ErrorResponseHandler) {
+        inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService, ErrorResponseHandler, $httpBackend) {
             $rootScope = _$rootScope_;
             $q = _$q_;
             $state = _$state_;
             $http = _$http_;
             service = userService;
             errorResponseHandler = ErrorResponseHandler;
+            
+            $httpBackend.whenGET('app_components/dashboardModule/views/dashboard.html').respond('html');
         });
     });
 
