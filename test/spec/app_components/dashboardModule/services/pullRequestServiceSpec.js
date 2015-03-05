@@ -1,19 +1,18 @@
 'use strict';
 
 describe('pullRequestService', function () {
-
     var service,
+        errorResponseHandler,
         $httpBackend;
 
-    beforeEach(function () {
-        module('gpullr');
+    // Set up the module
+    beforeEach(module('gpullr'));
 
-        inject(function (pullRequestService, _$httpBackend_) {
+    beforeEach(inject(function (pullRequestService, _$httpBackend_, ErrorResponseHandler) {
             $httpBackend = _$httpBackend_;
-
+            errorResponseHandler = ErrorResponseHandler;
             service = pullRequestService;
-        });
-    });
+    }));
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();
@@ -80,6 +79,48 @@ describe('pullRequestService', function () {
 
             $httpBackend.flush();
             expect(result).toEqual(responseData.items);
+        });
+
+    });
+    
+    describe('assignPullRequest', function () {
+        var pr = {id: 12345, repoName: 'testRepo'},
+            endpointUrl = '/api/pulls/' + pr.id,
+            responseData =
+            {
+                data: true,
+                status: 204
+            },
+            errorPayload = {
+              data: { errorKey: 'AnyErrorKey', errorMessage: 'assign pullrequest failed'}
+            };
+
+        it('calls correct URL', function () {
+            $httpBackend.expectPOST(endpointUrl, '').respond(204, '');
+            
+            expect(service.assignPullRequest(pr.id)).toBeDefined();
+
+            $httpBackend.flush();
+        });
+        
+        it('call returns data', function () {
+            var result = null;
+            $httpBackend.expectPOST(endpointUrl, '').respond(204, responseData);
+            service.assignPullRequest(pr.id).then(function (res) {
+                result = res;
+            });
+
+            $httpBackend.flush();
+            expect(result).toEqual(responseData.data);
+        });
+
+        it('return data fails', function () {
+            $httpBackend.expectPOST(endpointUrl, '').respond(400, errorPayload);
+            service.assignPullRequest(pr.id);
+            spyOn(errorResponseHandler, 'log');
+
+            $httpBackend.flush();
+            expect(errorResponseHandler.log).toHaveBeenCalled();
         });
 
     });

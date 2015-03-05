@@ -1,7 +1,6 @@
 'use strict';
 
 describe('userService', function () {
-
     var service,
         $q,
         $http,
@@ -22,62 +21,6 @@ describe('userService', function () {
         });
     });
 
-    describe('whoAmI', function () {
-      var expectedUrl = '/api/users/me',
-          mockedResponseData = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
-          successPayload = {
-            data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'}
-          },
-          errorPayload = {
-              data: { errorKey: 'Forbidden', errorMessage: 'login required'}
-          };
-         
-      function mockWhoAmIRequest(fail) {
-          var deferred = $q.defer();
-          
-            if (!fail) {
-                deferred.resolve(successPayload);
-            } else {
-                deferred.reject(errorPayload);
-            }
-          
-            spyOn($http, 'get').and.callFake(function () {
-              return deferred.promise; 
-          });
-          
-      }
-        
-      it('calls correct URL', function () {
-            mockWhoAmIRequest();
-
-            service.whoAmI();
-            expect($http.get).toHaveBeenCalledWith(expectedUrl);
-      });
-      
-      it('returns correct data', function (done) {
-          mockWhoAmIRequest();
-          spyOn($rootScope, '$emit');
-          
-          service.whoAmI().then(function () {
-              expect($rootScope.$emit).toHaveBeenCalledWith('updateUser', mockedResponseData);
-              done();
-          });
-          $rootScope.$digest();
-      });
-      
-      it('forwards error', function (done) {
-            mockWhoAmIRequest(true);
-            spyOn($state, 'go');
-            spyOn(errorResponseHandler, 'log');
-            service.whoAmI().then(function () {
-                expect($state.go).toHaveBeenCalledWith('login');
-                expect(errorResponseHandler.log).toHaveBeenCalledWith(errorPayload);
-                done(); 
-            });
-            $rootScope.$digest();
-      });
-    });
-    
     describe('getUsersForLogin', function () {
       var expectedUrl = '/api/users',
           mockedResponseData = { id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
