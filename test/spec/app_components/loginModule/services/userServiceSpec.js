@@ -23,7 +23,7 @@ console.log('userServiceSpec');
             $httpBackend.whenGET('app_components/dashboardModule/views/dashboard.html').respond('html');
         });
     });
-
+/*
     describe('whoAmI', function () {
       var expectedUrl = '/api/users/me',
           mockedResponseData = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
@@ -42,8 +42,8 @@ console.log('userServiceSpec');
             } else {
                 deferred.reject(errorPayload);
             }
-          
-            spyOn($http, 'get').and.callFake(function () {
+            $httpBackend.whenGET(expectedUrl).repond(deferred.promise);
+            /*spyOn($http, 'get').and.callFake(function () {
               return deferred.promise; 
           });
           
@@ -78,7 +78,7 @@ console.log('userServiceSpec');
             });
             $rootScope.$digest();
       });
-    });
+    });*/
     
     describe('getUsersForLogin', function () {
       var expectedUrl = '/api/users',
