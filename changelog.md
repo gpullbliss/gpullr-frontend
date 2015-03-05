@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] Moved header inclusion to page view
  - [feature] implemented assignToMe feature
  - [feature] color PRs by age
  - [bug] fixed icon css
@@ -8,4 +9,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 05 11:43:44 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Thu Mar 05 13:36:00 CET 2015
