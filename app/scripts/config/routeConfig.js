@@ -2,7 +2,8 @@
 angular.module('gpullr')
     /*jshint maxparams:false */
     .config([
-        '$locationProvider', '$stateProvider', '$urlRouterProvider', 'LOCATION_DASHBOARD', 'LOCATION_LOGIN', function ($locationProvider, $stateProvider, $urlRouterProvider, LOCATION_DASHBOARD, LOCATION_LOGIN) {
+        '$locationProvider', '$stateProvider', '$urlRouterProvider', 'LOCATION_DASHBOARD', 'LOCATION_LOGIN', 'LOCATION_WALLBOARD',
+        function ($locationProvider, $stateProvider, $urlRouterProvider, LOCATION_DASHBOARD, LOCATION_LOGIN, LOCATION_WALLBOARD) {
 
         $locationProvider.html5Mode(true);
 
@@ -31,5 +32,11 @@ angular.module('gpullr')
                 controller: 'loginCtrl',
                 templateUrl: 'app_components/loginModule/views/login.html',
                 url: LOCATION_LOGIN
+            })
+            .state('wallboard', {
+                parent: 'pageWithoutHeader',
+                controller: 'wallboardCtrl',
+                templateUrl: 'app_components/wallboardModule/views/wallboard.html',
+                url: LOCATION_WALLBOARD
             });
     }]);

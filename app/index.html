@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="styles/.tmp/base.css"/>
         <!-- endbuild -->
     </head>
-    <body>
+    <body ng-class="bodyClass">
     <div ui-view></div>
         <!-- build:js scripts/scripts.js -->
 
@@ -50,6 +50,9 @@
         <script src="app_components/headerModule/module.js"></script>
         <script src="app_components/headerModule/controllers/headerCtrl.js"></script>
 
+    <script src="app_components/wallboardModule/module.js"></script>
+    <script src="app_components/wallboardModule/controllers/wallboardCtrl.js"></script>
+    <script src="app_components/wallboardModule/services/locationConst.js"></script>
 
         <!-- endbuild -->
     </body>
