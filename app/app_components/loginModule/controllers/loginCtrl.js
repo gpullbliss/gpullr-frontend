@@ -1,6 +1,5 @@
 'use strict';
 angular.module('loginModule')
-    /* jshint maxparams:false */
     .controller('loginCtrl',
     ['$scope', '$state', 'userService', 'STATE_DASHBOARD', function ($scope, $state, userService, STATE_DASHBOARD) {
         userService.getUsersForLogin().then(function (users) {
