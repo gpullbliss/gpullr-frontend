@@ -1,39 +1,31 @@
 'use strict';
 
 angular.module('dashboardModule')
-       .controller('statisticsCtrl', ['$scope', function($scope) {
-       //var ranking,
-         //  rankingList;
-       
-       $scope.rankingList = [
-                    {id: 12345,
-                     rank: 1,
-                     closedCount: 32,
-                     username: 'pkarstedt',
-                     avatarUrl: 'https://avatars.githubusercontent.com/u/1460875?v=3'
-                    },
-                    {id: 54321,
-                     rank: 2,
-                     closedCount: 30,
-                     username: 'henning',
-                     avatarUrl: 'https://avatars.githubusercontent.com/u/1460875?v=3'
-                    },
-                    {id: 54321,
-                     rank: 3,
-                     closedCount: 26,
-                     username: 'daniel',
-                     avatarUrl: 'https://avatars.githubusercontent.com/u/1460875?v=3'
-                    },
-                    {id: 54331,
-                     rank: 4,
-                     closedCount: 25,
-                     username: 'micha',
-                     avatarUrl: 'https://avatars.githubusercontent.com/u/1460875?v=3'
-                    },
-                    {id: 54321,
-                     rank: 5,
-                     closedCount: 18,
-                     username: 'alex',
-                     avatarUrl: 'https://avatars.githubusercontent.com/u/1460875?v=3'
-                    }];
+       .controller('statisticsCtrl', ['$scope', 'userService', function($scope, userService) {
+       var defaultTabs = [
+                    {id: 1, qp: 'today', title: 'Day', selected: 'active'},
+                    {id: 2, qp: 'last_7_days', title: 'Week', selected: ''},
+                    {id: 3, qp: 'last_30_days', title: 'Month', selected: ''},
+                    {id: 4, qp: 'all_time', title: 'All time', selected: ''}
+                ];
+                
+        $scope.getScopedRankingList = function (selectedTab) {
+                    getScopedRankingList(selectedTab);
+        };
+        
+        var getScopedRankingList = function (selectedTab) {
+            console.log(selectedTab);
+            angular.forEach(defaultTabs, function (tab) {
+               if (tab.id === selectedTab.id) {
+                   tab.selected='active';
+               } else {
+                   tab.selected='';
+               }
+            });
+            $scope.tabs = defaultTabs;
+            $scope.rankingList = userService.getRankingList(selectedTab.qp).items;
+        };
+        
+        getScopedRankingList(defaultTabs[0]);
+        
        }]);

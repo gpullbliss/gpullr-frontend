@@ -40,10 +40,24 @@ angular.module('loginModule')
                 }
             );
         }
+        
+        function getRankingList(rankingScope) {
+            var promise = $http.get('api/rankings?rankingScope=' + rankingScope);
+            
+            return promise.then(
+                function (response) {
+                    console.log(response.data.items);
+                    return response.data;
+                }, function (error) {
+                    ErrorResponseHandler.log(error);
+                }
+            );
+        }
 
         return {
             getUsersForLogin: getUsersForLogin,
             logInUser: logInUser,
-            whoAmI: whoAmI
+            whoAmI: whoAmI,
+            getRankingList: getRankingList
         };
     }]);
