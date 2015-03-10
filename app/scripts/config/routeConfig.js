@@ -2,7 +2,7 @@
 angular.module('gpullr')
     /*jshint maxparams:false */
     .config([
-        '$locationProvider', '$stateProvider', '$urlRouterProvider', 'LOCATION_DASHBOARD', 'LOCATION_LOGIN', function ($locationProvider, $stateProvider, $urlRouterProvider, LOCATION_DASHBOARD, LOCATION_LOGIN) {
+        '$locationProvider', '$stateProvider', '$urlRouterProvider', 'LOCATION_DASHBOARD', 'LOCATION_LOGIN', 'LOCATION_STATS', function ($locationProvider, $stateProvider, $urlRouterProvider, LOCATION_DASHBOARD, LOCATION_LOGIN, LOCATION_STATS) {
 
         $locationProvider.html5Mode(true);
 
@@ -31,5 +31,11 @@ angular.module('gpullr')
                 controller: 'loginCtrl',
                 templateUrl: 'app_components/loginModule/views/login.html',
                 url: LOCATION_LOGIN
+            })
+            .state('stats', {
+                parent: 'pageWithoutHeader',
+                controller: 'statisticsCtrl',
+                templateUrl: 'app_components/dashboardModule/views/statistics.html',
+                url: LOCATION_STATS
             });
     }]);
