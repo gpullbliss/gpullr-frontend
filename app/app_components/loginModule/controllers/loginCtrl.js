@@ -1,15 +1,15 @@
 'use strict';
 angular.module('loginModule')
-    /*jshint maxparams:false */
+    /* jshint maxparams:false */
     .controller('loginCtrl',
-    ['$scope', '$location', 'userService', 'LOCATION_DASHBOARD', function ($scope, $location, userService, LOCATION_DASHBOARD) {
+    ['$scope', '$state', 'userService', 'STATE_DASHBOARD', function ($scope, $state, userService, STATE_DASHBOARD) {
         userService.getUsersForLogin().then(function (users) {
             $scope.users = users;
         });
 
         $scope.submit = function (selectedUser) {
             userService.logInUser(selectedUser).then(function () {
-                $location.path(LOCATION_DASHBOARD);
+                $state.go(STATE_DASHBOARD);
             }, function (error) {
                 $scope.errorMessage = error;
             });

@@ -1,6 +1,7 @@
 'use strict';
 angular.module('loginModule')
-    .factory('userService', ['$http', '$state', 'ErrorResponseHandler', '$rootScope', function ($http, $state, ErrorResponseHandler, $rootScope) {
+    /* jshint maxparams:false */
+    .factory('userService', ['$http', '$state', 'ErrorResponseHandler', '$rootScope', 'STATE_LOGIN', function ($http, $state, ErrorResponseHandler, $rootScope, STATE_LOGIN) {
         function getUsersForLogin() {
             return $http.get('/api/users').then(
                 function (response) {
@@ -35,7 +36,7 @@ angular.module('loginModule')
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);
                 }, function (error) {
-                    $state.go('login');
+                    $state.go(STATE_LOGIN);
                     ErrorResponseHandler.log(error);
                 }
             );

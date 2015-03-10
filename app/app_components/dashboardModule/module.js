@@ -1,1 +1,1 @@
-angular.module('dashboardModule', []);
+angular.module('dashboardModule', ['ui.router']);

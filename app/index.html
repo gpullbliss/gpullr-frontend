@@ -16,11 +16,11 @@
         <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/ngModal/dist/ng-modal.css" />
         <!-- endbower -->
-        <link rel="stylesheet" href="styles/.tmp/base.css"/>
+        <link rel="stylesheet" href="styles/.tmp/base.css" />
         <!-- endbuild -->
     </head>
     <body>
-    <div ui-view></div>
+        <div ui-view></div>
         <!-- build:js scripts/scripts.js -->
 
         <!-- bower:js -->
@@ -37,14 +37,14 @@
         <script src="scripts/util/ErrorResponseHandler.js"></script>
 
         <script src="app_components/dashboardModule/module.js"></script>
+        <script src="app_components/dashboardModule/config/routeConfig.js"></script>
         <script src="app_components/dashboardModule/controllers/dashboardCtrl.js"></script>
-        <script src="app_components/dashboardModule/services/locationConst.js"></script>
         <script src="app_components/dashboardModule/services/pullRequestService.js"></script>
         <script src="app_components/dashboardModule/directives/pullRequestDirective.js"></script>
 
         <script src="app_components/loginModule/module.js"></script>
+        <script src="app_components/loginModule/config/routeConfig.js"></script>
         <script src="app_components/loginModule/controllers/loginCtrl.js"></script>
-        <script src="app_components/loginModule/services/locationConst.js"></script>
         <script src="app_components/loginModule/services/userService.js"></script>
 
         <script src="app_components/headerModule/module.js"></script>
