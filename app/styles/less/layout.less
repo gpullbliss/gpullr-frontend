@@ -1,3 +1,8 @@
+.dark {
+    background-color: #000;
+    color: #fff;
+}
+
 #dashboard {
     .avatarWrapper {
         border: 1px solid #bbb;
@@ -49,6 +54,46 @@
     }
 }
 
+#wallboard {
+    .assignedPullRequests h2 {
+        margin-left: 36%;
+    }
+
+    .panel {
+        color: #000;
+    }
+
+    .panel-footer,
+    .author {
+        text-align: center;
+    }
+
+    .panel-heading {
+        height: @lineHeight;
+        box-sizing: content-box;
+    }
+
+    .author,
+    .title,
+    .assignee,
+    .panel-heading {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .author {
+        margin-top: @defaultSpacing;
+    }
+
+    .title {
+        height: @lineHeight * 3 + 1px; /* +1 px for border */
+    }
+
+    .assignedPullRequests .title {
+        height: @lineHeight;
+    }
+}
+
 // table col style for assignee
 .assignee {
     text-align: center;
@@ -56,60 +101,63 @@
 
 #gpullrheader {
     .bubble {
-        background-color:#f00;
-        padding:2px 10px;
+        background-color: #f00;
+        padding: 2px 10px;
         color: #fff;
         margin-left: 5px;
         .borderRadius(10px);
     }
     .avatar {
         border-radius: 3px;
-        margin: 5px 15px 5px 0px;
+        margin: 5px 15px 5px 0;
         height: 40px;
         width: 40px;
     }
 }
 
 .ng-modal-overlay {
-  /* A dark translucent div that covers the whole screen */
-  position:absolute;
-  //z-index:9999;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:#000000;
-  opacity: 0.4;
+    /* A dark translucent div that covers the whole screen */
+    position: absolute;
+    //z-index:9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.4;
 }
+
 .ng-modal-dialog {
-  /* A centered div above the overlay with a box shadow. */
-  z-index:10000;
-  position: absolute;
-  width: 50%; /* Default */
+    /* A centered div above the overlay with a box shadow. */
+    z-index: 10000;
+    position: absolute;
+    width: 50%; /* Default */
 
-  /* Center the dialog */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
+    /* Center the dialog */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
 
-  background-color: #fff;
-  box-shadow: 4px 4px 80px #000 ;
+    background-color: #fff;
+    box-shadow: 4px 4px 80px #000;
 }
+
 .ng-modal-dialog-content {
-  padding:10px;
-  text-align: left;
-  font-family: 'arial', 'sans-serif';
+    padding: 10px;
+    text-align: left;
+    font-family: 'arial', 'sans-serif';
 }
+
 .ng-modal-close {
-  position: absolute;
-  top: 3px;
-  right: 5px;
-  padding: 5px;
-  cursor: pointer;
-  font-size: 120%;
-  display: inline-block;
-  font-weight: bold;
-  font-family: 'arial', 'sans-serif';
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 120%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'arial', 'sans-serif';
 }
