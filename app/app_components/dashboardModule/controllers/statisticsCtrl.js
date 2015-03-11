@@ -14,16 +14,15 @@ angular.module('dashboardModule')
         };
         
         var getScopedRankingList = function (selectedTab) {
-            console.log(selectedTab);
             angular.forEach(defaultTabs, function (tab) {
                if (tab.qp === selectedTab.qp) {
                    tab.selected='active';
+                   $scope.rankingList = userService.getRankingList(selectedTab.qp).items;
                } else {
                    tab.selected='';
                }
             });
             $scope.tabs = defaultTabs;
-            $scope.rankingList = userService.getRankingList(selectedTab.qp).items;
         };
         
         getScopedRankingList(defaultTabs[0]);
