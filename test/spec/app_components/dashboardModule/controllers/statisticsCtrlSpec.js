@@ -13,13 +13,13 @@ describe('statisticsCtrl', function () {
 
       inject(function (_userService_, $controller, _$rootScope_, _$q_) {
           userService = _userService_;
-          $scope = _$rootScope_.new();
+          $scope = _$rootScope_.$new();
           $q = _$q_;
           
           rankingList = [{id: 123, username: 'testUser', closedPR: 42, avatarUrl: 'http://www.jira.de', rank: 1},
                          {id: 321, username: 'testUser2', closedPR: 41, avatarUrl: 'http://www.jira.de', rank: 2}];
 
-          spyOn(pullRequestService, 'getRankingList').and.callFake(function () {
+          spyOn(userService, 'getRankingList').and.callFake(function () {
               var deferred = $q.defer();
               deferred.resolve(rankingList);
               return deferred.promise;
