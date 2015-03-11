@@ -47,7 +47,7 @@ angular.module('loginModule')
             
             return promise.then(
                 function (response) {
-                    return response.data;
+                    return response.data.items;
                 }, function (error) {
                     ErrorResponseHandler.log(error);
                 }

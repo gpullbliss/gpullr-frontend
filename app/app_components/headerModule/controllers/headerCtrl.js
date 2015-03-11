@@ -1,15 +1,15 @@
 'use strict';
 angular.module('headerModule')
 /* jshint maxparams:false */
-    .controller('headerCtrl', ['$scope', '$rootScope', 'userService', '$state', 'STATE_STATS', 'STATE_DASHBOARD',
-                      function ($scope, $rootScope, userService, $state, STATE_STATS, STATE_DASHBOARD) {
+    .controller('headerCtrl', ['$scope', '$rootScope', 'userService', 'STATE_STATS', 'STATE_DASHBOARD',
+                      function ($scope, $rootScope, userService, STATE_STATS, STATE_DASHBOARD) {
         
         $scope.userPresent = false;
         $scope.countPresent = false;
         
         var navBar = [
-              { title: 'All Requests', bubble: true, path: STATE_DASHBOARD},
-              { title: 'Ranking', bubble: false, path: STATE_STATS}
+              { title: 'All Requests', bubble: true, state: STATE_DASHBOARD},
+              { title: 'Ranking', bubble: false, state: STATE_STATS}
             ];
         
         var requestCountEvent = $rootScope.$on('changeRequestCount', function (event, data) {
