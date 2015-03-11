@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
  - [feature] Added wallboard
+ - [refactor] Split routing config into project part and module parts
  - [bug] Fixed grunt build after header move
  - [refactor] Moved header inclusion to page view
  - [feature] implemented assignToMe feature
@@ -11,4 +12,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Mon Mar 09 17:04:20 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Tue Mar 10 17:20:59 CET 2015
