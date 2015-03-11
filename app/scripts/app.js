@@ -4,6 +4,7 @@ angular.module('gpullr', [
     'dashboardModule',
     'headerModule',
     'loginModule',
+    'wallboardModule',
     'angularMoment',
     'smart-table',
     'ui.router',

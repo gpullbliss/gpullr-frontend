@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] Added wallboard
  - [refactor] Split routing config into project part and module parts
  - [bug] Fixed grunt build after header move
  - [refactor] Moved header inclusion to page view
