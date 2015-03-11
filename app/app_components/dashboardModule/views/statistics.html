@@ -1,11 +1,6 @@
 <div id="stats" ui-view>
     <h2>gPullR Ranking</h2>
     <ul class="nav nav-tabs">
-        <!--
-        <li class="active" ng-click="getScopedRankingList(this)"><a href="#">Day</a></li>
-        <li ng-click="getScopedRankingList(this)"><a href="#">Week</a></li>
-        <li ng-click="getScopedRankingList('month')"><a href="#">Month</a></li>
-        <li ng-click="getScopedRankingList('alltime')"><a href="#">All time</a></li>-->
         <li class="{{tab.selected}}" ng-repeat="tab in tabs" ng-click="getScopedRankingList(tab)"><a href="#">{{tab.title}}</a></li>
     </ul>
     <div id="treppchen" class="podium">

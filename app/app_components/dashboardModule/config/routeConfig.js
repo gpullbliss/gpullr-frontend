@@ -12,9 +12,9 @@ angular.module('dashboardModule')
                     url: '/'
                 })
                 .state(STATE_STATS, {
-                parent: 'pageWithoutHeader',
-                controller: 'statisticsCtrl',
-                templateUrl: 'app_components/dashboardModule/views/statistics.html',
-                url: '/' + STATE_STATS
+                    parent: 'page',
+                    controller: 'statisticsCtrl',
+                    templateUrl: 'app_components/dashboardModule/views/statistics.html',
+                    url: '/stats'
                 });
         }]);
