@@ -65,7 +65,7 @@ describe('statisticsCtrl', function () {
            expect($scope.tabs[3].selected).toEqual('active');
            expect(userService.getRankingList).toHaveBeenCalledWith('all_time');
            
-           var fakeTab = {qp: 'foobar', title: 'foobar', selected: ''}
+           var fakeTab = {qp: 'foobar', title: 'foobar', selected: ''};
            
            $scope.getScopedRankingList(fakeTab);
            expect(fakeTab.selected).toEqual('');
