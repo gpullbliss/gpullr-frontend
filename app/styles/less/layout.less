@@ -3,55 +3,53 @@
     color: #fff;
 }
 
-#dashboard {
-    .avatarWrapper {
-        border: 1px solid #bbb;
-        border-radius: 3px;
-        display: inline-block;
-    }
+.avatarWrapper {
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    display: inline-block;
+}
 
-    .avatar {
-        display: inline-block;
-        height: @dashboardAvatarSize;
-        width: @dashboardAvatarSize;
-        vertical-align: top;
-    }
+.avatar {
+    display: inline-block;
+    height: @dashboardAvatarSize;
+    width: @dashboardAvatarSize;
+    vertical-align: top;
+}
 
-    .stats {
-        white-space: nowrap;
-    }
+.stats {
+    white-space: nowrap;
+}
 
-    .assignMe {
-        color: #47c;
-        cursor: pointer;
-        font-size: @assignMeIconSize;
-        height: @dashboardAvatarSize + 2px;
-        width: @dashboardAvatarSize + 2px;
+.assignMe {
+    color: #47c;
+    cursor: pointer;
+    font-size: @assignMeIconSize;
+    height: @dashboardAvatarSize + 2px;
+    width: @dashboardAvatarSize + 2px;
 
-        &.isAssigned {
-            &:hover {
-                .avatar {
-                    display: none;
-                }
-
-                .fa-user-plus {
-                    display: inline-block;
-                }
-            }
-
+    &.isAssigned {
+        &:hover {
             .avatar {
-                display: inline-block;
+                display: none;
             }
 
             .fa-user-plus {
-                display: none;
+                display: inline-block;
             }
         }
-    }
 
-    .helpIcon {
-        cursor: help;
+        .avatar {
+            display: inline-block;
+        }
+
+        .fa-user-plus {
+            display: none;
+        }
     }
+}
+
+.helpIcon {
+    cursor: help;
 }
 
 #wallboard {
@@ -112,6 +110,54 @@
         margin: 5px 15px 5px 0;
         height: 40px;
         width: 40px;
+    }
+}
+
+#stats {
+    .podium {
+        height: 150px;
+        margin: 40px auto;
+        width: 60%
+    }
+
+    .podiumName {
+        display: inline-block;
+        width: 20%;
+        text-align: center;
+    }
+
+    .rankingHeadline {
+        width: 1120px;
+        margin-left: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        border-width: 1px 0;
+        border: solid;
+        border-color: #DDD;
+    }
+
+    .rankingStats {
+        padding-left: 30px;
+    }
+
+    .podiumBlock {
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    .firstPlace {
+        padding-top: 50px;
+        background-color: @gold;
+    }
+
+    .secondPlace {
+        padding-top: 20px;
+        background-color: @silver;
+    }
+
+    .thirdPlace {
+        background-color: @bronze;
     }
 }
 

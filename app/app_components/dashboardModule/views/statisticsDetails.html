@@ -1,0 +1,24 @@
+<div class="podium">
+    <div class="podiumName">{{rankingList[2].username}}
+        <div class="podiumBlock thirdPlace">3.</div>
+    </div>
+    <div class="podiumName">{{rankingList[0].username}}
+        <div class="podiumBlock firstPlace">1.</div>
+    </div>
+    <div class="podiumName">{{rankingList[1].username}}
+        <div class="podiumBlock secondPlace">2.</div>
+    </div>
+</div>
+
+<div class="row rankingHeadline">
+    <div class="col-md-3">Developer</div>
+    <div class="col-md-3">Closed Pull Requests</div>
+    <div class="col-md-3">Lines of Code</div>
+    <div class="col-md-3">Rank</div>
+</div>
+<div class="striped">
+    <ranking-list
+        class="block margin hPadding rankingStats"
+        rankdata="rank"
+        data-ng-repeat="rank in rankingList"></ranking-list>
+</div>

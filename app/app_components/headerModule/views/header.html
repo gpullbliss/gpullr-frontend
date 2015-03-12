@@ -1,13 +1,18 @@
 <nav id="gpullrheader" class="container navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">gPullR</div>
+        <a ui-sref="{{navBar[0].state}}"><div class="navbar-brand">gPullR</div></a>
     </div>
     <ul class="nav navbar-nav">
-      <li ng-show="countPresent" class="active"><a href="#">All Requests <span class="bubble">{{requestCount}}</span></a></li>
+      <li ui-sref-active="active" ng-repeat="item in navBar" ng-click="navigate(item)">
+          <a ui-sref="{{item.state}}">{{item.title}}
+              <span ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
+          </a>
+      </li>
     </ul>
+    
     <ul class="nav navbar-nav navbar-right">
-      <li ng-show="userPresent">
+      <li ng-if="userPresent">
         <span class="navbar-text">{{username}}</span>
         <img class="avatar" src={{avatarUrl}}/>
       </li>

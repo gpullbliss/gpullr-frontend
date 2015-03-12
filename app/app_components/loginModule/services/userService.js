@@ -28,10 +28,10 @@ angular.module('loginModule')
                 }
             );
         }
-        
+
         function whoAmI() {
             var promise = $http.get('/api/users/me');
-            
+
             return promise.then(
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);

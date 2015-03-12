@@ -50,11 +50,9 @@ describe('headerCtrl', function () {
     
     describe('init header', function () {
        it('changeRequestCount event procceeded', function () {
-          expect($scope.countPresent).toEqual(false);
           $rootScope.$emit('changeRequestCount', 44);
           $scope.$digest();
           
-          expect($scope.countPresent).toEqual(true);
           expect($scope.requestCount).toEqual(44);
        }); 
     });
