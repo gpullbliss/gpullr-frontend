@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] added statistics screen story 41
  - [feature] Added wallboard
  - [refactor] Split routing config into project part and module parts
  - [bug] Fixed grunt build after header move
@@ -12,4 +13,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Tue Mar 10 17:20:59 CET 2015
+-- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 12 10:35:08 CET 2015
