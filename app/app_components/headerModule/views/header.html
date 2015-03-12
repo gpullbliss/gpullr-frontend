@@ -6,13 +6,13 @@
     <ul class="nav navbar-nav">
       <li ui-sref-active="active" ng-repeat="item in navBar" ng-click="navigate(item)">
           <a ui-sref="{{item.state}}">{{item.title}}
-              <span ng-show="{{item.bubble}}" class="bubble">{{requestCount}}</span>
+              <span ng-if="item.bubble" class="bubble">{{requestCount}}</span>
           </a>
       </li>
     </ul>
     
     <ul class="nav navbar-nav navbar-right">
-      <li ng-show="userPresent">
+      <li ng-if="userPresent">
         <span class="navbar-text">{{username}}</span>
         <img class="avatar" src={{avatarUrl}}/>
       </li>
