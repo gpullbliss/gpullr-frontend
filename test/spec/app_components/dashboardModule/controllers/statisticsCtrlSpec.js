@@ -39,7 +39,7 @@ describe('statisticsCtrl', function () {
                expect($scope.tabs[i].state).toEqual(tabs[i].state);
                expect($scope.tabs[i].title).toEqual(tabs[i].title);
                expect($scope.tabs[i]).toEqual(tabs[i]);
-           };
+           }
        });
    });
 });
