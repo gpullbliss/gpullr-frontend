@@ -1,7 +1,7 @@
 'use strict';
 
 describe('statisticsService', function () {
-    var $httpBackend, service, $rootScope, $state, response, errorResponseHandler;
+    var $httpBackend, service, response, errorResponseHandler;
 
     beforeEach(function () {
         module('gpullr');
