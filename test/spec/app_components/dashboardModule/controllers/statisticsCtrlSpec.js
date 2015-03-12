@@ -27,11 +27,10 @@ describe('statisticsCtrl', function () {
       });
    });
    
-   describe('statisticsCtrl getRankinglist test', function () {
+   describe('initial stats test', function () {
       
-       it('check for correct inital call for rankingList with "today" ', function () {
+       it('check for all available tabs ', function () {
            var tabsCount = 4;
-           $scope.$digest();
            
            expect($scope.tabs.length).toEqual(tabsCount);
            
@@ -40,6 +39,11 @@ describe('statisticsCtrl', function () {
                expect($scope.tabs[i].title).toEqual(tabs[i].title);
                expect($scope.tabs[i]).toEqual(tabs[i]);
            }
+       });
+       
+       it('check for state go to todays ranking screen ', function () {
+           $scope.$digest();
+           expect($state.current.data.period).toEqual('today');
        });
    });
 });
