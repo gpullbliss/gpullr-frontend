@@ -10,12 +10,12 @@ angular.module('dashboardModule')
                 }
             );
         }
-        
+
         function assignPullRequest(prId) {
             return $http.post('/api/pulls/' + prId, '').then(
                 function () {
-                        $rootScope.$emit('changeAssignee');
-                        return true;
+                    $rootScope.$emit('changeAssignee');
+                    return true;
                 }, function (error) {
                     ErrorResponseHandler.log(error.data);
                 });

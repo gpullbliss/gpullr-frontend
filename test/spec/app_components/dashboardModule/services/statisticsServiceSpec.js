@@ -22,21 +22,24 @@ describe('statisticsService', function () {
 
     var rankingScope = 'today',
         expectedUrl = '/api/rankings?rankingScope=' + rankingScope,
-            successPayload = {
-                items: [{id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', ranking: 1, closedCount: 12}]
+        successPayload = {
+            items: [{id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', ranking: 1, closedCount: 12}]
+        },
+        errorPayload = {
+            data: {errorKey: 'Forbidden', errorMessage: 'login required'},
+            status: 403,
+            headers: Function,
+            config: {
+                method: 'GET',
+                transformRequest: [Function],
+                transformResponse: [Function],
+                url: '/api/rankings?rankingScope=' + rankingScope,
+                headers: {
+                    Accept: 'application/json, text/plain, */*'
+                }
             },
-            errorPayload = {
-                data: {errorKey: 'Forbidden', errorMessage: 'login required'},
-                status: 403, 
-                headers: Function,
-                config: { method: 'GET',
-                          transformRequest: [ Function ],
-                          transformResponse: [ Function ],
-                          url: '/api/rankings?rankingScope=' + rankingScope, 
-                          headers: { Accept: 'application/json, text/plain, */*' 
-                         } },
-                statusText: ''
-            };
+            statusText: ''
+        };
 
     it('calls correct URL', function () {
         $httpBackend.expectGET(expectedUrl);

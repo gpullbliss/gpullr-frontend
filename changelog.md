@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [feature] added statistics screen story 41
+ - [feature] added statistics screen (PRT-41)
  - [feature] Added wallboard
  - [refactor] Split routing config into project part and module parts
  - [bug] Fixed grunt build after header move
