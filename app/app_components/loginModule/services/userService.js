@@ -42,22 +42,9 @@ angular.module('loginModule')
             );
         }
         
-        function getRankingList(rankingScope) {
-            var promise = $http.get('api/rankings?rankingScope=' + rankingScope);
-            
-            return promise.then(
-                function (response) {
-                    return response.data.items;
-                }, function (error) {
-                    ErrorResponseHandler.log(error);
-                }
-            );
-        }
-
         return {
             getUsersForLogin: getUsersForLogin,
             logInUser: logInUser,
             whoAmI: whoAmI,
-            getRankingList: getRankingList
         };
     }]);

@@ -4,7 +4,7 @@ describe('statisticsDetailsCtrl', function () {
    var controller,
        $scope,
        rankingList,
-       userService,
+       statisticsService,
        state,
        testPeriod,
        $q;
@@ -14,9 +14,9 @@ describe('statisticsDetailsCtrl', function () {
       module('gpullr');
       module('appTemplates');
 
-      inject(function ($controller, _$rootScope_, _$state_, _userService_, _$q_) {
+      inject(function ($controller, _$rootScope_, _$state_, _statisticsService_, _$q_) {
           $scope = _$rootScope_.$new();
-          userService = _userService_;
+          statisticsService = _statisticsService_;
           state = _$state_;
           $q = _$q_;
           
@@ -26,7 +26,7 @@ describe('statisticsDetailsCtrl', function () {
           
           rankingList = [{id: 12345, username: 'testUser', rank: 1, closedCount: 3 }];
          
-          spyOn(userService, 'getRankingList').and.callFake(function () {
+          spyOn(statisticsService, 'getRankingList').and.callFake(function () {
               var deferred = $q.defer();
                 deferred.resolve(rankingList);
                 return deferred.promise;
@@ -34,7 +34,7 @@ describe('statisticsDetailsCtrl', function () {
 
           controller = $controller('statisticsDetailsCtrl', {
              $scope: $scope,
-             userService: userService,
+             statisticsService: statisticsService,
              $state: state
           });
           
@@ -47,7 +47,7 @@ describe('statisticsDetailsCtrl', function () {
        it('check for stats.today', function () {
            $scope.$digest();
            
-           expect(userService.getRankingList).toHaveBeenCalledWith(testPeriod);
+           expect(statisticsService.getRankingList).toHaveBeenCalledWith(testPeriod);
            expect($scope.rankingList).toEqual(rankingList);
        });
    });
