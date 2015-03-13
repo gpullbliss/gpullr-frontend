@@ -1,28 +1,24 @@
 'use strict';
 angular.module('dashboardModule')
-    .factory('pullRequestService', ['$http', 'ErrorResponseHandler', '$rootScope', function ($http, ErrorResponseHandler, $rootScope) {
-        function getPullRequests() {
-            return $http.get('/api/pulls').then(
-                function (response) {
-                    return response.data.items;
-                }, function (error) {
-                    throw error.status + ': ' + error.data;
-                }
-            );
-        }
-
+    .factory('pullRequestService', ['$http', '$rootScope', function ($http, $rootScope) {
         function assignPullRequest(prId) {
             return $http.post('/api/pulls/' + prId, '').then(
                 function () {
                     $rootScope.$emit('changeAssignee');
-                    return true;
-                }, function (error) {
-                    ErrorResponseHandler.log(error.data);
-                });
+                }
+            );
+        }
+
+        function getPullRequests() {
+            return $http.get('/api/pulls').then(
+                function (response) {
+                    return response.data.items;
+                }
+            );
         }
 
         return {
-            getPullRequests: getPullRequests,
-            assignPullRequest: assignPullRequest
+            assignPullRequest: assignPullRequest,
+            getPullRequests: getPullRequests
         };
     }]);

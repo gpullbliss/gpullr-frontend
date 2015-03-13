@@ -1,7 +1,7 @@
 {
   "name": "gPullR-frontend",
   "version": "0.1.0-SNAPSHOT",
-  "description": "Frontend for the gPullR pullrequest administration tool",
+  "description": "Frontend for the gPullR pull request administration tool",
   "main": "app/index.html",
   "private": true,
   "scripts": {

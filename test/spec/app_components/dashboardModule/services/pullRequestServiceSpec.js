@@ -2,17 +2,17 @@
 
 describe('pullRequestService', function () {
     var service,
-        errorResponseHandler,
-        $httpBackend;
+        $httpBackend,
+        response;
 
-    // Set up the module
-    beforeEach(module('gpullr'));
+    beforeEach(function () {
+        module('dashboardModule');
 
-    beforeEach(inject(function (pullRequestService, _$httpBackend_, ErrorResponseHandler) {
+        inject(function (pullRequestService, _$httpBackend_) {
             $httpBackend = _$httpBackend_;
-            errorResponseHandler = ErrorResponseHandler;
             service = pullRequestService;
-    }));
+        });
+    });
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();
@@ -20,7 +20,7 @@ describe('pullRequestService', function () {
     });
 
     describe('getPullRequests', function () {
-        var endpointUrl = '/api/pulls',
+        var expectedUrl = '/api/pulls',
             responseData =
             {
                 items: [
@@ -59,19 +59,25 @@ describe('pullRequestService', function () {
                         status: 'Open'
                     }
                 ]
+            },
+            successPayload = {data: responseData, status: 200},
+            errorPayload = {
+                data: {errorKey: 'AnyErrorKey', errorMessage: 'assign pull request failed'},
+                status: 400
             };
 
-        it('calls correct URL', function () {
-            $httpBackend.expectGET(endpointUrl).respond(200, '');
+        beforeEach(function () {
+            response = $httpBackend.expectGET(expectedUrl).respond(successPayload.status, successPayload.data);
+        });
 
+        it('calls correct URL', function () {
             expect(service.getPullRequests()).toBeDefined();
 
             $httpBackend.flush();
         });
 
-        it('returns data', function () {
+        it('returns correct data', function () {
             var result = null;
-            $httpBackend.expectGET(endpointUrl).respond(200, responseData);
 
             service.getPullRequests().then(function (pullRequests) {
                 result = pullRequests;
@@ -81,48 +87,59 @@ describe('pullRequestService', function () {
             expect(result).toEqual(responseData.items);
         });
 
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.getPullRequests().then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
+            });
+
+            $httpBackend.flush();
+        });
     });
     
     describe('assignPullRequest', function () {
         var pr = {id: 12345, repoName: 'testRepo'},
-            endpointUrl = '/api/pulls/' + pr.id,
-            responseData =
-            {
-                data: true,
-                status: 204
-            },
+            expectedUrl = '/api/pulls/' + pr.id,
+            successPayload = {status: 204},
             errorPayload = {
-              data: { errorKey: 'AnyErrorKey', errorMessage: 'assign pullrequest failed'}
+                data: {errorKey: 'AnyErrorKey', errorMessage: 'assign pull request failed'},
+                status: 400
             };
 
+        beforeEach(function () {
+            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status);
+        });
+
         it('calls correct URL', function () {
-            $httpBackend.expectPOST(endpointUrl, '').respond(204, '');
-            
             expect(service.assignPullRequest(pr.id)).toBeDefined();
 
             $httpBackend.flush();
         });
-        
-        it('call returns data', function () {
-            var result = null;
-            $httpBackend.expectPOST(endpointUrl, '').respond(204, responseData);
-            service.assignPullRequest(pr.id).then(function (res) {
-                result = res;
+
+        it('returns correct data', function () {
+            var success = null;
+
+            service.assignPullRequest(pr.id).then(function () {
+                success = true;
             });
 
             $httpBackend.flush();
-            expect(result).toEqual(responseData.data);
+            expect(success).toBeTruthy();
         });
 
-        it('return data fails', function () {
-            $httpBackend.expectPOST(endpointUrl, '').respond(400, errorPayload);
-            service.assignPullRequest(pr.id);
-            spyOn(errorResponseHandler, 'log');
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.assignPullRequest(pr.id).then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
+            });
 
             $httpBackend.flush();
-            expect(errorResponseHandler.log).toHaveBeenCalled();
         });
-
     });
-
 });
