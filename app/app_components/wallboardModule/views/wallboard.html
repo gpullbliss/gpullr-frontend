@@ -5,7 +5,7 @@
             <h2>Open</h2>
 
             <div class="row">
-                <div class="col-sm-4" ng-repeat="pr in unassignedPullRequests">
+                <div class="col-sm-6" ng-repeat="pr in unassignedPullRequests">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             #{{pr.number}} - {{pr.repoName}}
@@ -24,7 +24,7 @@
             <h2>In Progress</h2>
 
             <div class="row">
-                <div class="col-sm-8 col-sm-offset-4" ng-repeat="pr in assignedPullRequests">
+                <div class="col-sm-12" ng-repeat="pr in assignedPullRequests">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             #{{pr.number}} - {{pr.repoName}}
