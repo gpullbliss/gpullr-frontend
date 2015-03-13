@@ -14,9 +14,7 @@ angular.module('loginModule')
 
             return $http.post('/api/users/login/' + user.id, '').then(
                 function (response) {
-                    if (response.status === successfulResponseStatus) {
-                        return true;
-                    } else {
+                    if (response.status !== successfulResponseStatus) {
                         throw 'Got response code ' + response.status + ' instead of ' + successfulResponseStatus;
                     }
                 }

@@ -103,14 +103,14 @@ describe('pullRequestService', function () {
     describe('assignPullRequest', function () {
         var pr = {id: 12345, repoName: 'testRepo'},
             expectedUrl = '/api/pulls/' + pr.id,
-            successPayload = {data: true, status: 204},
+            successPayload = {status: 204},
             errorPayload = {
                 data: {errorKey: 'AnyErrorKey', errorMessage: 'assign pull request failed'},
                 status: 400
             };
 
         beforeEach(function () {
-            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status, successPayload.data);
+            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status);
         });
 
         it('calls correct URL', function () {
@@ -120,13 +120,14 @@ describe('pullRequestService', function () {
         });
 
         it('returns correct data', function () {
-            var result = null;
-            service.assignPullRequest(pr.id).then(function (res) {
-                result = res;
+            var success = null;
+
+            service.assignPullRequest(pr.id).then(function () {
+                success = true;
             });
 
             $httpBackend.flush();
-            expect(result).toEqual(successPayload.data);
+            expect(success).toBeTruthy();
         });
 
         it('forwards error', function () {

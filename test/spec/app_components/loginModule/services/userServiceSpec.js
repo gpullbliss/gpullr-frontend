@@ -74,17 +74,14 @@ describe('userService', function () {
     describe('logInUser', function () {
         var user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
             expectedUrl = '/api/users/login/' + user.id,
-            successPayload = {
-                data: true,
-                status: 201
-            },
+            successPayload = {status: 201},
             errorPayload = {
                 data: {errorKey: 'AnyErrorKey', errorMessage: 'login failed'},
                 status: 400
             };
 
         beforeEach(function () {
-            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status, successPayload.data);
+            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status);
         });
 
         it('calls correct URL', function () {
@@ -93,14 +90,14 @@ describe('userService', function () {
         });
 
         it('returns correct data', function () {
-            var result = null;
+            var success = null;
 
-            service.logInUser(user).then(function (success) {
-                result = success;
+            service.logInUser(user).then(function () {
+                success = true;
             });
 
             $httpBackend.flush();
-            expect(result).toEqual(successPayload.data);
+            expect(success).toBeTruthy();
         });
 
 

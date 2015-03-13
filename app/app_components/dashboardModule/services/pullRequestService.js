@@ -5,7 +5,6 @@ angular.module('dashboardModule')
             return $http.post('/api/pulls/' + prId, '').then(
                 function () {
                     $rootScope.$emit('changeAssignee');
-                    return true;
                 }
             );
         }
