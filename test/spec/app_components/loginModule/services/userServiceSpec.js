@@ -1,76 +1,73 @@
 'use strict';
 
 describe('userService', function () {
-    var service,
-        $q,
-        $http,
+    var $httpBackend,
+        service,
+        $rootScope,
         $state,
-        errorResponseHandler,
-        $rootScope;
+        response;
 
     beforeEach(function () {
-        module('gpullr');
-        module('appTemplates');
+        module('loginModule');
 
-        inject(function (_$rootScope_, _$q_, _$state_, _$http_, userService, ErrorResponseHandler) {
-            $rootScope = _$rootScope_;
-            $q = _$q_;
-            $state = _$state_;
-            $http = _$http_;
+        inject(function (userService, _$httpBackend_, _$rootScope_, _$state_) {
             service = userService;
-            errorResponseHandler = ErrorResponseHandler;
+            $httpBackend = _$httpBackend_;
+            $rootScope = _$rootScope_;
+            $state = _$state_;
         });
+    });
+
+    afterEach(function () {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
     });
 
     describe('getUsersForLogin', function () {
         var expectedUrl = '/api/users',
-            mockedResponseData = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
             successPayload = {
-                data: mockedResponseData
+                data: [
+                    {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
+                    {id: 42, username: 'user2', avatarUrl: 'http://example.org'}
+                ],
+                status: 200
             },
             errorPayload = {
-                data: {errorKey: 'AnyErrorK', errorMessage: 'no users available'}
+                data: {errorKey: 'AnyErrorK', errorMessage: 'no users available'},
+                status: 400
             };
 
-        function mockUserForLoginRequest(fail) {
-            var deferred = $q.defer();
-
-            if (!fail) {
-                deferred.resolve(successPayload);
-            } else {
-                deferred.reject(errorPayload);
-            }
-
-            spyOn($http, 'get').and.callFake(function () {
-                return deferred.promise;
-            });
-        }
+        beforeEach(function () {
+            response = $httpBackend.expectGET(expectedUrl).respond(successPayload.status, successPayload.data);
+        });
 
         it('calls correct URL', function () {
-            mockUserForLoginRequest();
-
             service.getUsersForLogin();
-            expect($http.get).toHaveBeenCalledWith(expectedUrl);
+            $httpBackend.flush();
         });
 
-        it('returns correct data', function (done) {
-            mockUserForLoginRequest();
+        it('returns correct data', function () {
+            var result = null;
 
-            service.getUsersForLogin().then(function (data) {
-                expect(data).toEqual(mockedResponseData);
-                done();
+            service.getUsersForLogin().then(function (users) {
+                result = users;
             });
-            $rootScope.$digest();
+
+            $httpBackend.flush();
+            expect(result).toEqual(successPayload.data);
         });
 
-        it('forwards error', function (done) {
-            mockUserForLoginRequest(true);
-            spyOn(errorResponseHandler, 'log');
-            service.getUsersForLogin().then(function () {
-                expect(errorResponseHandler.log).toHaveBeenCalledWith(errorPayload);
-                done();
+
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.getUsersForLogin().then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
             });
-            $rootScope.$digest();
+
+            $httpBackend.flush();
         });
     });
 
@@ -82,52 +79,41 @@ describe('userService', function () {
                 status: 201
             },
             errorPayload = {
-                data: {errorKey: 'AnyErrorKey', errorMessage: 'login failed'}
+                data: {errorKey: 'AnyErrorKey', errorMessage: 'login failed'},
+                status: 400
             };
 
-        function mockLoginRequest(fail) {
-            var deferred = $q.defer();
-
-            if (!fail) {
-                deferred.resolve(successPayload);
-            } else {
-                deferred.reject(errorPayload);
-            }
-
-            spyOn($http, 'post').and.callFake(function () {
-                return deferred.promise;
-            });
-        }
+        beforeEach(function () {
+            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status, successPayload.data);
+        });
 
         it('calls correct URL', function () {
-            mockLoginRequest();
-
             service.logInUser(user);
-            expect($http.post).toHaveBeenCalledWith(expectedUrl, '');
+            $httpBackend.flush();
         });
 
-        it('returns correct data', function (done) {
-            mockLoginRequest();
-            spyOn($http, 'get').and.callFake(function () {
-                var deferred = $q.defer();
-                return deferred.promise;
+        it('returns correct data', function () {
+            var result = null;
+
+            service.logInUser(user).then(function (success) {
+                result = success;
             });
 
-            service.logInUser(user).then(function (data) {
-                expect(data).toEqual(successPayload.data);
-                done();
-            });
-            $rootScope.$digest();
+            $httpBackend.flush();
+            expect(result).toEqual(successPayload.data);
         });
 
-        it('forwards error', function (done) {
-            mockLoginRequest(true);
-            spyOn(errorResponseHandler, 'log');
-            service.logInUser(user).then(function () {
-                expect(errorResponseHandler.log).toHaveBeenCalledWith(errorPayload);
-                done();
+
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.logInUser(user).then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
             });
-            $rootScope.$digest();
+
+            $httpBackend.flush();
         });
     });
 });

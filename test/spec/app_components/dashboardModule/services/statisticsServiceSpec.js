@@ -1,17 +1,16 @@
 'use strict';
 
 describe('statisticsService', function () {
-    var $httpBackend, service, response, errorResponseHandler;
+    var $httpBackend,
+        service,
+        response;
 
     beforeEach(function () {
-        module('gpullr');
-        module('appTemplates');
+        module('dashboardModule');
 
-        inject(function (statisticsService, _$httpBackend_, ErrorResponseHandler) {
+        inject(function (statisticsService, _$httpBackend_) {
             service = statisticsService;
             $httpBackend = _$httpBackend_;
-            errorResponseHandler = ErrorResponseHandler;
-            response = $httpBackend.when('GET', expectedUrl).respond(successPayload);
         });
     });
 
@@ -41,29 +40,36 @@ describe('statisticsService', function () {
             statusText: ''
         };
 
-    it('calls correct URL', function () {
-        $httpBackend.expectGET(expectedUrl);
-        service.getRankingList(rankingScope);
-        $httpBackend.flush();
-    });
-
-    it('returns correct data', function () {
-        var result = null;
-        service.getRankingList(rankingScope).then(function (response) {
-            result = response;
+    describe('getRankingList', function () {
+        beforeEach(function () {
+            response = $httpBackend.expectGET(expectedUrl).respond(successPayload);
         });
 
-        $httpBackend.flush();
-        expect(result).toEqual(successPayload.items);
-    });
+        it('calls correct URL', function () {
+            service.getRankingList(rankingScope);
+            $httpBackend.flush();
+        });
 
-    it('forwards error', function () {
-        response.respond(403, errorPayload.data);
-        spyOn(errorResponseHandler, 'log');
-        service.getRankingList(rankingScope);
+        it('returns correct data', function () {
+            var result = null;
+            service.getRankingList(rankingScope).then(function (response) {
+                result = response;
+            });
 
-        // flush the backend to "execute" the request to do the expectedGET assertion.
-        $httpBackend.flush();
-        expect(errorResponseHandler.log).toHaveBeenCalled();
+            $httpBackend.flush();
+            expect(result).toEqual(successPayload.items);
+        });
+
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.getRankingList(rankingScope).then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
+            });
+
+            $httpBackend.flush();
+        });
     });
 });

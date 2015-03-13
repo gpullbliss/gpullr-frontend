@@ -1,13 +1,10 @@
 'use strict';
 angular.module('loginModule')
-    /* jshint maxparams:false */
-    .factory('userService', ['$http', '$state', 'ErrorResponseHandler', '$rootScope', 'STATE_LOGIN', function ($http, $state, ErrorResponseHandler, $rootScope, STATE_LOGIN) {
+    .factory('userService', ['$http', '$state', '$rootScope', 'STATE_LOGIN', function ($http, $state, $rootScope, STATE_LOGIN) {
         function getUsersForLogin() {
             return $http.get('/api/users').then(
                 function (response) {
                     return response.data;
-                }, function (error) {
-                    ErrorResponseHandler.log(error);
                 }
             );
         }
@@ -18,26 +15,21 @@ angular.module('loginModule')
             return $http.post('/api/users/login/' + user.id, '').then(
                 function (response) {
                     if (response.status === successfulResponseStatus) {
-                        whoAmI();
                         return true;
                     } else {
                         throw 'Got response code ' + response.status + ' instead of ' + successfulResponseStatus;
                     }
-                }, function (error) {
-                    ErrorResponseHandler.log(error);
                 }
             );
         }
 
         function whoAmI() {
-            var promise = $http.get('/api/users/me');
-
-            return promise.then(
+            return $http.get('/api/users/me').then(
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);
-                }, function (error) {
+                }, function () {
                     $state.go(STATE_LOGIN);
-                    ErrorResponseHandler.log(error);
+                    throw '';
                 }
             );
         }

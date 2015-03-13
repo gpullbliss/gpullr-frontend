@@ -11,8 +11,6 @@ describe('statisticsDetailsCtrl', function () {
 
     beforeEach(function () {
         module('dashboardModule');
-        module('gpullr');
-        module('appTemplates');
 
         inject(function ($controller, _$rootScope_, _$state_, _statisticsService_, _$q_) {
             $scope = _$rootScope_.$new();
