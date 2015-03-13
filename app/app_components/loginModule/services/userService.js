@@ -1,6 +1,16 @@
 'use strict';
 angular.module('loginModule')
-    .factory('userService', ['$http', '$state', '$rootScope', 'STATE_LOGIN', function ($http, $state, $rootScope, STATE_LOGIN) {
+    .factory('userService', ['$cacheFactory', '$http', '$rootScope', function ($cacheFactory, $http, $rootScope) {
+        function getCurrentUser() {
+            console.log('getCurrentUser');
+            return $http.get('/api/users/me', {cache: true}).then(
+                function (response) {
+                    $rootScope.$emit('updateUser', response.data);
+                    return response.data;
+                }
+            );
+        }
+        
         function getUsersForLogin() {
             return $http.get('/api/users').then(
                 function (response) {
@@ -8,10 +18,11 @@ angular.module('loginModule')
                 }
             );
         }
-
+        
         function logInUser(user) {
             var successfulResponseStatus = 201;
-
+            clearCacheForGetCurrentUser();
+            
             return $http.post('/api/users/login/' + user.id, '').then(
                 function (response) {
                     if (response.status !== successfulResponseStatus) {
@@ -20,21 +31,14 @@ angular.module('loginModule')
                 }
             );
         }
-
-        function whoAmI() {
-            return $http.get('/api/users/me').then(
-                function (response) {
-                    $rootScope.$emit('updateUser', response.data);
-                }, function () {
-                    $state.go(STATE_LOGIN);
-                    throw '';
-                }
-            );
+        
+        function clearCacheForGetCurrentUser() {
+            $cacheFactory.get('$http').remove('/api/users/me');
         }
-
+        
         return {
+            getCurrentUser: getCurrentUser,
             getUsersForLogin: getUsersForLogin,
-            logInUser: logInUser,
-            whoAmI: whoAmI
+            logInUser: logInUser
         };
     }]);

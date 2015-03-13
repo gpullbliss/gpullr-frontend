@@ -5,55 +5,52 @@ describe('headerCtrl', function () {
         userService,
         user,
         $rootScope,
-        $state,
         $scope;
-        
+
     beforeEach(function () {
-       module('gpullr');
-       module('ui.router');
-       module('loginModule');
-       module('headerModule');
-       inject(function (_userService_, $controller, _$rootScope_, _$state_) {
-          userService = _userService_;
-          $state = _$state_;
-          $rootScope = _$rootScope_;
-          $scope = $rootScope.$new();
-          
-          user = {id: 1234, username: 'testUser', avatarUrl: 'http://www.jira.de'};
-          
-          spyOn(userService, 'whoAmI').and.callFake(function () {
-             // will be triggered on startUp - after successful login there will be another whoAmI call which triggers
-             // the updateUser event.
-              expect(true).toEqual(true);
-          });
-          
-          controller = $controller('headerCtrl', {
-              $scope: $scope,
-              $rootScope: $rootScope,
-              userService: userService
-          });
-       });
+        module('headerModule');
+        module('loginModule');
+
+        inject(function (_userService_, $controller, _$rootScope_) {
+            userService = _userService_;
+            $rootScope = _$rootScope_;
+            $scope = $rootScope.$new();
+
+            user = {id: 1234, username: 'testUser', avatarUrl: 'http://www.jira.de'};
+
+            spyOn(userService, 'getCurrentUser');
+
+            controller = $controller('headerCtrl', {
+                $scope: $scope,
+                $rootScope: $rootScope,
+                userService: userService,
+                STATE_STATS: 'stats',
+                STATE_DASHBOARD: 'dashboard'
+            });
+        });
     });
-    
-    describe('init header', function () {
-       it('is set to the return value of userService.whoAmI() on startup', function () {
-          expect($scope.userPresent).toEqual(false);
-          // mock the successfull whoAmI call triggered by userService.logInUser
-          $rootScope.$emit('updateUser', user);
-          $scope.$digest();
-          
-          expect($scope.username).toEqual(user.username);
-          expect($scope.avatarUrl).toEqual(user.avatarUrl);
-          expect($scope.userPresent).toEqual(true);
-       }); 
+
+    describe('$scope.requestCount', function () {
+        it('processes changeRequestCount events and sets requestCount', function () {
+            $rootScope.$emit('changeRequestCount', 44);
+            $scope.$digest();
+
+            expect($scope.requestCount).toEqual(44);
+        });
     });
-    
-    describe('init header', function () {
-       it('changeRequestCount event procceeded', function () {
-          $rootScope.$emit('changeRequestCount', 44);
-          $scope.$digest();
-          
-          expect($scope.requestCount).toEqual(44);
-       }); 
+
+    describe('$scope.user', function () {
+        it('calls userService.getCurrentUser()', function () {
+            expect(userService.getCurrentUser).toHaveBeenCalled();
+        });
+
+        it('processes updateUser events and sets user', function () {
+            expect($scope.user).toBeUndefined();
+
+            $rootScope.$emit('updateUser', user);
+            $scope.$digest();
+
+            expect($scope.user).toEqual(user);
+        });
     });
 });

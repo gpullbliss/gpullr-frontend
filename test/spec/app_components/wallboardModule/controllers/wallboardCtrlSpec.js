@@ -13,7 +13,7 @@ describe('wallboardCtrl', function () {
 
     beforeEach(function () {
         module('wallboardModule');
-        module('gpullr');
+        module('dashboardModule');
 
         inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _pullRequestService_;
