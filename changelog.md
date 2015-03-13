@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] Refactored app and test after moving response error log code into http interceptor
  - [feature] added statistics screen (PRT-41)
  - [feature] Added wallboard
  - [refactor] Split routing config into project part and module parts
@@ -13,4 +14,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 12 10:35:08 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Fri Mar 13 14:53:24 CET 2015
