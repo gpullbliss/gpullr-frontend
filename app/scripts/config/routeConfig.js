@@ -24,11 +24,9 @@ angular.module('gpullr')
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             var stateData = toState.data || {};
 
-            console.log('stateData', stateData);
             if (stateData.requireLogin) {
                 event.preventDefault();
 
-                console.log('$stateChangeStart getCurrentUser');
                 userService.getCurrentUser().then(function () {
                     $state.go(toState, toParams, {notify: false}).then(function () {
                         // workaround for currently broken notify: false

@@ -2,7 +2,6 @@
 angular.module('loginModule')
     .factory('userService', ['$cacheFactory', '$http', '$rootScope', function ($cacheFactory, $http, $rootScope) {
         function getCurrentUser() {
-            console.log('getCurrentUser');
             return $http.get('/api/users/me', {cache: true}).then(
                 function (response) {
                     $rootScope.$emit('updateUser', response.data);
