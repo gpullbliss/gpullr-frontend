@@ -6,9 +6,9 @@ angular.module('dashboardModule')
         
         getPullRequests = function () {
             pullRequestService.getPullRequests().then(function (pullRequests) {
-                    $scope.pullRequests = pullRequests;
-                    $rootScope.$emit('changeRequestCount', pullRequests.length);
-                });
+                $scope.pullRequests = pullRequests;
+                $rootScope.$emit('changeRequestCount', pullRequests.length);
+            });
         };
 
         getPullRequests();
@@ -22,6 +22,6 @@ angular.module('dashboardModule')
         );
 
         $rootScope.$on('changeAssignee', function () {
-                    getPullRequests();
+            getPullRequests();
         });
     }]);

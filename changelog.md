@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] Improved the way login / access control works
  - [refactor] Refactored app and test after moving response error log code into http interceptor
  - [feature] added statistics screen (PRT-41)
  - [feature] Added wallboard
@@ -14,4 +15,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Fri Mar 13 14:53:24 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Fri Mar 13 16:27:01 CET 2015
