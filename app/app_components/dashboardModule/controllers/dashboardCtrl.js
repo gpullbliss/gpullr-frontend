@@ -43,7 +43,7 @@ angular.module('dashboardModule')
                 userSettingsService.persistOrderSettings(user).then(function (res) {
                     getPullRequests();
                 });
-            }
+            };
 
         }]
 );
