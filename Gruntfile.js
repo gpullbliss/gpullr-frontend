@@ -12,7 +12,7 @@ module.exports = function (grunt) {
             }],
             proxies: [{
                 context: '/api',
-                host: 'gpullr.devbliss.com',
+                host: '0.0.0.0',
                 port: 8888,
                 rewrite: {
                     '^/api': ''
