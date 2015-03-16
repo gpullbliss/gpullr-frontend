@@ -11,6 +11,7 @@ angular.module('wallboardModule')
                 var diffAssignedAt,
                     diffCreatedAt;
 
+                /* TODO (Michael Diodone 2015-03-16): Move into service and use in pullRequest directive (dashboardModule) */
                 var getColorClass = function (minutesDiff, prefix) {
                     var colorClass;
                     // hours difference rounds up and down. therefore once above the round up threshold, apply rule.
@@ -25,10 +26,8 @@ angular.module('wallboardModule')
                     } else if (minutesDiff >= 43170) {
                         colorClass = 'olderThanAMonth';
                     }
-                    console.log(colorClass);
                     if (prefix) {
                         colorClass = prefix + colorClass.charAt(0).toUpperCase() + colorClass.slice(1);
-                        console.log('prefix', colorClass);
                     }
                     return colorClass;
                 };
@@ -36,11 +35,9 @@ angular.module('wallboardModule')
                 diffCreatedAt = moment().diff(scope.pullRequest.createdAt, 'minutes');
                 element.addClass(getColorClass(diffCreatedAt));
 
-                console.log(scope.pullRequest);
-
                 if (scope.pullRequest.assignedAt) {
-                    diffAssignedAt = moment().diff(scope.pullRequest.assignedAt, 'minutes');
-                    console.log(diffAssignedAt);
+                    /* TODO (Michael Diodone 2015-03-16): remove .replace and fix time formatting in backend */
+                    diffAssignedAt = moment().diff(scope.pullRequest.assignedAt.replace(/\[.+/, ''), 'minutes');
                     element.addClass(getColorClass(diffAssignedAt, 'assignment'));
                 }
             }
