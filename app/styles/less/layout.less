@@ -53,22 +53,30 @@
 }
 
 #wallboard {
-    .assignedPullRequests h2 {
-        margin-left: 36%;
-    }
+    @resizeFactor: 1.6;
+    font-size: 100% * @resizeFactor;
 
     .panel {
         color: #000;
     }
 
-    .panel-footer,
+    .assignee,
     .author {
         text-align: center;
     }
 
     .panel-heading {
-        height: @lineHeight;
         box-sizing: content-box;
+        font-weight: bold;
+        height: @lineHeight *  @resizeFactor;
+    }
+
+    @assigneeTotalHeight: @defaultSpacing * 2 + @lineHeight * @resizeFactor + 1px; /* +1 px for border */
+    .assignee {
+        box-sizing: content-box;
+        height: @lineHeight *  @resizeFactor;
+        padding-top: @defaultSpacing;
+        padding-bottom: @defaultSpacing;
     }
 
     .author,
@@ -83,12 +91,16 @@
         margin-top: @defaultSpacing;
     }
 
-    .title {
-        height: @lineHeight * 3 + 1px; /* +1 px for border */
+    .assignedPullRequests .title {
+        height: @lineHeight * @resizeFactor;
     }
 
-    .assignedPullRequests .title {
-        height: @lineHeight;
+    .title {
+        height: @lineHeight * @resizeFactor + @assigneeTotalHeight;
+    }
+
+    .assignedPullRequests .row {
+        border-left: 1px dotted #fff;
     }
 }
 
