@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] PRT 39 sort PR list
  - [feature] Added daily reload of application on wallboard page
  - [refactor] Increased font size for wallboard
  - [refactor] Improved the way login / access control works
@@ -17,4 +18,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Mon Mar 16 10:36:28 CET 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Mon Mar 16 13:40:52 CET 2015
