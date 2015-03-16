@@ -7,17 +7,14 @@ describe('dashboardCtrl', function () {
         $interval,
         $q,
         $scope,
-        errorResponseHandler,
         $rootScope;
 
     beforeEach(function () {
         module('dashboardModule');
-        module('gpullr');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_, ErrorResponseHandler) {
+        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
-            errorResponseHandler = ErrorResponseHandler;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $q = _$q_;
@@ -56,28 +53,20 @@ describe('dashboardCtrl', function () {
 
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
         });
-    });
 
-    describe('controller.updatePullRequestsInterval', function () {
-        beforeEach(function () {
+        it('updatePullRequestsInterval is cancelled on $destroy', function () {
             spyOn($interval, 'cancel');
-        });
-
-        it('is cancelled on $destroy', function () {
             $scope.$broadcast('$destroy');
             $scope.$digest();
 
             expect($interval.cancel).toHaveBeenCalled();
         });
-    });
-    
-    describe(' controller catch changeAssignee event', function () {
-        
-        it('catch event', function () {
-           $rootScope.$emit('changeAssignee');
-           $scope.$digest(); 
-           
-           expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
+
+        it('fetches pull requests after changeAssignee event', function () {
+            $rootScope.$emit('changeAssignee');
+            $scope.$digest();
+
+            expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
         });
     });
 });

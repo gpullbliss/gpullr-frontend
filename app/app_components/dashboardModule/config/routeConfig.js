@@ -8,6 +8,7 @@ angular.module('dashboardModule')
                 .state(STATE_DASHBOARD, {
                     parent: 'page',
                     controller: 'dashboardCtrl',
+                    data: {requireLogin: true},
                     templateUrl: 'app_components/dashboardModule/views/dashboard.html',
                     url: '/'
                 })

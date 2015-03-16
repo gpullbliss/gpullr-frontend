@@ -1,14 +1,10 @@
 'use strict';
 angular.module('dashboardModule')
-    .factory('statisticsService', ['$http', 'ErrorResponseHandler', function ($http, ErrorResponseHandler) {
+    .factory('statisticsService', ['$http', function ($http) {
         function getRankingList(rankingScope) {
-            var promise = $http.get('/api/rankings?rankingScope=' + rankingScope);
-
-            return promise.then(
+            return $http.get('/api/rankings?rankingScope=' + rankingScope).then(
                 function (response) {
                     return response.data.items;
-                }, function (error) {
-                    ErrorResponseHandler.log(error);
                 }
             );
         }

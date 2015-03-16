@@ -1,50 +1,43 @@
 'use strict';
 angular.module('loginModule')
-    /* jshint maxparams:false */
-    .factory('userService', ['$http', '$state', 'ErrorResponseHandler', '$rootScope', 'STATE_LOGIN', function ($http, $state, ErrorResponseHandler, $rootScope, STATE_LOGIN) {
+    .factory('userService', ['$cacheFactory', '$http', '$rootScope', function ($cacheFactory, $http, $rootScope) {
+        function getCurrentUser() {
+            return $http.get('/api/users/me', {cache: true}).then(
+                function (response) {
+                    $rootScope.$emit('updateUser', response.data);
+                    return response.data;
+                }
+            );
+        }
+        
         function getUsersForLogin() {
             return $http.get('/api/users').then(
                 function (response) {
                     return response.data;
-                }, function (error) {
-                    ErrorResponseHandler.log(error);
                 }
             );
         }
-
+        
         function logInUser(user) {
             var successfulResponseStatus = 201;
-
+            clearCacheForGetCurrentUser();
+            
             return $http.post('/api/users/login/' + user.id, '').then(
                 function (response) {
-                    if (response.status === successfulResponseStatus) {
-                        whoAmI();
-                        return true;
-                    } else {
+                    if (response.status !== successfulResponseStatus) {
                         throw 'Got response code ' + response.status + ' instead of ' + successfulResponseStatus;
                     }
-                }, function (error) {
-                    ErrorResponseHandler.log(error);
                 }
             );
         }
-
-        function whoAmI() {
-            var promise = $http.get('/api/users/me');
-
-            return promise.then(
-                function (response) {
-                    $rootScope.$emit('updateUser', response.data);
-                }, function (error) {
-                    $state.go(STATE_LOGIN);
-                    ErrorResponseHandler.log(error);
-                }
-            );
+        
+        function clearCacheForGetCurrentUser() {
+            $cacheFactory.get('$http').remove('/api/users/me');
         }
-
+        
         return {
+            getCurrentUser: getCurrentUser,
             getUsersForLogin: getUsersForLogin,
-            logInUser: logInUser,
-            whoAmI: whoAmI
+            logInUser: logInUser
         };
     }]);
