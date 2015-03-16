@@ -18,8 +18,12 @@
                     <ul class="dropdown-menu"
                         aria-labelledby="sort-dropdown"
                         role="menu">
-                        <li><a href="#">Latest first</a></li>
-                        <li><a href="#">Oldest first</a></li>
+                        <li>
+                            <a data-ng-click="orderPrList('DESC')"
+                               href="#">Latest first</a></li>
+                        <li>
+                            <a data-ng-click="orderPrList('ASC')"
+                               href="#">Oldest first</a></li>
                     </ul>
                 </div>
             </div>
