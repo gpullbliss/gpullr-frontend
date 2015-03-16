@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        #{{pullRequest.number}} - {{pullRequest.repoName}}
+    </div>
+
+    <div class="panel-body">
+        <div class="title">{{pullRequest.title}}</div>
+        <div class="author">{{pullRequest.author.username}}</div>
+    </div>
+
+    <div ng-if="pullRequest.assignee" class="panel-footer assignee">
+        {{pullRequest.assignee.username}}
+    </div>
+</div>
