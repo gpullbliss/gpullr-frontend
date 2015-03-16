@@ -7,20 +7,28 @@ describe('wallboardCtrl', function () {
         assignedPullRequests,
         unassignedPullRequests,
         $interval,
+        $rootScope,
         $q,
         $scope,
-        $rootScope;
+        $timeout,
+        $window;
 
     beforeEach(function () {
         module('wallboardModule');
         module('dashboardModule');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
+        $window = {location: {reload: jasmine.createSpy()}};
+        module(function ($provide) {
+            $provide.value('$window', $window);
+        });
+
+        inject(function (_pullRequestService_, $controller, _$interval_, _$q_, _$rootScope_, _$timeout_) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
+            $q = _$q_;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
-            $q = _$q_;
+            $timeout = _$timeout_;
 
             assignedPullRequests = [{
                 id: 456,
@@ -56,8 +64,14 @@ describe('wallboardCtrl', function () {
             expect($scope.unassignedPullRequests).toEqual(unassignedPullRequests);
             expect($scope.assignedPullRequests).toEqual(assignedPullRequests);
         });
+    });
 
-        it('calls pullRequestService.getPullRequests() via $timeout', function () {
+    describe('controller.updatePullRequestsInterval', function () {
+        beforeEach(function () {
+            spyOn($interval, 'cancel');
+        });
+
+        it('calls pullRequestService.getPullRequests() via $interval', function () {
             $scope.$digest();
 
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(1);
@@ -66,18 +80,39 @@ describe('wallboardCtrl', function () {
 
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
         });
-    });
-
-    describe('controller.updatePullRequestsInterval', function () {
-        beforeEach(function () {
-            spyOn($interval, 'cancel');
-        });
 
         it('is cancelled on $destroy', function () {
             $scope.$broadcast('$destroy');
             $scope.$digest();
 
             expect($interval.cancel).toHaveBeenCalled();
+        });
+    });
+
+    describe('reloadApp', function () {
+        beforeEach(function () {
+            spyOn($timeout, 'cancel');
+        });
+
+        it('is called after 24 hours', function () {
+            var delayOneDay = 1000 * 60 * 60 * 24;
+            expect($window.location.reload.calls.count()).toEqual(0);
+
+            $timeout.flush(delayOneDay - 1);
+
+            expect($window.location.reload.calls.count()).toEqual(0);
+
+            $timeout.flush(delayOneDay);
+
+            expect($window.location.reload.calls.count()).toEqual(1);
+            $timeout.verifyNoPendingTasks();
+        });
+
+        it('is cancelled on $destroy', function () {
+            $scope.$broadcast('$destroy');
+            $scope.$digest();
+
+            expect($timeout.cancel).toHaveBeenCalled();
         });
     });
 });

@@ -1,36 +1,49 @@
 'use strict';
 angular.module('wallboardModule')
-    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', function ($scope, $rootScope, $interval, pullRequestService) {
-        var updatePullRequestsInterval,
-            getPullRequests;
+    /* jshint maxparams:false */
+    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$timeout', '$window', 'pullRequestService',
+        function ($scope, $rootScope, $interval, $timeout, $window, pullRequestService) {
+            var updatePullRequestsInterval,
+                getPullRequests,
+                reloadApp,
+                reloadAppTimeout;
 
-        getPullRequests = function () {
-            pullRequestService.getPullRequests().then(function (pullRequests) {
-                var assignedPullRequests = [],
-                    unassignedPullRequests = [];
+            getPullRequests = function () {
+                pullRequestService.getPullRequests().then(function (pullRequests) {
+                    var assignedPullRequests = [],
+                        unassignedPullRequests = [];
 
-                angular.forEach(pullRequests, function (pullRequest) {
-                    if (angular.isObject(pullRequest.assignee)) {
-                        assignedPullRequests.push(pullRequest);
-                    } else {
-                        unassignedPullRequests.push(pullRequest);
-                    }
+                    angular.forEach(pullRequests, function (pullRequest) {
+                        if (angular.isObject(pullRequest.assignee)) {
+                            assignedPullRequests.push(pullRequest);
+                        } else {
+                            unassignedPullRequests.push(pullRequest);
+                        }
+                    });
+
+                    $scope.assignedPullRequests = assignedPullRequests;
+                    $scope.unassignedPullRequests = unassignedPullRequests;
                 });
+            };
 
-                $scope.assignedPullRequests = assignedPullRequests;
-                $scope.unassignedPullRequests = unassignedPullRequests;
-            });
-        };
+            getPullRequests();
 
-        getPullRequests();
+            updatePullRequestsInterval = $interval(getPullRequests, 60000);
+            $scope.$on('$destroy', function () {
+                    $interval.cancel(updatePullRequestsInterval);
+                }
+            );
 
-        updatePullRequestsInterval = $interval(getPullRequests, 60000);
+            reloadApp = function () {
+                $window.location.reload();
+            };
 
-        $scope.$on('$destroy', function () {
-                $interval.cancel(updatePullRequestsInterval);
-                updatePullRequestsInterval = undefined;
-            }
-        );
+            reloadAppTimeout = $timeout(reloadApp, 1000 * 60 * 60 * 24);
 
-        $rootScope.bodyClass = 'dark';
-    }]);
+            $scope.$on('$destroy', function () {
+                    $timeout.cancel(reloadAppTimeout);
+                }
+            );
+
+            $rootScope.bodyClass = 'dark';
+        }]);
