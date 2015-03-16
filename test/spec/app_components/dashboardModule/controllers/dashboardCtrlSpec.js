@@ -24,9 +24,9 @@ describe('dashboardCtrl', function () {
             $q = _$q_;
 
             pullRequests = [{id: 123}];
-            
-            reqPayload = {orderOptionDto: 'DESC'},
-            user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: reqPayload}
+
+            reqPayload = {orderOptionDto: 'DESC'};
+            user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: reqPayload};
 
             spyOn(pullRequestService, 'getPullRequests').and.callFake(function () {
                 var deferred = $q.defer();
@@ -45,13 +45,13 @@ describe('dashboardCtrl', function () {
 
     describe('$scope.pullRequests', function () {
         it('is set to the return value of pullRequestService.getPullRequests() and fire changeRequestCount event on startup', function () {
-           spyOn($rootScope, '$emit');
-           $scope.$digest();
+            spyOn($rootScope, '$emit');
+            $scope.$digest();
 
-           expect($scope.pullRequests).toEqual(pullRequests);
-           expect($rootScope.$emit).toHaveBeenCalledWith('changeRequestCount', 1);
+            expect($scope.pullRequests).toEqual(pullRequests);
+            expect($rootScope.$emit).toHaveBeenCalledWith('changeRequestCount', 1);
         });
-        
+
         it('calls pullRequestService.getPullRequests() via $timeout', function () {
             $scope.$digest();
 
@@ -76,15 +76,15 @@ describe('dashboardCtrl', function () {
 
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
         });
-        
+
         it('fetches pull requests after change sortOrder', function () {
-           $scope.user = user;
-           spyOn(userSettingsService, 'persistOrderSettings').and.callThrough();
-           $scope.$digest();
-           $scope.orderPrList('DESC');
-           
-           expect(userSettingsService.persistOrderSettings).toHaveBeenCalledWith(user);
-           expect(pullRequestService.getPullRequests).toHaveBeenCalled();
+            $scope.user = user;
+            spyOn(userSettingsService, 'persistOrderSettings').and.callThrough();
+            $scope.$digest();
+            $scope.orderPrList('DESC');
+
+            expect(userSettingsService.persistOrderSettings).toHaveBeenCalledWith(user);
+            expect(pullRequestService.getPullRequests).toHaveBeenCalled();
         });
     });
 });

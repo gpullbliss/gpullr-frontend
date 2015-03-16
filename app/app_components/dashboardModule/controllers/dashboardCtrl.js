@@ -1,5 +1,7 @@
 'use strict';
+
 angular.module('dashboardModule')
+    /* jshint maxparams: false */
     .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'UserSettingsService',
         function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
 
@@ -40,7 +42,7 @@ angular.module('dashboardModule')
                 } else {
                     user.userSettingsDto.orderOptionDto = sortOrder;
                 }
-                userSettingsService.persistOrderSettings(user).then(function (res) {
+                userSettingsService.persistOrderSettings(user).then(function () {
                     getPullRequests();
                 });
             };
