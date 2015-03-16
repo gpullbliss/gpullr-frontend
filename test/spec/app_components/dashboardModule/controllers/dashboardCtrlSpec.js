@@ -3,7 +3,10 @@
 describe('dashboardCtrl', function () {
     var controller,
         pullRequestService,
+        userSettingsService,
         pullRequests,
+        user,
+        reqPayload,
         $interval,
         $q,
         $scope,
@@ -12,14 +15,18 @@ describe('dashboardCtrl', function () {
     beforeEach(function () {
         module('dashboardModule');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
+        inject(function (_pullRequestService_, _UserSettingsService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _pullRequestService_;
+            userSettingsService = _UserSettingsService_;
             $interval = _$interval_;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $q = _$q_;
 
             pullRequests = [{id: 123}];
+            
+            reqPayload = {orderOptionDto: 'DESC'},
+            user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: reqPayload}
 
             spyOn(pullRequestService, 'getPullRequests').and.callFake(function () {
                 var deferred = $q.defer();
@@ -30,7 +37,8 @@ describe('dashboardCtrl', function () {
             controller = $controller('dashboardCtrl', {
                 $scope: $scope,
                 $rootScope: $rootScope,
-                pullRequestService: pullRequestService
+                pullRequestService: pullRequestService,
+                userSettingsService: userSettingsService
             });
         });
     });
@@ -67,6 +75,16 @@ describe('dashboardCtrl', function () {
             $scope.$digest();
 
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
+        });
+        
+        it('fetches pull requests after change sortOrder', function () {
+           $scope.user = user;
+           spyOn(userSettingsService, 'persistOrderSettings').and.callThrough();
+           $scope.$digest();
+           $scope.orderPrList('DESC');
+           
+           expect(userSettingsService.persistOrderSettings).toHaveBeenCalledWith(user);
+           expect(pullRequestService.getPullRequests).toHaveBeenCalled();
         });
     });
 });
