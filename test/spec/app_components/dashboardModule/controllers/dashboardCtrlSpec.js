@@ -79,11 +79,11 @@ describe('dashboardCtrl', function () {
 
         it('fetches pull requests after change sortOrder', function () {
             $scope.user = user;
-            spyOn(userSettingsService, 'persistOrderSettings').and.callThrough();
+            spyOn(userSettingsService, 'persistUserSettings').and.callThrough();
             $scope.$digest();
             $scope.orderPrList('DESC');
 
-            expect(userSettingsService.persistOrderSettings).toHaveBeenCalledWith(user);
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(user);
             expect(pullRequestService.getPullRequests).toHaveBeenCalled();
         });
     });

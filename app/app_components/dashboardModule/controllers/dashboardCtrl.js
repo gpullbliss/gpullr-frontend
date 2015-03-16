@@ -42,7 +42,7 @@ angular.module('dashboardModule')
                 } else {
                     user.userSettingsDto.orderOptionDto = sortOrder;
                 }
-                userSettingsService.persistOrderSettings(user).then(function () {
+                userSettingsService.persistUserSettings(user).then(function () {
                     getPullRequests();
                 });
             };

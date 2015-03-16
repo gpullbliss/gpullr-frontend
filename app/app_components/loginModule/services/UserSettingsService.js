@@ -3,12 +3,12 @@
 angular.module('loginModule')
     .service('userSettingsService', ['$http', function ($http) {
 
-        function persistOrderSettings(user) {
+        function persistUserSettings(user) {
             return $http.put('/api/users/' + user.id + '/settings', user.userSettingsDto);
         }
 
         return {
-            persistOrderSettings: persistOrderSettings
+            persistUserSettings: persistUserSettings
         };
 
     }]
