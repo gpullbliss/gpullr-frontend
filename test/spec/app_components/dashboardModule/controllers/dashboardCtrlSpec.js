@@ -15,9 +15,9 @@ describe('dashboardCtrl', function () {
     beforeEach(function () {
         module('dashboardModule');
 
-        inject(function (_pullRequestService_, _UserSettingsService_, $controller, _$interval_, _$rootScope_, _$q_) {
+        inject(function (_pullRequestService_, _userSettingsService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _pullRequestService_;
-            userSettingsService = _UserSettingsService_;
+            userSettingsService = _userSettingsService_;
             $interval = _$interval_;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();

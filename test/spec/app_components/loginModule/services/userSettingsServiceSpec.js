@@ -9,8 +9,8 @@ describe('userSettingsService', function () {
     beforeEach(function () {
        module('loginModule');
        
-       inject(function (UserSettingsService, _$httpBackend_, _$rootScope_) {
-           service = UserSettingsService;
+       inject(function (userSettingsService, _$httpBackend_, _$rootScope_) {
+           service = userSettingsService;
            $httpBackend = _$httpBackend_;
            $rootScope = _$rootScope_;
        });

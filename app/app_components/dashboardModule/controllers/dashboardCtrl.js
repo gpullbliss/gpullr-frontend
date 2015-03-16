@@ -2,7 +2,7 @@
 
 angular.module('dashboardModule')
     /* jshint maxparams: false */
-    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'UserSettingsService',
+    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService',
         function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
 
             var updatePullRequestsInterval,
