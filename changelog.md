@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] Added daily reload of application on wallboard page
  - [refactor] Increased font size for wallboard
  - [refactor] Improved the way login / access control works
  - [refactor] Refactored app and test after moving response error log code into http interceptor
@@ -16,4 +17,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Fri Mar 13 17:34:58 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Mon Mar 16 10:36:28 CET 2015
