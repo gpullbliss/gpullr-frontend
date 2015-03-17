@@ -27,6 +27,7 @@ describe('dashboardCtrl', function () {
 
             reqPayload = {orderOptionDto: 'DESC'};
             user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: reqPayload};
+            $rootScope.user = user;
 
             spyOn(pullRequestService, 'getPullRequests').and.callFake(function () {
                 var deferred = $q.defer();
