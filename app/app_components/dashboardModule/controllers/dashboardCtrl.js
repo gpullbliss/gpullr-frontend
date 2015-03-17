@@ -5,19 +5,14 @@ angular.module('dashboardModule')
     .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService',
         function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
 
-            var updatePullRequestsInterval,
-                getPullRequests;
+            var updatePullRequestsInterval = $interval(getPullRequests, 60000);
 
-            getPullRequests = function () {
+            function getPullRequests() {
                 pullRequestService.getPullRequests().then(function (pullRequests) {
                     $scope.pullRequests = pullRequests;
                     $rootScope.$emit('changeRequestCount', pullRequests.length);
                 });
-            };
-
-            getPullRequests();
-
-            updatePullRequestsInterval = $interval(getPullRequests, 60000);
+            }
 
             $scope.$on('$destroy', function () {
                     $interval.cancel(updatePullRequestsInterval);
@@ -30,6 +25,7 @@ angular.module('dashboardModule')
             });
 
             $scope.orderPrList = function (sortOrder) {
+                console.log($rootScope.user);
                 var user = angular.copy($rootScope.user);
                 if (user.userSettingsDto === null) {
                     user.userSettingsDto = {
@@ -43,5 +39,7 @@ angular.module('dashboardModule')
                 });
             };
 
-        }]
+            getPullRequests();
+        }
+    ]
 );
