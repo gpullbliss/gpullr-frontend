@@ -29,12 +29,8 @@ angular.module('dashboardModule')
                 getPullRequests();
             });
 
-            $rootScope.$on('updateUser', function (event, user) {
-                $scope.user = user;
-            });
-
             $scope.orderPrList = function (sortOrder) {
-                var user = angular.copy($scope.user);
+                var user = angular.copy($rootScope.user);
                 if (user.userSettingsDto === null) {
                     user.userSettingsDto = {
                         orderOptionDto: sortOrder

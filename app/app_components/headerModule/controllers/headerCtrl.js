@@ -12,9 +12,5 @@ angular.module('headerModule')
                 $scope.requestCount = requestCount;
             });
 
-            $rootScope.$on('updateUser', function (event, user) {
-                $scope.user = user;
-            });
-
-            userService.getCurrentUser();
-        }]);
+        }]
+);
