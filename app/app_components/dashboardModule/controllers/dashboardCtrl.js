@@ -5,7 +5,7 @@ angular.module('dashboardModule')
     .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService',
         function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
 
-            var updatePullRequestsInterval = $interval(getPullRequests, 60000);
+            var updatePullRequestsInterval;
 
             function getPullRequests() {
                 pullRequestService.getPullRequests().then(function (pullRequests) {
@@ -25,7 +25,6 @@ angular.module('dashboardModule')
             });
 
             $scope.orderPrList = function (sortOrder) {
-                console.log($rootScope.user);
                 var user = angular.copy($rootScope.user);
                 if (user.userSettingsDto === null) {
                     user.userSettingsDto = {
@@ -39,6 +38,7 @@ angular.module('dashboardModule')
                 });
             };
 
+            updatePullRequestsInterval = $interval(getPullRequests, 60000);
             getPullRequests();
         }
     ]
