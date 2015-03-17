@@ -54,14 +54,12 @@ describe('userService', function () {
             expect(result).toEqual(successPayload.data);
         });
 
-        it('emits an updateUser event with the current user as data', function () {
-            spyOn($rootScope, '$emit');
-
+        it('sets user data to $rootScope.user', function () {
             service.getCurrentUser();
             $httpBackend.flush();
             $rootScope.$digest();
 
-            expect($rootScope.$emit).toHaveBeenCalledWith('updateUser', successPayload.data);
+            expect($rootScope.user).toEqual(successPayload.data);
         });
 
         it('forwards error', function () {
@@ -138,11 +136,14 @@ describe('userService', function () {
         });
 
         it('calls correct URL', function () {
+            $httpBackend.expectGET('/api/users/me').respond(successPayload.status, successPayload.data);
+
             service.logInUser(user);
             $httpBackend.flush();
         });
 
         it('returns correct data', function () {
+            $httpBackend.expectGET('/api/users/me').respond(successPayload.status, successPayload.data);
             var success = null;
 
             service.logInUser(user).then(function () {
