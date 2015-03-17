@@ -36,7 +36,7 @@ module.exports = function (config) {
         // possible values: 'dots', 'progress'
         // CLI --reporters progress
         // reporters: ['progress', 'junit'], // with jUnit output
-        reporters: ['progress'],
+        reporters: ['mocha'],
 
         junitReporter: {
             // will be resolved to basePath (in the same way as files/exclude patterns)
@@ -84,6 +84,7 @@ module.exports = function (config) {
             'karma-phantomjs-launcher',
             'karma-chrome-launcher',
             'karma-junit-reporter',
+            'karma-mocha-reporter',
             'karma-ng-html2js-preprocessor'
         ],
 
