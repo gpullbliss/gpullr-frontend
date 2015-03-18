@@ -40,7 +40,7 @@ describe('directive: pullrequest', function () {
            scope.$digest();
        }));
        
-       it('is doch scheiße', function () {
+       it('check rendered element', function () {
            expect(element.length).toBe(14);
            expect(element.find('img').attr('ng-src')).toBe(scope.pr.author.avatarUrl);
            expect(element.eq(1).text()).toEqual(scope.pr.author.username);
