@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] add layout for repo filter list
  - [bug] user handling
  - [feature] Use mocha reporter for karma
  - [feature] PRT 39 sort PR list
@@ -20,4 +21,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Tue Mar 17 16:12:24 CET 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Mar 18 14:25:38 CET 2015
