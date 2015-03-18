@@ -3,7 +3,10 @@
 describe('dashboardCtrl', function () {
     var controller,
         pullRequestService,
+        userSettingsService,
         pullRequests,
+        user,
+        reqPayload,
         $interval,
         $q,
         $scope,
@@ -12,14 +15,19 @@ describe('dashboardCtrl', function () {
     beforeEach(function () {
         module('dashboardModule');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
+        inject(function (_pullRequestService_, _userSettingsService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _pullRequestService_;
+            userSettingsService = _userSettingsService_;
             $interval = _$interval_;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $q = _$q_;
 
             pullRequests = [{id: 123}];
+
+            reqPayload = {orderOptionDto: 'DESC'};
+            user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: reqPayload};
+            $rootScope.user = user;
 
             spyOn(pullRequestService, 'getPullRequests').and.callFake(function () {
                 var deferred = $q.defer();
@@ -30,20 +38,21 @@ describe('dashboardCtrl', function () {
             controller = $controller('dashboardCtrl', {
                 $scope: $scope,
                 $rootScope: $rootScope,
-                pullRequestService: pullRequestService
+                pullRequestService: pullRequestService,
+                userSettingsService: userSettingsService
             });
         });
     });
 
     describe('$scope.pullRequests', function () {
         it('is set to the return value of pullRequestService.getPullRequests() and fire changeRequestCount event on startup', function () {
-           spyOn($rootScope, '$emit');
-           $scope.$digest();
+            spyOn($rootScope, '$emit');
+            $scope.$digest();
 
-           expect($scope.pullRequests).toEqual(pullRequests);
-           expect($rootScope.$emit).toHaveBeenCalledWith('changeRequestCount', 1);
+            expect($scope.pullRequests).toEqual(pullRequests);
+            expect($rootScope.$emit).toHaveBeenCalledWith('changeRequestCount', 1);
         });
-        
+
         it('calls pullRequestService.getPullRequests() via $timeout', function () {
             $scope.$digest();
 
@@ -66,6 +75,21 @@ describe('dashboardCtrl', function () {
             $rootScope.$emit('changeAssignee');
             $scope.$digest();
 
+            expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
+        });
+
+        it('fetches pull requests after change sortOrder', function () {
+            $scope.user = user;
+            spyOn(userSettingsService, 'persistUserSettings').and.callFake(function() {
+                var deferred = $q.defer();
+                deferred.resolve();
+                return deferred.promise;
+            });
+            $scope.orderPrList('DESC');
+            $scope.$digest();
+
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(user);
+            expect(pullRequestService.getPullRequests).toHaveBeenCalled();
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
         });
     });

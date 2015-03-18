@@ -1,5 +1,8 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [bug] user handling
+ - [feature] Use mocha reporter for karma
+ - [feature] PRT 39 sort PR list
  - [feature] Added daily reload of application on wallboard page
  - [refactor] Increased font size for wallboard
  - [refactor] Improved the way login / access control works
@@ -17,4 +20,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Mon Mar 16 10:36:28 CET 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Tue Mar 17 16:12:24 CET 2015
