@@ -36,8 +36,7 @@ angular.module('wallboardModule')
                 element.addClass(getColorClass(diffCreatedAt));
 
                 if (scope.pullRequest.assignedAt) {
-                    /* TODO (Michael Diodone 2015-03-16): remove .replace and fix time formatting in backend */
-                    diffAssignedAt = moment().diff(scope.pullRequest.assignedAt.replace(/\[.+/, ''), 'minutes');
+                    diffAssignedAt = moment().diff(scope.pullRequest.assignedAt, 'minutes');
                     element.addClass(getColorClass(diffAssignedAt, 'assignment'));
                 }
             }
