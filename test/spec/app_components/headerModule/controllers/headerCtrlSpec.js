@@ -25,7 +25,8 @@ describe('headerCtrl', function () {
                 $rootScope: $rootScope,
                 userService: userService,
                 STATE_STATS: 'stats',
-                STATE_DASHBOARD: 'dashboard'
+                STATE_DASHBOARD: 'dashboard',
+                STATE_REPO_FILTER: 'repoFilter'
             });
         });
     });
