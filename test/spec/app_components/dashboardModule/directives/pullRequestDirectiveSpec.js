@@ -10,8 +10,6 @@ describe('directive: pullrequest', function () {
 
     function getDirectiveHtml(pr) {
         var html = '<pull-request class="block margin hPadding" prdata="{createdAt: '  + pr.createdAt + '}"></pull-request>';
-               console.log(html);
-               
         return html;
     }
 
@@ -20,7 +18,7 @@ describe('directive: pullrequest', function () {
             return momentMock;
         };
 
-        spyOn(momentMock, 'diff').and.callFake(function (timestamp, unit) {
+        spyOn(momentMock, 'diff').and.callFake(function (timestamp) {
             return timestamp;
         });
 
@@ -41,10 +39,8 @@ describe('directive: pullrequest', function () {
                 element = $compile(getDirectiveHtml(pr))($scope);
 
             $scope.$digest();
-            // TODO extra test
-            console.log(element.html());
-            expect(momentMock.diff).toHaveBeenCalledWith(pr.createdAt, 'minutes');
 
+            expect(momentMock.diff).toHaveBeenCalledWith(pr.createdAt, 'minutes');
             expect(element.attr('class')).toContain('youngerThan2h');
         });
     });

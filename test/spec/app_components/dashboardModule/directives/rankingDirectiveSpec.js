@@ -1,32 +1,20 @@
 'use strict';
 
-describe('directive: pullrequest', function () {
+describe('directive: ranking', function () {
     var $compile,
-        $scope,
-        momentMock = {
-            diff: function () {
-            }
-        };
+        $scope;
 
-    function getDirectiveHtml(pr) {
-        var html = '<pull-request class="block margin hPadding" prdata="{createdAt: '  + pr.createdAt + '}"></pull-request>';
-               console.log(html);
-               
+    function getDirectiveHtml(rank) {
+        var html = '<ranking-list class="block margin hPadding rankingStats" ' +
+                   'rankdata="{username: ' + rank.username +
+                            ', avatarUrl: ' + rank.avatarUrl +
+                            ', rank: ' + rank.rank +
+                            ', closedCount: ' + rank.closedCount + '}"></ranking-list>';
         return html;
     }
 
     beforeEach(function () {
-        var moment = function () {
-            return momentMock;
-        };
-
-        spyOn(momentMock, 'diff').and.callFake(function (timestamp, unit) {
-            return timestamp;
-        });
-
-        module('dashboardModule', function ($provide) {
-            $provide.value('moment', moment);
-        });
+        module('dashboardModule');
         module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_) {
@@ -35,17 +23,16 @@ describe('directive: pullrequest', function () {
         });
     });
 
-    describe('pull requests', function () {
-        it('sets the class youngerThan2h for a 89 minutes old pull request', function () {
-            var pr = {createdAt: 89},
-                element = $compile(getDirectiveHtml(pr))($scope);
+    describe('ranking list', function () {
+        it('check for ranking list item', function () {
+            var rank = {username: 'testuser', avatarUrl: 'www.jira.de', rank: 1, closedCount: 12},
+                element = $compile(getDirectiveHtml(rank))($scope);
 
             $scope.$digest();
-            // TODO extra test
-            console.log(element.html());
-            expect(momentMock.diff).toHaveBeenCalledWith(pr.createdAt, 'minutes');
 
-            expect(element.attr('class')).toContain('youngerThan2h');
+            expect(element.find('img').attr('class')).toContain('avatar');
+            expect(element.text()).toContain(rank.rank);
+            expect(element.text()).toContain(rank.closedCount);
         });
     });
 });
