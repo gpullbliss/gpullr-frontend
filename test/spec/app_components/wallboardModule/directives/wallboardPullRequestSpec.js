@@ -22,7 +22,7 @@ describe('wallboardPullRequest', function () {
             return momentMock;
         };
 
-        spyOn(momentMock, 'diff').and.callFake(function (timestamp, unit) {
+        spyOn(momentMock, 'diff').and.callFake(function (timestamp) {
             return timestamp;
         });
 
@@ -38,13 +38,43 @@ describe('wallboardPullRequest', function () {
     });
 
     describe('unassigned pull requests', function () {
+        it('calls moment().diff with the createdAt attribute of the pull request', function () {
+            var createdAt = 12345;
+
+            $compile(getDirectiveHtml(createdAt))($scope);
+            $scope.$digest();
+
+            expect(momentMock.diff).toHaveBeenCalledWith(createdAt, 'minutes');
+            expect(momentMock.diff.calls.count()).toEqual(1);
+        });
+
+        it('calls moment().diff with the createdAt AND assignedAt attribute of the pull request', function () {
+            var createdAt = 1111,
+                assignedAt = 2222;
+
+            $compile(getDirectiveHtml(createdAt, assignedAt))($scope);
+            $scope.$digest();
+
+            expect(momentMock.diff).toHaveBeenCalledWith(createdAt, 'minutes');
+            expect(momentMock.diff).toHaveBeenCalledWith(assignedAt, 'minutes');
+            expect(momentMock.diff.calls.count()).toEqual(2);
+        });
+
+        it('sets the class youngerThan2h for a 0 minutes old pull request', function () {
+            var createdAt = 89,
+                element = $compile(getDirectiveHtml(createdAt))($scope);
+
+            $scope.$digest();
+
+            expect(element.attr('class')).toContain('youngerThan2h');
+            expect(element.attr('class')).not.toContain('assignment');
+        });
+
         it('sets the class youngerThan2h for a 89 minutes old pull request', function () {
             var createdAt = 89,
                 element = $compile(getDirectiveHtml(createdAt))($scope);
 
             $scope.$digest();
-            // TODO extra test
-            expect(momentMock.diff).toHaveBeenCalledWith(createdAt, 'minutes');
 
             expect(element.attr('class')).toContain('youngerThan2h');
             expect(element.attr('class')).not.toContain('assignment');

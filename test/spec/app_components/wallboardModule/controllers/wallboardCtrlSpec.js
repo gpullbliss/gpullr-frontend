@@ -17,6 +17,7 @@ describe('wallboardCtrl', function () {
         module('wallboardModule');
         module('dashboardModule');
 
+        /* TODO (Michael Diodone 2015-03-18): remove provide, just supply $window when controller is created in test */
         $window = {location: {reload: jasmine.createSpy()}};
         module(function ($provide) {
             $provide.value('$window', $window);

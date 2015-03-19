@@ -8,12 +8,10 @@ angular.module('wallboardModule')
             },
             templateUrl: 'app_components/wallboardModule/views/pullRequest.html',
             link: function (scope, element) {
-                var diffAssignedAt,
-                    diffCreatedAt;
-
                 /* TODO (Michael Diodone 2015-03-16): Move into service and use in pullRequest directive (dashboardModule) */
-                var getColorClass = function (minutesDiff, prefix) {
-                    var colorClass;
+                var getColorClass = function (dateTime, prefix) {
+                    var colorClass,
+                        minutesDiff = moment().diff(dateTime, 'minutes');
                     // hours difference rounds up and down. therefore once above the round up threshold, apply rule.
                     if (minutesDiff < 90) {
                         colorClass = 'youngerThan2h';
@@ -32,12 +30,10 @@ angular.module('wallboardModule')
                     return colorClass;
                 };
 
-                diffCreatedAt = moment().diff(scope.pullRequest.createdAt, 'minutes');
-                element.addClass(getColorClass(diffCreatedAt));
+                element.addClass(getColorClass(scope.pullRequest.createdAt));
 
                 if (scope.pullRequest.assignedAt) {
-                    diffAssignedAt = moment().diff(scope.pullRequest.assignedAt, 'minutes');
-                    element.addClass(getColorClass(diffAssignedAt, 'assignment'));
+                    element.addClass(getColorClass(scope.pullRequest.assignedAt, 'assignment'));
                 }
             }
         };
