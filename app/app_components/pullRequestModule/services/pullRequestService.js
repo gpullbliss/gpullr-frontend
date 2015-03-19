@@ -1,5 +1,5 @@
 'use strict';
-angular.module('dashboardModule')
+angular.module('pullRequestModule')
     .factory('pullRequestService', ['$http', '$rootScope', function ($http, $rootScope) {
         function assignPullRequest(prId) {
             return $http.post('/api/pulls/' + prId, '').then(
