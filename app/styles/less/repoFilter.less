@@ -1,0 +1,32 @@
+#repoFilter{
+    .overflowH;
+    h3{
+        border-bottom: 1px solid #404040;
+        margin: @halfSpacing;
+        padding-bottom: @halfSpacing;
+    }
+    .configBar{
+        border-bottom: 1px solid @black;
+        margin-bottom: @halfSpacing;
+        padding-bottom: @halfSpacing;
+        a{
+            display: inline-block;
+            padding-top: 2px;
+        }
+        .search{
+            .floatR;
+        }
+    }
+    li{
+        margin-bottom: @defaultSpacing;
+        input[type="checkbox"]{
+            margin-right: @halfSpacing;
+        }
+        label{
+            .ellipsis;
+            &.striked{
+                text-decoration: line-through;
+            }
+        }
+    }
+}
