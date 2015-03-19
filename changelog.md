@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [feature] add layout for repo filter list
+ - [refactor] Moved pull request service into own module
  - [bug] user handling
  - [feature] Use mocha reporter for karma
  - [feature] PRT 39 sort PR list
@@ -21,4 +21,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Mar 18 14:25:38 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Thu Mar 19 10:25:58 CET 2015

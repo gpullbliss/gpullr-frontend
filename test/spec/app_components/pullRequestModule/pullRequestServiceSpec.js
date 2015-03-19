@@ -6,7 +6,7 @@ describe('pullRequestService', function () {
         response;
 
     beforeEach(function () {
-        module('dashboardModule');
+        module('pullRequestModule');
 
         inject(function (pullRequestService, _$httpBackend_) {
             $httpBackend = _$httpBackend_;

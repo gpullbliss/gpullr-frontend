@@ -1,1 +1,1 @@
-angular.module('wallboardModule', ['ui.router']);
+angular.module('wallboardModule', ['ui.router', 'pullRequestModule']);
