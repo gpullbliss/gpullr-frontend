@@ -1,8 +1,13 @@
 'use strict';
 angular.module('pullRequestModule')
     .factory('pullRequestCssClassService', ['moment', function (moment) {
+         /**
+         * @param {string} dateTime
+         * @param {string=} prefix
+         * @returns {string}
+         */
         function getColorClassDependingOnAge(dateTime, prefix) {
-            var colorClass,
+            var colorClass, 
                 minutesDiff = moment().diff(dateTime, 'minutes');
             // hours difference rounds up and down. therefore once above the round up threshold, apply rule.
             if (minutesDiff < 90) {
