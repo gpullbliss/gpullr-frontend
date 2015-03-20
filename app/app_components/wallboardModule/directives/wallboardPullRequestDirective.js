@@ -1,6 +1,6 @@
 'use strict';
 angular.module('wallboardModule')
-    .directive('wallboardPullRequest', ['moment', function (moment) {
+    .directive('wallboardPullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
         return {
             restrict: 'E',
             scope: {
@@ -8,32 +8,10 @@ angular.module('wallboardModule')
             },
             templateUrl: 'app_components/wallboardModule/views/pullRequest.html',
             link: function (scope, element) {
-                /* TODO (Michael Diodone 2015-03-16): Move into service and use in pullRequest directive (dashboardModule) */
-                var getColorClass = function (dateTime, prefix) {
-                    var colorClass,
-                        minutesDiff = moment().diff(dateTime, 'minutes');
-                    // hours difference rounds up and down. therefore once above the round up threshold, apply rule.
-                    if (minutesDiff < 90) {
-                        colorClass = 'youngerThan2h';
-                    } else if (minutesDiff >= 90 && minutesDiff < 210) {
-                        colorClass = 'olderThan2h';
-                    } else if (minutesDiff >= 210 && minutesDiff < 450) {
-                        colorClass = 'olderThan4h';
-                    } else if (minutesDiff >= 450 && minutesDiff < 43170) {
-                        colorClass = 'olderThan8h';
-                    } else if (minutesDiff >= 43170) {
-                        colorClass = 'olderThanAMonth';
-                    }
-                    if (prefix) {
-                        colorClass = prefix + colorClass.charAt(0).toUpperCase() + colorClass.slice(1);
-                    }
-                    return colorClass;
-                };
-
-                element.addClass(getColorClass(scope.pullRequest.createdAt));
+                element.addClass(pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt));
 
                 if (scope.pullRequest.assignedAt) {
-                    element.addClass(getColorClass(scope.pullRequest.assignedAt, 'assignment'));
+                    element.addClass(pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.assignedAt, 'assignment'));
                 }
             }
         };
