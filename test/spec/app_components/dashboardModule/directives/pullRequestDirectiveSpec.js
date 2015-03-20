@@ -3,10 +3,15 @@
 describe('directive: pullrequest', function () {
     var $compile,
         $scope,
+        $cssColorClass = 'youngerThan2h',
+        pullRequestCssClassServiceMock = {
+            getColorClassDependingOnAge: function() {}
+        },
         momentMock = {
             diff: function () {
             }
-        };
+        }
+        ;
 
     function getDirectiveHtml(pr) {
         var html = '<pull-request class="block margin hPadding" prdata="{createdAt: '  + pr.createdAt + '}"></pull-request>';
@@ -14,17 +19,29 @@ describe('directive: pullrequest', function () {
     }
 
     beforeEach(function () {
-        var moment = function () {
-            return momentMock;
-        };
+        var pullRequestCssClassService = function () {
+                return pullRequestCssClassServiceMock;
+            },
+            moment = function () {
+                return momentMock;
+            };
 
         spyOn(momentMock, 'diff').and.callFake(function (timestamp) {
-            return timestamp;
+            console.log('momentmock fake call');
+            return timestamp; 
+        });
+
+        spyOn(pullRequestCssClassServiceMock, 'getColorClassDependingOnAge').and.callFake(function (blbla) {
+            console.log(blbla);
+            console.log('in getColorCss fake call in test');
+            return 'arschloch';
         });
 
         module('dashboardModule', function ($provide) {
+            $provide.value('_pullRequestCssClassService_', pullRequestCssClassService);
             $provide.value('moment', moment);
         });
+        
         module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_) {
@@ -40,8 +57,9 @@ describe('directive: pullrequest', function () {
 
             $scope.$digest();
 
+            expect(pullRequestCssClassServiceMock.getColorClassDependingOnAge).toHaveBeenCalledWith(89);
             expect(momentMock.diff).toHaveBeenCalledWith(pr.createdAt, 'minutes');
-            expect(element.attr('class')).toContain('youngerThan2h');
+            expect(element.attr('class')).toContain($cssColorClass);
         });
     });
 });
