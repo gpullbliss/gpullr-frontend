@@ -1,1 +1,0 @@
-angular.module('repoFilterModule', ['ui.router']);

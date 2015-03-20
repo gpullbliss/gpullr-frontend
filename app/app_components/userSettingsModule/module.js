@@ -1,0 +1,1 @@
+angular.module('userSettingsModule', ['ui.router']);
