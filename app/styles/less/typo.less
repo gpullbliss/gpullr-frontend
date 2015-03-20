@@ -16,6 +16,19 @@ time, mark, audio, video {
     font-family: 'Open Sans', sans-serif;
     vertical-align: baseline;
 }
+strong, b{
+    font-weight: bold;
+}
 h2{.fontSet(30px, 1.5);}
 h3{.fontSet(25px, 1.5);}
 h4{.fontSet(20px, 1.5);}
+
+#wallboard{
+    h2{
+        color: @white;
+        margin: @doubleSpacing 0 @defaultSpacing;
+    }
+    h3{
+        .ellipsis;
+    }
+}
