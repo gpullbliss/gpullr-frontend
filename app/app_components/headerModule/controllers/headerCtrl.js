@@ -9,6 +9,8 @@ angular.module('headerModule')
                 {title: 'Settings', bubble: false, state: STATE_REPO_FILTER}
             ];
 
+            userService.getCurrentUser();
+
             $rootScope.$on('changeRequestCount', function (event, requestCount) {
                 $scope.requestCount = requestCount;
             });
