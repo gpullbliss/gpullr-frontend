@@ -63,6 +63,7 @@
     .assignee,
     .author {
         text-align: center;
+        display: block;
     }
 
     .panel-heading {
@@ -74,9 +75,7 @@
     @assigneeTotalHeight: @defaultSpacing * 2 + @lineHeight * @resizeFactor + 1px; /* +1 px for border */
     .assignee {
         box-sizing: content-box;
-        height: @lineHeight *  @resizeFactor;
-        padding-top: @defaultSpacing;
-        padding-bottom: @defaultSpacing;
+        padding: 7px 0 8px 0;
     }
 
     .author,
@@ -92,11 +91,11 @@
     }
 
     .assignedPullRequests .title {
-        height: @lineHeight * @resizeFactor;
+        height: 35px;
     }
 
     .title {
-        height: @lineHeight * @resizeFactor + @assigneeTotalHeight;
+        height: 88px;
     }
 
     .assignedPullRequests .row {
