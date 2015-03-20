@@ -8,12 +8,12 @@
                 <div class="col-sm-6" ng-repeat="pr in unassignedPullRequests">
                     <div class="panel panel-default">
                         <h3 class="panel-heading">
-                            #{{pr.number}}-{{pr.repoName}}
+                            #{{pr.number}} - {{pr.repoName}}
                         </h3>
 
                         <div class="panel-body">
-                            <div class="title">{{pr.title}}</div>
-                            <strong class="author">{{pr.author.username}}</strong>
+                            <h4 class="title">{{pr.title}}</h4>
+                            <h3 class="author">{{pr.author.username}}</h3>
                         </div>
                     </div>
                 </div>
@@ -27,12 +27,12 @@
                 <div class="col-sm-12" ng-repeat="pr in assignedPullRequests">
                     <div class="panel panel-default">
                         <h3 class="panel-heading">
-                            #{{pr.number}}-{{pr.repoName}}
+                            #{{pr.number}} - {{pr.repoName}}
                         </h3>
 
                         <div class="panel-body">
-                            <div class="title">{{pr.title}}</div>
-                            <strong class="author">{{pr.author.username}}</strong>
+                            <h4 class="title">{{pr.title}}</h4>
+                            <h3 class="author">{{pr.author.username}}</h3>
                         </div>
                         <h3 class="panel-footer assignee">
                             {{pr.assignee.username}}
