@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] Added directive for colors on wallboard
  - [bug] fix layout for wallboard
  - [feature] add layout for repo filter list
  - [refactor] Moved pull request service into own module
@@ -23,4 +24,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri Mar 20 10:49:41 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Fri Mar 20 16:55:49 CET 2015
