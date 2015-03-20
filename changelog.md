@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [bug] fix layout for wallboard
  - [feature] add layout for repo filter list
  - [refactor] Moved pull request service into own module
  - [bug] user handling
@@ -22,4 +23,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 19 10:34:07 CET 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri Mar 20 10:49:41 CET 2015
