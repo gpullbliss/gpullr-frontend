@@ -1,28 +1,28 @@
 'use strict';
 angular.module('pullRequestModule')
     .factory('pullRequestCssClassService', ['moment', function (moment) {
-         /**
+        /**
          * @param {string} dateTime
-         * @param {string=} prefix
+         * @param {string=} cssClassPrefix
          * @returns {string}
          */
-        function getColorClassDependingOnAge(dateTime, prefix) {
-            var colorClass, 
+        function getColorClassDependingOnAge(dateTime, cssClassPrefix) {
+            var colorClass,
                 minutesDiff = moment().diff(dateTime, 'minutes');
-            // hours difference rounds up and down. therefore once above the round up threshold, apply rule.
-            if (minutesDiff < 90) {
+
+            if (minutesDiff < 120) {
                 colorClass = 'youngerThan2h';
-            } else if (minutesDiff >= 90 && minutesDiff < 210) {
+            } else if (minutesDiff >= 120 && minutesDiff < 240) {
                 colorClass = 'olderThan2h';
-            } else if (minutesDiff >= 210 && minutesDiff < 450) {
+            } else if (minutesDiff >= 240 && minutesDiff < 480) {
                 colorClass = 'olderThan4h';
-            } else if (minutesDiff >= 450 && minutesDiff < 43170) {
+            } else if (minutesDiff >= 480 && minutesDiff < 43200) {
                 colorClass = 'olderThan8h';
-            } else if (minutesDiff >= 43170) {
+            } else if (minutesDiff >= 43200) {
                 colorClass = 'olderThanAMonth';
             }
-            if (prefix) {
-                colorClass = prefix + colorClass.charAt(0).toUpperCase() + colorClass.slice(1);
+            if (cssClassPrefix) {
+                colorClass = cssClassPrefix + colorClass.charAt(0).toUpperCase() + colorClass.slice(1);
             }
             return colorClass;
         }
