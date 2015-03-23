@@ -31,9 +31,11 @@
             </div>
         </div>
 
-        <pull-request class="block margin hPadding"
-                      prdata="pr"
-                      data-ng-repeat="pr in pullRequests">
-        </pull-request>
+        <div ng-repeat="pr in pullRequests">
+            <pull-request
+                class="block margin hPadding"
+                pull-request="pr">
+            </pull-request>
+        </div>
     </div>
 </div>
