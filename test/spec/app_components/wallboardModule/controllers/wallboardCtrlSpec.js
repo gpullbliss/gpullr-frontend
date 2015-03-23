@@ -17,12 +17,6 @@ describe('wallboardCtrl', function () {
         module('wallboardModule');
         module('dashboardModule');
 
-        /* TODO (Michael Diodone 2015-03-18): remove provide, just supply $window when controller is created in test */
-        $window = {location: {reload: jasmine.createSpy()}};
-        module(function ($provide) {
-            $provide.value('$window', $window);
-        });
-
         inject(function (_pullRequestService_, $controller, _$interval_, _$q_, _$rootScope_, _$timeout_) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
@@ -50,9 +44,12 @@ describe('wallboardCtrl', function () {
                 return deferred.promise;
             });
 
+            $window = {location: {reload: jasmine.createSpy()}};
+
             controller = $controller('wallboardCtrl', {
                 $scope: $scope,
                 $rootScope: $rootScope,
+                $window: $window,
                 pullRequestService: pullRequestService
             });
         });
