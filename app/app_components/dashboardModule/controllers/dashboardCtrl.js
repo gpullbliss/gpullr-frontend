@@ -37,6 +37,8 @@ angular.module('dashboardModule')
                     getPullRequests();
                 });
             };
+            
+            $scope.me = angular.copy($rootScope.user);
 
             updatePullRequestsInterval = $interval(getPullRequests, 60000);
             getPullRequests();

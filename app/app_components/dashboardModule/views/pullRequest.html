@@ -21,9 +21,13 @@
     </div>
 
     <div class="assignee col-md-1">
-        <a class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" title="Assign myself">
+        <a class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" ng-if="pullRequest.assignee.id!==me.id" title="Assign myself">
             <i data-ng-click="assignToMe(pullRequest)" class="fa fa-user-plus "></i>
             <img class="avatar" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+        </a>
+        <a class="assignMe" ng-class="{isAssignedMe: pullRequest.assignee.id===me.id}" ng-if="pullRequest.assignee.id===me.id" title="Unassign myself">
+            <i data-ng-click="unassignMe(pullRequest)" class="fa fa-minus-square-o "></i>
+            <img class="avatar" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
     </div>
 </div>
