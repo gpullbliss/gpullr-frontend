@@ -6,16 +6,9 @@
 
             <div class="row">
                 <div class="col-sm-6" ng-repeat="pr in unassignedPullRequests">
-                    <div class="panel panel-default">
-                        <h3 class="panel-heading">
-                            #{{pr.number}} - {{pr.repoName}}
-                        </h3>
-
-                        <div class="panel-body">
-                            <h3 class="title">{{pr.title}}</h3>
-                            <strong class="author">{{pr.author.username}}</strong>
-                        </div>
-                    </div>
+                    <wallboard-pull-request
+                        pull-request="pr">
+                    </wallboard-pull-request>
                 </div>
             </div>
         </div>
@@ -25,19 +18,9 @@
 
             <div class="row">
                 <div class="col-sm-12" ng-repeat="pr in assignedPullRequests">
-                    <div class="panel panel-default">
-                        <h3 class="panel-heading">
-                            #{{pr.number}} - {{pr.repoName}}
-                        </h3>
-
-                        <div class="panel-body">
-                            <h3 class="title">{{pr.title}}</h3>
-                            <strong class="author">{{pr.author.username}}</strong>
-                        </div>
-                        <strong class="panel-footer assignee">
-                            {{pr.assignee.username}}
-                        </strong>
-                    </div>
+                    <wallboard-pull-request
+                        pull-request="pr">
+                    </wallboard-pull-request>
                 </div>
             </div>
         </div>

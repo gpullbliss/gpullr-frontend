@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] Added directive for colors on wallboard
  - [refactor] added tests for ranking directive and adopted pullRequest directive tests for dashboard
  - [bug] fix layout for wallboard
  - [feature] add layout for repo filter list
@@ -24,4 +25,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Mon Mar 23 09:38:06 CET 2015
+-- Last change by: Michael Diodone <michael.diodone@devbliss.com> Mon Mar 23 12:36:49 CET 2015
