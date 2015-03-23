@@ -1,5 +1,5 @@
 # gPullR-frontend
-This is the frontend for the Pullrequest-Tool. It is written with JavaScript using AngularJS. 
+This is the frontend for the pull request tool. It is written with JavaScript using AngularJS. 
 It uses the devbliss-grunt-plugin for most of the settings and task definitions.
 
 ## Prerequisites
