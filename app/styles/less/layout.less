@@ -20,6 +20,49 @@
     white-space: nowrap;
 }
 
+.linesAdded {
+    color: #55a532;
+}
+
+.linesRemoved {
+    color: #bd2c00;
+}
+
+.youngerThan2h {
+    background-color: @youngerThan2h;
+    border-width: 1px 0;
+    border: solid;
+    border-color: #ddd;
+}
+
+.olderThan2h {
+    background-color: @olderThan2h;
+    border-width: 1px 0;
+    border: solid;
+    border-color: #cc0;
+}
+
+.olderThan4h {
+    background-color: @olderThan4h;
+    border-width: 1px 0;
+    border: solid;
+    border-color: #fc0;
+}
+
+.olderThan8h {
+    background-color: @olderThan8h;
+    border-width: 1px 0;
+    border: solid;
+    border-color: #f88;
+}
+
+.olderThanAMonth {
+    background-color: @olderThanAMonth;
+    border-width: 1px 0;
+    border: solid;
+    border-color: #f00;
+}
+
 .assignMe {
     color: #47c;
     cursor: pointer;
@@ -52,17 +95,26 @@
     cursor: help;
 }
 
+.rankingList {
+    background-color: #F8F8F8;
+    border-width: 1px 0;
+    border: solid;
+    border-color: #DDD;
+}
+
 #wallboard {
     @resizeFactor: 1.6;
     font-size: 100% * @resizeFactor;
 
     .panel {
         color: #000;
+        border-width: 0;
     }
 
     .assignee,
     .author {
         text-align: center;
+        display: block;
     }
 
     .panel-heading {
@@ -74,9 +126,7 @@
     @assigneeTotalHeight: @defaultSpacing * 2 + @lineHeight * @resizeFactor + 1px; /* +1 px for border */
     .assignee {
         box-sizing: content-box;
-        height: @lineHeight *  @resizeFactor;
-        padding-top: @defaultSpacing;
-        padding-bottom: @defaultSpacing;
+        padding: 7px 0 8px 0;
     }
 
     .author,
@@ -92,15 +142,85 @@
     }
 
     .assignedPullRequests .title {
-        height: @lineHeight * @resizeFactor;
+        height: 35px;
     }
 
     .title {
-        height: @lineHeight * @resizeFactor + @assigneeTotalHeight;
+        height: 88px;
     }
 
     .assignedPullRequests .row {
         border-left: 1px dotted #fff;
+    }
+
+    .olderThanAMonth {
+        .panel {
+            background-color: @olderThanAMonth;
+        }
+    }
+
+    .olderThan8h {
+        .panel {
+            background-color: @olderThan8h;
+        }
+    }
+
+    .olderThan4h {
+        .panel {
+            background-color: @olderThan4h;
+        }
+    }
+
+    .olderThan2h {
+        .panel {
+            background-color: @olderThan2h;
+        }
+    }
+
+    .youngerThan2h {
+        .panel {
+            background-color: @youngerThan2h;
+        }
+    }
+
+    .olderThanAMonth,
+    .assignmentOlderThanAMonth {
+        .panel-heading {
+            background: darken(@olderThanAMonth, 10%);
+            border-color: darken(@olderThanAMonth, 10%);
+        }
+    }
+
+    .olderThan8h,
+    .assignmentOlderThan8h {
+        .panel-heading {
+            background: darken(@olderThan8h, 10%);
+            border-color: darken(@olderThan8h, 10%);
+        }
+    }
+
+    .olderThan4h,
+    .assignmentOlderThan4h {
+        .panel-heading {
+            background: darken(@olderThan4h, 10%);
+            border-color: darken(@olderThan4h, 10%);
+        }
+    }
+
+    .olderThan2h,
+    .assignmentOlderThan2h {
+        .panel-heading {
+            background: darken(@olderThan2h, 10%);
+            border-color: darken(@olderThan2h, 10%);
+        }
+    }
+
+    .youngerThan2h,
+    .assignmentYoungerThan2h {
+        .panel-heading {
+            background: darken(@youngerThan2h, 10%);
+            border-color: darken(@youngerThan2h, 10%);
+        }
     }
 }
 

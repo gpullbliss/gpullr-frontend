@@ -16,9 +16,9 @@
     <div class="col-md-3">Lines of Code</div>
     <div class="col-md-3">Rank</div>
 </div>
-<div class="striped">
+<div class="striped" ng-repeat="rank in rankingList">
     <ranking-list
         class="block margin hPadding rankingStats"
-        rankdata="rank"
-        data-ng-repeat="rank in rankingList"></ranking-list>
+        rankdata="rank">
+    </ranking-list>
 </div>
