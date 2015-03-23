@@ -4,7 +4,7 @@ describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
         pullRequestCssClassService,
-        cssClass = 'someCssClass';
+        cssColorClass = 'someCssClass';
 
     function getDirectiveHtml(createdAt, assignedAt) {
         var html = '<wallboard-pull-request pull-request="{createdAt: \'' + createdAt + '\'';
@@ -16,22 +16,22 @@ describe('wallboardPullRequest', function () {
     }
 
     beforeEach(function () {
-        module('wallboardModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
-        });
-        module('appTemplates');
-
         pullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
         spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
-            var colorClass = cssClass;
+            var colorClass = cssColorClass;
             if (prefix) {
                 colorClass = prefix + colorClass;
             }
             return colorClass;
         });
+
+        module('wallboardModule', function ($provide) {
+            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+        });
+        module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_) {
             $compile = _$compile_;
@@ -56,7 +56,7 @@ describe('wallboardPullRequest', function () {
 
             $scope.$digest();
 
-            expect(element.attr('class')).toContain(cssClass);
+            expect(element.attr('class')).toContain(cssColorClass);
             expect(element.attr('class')).not.toContain('assignment');
         });
     });
@@ -81,8 +81,8 @@ describe('wallboardPullRequest', function () {
 
             $scope.$digest();
 
-            expect(element.attr('class')).toContain(cssClass);
-            expect(element.attr('class')).toContain('assignment' + cssClass);
+            expect(element.attr('class')).toContain(cssColorClass);
+            expect(element.attr('class')).toContain('assignment' + cssColorClass);
         });
     });
 });
