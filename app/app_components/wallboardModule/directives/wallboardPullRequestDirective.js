@@ -8,10 +8,14 @@ angular.module('wallboardModule')
             },
             templateUrl: 'app_components/wallboardModule/views/pullRequest.html',
             link: function (scope, element) {
-                element.addClass(pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt));
+                var colorClass;
+
+                colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
+                element.addClass(colorClass);
 
                 if (scope.pullRequest.assignedAt) {
-                    element.addClass(pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.assignedAt, 'assignment'));
+                    colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.assignedAt, 'assignment');
+                    element.addClass(colorClass);
                 }
             }
         };
