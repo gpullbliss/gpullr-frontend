@@ -3,8 +3,8 @@
 describe('pullRequest', function () {
     var $compile,
         $scope,
-        $cssColorClass = 'youngerThan2h',
-        pullRequestCssClassService;
+        pullRequestCssClassService,
+        cssColorClass = 'youngerThan2h';
 
     function getDirectiveHtml(createdAt) {
         var html = '<pull-request class="block margin hPadding" pull-request="{createdAt: ' + createdAt + '}"></pull-request>';
@@ -12,19 +12,19 @@ describe('pullRequest', function () {
     }
 
     beforeEach(function () {
-        module('dashboardModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
-        });
-        module('appTemplates');
-        
         pullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
 
         spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function () {
-            return $cssColorClass;
+            return cssColorClass;
         });
+
+        module('dashboardModule', function ($provide) {
+            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+        });
+        module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_) {
             $compile = _$compile_;
@@ -40,7 +40,7 @@ describe('pullRequest', function () {
             $scope.$digest();
 
             expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
-            expect(element.attr('class')).toContain($cssColorClass);
+            expect(element.attr('class')).toContain(cssColorClass);
         });
     });
 });
