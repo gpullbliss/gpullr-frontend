@@ -8,6 +8,7 @@ angular.module('userSettingsModule')
                 }
             );
         }
+
         return {
             getRepoList: getRepoList
         };

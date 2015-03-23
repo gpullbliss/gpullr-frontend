@@ -1,24 +1,16 @@
-<div id="repoFilter"
-     ui-view>
-    <h3 class="col-xs-12">Devbliss Repos</h3>
-
-    <div class="configBar col-xs-12">
-        <a href="">select all</a> /
-        <a href="">unselect all</a>
-        <input type="text"
-               value="Search"
-               class="search"
-               ng-model="searchText.$"/>
-    </div>
-    <ul>
-        <li class="col-md-3"
-            data-ng-repeat="repo in repos | filter:searchText">
-            <label ng-click="toggle()"
-                   class="toggle showInList"
-                   for="{{repo.name}}">
-                <input id="{{repo.name}}"
-                       data-ng-click="updateBlacklist(repo.id)"
-                       type="checkbox"/>{{repo.name}}</label>
-        </li>
-    </ul>
+<div id="repoFilter" ui-view>
+  <h3 class="col-xs-12">Devbliss Repos</h3>
+  <div class="configBar col-xs-12">
+    <a ng-click="checkAll()" href="">select all</a> /
+    <a ng-click="uncheckAll()" href="">unselect all</a>
+    <input type="text" value="Search" class="search"  ng-model="searchText.$"/>
+  </div>
+  <ul>
+    <li class="col-md-3" data-ng-repeat="repo in repos | filter:searchText">
+      <label class="toggle showInList" for="{{repo.name}}">
+        <input ng-model="repo.checked" id="{{repo.name}}" type="checkbox"/>
+        {{repo.name}}
+      </label>
+    </li>
+  </ul>
 </div>

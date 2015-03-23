@@ -1,35 +1,51 @@
 'use strict';
 
 angular.module('userSettingsModule')
-    .controller('userSettingsCtrl', ['$rootScope', '$scope', '$state', 'repoService',
-        function ($rootScope, $scope, $state, repoService) {
+    .controller('userSettingsCtrl', ['$rootScope', '$scope', '$state', 'repoService', 'userSettingsService', 'userService',
+        function ($rootScope, $scope, $state, repoService, userSettingsService, userService) {
+
+            var currentUser ;
 
             function init() {
                 repoService.getRepoList().then(function (repos) {
                     $scope.repos = repos;
                 });
 
-                $scope.blacklist = [];
+                currentUser = userService.getCurrentUser();
             }
 
-            $scope.toggle = function () {
-                $('.toggle').click(function () {
-                    var thisElement = $(this);
-                    if (thisElement.hasClass('showInList')) {
-                        thisElement.removeClass('showInList').addClass('hideInList');
-                    } else {
-                        thisElement.removeClass('hideInList').addClass('showInList');
-                    }
+            $scope.checkAll = function () {
+                angular.forEach($scope.repos, function (repo) {
+                    repo.checked = true;
                 });
             };
 
-            $scope.updateBlacklist = function (repoId) {
-                if ($scope.blacklist.indexOf(repoId) === -1) {
-                    $scope.blacklist.push(repoId);
-                } else {
-                    $scope.blacklist.splice($scope.blacklist.indexOf(repoId), 1);
-                }
-                console.log($scope.blacklist);
+            $scope.uncheckAll = function () {
+                angular.forEach($scope.repos, function (repo) {
+                    repo.checked = false;
+                });
+            };
+
+            $scope.$watch('repos', function (newVar, oldVar) {
+                buildBlackList();
+            }, true);
+
+            var updateBackendSelection = function(){
+                userSettingsService.persistUserSettings(currentUser).then(function () {
+                    console.log('currentUser = ' + currentUser.username + ' settings persisted');
+                });
+            };
+
+            var buildBlackList = function () {
+                console.log('buildBlackList!!!');
+                var repos = $scope.repos;
+                var blacklist = [];
+                angular.forEach(repos, function(repo){
+                    if (repo.checked) {
+                        this.push(repo.id);
+                    }
+                }, blacklist);
+                console.log('BlackList = ' + blacklist);
             };
 
             init();
