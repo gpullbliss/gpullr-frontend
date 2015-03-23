@@ -1,31 +1,30 @@
 'use strict';
 
-describe('directive: pullrequest', function () {
+describe('pullRequest', function () {
     var $compile,
         $scope,
-        momentMock = {
-            diff: function () {
-            }
-        };
+        $cssColorClass = 'youngerThan2h',
+        pullRequestCssClassService;
 
-    function getDirectiveHtml(pr) {
-        var html = '<pull-request class="block margin hPadding" prdata="{createdAt: '  + pr.createdAt + '}"></pull-request>';
+    function getDirectiveHtml(createdAt) {
+        var html = '<pull-request class="block margin hPadding" pull-request="{createdAt: ' + createdAt + '}"></pull-request>';
         return html;
     }
 
     beforeEach(function () {
-        var moment = function () {
-            return momentMock;
-        };
-
-        spyOn(momentMock, 'diff').and.callFake(function (timestamp) {
-            return timestamp;
-        });
-
         module('dashboardModule', function ($provide) {
-            $provide.value('moment', moment);
+            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
+        
+        pullRequestCssClassService = {
+            getColorClassDependingOnAge: function () {
+            }
+        };
+
+        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function () {
+            return $cssColorClass;
+        });
 
         inject(function (_$compile_, _$rootScope_) {
             $compile = _$compile_;
@@ -34,14 +33,14 @@ describe('directive: pullrequest', function () {
     });
 
     describe('pull requests', function () {
-        it('sets the class youngerThan2h for a 89 minutes old pull request', function () {
-            var pr = {createdAt: 89},
-                element = $compile(getDirectiveHtml(pr))($scope);
+        it('sets the specified class for a 89 minutes old pull request', function () {
+            var createdAt = 89,
+                element = $compile(getDirectiveHtml(createdAt))($scope);
 
             $scope.$digest();
 
-            expect(momentMock.diff).toHaveBeenCalledWith(pr.createdAt, 'minutes');
-            expect(element.attr('class')).toContain('youngerThan2h');
+            expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
+            expect(element.attr('class')).toContain($cssColorClass);
         });
     });
 });
