@@ -1,15 +1,21 @@
 'use strict';
 angular.module('wallboardModule')
     /* jshint maxparams:false */
-    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$timeout', '$window', 'pullRequestService',
-        function ($scope, $rootScope, $interval, $timeout, $window, pullRequestService) {
+    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$stateParams', '$timeout', '$window', 'pullRequestService',
+        function ($scope, $rootScope, $interval, $stateParams, $timeout, $window, pullRequestService) {
             var updatePullRequestsInterval,
                 getPullRequests,
                 reloadApp,
-                reloadAppTimeout;
+                reloadAppTimeout,
+                reposToInclude = [];
+
+            console.log($stateParams.repos);
+            if (angular.isString($stateParams.repos)) {
+                reposToInclude = $stateParams.repos.split(';');
+            }
 
             getPullRequests = function () {
-                pullRequestService.getPullRequests().then(function (pullRequests) {
+                pullRequestService.getPullRequests(reposToInclude).then(function (pullRequests) {
                     var assignedPullRequests = [],
                         unassignedPullRequests = [];
 

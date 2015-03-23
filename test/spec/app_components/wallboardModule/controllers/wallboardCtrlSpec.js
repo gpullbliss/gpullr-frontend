@@ -2,6 +2,7 @@
 
 describe('wallboardCtrl', function () {
     var controller,
+        createController,
         pullRequestService,
         pullRequests,
         assignedPullRequests,
@@ -10,19 +11,20 @@ describe('wallboardCtrl', function () {
         $rootScope,
         $q,
         $scope,
+        $stateParams,
         $timeout,
         $window;
 
     beforeEach(function () {
         module('wallboardModule');
-        module('dashboardModule');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$q_, _$rootScope_, _$timeout_) {
+        inject(function (_pullRequestService_, $controller, _$interval_, _$q_, _$rootScope_, _$stateParams_, _$timeout_) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
             $q = _$q_;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
+            $stateParams = _$stateParams_;
             $timeout = _$timeout_;
 
             assignedPullRequests = [{
@@ -44,23 +46,58 @@ describe('wallboardCtrl', function () {
                 return deferred.promise;
             });
 
-            $window = {location: {reload: jasmine.createSpy()}};
+            $window = {location: {reload: jasmine.createSpy('window')}};
 
-            controller = $controller('wallboardCtrl', {
-                $scope: $scope,
-                $rootScope: $rootScope,
-                $window: $window,
-                pullRequestService: pullRequestService
-            });
+            createController = function (controllerParameters) {
+                var parameters = {
+                    $scope: $scope,
+                    $rootScope: $rootScope,
+                    $window: $window,
+                    pullRequestService: pullRequestService
+                };
+
+                for (var parameter in controllerParameters) {
+                    if (controllerParameters.hasOwnProperty(parameter)) {
+                        parameters[parameter] = controllerParameters[parameter];
+                    }
+                }
+                return $controller('wallboardCtrl', parameters);
+            };
+            controller = createController();
         });
     });
 
     describe('$scope.getPullRequests()', function () {
+        it('calls pullRequestService.getPullRequests() with empty reposToInclude if repos param not set', function () {
+            $scope.$digest();
+
+            expect(pullRequestService.getPullRequests).toHaveBeenCalledWith([]);
+        });
+
         it('sets unassignedPullRequests and assignedPullRequests on startup', function () {
             $scope.$digest();
 
             expect($scope.unassignedPullRequests).toEqual(unassignedPullRequests);
             expect($scope.assignedPullRequests).toEqual(assignedPullRequests);
+        });
+
+        describe('with repos', function () {
+            beforeEach(function () {
+                var stateParams = angular.copy($stateParams);
+                stateParams.repos = 'docbliss;gpullr-frontend';
+
+                controller = createController({$stateParams: stateParams});
+            });
+
+            afterEach(function () {
+                controller = createController();
+            });
+
+            it('calls pullRequestService.getPullRequests() with reposToInclude if repos param is set', function () {
+                $scope.$digest();
+
+                expect(pullRequestService.getPullRequests).toHaveBeenCalledWith(['docbliss', 'gpullr-frontend']);
+            });
         });
     });
 
