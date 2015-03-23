@@ -9,7 +9,6 @@ angular.module('wallboardModule')
                 reloadAppTimeout,
                 reposToInclude = [];
 
-            console.log($stateParams.repos);
             if (angular.isString($stateParams.repos)) {
                 reposToInclude = $stateParams.repos.split(';');
             }
