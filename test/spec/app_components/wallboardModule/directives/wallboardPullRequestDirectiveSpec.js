@@ -16,7 +16,9 @@ describe('wallboardPullRequest', function () {
     }
 
     beforeEach(function () {
-        module('wallboardModule');
+        module('wallboardModule', function ($provide) {
+            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+        });
         module('appTemplates');
 
         pullRequestCssClassService = {
@@ -31,14 +33,9 @@ describe('wallboardPullRequest', function () {
             return colorClass;
         });
 
-        module('pullRequestModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
-        });
-
         inject(function (_$compile_, _$rootScope_) {
             $compile = _$compile_;
             $scope = _$rootScope_.$new();
-
         });
     });
 
