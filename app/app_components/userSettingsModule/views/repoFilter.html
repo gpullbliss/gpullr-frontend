@@ -14,8 +14,6 @@
         </div>
     </div>
 
-    <!--<pre>{{currentUser | json}}</pre>-->
-
     <ul class="dMarginTop">
         <li class="col-md-3" data-ng-repeat="repo in repos | filter:searchText | orderBy:['name']">
             <label for="{{repo.name}}" ng-class="{hideInList : !repo.checked}">

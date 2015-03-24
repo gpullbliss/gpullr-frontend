@@ -1,6 +1,6 @@
 'use strict';
 angular.module('loginModule')
-    .factory('userService', ['$cacheFactory', '$http', '$rootScope', '$filter', function ($cacheFactory, $http, $rootScope, $filter) {
+    .factory('userService', ['$cacheFactory', '$http', '$rootScope', function ($cacheFactory, $http, $rootScope) {
         function getCurrentUser(byPassCache) {
             var config = {cache: true};
 
