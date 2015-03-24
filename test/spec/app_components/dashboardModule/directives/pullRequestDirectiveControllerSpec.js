@@ -30,12 +30,10 @@ describe('pullRequestController', function () {
           pullRequestService = _pullRequestService_;
           
             spyOn(pullRequestService, 'unassignPullRequest').and.callFake(function () {
-                console.log('pullRequestService mock unassign');
                return true; 
             });
             
             spyOn(pullRequestService, 'assignPullRequest').and.callFake(function () {
-                console.log('pullRequestService mock assign');
                return true; 
             });
             
