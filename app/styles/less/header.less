@@ -1,0 +1,44 @@
+#gpullrHeader{
+    .borderRadius(0 0 5px 5px);
+    .overflowH;
+    background-color: @black;
+    padding: @defaultSpacing;
+    .logo{
+        .fontSet(47px, 47px);
+        .floatL;
+        .iconFont;
+        .marginRight;
+        color: @dbGreen;
+        &:after{
+            content: "\e600";
+        }
+    }
+    .nav{
+        .floatL;
+        li{
+            .floatL;
+            .marginRight;
+        }
+        a{
+            .block;
+            color: @gray;
+            padding: @defaultSpacing+@halfSpacing @defaultSpacing 0;
+            &:hover, &.active{
+                color: @white;
+            }
+        }
+        .bubble {
+            background-color: #f00;
+            padding: 2px @defaultSpacing;
+            margin-left: 5px;
+            .borderRadius(10px);
+        }
+    }
+    .userBlock{
+        .floatR;
+        .userName{
+            color: @gray;
+            padding: @defaultSpacing+@halfSpacing @defaultSpacing 0;
+        }
+    }
+}
