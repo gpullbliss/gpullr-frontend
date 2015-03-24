@@ -1,0 +1,29 @@
+.assignMe {
+    .dimension(@dashboardAvatarSize, @dashboardAvatarSize);
+    .floatR;
+    .iconFont;
+    .marginLeft;
+    .overflowH;
+    .textC;
+    color: #47c;
+    cursor: pointer;
+    .fontSet(@assignMeIconSize, @dashboardAvatarSize);
+    &:after{
+        content: "\e601";
+    }
+    &.isAssigned {
+        overflow: hidden;
+        .iconFont;
+        &:hover {
+            img {
+                display: none;
+            }
+            &:after{
+                content: "\e601";
+            }
+        }
+        &:after {
+            content: '';
+        }
+    }
+}

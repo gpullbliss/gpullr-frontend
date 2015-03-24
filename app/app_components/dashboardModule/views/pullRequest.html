@@ -1,7 +1,10 @@
 <div class="row">
-    <div class="col-md-3">
-        <span class="avatarWrapper"><img class="avatar" ng-src="{{pullRequest.author.avatarUrl}}"></span>
-        {{pullRequest.author.username}}
+    <div class="col-md-3 author userBlock">
+        <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
+        <p class="userName">
+            Real Name<br/>
+            <span>{{pullRequest.author.username}}</span>
+        </p>
     </div>
 
     <div class="col-md-5">
@@ -12,7 +15,7 @@
         <span am-time-ago="pullRequest.createdAt"></span> | Status: {{pullRequest.status}}
     </div>
 
-    <div class="stats col-md-3">
+    <div class="stats col-md-1">
         <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
         <span class="linesAdded">+{{pullRequest.linesAdded}}</span>
         <span class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
@@ -20,15 +23,14 @@
         <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pullRequest.filesChanged}}
     </div>
 
-    <div class="assignee col-md-1">
-        <a class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" ng-if="pullRequest.assignee.id!==me.id" title="Assign myself">
-            <i data-ng-click="assignToMe(pullRequest)" class="fa fa-user-plus "></i>
-            <img class="avatar" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+    <div  class="assignee userBlock col-md-3">
+        <a data-ng-click="assignToMe(pullRequest)" class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" title="Assign myself">
+            <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
-        <a class="assignMe" ng-class="{isAssignedMe: pullRequest.assignee.id===me.id}" ng-if="pullRequest.assignee.id===me.id" title="Unassign myself">
-            <i data-ng-click="unassignMe(pullRequest)" class="fa fa-minus-square-o "></i>
-            <img class="avatar" ng-src="{{pullRequest.assignee.avatarUrl}}">
-        </a>
+        <p ng-if="pullRequest.assignee!==null" class="userName">
+          Real Name<br/>
+          <span>{{pullRequest.assignee.username}}</span>
+        </p>
     </div>
 </div>
 
