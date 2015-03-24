@@ -40,6 +40,17 @@ module.exports = function (grunt) {
             }
         },
 
+        copy:{
+            iconfont:{
+                expand: true,
+                cwd: 'app/styles/fonts',
+                dest: 'dist/styles/fonts',
+                src: [
+                    '*.*'
+                ]
+            }
+        },
+
         devbliss: {
             port: 8889,
             testport: 9091,
@@ -48,4 +59,5 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('test', ['devbliss-karma:jenkins']);
+    grunt.registerTask('buildpullr', ['build', 'copy:iconfont']);
 };
