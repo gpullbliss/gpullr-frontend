@@ -5,7 +5,7 @@ angular.module('dashboardModule')
         return {
             scope: {
                 pullRequest: '=',
-                me: '='
+                loggedInUser: '='
             },
             restrict: 'E',
             controller: function ($scope, pullRequestService) {
