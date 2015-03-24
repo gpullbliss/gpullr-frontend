@@ -24,7 +24,10 @@
     </div>
 
     <div  class="assignee userBlock col-md-3">
-        <a data-ng-click="assignToMe(pullRequest)" class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" title="Assign myself">
+        <a data-ng-click="assignToMe(pullRequest)" class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" ng-if="pullRequest.assignee.id!==me.id" title="Assign myself">
+            <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+        </a>
+        <a data-ng-click="unassignMe(pullRequest)" class="assignMe" ng-class="{isAssignedMe: pullRequest.assignee.id===me.id}" ng-if="pullRequest.assignee.id===me.id" title="Unassign myself">
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
         <p ng-if="pullRequest.assignee!==null" class="userName">
