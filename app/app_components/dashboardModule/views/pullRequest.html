@@ -1,35 +1,36 @@
 <div class="row">
     <div class="col-md-3">
-        <span class="avatarWrapper"><img class="avatar" ng-src="{{pr.author.avatarUrl}}"></span>
-        {{pr.author.username}}
+        <span class="avatarWrapper"><img class="avatar" ng-src="{{pullRequest.author.avatarUrl}}"></span>
+        {{pullRequest.author.username}}
     </div>
 
     <div class="col-md-5">
-        <a ng-href="{{pr.url}}" target="_blank">#{{pr.number}} {{pr.title}}</a>
+        <a ng-href="{{pullRequest.url}}" target="_blank">#{{pullRequest.number}} {{pullRequest.title}}</a>
         <br>
-        Repo: {{pr.repoName}} |
+        Repo: {{pullRequest.repoName}} |
         <i class="fa fa-clock-o helpIcon" title="Created"></i>
-        <span am-time-ago="pr.createdAt"></span> | Status: {{pr.status}}
+        <span am-time-ago="pullRequest.createdAt"></span> | Status: {{pullRequest.status}}
     </div>
 
     <div class="stats col-md-3">
         <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
-        <span class="linesAdded">+{{pr.linesAdded}}</span>
-        <span class="linesRemoved">-{{pr.linesRemoved}}</span>
+        <span class="linesAdded">+{{pullRequest.linesAdded}}</span>
+        <span class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
         <br>
-        <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pr.filesChanged}}
+        <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pullRequest.filesChanged}}
     </div>
 
     <div class="assignee col-md-1">
-        <a class="assignMe" ng-class="{isAssigned: pr.assignee!==null}" title="Assign myself">
-            <i data-ng-click="assignToMe(pr)" class="fa fa-user-plus "></i>
-            <img class="avatar" ng-if="pr.assignee!==null" ng-src="{{pr.assignee.avatarUrl}}">
+        <a class="assignMe" ng-class="{isAssigned: pullRequest.assignee!==null}" title="Assign myself">
+            <i data-ng-click="assignToMe(pullRequest)" class="fa fa-user-plus "></i>
+            <img class="avatar" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
     </div>
 </div>
 
 <!-- modal dialog for already assigned pull requests-->
-<modal-dialog show="modalShown" dialog-title="Pullrequest is already assigned." width="500px" height="30%" on-close="modalClose()">
+<modal-dialog show="modalShown" dialog-title="Pull request is already assigned." width="500px" height="30%"
+              on-close="modalClose()">
     <p>Do you really want to assign it to you?</p>
     <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
     <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
