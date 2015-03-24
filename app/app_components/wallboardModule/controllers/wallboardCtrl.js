@@ -14,21 +14,27 @@ angular.module('wallboardModule')
             }
 
             getPullRequests = function () {
-                pullRequestService.getPullRequests(reposToInclude).then(function (pullRequests) {
-                    var assignedPullRequests = [],
-                        unassignedPullRequests = [];
+                pullRequestService.getPullRequests(reposToInclude).then(
+                    function (pullRequests) {
+                        var assignedPullRequests = [],
+                            unassignedPullRequests = [];
 
-                    angular.forEach(pullRequests, function (pullRequest) {
-                        if (angular.isObject(pullRequest.assignee)) {
-                            assignedPullRequests.push(pullRequest);
-                        } else {
-                            unassignedPullRequests.push(pullRequest);
-                        }
-                    });
+                        angular.forEach(pullRequests, function (pullRequest) {
+                            if (angular.isObject(pullRequest.assignee)) {
+                                assignedPullRequests.push(pullRequest);
+                            } else {
+                                unassignedPullRequests.push(pullRequest);
+                            }
+                        });
 
-                    $scope.assignedPullRequests = assignedPullRequests;
-                    $scope.unassignedPullRequests = unassignedPullRequests;
-                });
+                        $scope.assignedPullRequests = assignedPullRequests;
+                        $scope.unassignedPullRequests = unassignedPullRequests;
+                        $scope.errorMessage = undefined;
+                    },
+                    function (errorResponse) {
+                        $scope.errorMessage = errorResponse.data.errorMessage;
+                    }
+                );
             };
 
             getPullRequests();

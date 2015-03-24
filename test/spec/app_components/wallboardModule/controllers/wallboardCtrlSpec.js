@@ -3,6 +3,7 @@
 describe('wallboardCtrl', function () {
     var controller,
         createController,
+        errorMessage,
         pullRequestService,
         pullRequests,
         assignedPullRequests,
@@ -40,9 +41,17 @@ describe('wallboardCtrl', function () {
             }];
             pullRequests = unassignedPullRequests.concat(assignedPullRequests);
 
-            spyOn(pullRequestService, 'getPullRequests').and.callFake(function () {
+            errorMessage = 'No repo found with id or name \'broken\'.';
+
+            spyOn(pullRequestService, 'getPullRequests').and.callFake(function (reposToInclude) {
                 var deferred = $q.defer();
-                deferred.resolve(pullRequests);
+                if (Array.isArray(reposToInclude) && reposToInclude.indexOf('broken') !== -1) {
+                    deferred.reject({
+                        data: {errorKey: 'NOT_FOUND', errorMessage: errorMessage}
+                    });
+                } else {
+                    deferred.resolve(pullRequests);
+                }
                 return deferred.promise;
             });
 
@@ -82,21 +91,30 @@ describe('wallboardCtrl', function () {
         });
 
         describe('with repos', function () {
-            beforeEach(function () {
-                var stateParams = angular.copy($stateParams);
-                stateParams.repos = 'docbliss;gpullr-frontend';
-
-                controller = createController({$stateParams: stateParams});
-            });
-
             afterEach(function () {
                 controller = createController();
             });
 
             it('calls pullRequestService.getPullRequests() with reposToInclude if repos param is set', function () {
+                var stateParams = angular.copy($stateParams);
+                stateParams.repos = 'docbliss;gpullr-frontend';
+
+                controller = createController({$stateParams: stateParams});
+
                 $scope.$digest();
 
                 expect(pullRequestService.getPullRequests).toHaveBeenCalledWith(['docbliss', 'gpullr-frontend']);
+            });
+
+            it('sets $scope.errorMessage if the pullRequestService returns an error', function () {
+                var stateParams = angular.copy($stateParams);
+                stateParams.repos = 'broken;gpullr-frontend';
+
+                controller = createController({$stateParams: stateParams});
+
+                $scope.$digest();
+
+                expect($scope.errorMessage).toEqual(errorMessage);
             });
         });
     });
