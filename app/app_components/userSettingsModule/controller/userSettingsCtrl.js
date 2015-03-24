@@ -1,18 +1,66 @@
 'use strict';
 
 angular.module('userSettingsModule')
-    .controller('userSettingsCtrl', ['$rootScope', '$scope', '$state', 'repoService', 'userSettingsService', 'userService',
-        function ($rootScope, $scope, $state, repoService, userSettingsService, userService) {
+    .controller('userSettingsCtrl', [
+        '$scope', '$state', 'repoService', 'userSettingsService', 'userService',
+        function ($scope, $state, repoService, userSettingsService, userService) {
 
-            var currentUser ;
+            var currentUser;
+
+            function buildBlackList() {
+                var repos = $scope.repos;
+
+                var blacklist = [];
+                angular.forEach(repos, function (repo) {
+                    if (!repo.checked) {
+                        this.push(repo.id);
+                    }
+                }, blacklist);
+                return blacklist;
+            }
+
 
             function init() {
-                repoService.getRepoList().then(function (repos) {
-                    $scope.repos = repos;
-                });
+                var repoBlacklistHelperMap = {};
 
-                currentUser = userService.getCurrentUser();
+                repoService
+                    .getRepoList()
+
+                    .then(function (repos) {
+                        $scope.repos = repos;
+
+                        angular.forEach($scope.repos, function (repo) {
+                            this[repo.id] = repo;
+                        }, repoBlacklistHelperMap);
+
+                        $scope.checkAll();
+
+                        return userService.getCurrentUser(true);
+                    })
+
+                    .then(function (user) {
+                        currentUser = user;
+                        if (!user.userSettingsDto) {
+                            user.userSettingsDto = {};
+                        }
+
+                        // uncheck user black listed repos
+                        angular.forEach(user.userSettingsDto.repoBlackList, function (blacklistedRepoId) {
+                            var repo = repoBlacklistHelperMap[blacklistedRepoId];
+                            repo.checked = false;
+                        });
+                    })
+
+                    .catch(function (fault) {
+                        console.error(fault);
+                    });
             }
+
+            $scope.saveBlacklist = function () {
+                var repoBlackList = buildBlackList();
+                currentUser.userSettingsDto.repoBlackList = repoBlackList;
+                userSettingsService.persistUserSettings(currentUser);
+            };
 
             $scope.checkAll = function () {
                 angular.forEach($scope.repos, function (repo) {
@@ -24,28 +72,6 @@ angular.module('userSettingsModule')
                 angular.forEach($scope.repos, function (repo) {
                     repo.checked = false;
                 });
-            };
-
-            $scope.$watch('repos', function (newVar, oldVar) {
-                buildBlackList();
-            }, true);
-
-            var updateBackendSelection = function(){
-                userSettingsService.persistUserSettings(currentUser).then(function () {
-                    console.log('currentUser = ' + currentUser.username + ' settings persisted');
-                });
-            };
-
-            var buildBlackList = function () {
-                console.log('buildBlackList!!!');
-                var repos = $scope.repos;
-                var blacklist = [];
-                angular.forEach(repos, function(repo){
-                    if (repo.checked) {
-                        this.push(repo.id);
-                    }
-                }, blacklist);
-                console.log('BlackList = ' + blacklist);
             };
 
             init();

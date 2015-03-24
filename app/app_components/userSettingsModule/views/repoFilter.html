@@ -1,16 +1,27 @@
 <div id="repoFilter" ui-view>
-  <h3 class="col-xs-12">Devbliss Repos</h3>
-  <div class="configBar col-xs-12">
-    <a ng-click="checkAll()" href="">select all</a> /
-    <a ng-click="uncheckAll()" href="">unselect all</a>
-    <input type="text" value="Search" class="search"  ng-model="searchText.$"/>
-  </div>
-  <ul>
-    <li class="col-md-3" data-ng-repeat="repo in repos | filter:searchText">
-      <label class="toggle showInList" for="{{repo.name}}">
-        <input ng-model="repo.checked" id="{{repo.name}}" type="checkbox"/>
-        {{repo.name}}
-      </label>
-    </li>
-  </ul>
+    <h3 class="col-xs-12">Devbliss Repos</h3>
+
+    <div class="configBar row">
+        <div class="col-xs-10">
+            <a ng-click="checkAll()" href="">select all</a> /
+            <a ng-click="uncheckAll()" href="">unselect all</a>
+            <input type="text" value="Search" class="search" ng-model="searchText.$"/>
+        </div>
+
+        <div class="col-xs-2">
+            <button type="button" class="btn btn-sm" ng-click="saveBlacklist()"><i class="fa fa-save"></i> save
+            </button>
+        </div>
+    </div>
+
+    <!--<pre>{{currentUser | json}}</pre>-->
+
+    <ul class="dMarginTop">
+        <li class="col-md-3" data-ng-repeat="repo in repos | filter:searchText | orderBy:['name']">
+            <label for="{{repo.name}}" ng-class="{hideInList : !repo.checked}">
+                <input ng-model="repo.checked" id="{{repo.name}}" type="checkbox"/>
+                {{repo.name}}
+            </label>
+        </li>
+    </ul>
 </div>
