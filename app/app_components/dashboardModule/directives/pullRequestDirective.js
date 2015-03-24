@@ -35,8 +35,7 @@ angular.module('dashboardModule')
                 };
                 
                 $scope.unassignMe = function (selectedPr) {
-                    console.log('unassign me from:');
-                    console.log(selectedPr);
+                    pullRequestService.unassignPullRequest(selectedPr.id);
                 };
             },
             templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
