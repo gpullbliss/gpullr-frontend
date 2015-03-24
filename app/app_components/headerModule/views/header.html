@@ -1,23 +1,15 @@
-<nav id="gpullrheader" class="container navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a ui-sref="{{navBar[0].state}}">
-                <div class="navbar-brand">gPullR</div>
-            </a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li ui-sref-active="active" ng-repeat="item in navBar" ng-click="navigate(item)">
-                <a ui-sref="{{item.state}}">{{item.title}}
-                    <span ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
-                </a>
-            </li>
-        </ul>
+<nav id="gpullrHeader" class="container navbar navbar-inverse">
+      <a class="logo" ui-sref="{{navBar[0].state}}"></a>
+      <ul class="navigation">
+          <li ng-repeat="item in navBar" ng-click="navigate(item)">
+              <a ui-sref-active="active" ui-sref="{{item.state}}">{{item.title}}
+                  <span ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
+              </a>
+          </li>
+      </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li ng-if="user">
-                <span class="navbar-text">{{user.username}}</span>
-                <img class="avatar" ng-src="{{user.avatarUrl}}" />
-            </li>
-        </ul>
-    </div>
+      <div class="userBlock" ng-if="user">
+          <span class="userName">{{user.username}}</span>
+          <img class="avatarWrapper" ng-src="{{user.avatarUrl}}" />
+      </div>
 </nav>
