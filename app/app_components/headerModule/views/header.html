@@ -1,6 +1,6 @@
 <nav id="gpullrHeader" class="container navbar navbar-inverse">
       <a class="logo" ui-sref="{{navBar[0].state}}"></a>
-      <ul class="nav">
+      <ul class="navigation">
           <li ng-repeat="item in navBar" ng-click="navigate(item)">
               <a ui-sref-active="active" ui-sref="{{item.state}}">{{item.title}}
                   <span ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
