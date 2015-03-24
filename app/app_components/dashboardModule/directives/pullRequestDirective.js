@@ -37,7 +37,7 @@ angular.module('dashboardModule')
                 $scope.unassignMe = function (selectedPr) {
                     console.log('unassign me from:');
                     console.log(selectedPr);
-                }
+                };
             },
             templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
             link: function (scope, element) {
