@@ -8,6 +8,6 @@ angular.module('wallboardModule')
                     parent: 'pageWithoutHeader',
                     controller: 'wallboardCtrl',
                     templateUrl: 'app_components/wallboardModule/views/wallboard.html',
-                    url: '/wallboard'
+                    url: '/wallboard?repos'
                 });
         }]);
