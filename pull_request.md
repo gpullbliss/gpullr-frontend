@@ -12,6 +12,8 @@ Please be sure that the following points are checked before merging this pull re
 * Best Practices
   - [ ] Feature is documented (source code, README.md)
   - [ ] [Style guides](https://github.com/devbliss/standards) are followed
+  - [ ] No TODOs in the code (create a JIRA issue if necessary)
+  - [ ] No debugging code (console.log(), etc.)
 
 * Tests
   - [ ] Code has been tested and has an appropriate code coverage
