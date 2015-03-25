@@ -8,6 +8,14 @@ angular.module('pullRequestModule')
                 }
             );
         }
+        
+        function unassignPullRequest(prId) {
+            return $http.put('/api/pulls/' + prId, '').then(
+                function () {
+                    $rootScope.$emit('changeAssignee');
+                }
+            );
+        }
 
         /**
          * @param {Array<string>=} reposToInclude
@@ -29,6 +37,7 @@ angular.module('pullRequestModule')
 
         return {
             assignPullRequest: assignPullRequest,
+            unassignPullRequest: unassignPullRequest,
             getPullRequests: getPullRequests
         };
     }]);

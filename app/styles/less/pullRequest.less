@@ -11,7 +11,7 @@
     &:after{
         content: "\e601";
     }
-    &.isAssigned {
+    &.isAssigned, &.isAssignedToMe {
         overflow: hidden;
         .iconFont;
         &:hover {
@@ -24,6 +24,13 @@
         }
         &:after {
             content: '';
+        }
+    }
+    &.isAssignedToMe {
+        &:hover {
+            &:after{
+                content: "\e602";
+            }
         }
     }
 }
