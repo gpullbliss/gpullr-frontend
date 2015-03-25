@@ -1,7 +1,10 @@
 <div class="row rankingList">
-    <div class="col-md-3">
-        <span class="avatarWrapper"><img class="avatar" ng-src="{{ranking.avatarUrl}}"></span>
-        {{ranking.username}}
+    <div class="col-md-3 userBlock">
+        <img class="avatarWrapper" ng-src="{{ranking.avatarUrl}}">
+        <p class="userName">
+          Real Name<br/>
+          <span>{{ranking.username}}</span>
+        </p>
     </div>
 
     <div class="col-md-3">

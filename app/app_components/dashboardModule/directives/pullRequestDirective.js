@@ -4,7 +4,8 @@ angular.module('dashboardModule')
     .directive('pullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
         return {
             scope: {
-                pullRequest: '='
+                pullRequest: '=',
+                loggedInUser: '='
             },
             restrict: 'E',
             controller: function ($scope, pullRequestService) {
@@ -31,6 +32,10 @@ angular.module('dashboardModule')
 
                 $scope.modalClose = function () {
                     $scope.modalShown = false;
+                };
+                
+                $scope.unassignMe = function (selectedPr) {
+                    pullRequestService.unassignPullRequest(selectedPr.id);
                 };
             },
             templateUrl: 'app_components/dashboardModule/views/pullRequest.html',

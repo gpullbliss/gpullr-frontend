@@ -1,29 +1,40 @@
 'use strict';
 angular.module('wallboardModule')
     /* jshint maxparams:false */
-    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$timeout', '$window', 'pullRequestService',
-        function ($scope, $rootScope, $interval, $timeout, $window, pullRequestService) {
+    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$stateParams', '$timeout', '$window', 'pullRequestService',
+        function ($scope, $rootScope, $interval, $stateParams, $timeout, $window, pullRequestService) {
             var updatePullRequestsInterval,
                 getPullRequests,
                 reloadApp,
-                reloadAppTimeout;
+                reloadAppTimeout,
+                reposToInclude = [];
+
+            if (angular.isString($stateParams.repos)) {
+                reposToInclude = $stateParams.repos.split(';');
+            }
 
             getPullRequests = function () {
-                pullRequestService.getPullRequests().then(function (pullRequests) {
-                    var assignedPullRequests = [],
-                        unassignedPullRequests = [];
+                pullRequestService.getPullRequests(reposToInclude).then(
+                    function (pullRequests) {
+                        var assignedPullRequests = [],
+                            unassignedPullRequests = [];
 
-                    angular.forEach(pullRequests, function (pullRequest) {
-                        if (angular.isObject(pullRequest.assignee)) {
-                            assignedPullRequests.push(pullRequest);
-                        } else {
-                            unassignedPullRequests.push(pullRequest);
-                        }
-                    });
+                        angular.forEach(pullRequests, function (pullRequest) {
+                            if (angular.isObject(pullRequest.assignee)) {
+                                assignedPullRequests.push(pullRequest);
+                            } else {
+                                unassignedPullRequests.push(pullRequest);
+                            }
+                        });
 
-                    $scope.assignedPullRequests = assignedPullRequests;
-                    $scope.unassignedPullRequests = unassignedPullRequests;
-                });
+                        $scope.assignedPullRequests = assignedPullRequests;
+                        $scope.unassignedPullRequests = unassignedPullRequests;
+                        $scope.errorMessage = undefined;
+                    },
+                    function (errorResponse) {
+                        $scope.errorMessage = errorResponse.data.errorMessage;
+                    }
+                );
             };
 
             getPullRequests();

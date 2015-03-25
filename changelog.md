@@ -1,6 +1,8 @@
 
 ### Version 0.1.0-SNAPSHOT
  - [feature] save user settings: backlist handling
+ - [feature] PRT-45 implemented unassign myself
+ - [feature] Added wallboard filter
  - [feature] Added directive for colors on wallboard
  - [refactor] added tests for ranking directive and adopted pullRequest directive tests for dashboard
  - [bug] fix layout for wallboard
@@ -26,4 +28,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Mon Mar 23 12:36:49 CET 2015
+-- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Tue Mar 24 17:24:04 CET 2015

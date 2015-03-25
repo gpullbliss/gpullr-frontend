@@ -37,7 +37,7 @@ angular.module('dashboardModule')
                     getPullRequests();
                 });
             };
-
+            
             updatePullRequestsInterval = $interval(getPullRequests, 60000);
             getPullRequests();
         }

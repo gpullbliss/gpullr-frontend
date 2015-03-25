@@ -8,9 +8,27 @@ angular.module('pullRequestModule')
                 }
             );
         }
+        
+        function unassignPullRequest(prId) {
+            return $http.put('/api/pulls/' + prId, '').then(
+                function () {
+                    $rootScope.$emit('changeAssignee');
+                }
+            );
+        }
 
-        function getPullRequests() {
-            return $http.get('/api/pulls').then(
+        /**
+         * @param {Array<string>=} reposToInclude
+         * @returns {Array<Object>}
+         */
+        function getPullRequests(reposToInclude) {
+            var url = '/api/pulls';
+
+            if (Array.isArray(reposToInclude) && reposToInclude.length > 0) {
+                url = url + '?repos=' + reposToInclude.join(';');
+            }
+
+            return $http.get(url).then(
                 function (response) {
                     return response.data.items;
                 }
@@ -19,6 +37,7 @@ angular.module('pullRequestModule')
 
         return {
             assignPullRequest: assignPullRequest,
+            unassignPullRequest: unassignPullRequest,
             getPullRequests: getPullRequests
         };
     }]);
