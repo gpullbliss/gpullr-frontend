@@ -7,7 +7,6 @@ angular.module('gpullr', [
     'wallboardModule',
     'angularMoment',
     'repoFilterModule',
-    'smart-table',
     'ui.router',
     'ngModal'
 ]);
