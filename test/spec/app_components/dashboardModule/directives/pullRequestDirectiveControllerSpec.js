@@ -1,81 +1,77 @@
 'use strict';
 
-describe('pullRequestController', function () {
+describe('pullRequestDirectiveController', function () {
     var $compile,
         $scope,
         pullRequestCssClassService,
         pullRequestService,
         directiveScope,
         html = '<pull-request class="block margin hPadding" pull-request="{createdAt: 89}"></pull-request>';
-        
+
     beforeEach(function () {
         pullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
         
-        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function () {
-            return 'something';
-        });
-        
         module('dashboardModule', function ($provide) {
             $provide.value('pullRequestCssClassService', pullRequestCssClassService);
         });
         
         module('appTemplates');
-        
-       inject(function (_$compile_, _$rootScope_, _pullRequestService_) {
-          $compile = _$compile_;
-          $scope = _$rootScope_.$new();
-          pullRequestService = _pullRequestService_;
-          
-            spyOn(pullRequestService, 'unassignPullRequest').and.callFake(function () {
-               return true; 
-            });
-            
-            spyOn(pullRequestService, 'assignPullRequest').and.callFake(function () {
-               return true; 
-            });
-            
-          var element = $compile(angular.element(html))($scope);
-          $scope.$digest();
-          directiveScope = element.find('div').scope();
-       }); 
+
+        inject(function (_$compile_, _$rootScope_, _pullRequestService_) {
+            $compile = _$compile_;
+            $scope = _$rootScope_.$new();
+            pullRequestService = _pullRequestService_;
+
+            spyOn(pullRequestService, 'unassignPullRequest').and.returnValue(true);
+
+            spyOn(pullRequestService, 'assignPullRequest').and.returnValue(true);
+
+            var element = $compile(angular.element(html))($scope);
+            $scope.$digest();
+            directiveScope = element.isolateScope();
+        });
     });
-    
-    it('assignPullRequest without assignee', function () {
-       var pr = {id: 123, assignee: null};
-       directiveScope.assignToMe(pr);
-       
-       expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
+
+    describe('assignToMe', function () {
+        it('calls assignPullRequest without assignee', function () {
+            var pr = {id: 123, assignee: null};
+            directiveScope.assignToMe(pr);
+
+            expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
+        });
+
+        it('calls assignPullRequest with set assignee and aborts confirmation view', function () {
+            var pr = {id: 123, assignee: {id: 123, username: 'testUser'}};
+            directiveScope.assignToMe(pr);
+            expect(directiveScope.modalShown).toBeTruthy();
+
+            directiveScope.abortAssignment();
+            expect(pullRequestService.assignPullRequest).not.toHaveBeenCalledWith(123);
+            expect(directiveScope.modalShown).toBeFalsy();
+
+        });
+
+        it('calls assignPullRequest with assignee and confirms', function () {
+            var pr = {id: 123, assignee: {id: 123, username: 'testUser'}};
+            directiveScope.assignToMe(pr);
+
+            expect(directiveScope.modalShown).toBeTruthy();
+
+            directiveScope.confirmAssignment();
+            expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
+            expect(directiveScope.modalShown).toBeFalsy();
+        });
     });
-    
-    it('assignPullrequest with set assignee and abort confirmation view', function () {
-       var pr = {id: 123, assignee: {id: 123, username: 'testUser'}};
-       directiveScope.assignToMe(pr);
-       expect(directiveScope.modalShown).toBeTruthy();
-       
-       directiveScope.abortAssignment();
-       expect(pullRequestService.assignPullRequest).not.toHaveBeenCalledWith(123);
-       expect(directiveScope.modalShown).not.toBeTruthy();
-       
-    });
-    
-    it('assignPullRequest with assignee and confirm', function () {
-       var pr = {id: 123, assignee: {id: 123, username: 'testUser'}};
-       directiveScope.assignToMe(pr);
-       
-       expect(directiveScope.modalShown).toBeTruthy();
-       
-       directiveScope.confirmAssignment();
-       expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
-       expect(directiveScope.modalShown).not.toBeTruthy();
-    });
-    
-    it('unassignPullRequest', function () {
-       var pr = {id: 123};
-       directiveScope.unassignMe(pr);
-       
-       expect(pullRequestService.unassignPullRequest).toHaveBeenCalledWith(123);
+
+    describe('unassignMe', function () {
+        it('calls unassignPullRequest when unassignMe is called', function () {
+            var pr = {id: 123};
+            directiveScope.unassignMe(pr);
+
+            expect(pullRequestService.unassignPullRequest).toHaveBeenCalledWith(123);
+        });
     });
 });
