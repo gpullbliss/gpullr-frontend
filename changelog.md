@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] removed angular-smart-table dependencies
  - [feature] PRT-45 implemented unassign myself
  - [feature] Added wallboard filter
  - [feature] Added directive for colors on wallboard
@@ -27,4 +28,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Tue Mar 24 17:24:04 CET 2015
+-- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Wed Mar 25 11:20:44 CET 2015
