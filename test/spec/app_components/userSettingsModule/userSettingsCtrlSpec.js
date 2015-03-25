@@ -63,7 +63,7 @@ describe('userSettingsCtrl', function () {
         });
     });
 
-    describe('user settings page', function () {
+    describe('user settings controller', function () {
         it('calls getRepoList and verify results count', function () {
             $scope.$digest();
             expect(userService.getCurrentUser).toHaveBeenCalled();
