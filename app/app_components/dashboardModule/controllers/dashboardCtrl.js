@@ -38,8 +38,6 @@ angular.module('dashboardModule')
                 });
             };
             
-            $scope.loggedInUser = angular.copy($rootScope.user);
-
             updatePullRequestsInterval = $interval(getPullRequests, 60000);
             getPullRequests();
         }
