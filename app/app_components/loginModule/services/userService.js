@@ -5,7 +5,6 @@ angular.module('loginModule')
             var config = {cache: true};
 
             if (byPassCache === true) {
-                console.debug('getCurrentUser force refresh WITHOUT CACHE');
                 config.cache = false;
             }
 
