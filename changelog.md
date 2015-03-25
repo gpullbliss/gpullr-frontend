@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] save user settings: backlist handling
  - [feature] Added directive for colors on wallboard
  - [refactor] added tests for ranking directive and adopted pullRequest directive tests for dashboard
  - [bug] fix layout for wallboard
