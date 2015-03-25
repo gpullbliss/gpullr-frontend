@@ -25,7 +25,7 @@ describe('userSettingsCtrl', function () {
 
             var userSettingsDto = {
                 id: 1,
-                orderOptionDto: "DESC",
+                orderOptionDto: 'DESC',
                 repoBlackList: [1, 4, 5]
             };
 

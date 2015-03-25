@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('userSettingsModule')
+    /* jshint maxparams: false */
     .controller('userSettingsCtrl', [
         '$scope', '$state', 'repoService', 'userSettingsService', 'userService',
         function ($scope, $state, repoService, userSettingsService, userService) {
