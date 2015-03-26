@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
  - [refactor] added some details to project README.md
+ - [feature] optimise header html && less vars
  - [refactor] removed angular-smart-table dependencies
  - [feature] PRT-45 implemented unassign myself
  - [feature] Added wallboard filter
