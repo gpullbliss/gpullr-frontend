@@ -1,0 +1,24 @@
+#header {
+    .borderRadius(0 0 @halfSpacing @halfSpacing);
+    .logo {
+        .floatL;
+        .iconFont;
+        .fontSet(50px, 50px);
+        margin-right: @defaultSpacing;
+        &:after {
+            color: @dbGreen;
+            content: '\e600';
+        }
+    }
+    .bubble {
+        background-color: @warning5;
+        padding: 2px @defaultSpacing;
+        color: @white;
+        margin-left: @halfSpacing;
+        .borderRadius(@defaultSpacing);
+    }
+    .avatarWrapper {
+        .dimension(39px, 39px);
+        margin: @halfSpacing 0;
+    }
+}
