@@ -22,7 +22,7 @@ You have to choose a User to login from the dropdown, otherwise you can't assign
 or filter pullrequest belonging to your project specific needs or interests.
 
 Ensure to have the [gpullr-backend](https://github.com/devbliss/gpullr-backend) running locally, when using the default configuration of the Gruntfile.js.
-Optional you can use the already deployed live-backend by adopting the `host` of the `proxies` in the `grunt.initConfig` of the Gruntfile.js´as follows:
+Optional you can use the already deployed live-backend by adapting the `host` of the `proxies` in the `grunt.initConfig` of the Gruntfile.js´as follows:
 
     proxies: [{
           context: '/api',
@@ -41,13 +41,13 @@ You don't have to be logged in for that feature.
 It is also possible to see only pull requests for a list of repositories. List the repository names after the repos parameter delimited by `;` like this:
 `http://gpullr.devbliss.com/wallboard?repos=repo1;repo2;repo3`
 
-To show only the repositories standards and docbliss use: [http://gpullr.devbliss.com/wallboard?repos=standards;docbliss](http://gpullr.devbliss.com/wallboard?repos=standards;docbliss).
+To show only the repositories standards and docbliss use e.g.: [http://gpullr.devbliss.com/wallboard?repos=standards;docbliss](http://gpullr.devbliss.com/wallboard?repos=standards;docbliss).
 
 ## Deployment
 
-Deploying gpullr-frontend is achieved by a jenkins job, which executes `grunt build` and copying all relevant stuff from the `dist` directory to the server.
+Deploying gpullr-frontend is achieved by a jenkins job, which executes `grunt build` and copies all relevant stuff from the `dist` directory to the server.
 
-The Server which hosts the whole application is provisioned with puppet, hosted by [bing-puppet](https://github.com/devbliss/bingo-puppet/tree/master/modules/gpullr) on a maschine provided by [Bingo](http://staging.bingo.devbliss.com/instances).
+The Server which hosts the whole application is provisioned with puppet, hosted by [bingo-puppet](https://github.com/devbliss/bingo-puppet/tree/master/modules/gpullr) on a machine provided by [Bingo](http://staging.bingo.devbliss.com/instances).
 
 Nginx is used to deliver the gpullr-frontend and you can also find the nginx configuration within the [puppet files](https://github.com/devbliss/bingo-puppet/blob/master/modules/gpullr/files/gpullr_nginx_conf.erb).
 
