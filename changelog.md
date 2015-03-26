@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] added some details to project README.md
  - [refactor] removed angular-smart-table dependencies
  - [feature] PRT-45 implemented unassign myself
  - [feature] Added wallboard filter
@@ -28,4 +29,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Wed Mar 25 11:20:44 CET 2015
+-- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 26 14:59:11 CET 2015
