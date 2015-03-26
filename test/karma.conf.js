@@ -10,7 +10,6 @@ module.exports = function (config) {
             'app/bower_components/angular/angular.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-moment/angular-moment.min.js',
-            'app/bower_components/angular-smart-table/dist/smart-table.min.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'app/bower_components/ngModal/dist/ng-modal.min.js',
             'app/scripts/app.js',
