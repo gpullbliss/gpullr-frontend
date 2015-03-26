@@ -3,19 +3,6 @@
     color: #fff;
 }
 
-.avatarWrapper {
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    display: inline-block;
-}
-
-.avatar {
-    display: inline-block;
-    height: @dashboardAvatarSize;
-    width: @dashboardAvatarSize;
-    vertical-align: top;
-}
-
 .stats {
     white-space: nowrap;
 }
@@ -29,35 +16,35 @@
 }
 
 .youngerThan2h {
-    background-color: @youngerThan2h;
+    background-color: @warning1;
     border-width: 1px 0;
     border: solid;
     border-color: #ddd;
 }
 
 .olderThan2h {
-    background-color: @olderThan2h;
+    background-color: @warning2;
     border-width: 1px 0;
     border: solid;
     border-color: #cc0;
 }
 
 .olderThan4h {
-    background-color: @olderThan4h;
+    background-color: @warning3;
     border-width: 1px 0;
     border: solid;
     border-color: #fc0;
 }
 
 .olderThan8h {
-    background-color: @olderThan8h;
+    background-color: @warning4;
     border-width: 1px 0;
     border: solid;
     border-color: #f88;
 }
 
 .olderThanAMonth {
-    background-color: @olderThanAMonth;
+    background-color: @warning5;
     border-width: 1px 0;
     border: solid;
     border-color: #f00;
@@ -127,71 +114,71 @@
 
     .olderThanAMonth {
         .panel {
-            background-color: @olderThanAMonth;
+            background-color: @warning5;
         }
     }
 
     .olderThan8h {
         .panel {
-            background-color: @olderThan8h;
+            background-color: @warning4;
         }
     }
 
     .olderThan4h {
         .panel {
-            background-color: @olderThan4h;
+            background-color: @warning3;
         }
     }
 
     .olderThan2h {
         .panel {
-            background-color: @olderThan2h;
+            background-color: @warning2;
         }
     }
 
     .youngerThan2h {
         .panel {
-            background-color: @youngerThan2h;
+            background-color: @warning1;
         }
     }
 
     .olderThanAMonth,
     .assignmentOlderThanAMonth {
         .panel-heading {
-            background: darken(@olderThanAMonth, 10%);
-            border-color: darken(@olderThanAMonth, 10%);
+            background: darken(@warning5, 10%);
+            border-color: darken(@warning5, 10%);
         }
     }
 
     .olderThan8h,
     .assignmentOlderThan8h {
         .panel-heading {
-            background: darken(@olderThan8h, 10%);
-            border-color: darken(@olderThan8h, 10%);
+            background: darken(@warning4, 10%);
+            border-color: darken(@warning4, 10%);
         }
     }
 
     .olderThan4h,
     .assignmentOlderThan4h {
         .panel-heading {
-            background: darken(@olderThan4h, 10%);
-            border-color: darken(@olderThan4h, 10%);
+            background: darken(@warning3, 10%);
+            border-color: darken(@warning3, 10%);
         }
     }
 
     .olderThan2h,
     .assignmentOlderThan2h {
         .panel-heading {
-            background: darken(@olderThan2h, 10%);
-            border-color: darken(@olderThan2h, 10%);
+            background: darken(@warning2, 10%);
+            border-color: darken(@warning2, 10%);
         }
     }
 
     .youngerThan2h,
     .assignmentYoungerThan2h {
         .panel-heading {
-            background: darken(@youngerThan2h, 10%);
-            border-color: darken(@youngerThan2h, 10%);
+            background: darken(@warning1, 10%);
+            border-color: darken(@warning1, 10%);
         }
     }
 }
@@ -199,22 +186,6 @@
 // table col style for assignee
 .assignee {
     text-align: center;
-}
-
-#gpullrheader {
-    .bubble {
-        background-color: #f00;
-        padding: 2px 10px;
-        color: #fff;
-        margin-left: 5px;
-        .borderRadius(10px);
-    }
-    .avatar {
-        border-radius: 3px;
-        margin: 5px 15px 5px 0;
-        height: 40px;
-        width: 40px;
-    }
 }
 
 #stats {
