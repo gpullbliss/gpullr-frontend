@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] save user settings: backlist handling
  - [refactor] added some details to project README.md
  - [feature] optimise header html && less vars
  - [refactor] removed angular-smart-table dependencies

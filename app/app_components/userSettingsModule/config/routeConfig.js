@@ -1,13 +1,13 @@
 'use strict';
-angular.module('repoFilterModule')
+angular.module('userSettingsModule')
     .constant('STATE_REPO_FILTER', 'repoFilter')
     .config([
         '$stateProvider', 'STATE_REPO_FILTER', function ($stateProvider, STATE_REPO_FILTER) {
             $stateProvider
                 .state(STATE_REPO_FILTER, {
                     parent: 'page',
-                    //controller: 'loginCtrl',
-                    templateUrl: 'app_components/repoFilterModule/views/repoFilter.html',
+                    controller: 'userSettingsCtrl',
+                    templateUrl: 'app_components/userSettingsModule/views/repoFilter.html',
                     url: '/repo-filter'
                 });
         }]);

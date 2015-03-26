@@ -40,6 +40,8 @@ angular.module('loginModule')
         return {
             getCurrentUser: getCurrentUser,
             getUsersForLogin: getUsersForLogin,
-            logInUser: logInUser
+            logInUser: logInUser,
+
+            clearCacheForGetCurrentUser: clearCacheForGetCurrentUser
         };
     }]);
