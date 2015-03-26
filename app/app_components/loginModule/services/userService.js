@@ -1,14 +1,8 @@
 'use strict';
 angular.module('loginModule')
     .factory('userService', ['$cacheFactory', '$http', '$rootScope', '$filter', function ($cacheFactory, $http, $rootScope) {
-        function getCurrentUser(byPassCache) {
-            var config = {cache: true};
-
-            if (byPassCache === true) {
-                config.cache = false;
-            }
-
-            return $http.get('/api/users/me', config).then(
+        function getCurrentUser() {
+            return $http.get('/api/users/me', {cache: true}).then(
                 function (response) {
                     $rootScope.user = response.data;
                     return response.data;
@@ -46,6 +40,8 @@ angular.module('loginModule')
         return {
             getCurrentUser: getCurrentUser,
             getUsersForLogin: getUsersForLogin,
-            logInUser: logInUser
+            logInUser: logInUser,
+
+            clearCacheForGetCurrentUser: clearCacheForGetCurrentUser
         };
     }]);

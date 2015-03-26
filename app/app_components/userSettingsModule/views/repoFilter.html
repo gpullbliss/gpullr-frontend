@@ -9,7 +9,7 @@
     <div class="configBar col-xs-12">
         <a ng-click="checkAll()" href="">select all</a> /
         <a ng-click="uncheckAll()" href="">unselect all</a>
-        <input type="text" value="Search" class="search" ng-model="searchText.$"/>
+        <input type="text" placeholder="Search" class="search" ng-model="searchText.$"/>
     </div>
     <ul class="dMarginTop clear">
         <li class="col-md-3" data-ng-repeat="repo in repos | filter:searchText | orderBy:['name']">

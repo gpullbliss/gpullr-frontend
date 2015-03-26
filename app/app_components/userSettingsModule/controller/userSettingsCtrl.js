@@ -36,7 +36,7 @@ angular.module('userSettingsModule')
 
                         $scope.checkAll();
 
-                        return userService.getCurrentUser(true);
+                        return userService.getCurrentUser();
                     })
 
                     .then(function (user) {
