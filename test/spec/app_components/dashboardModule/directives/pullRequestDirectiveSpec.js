@@ -7,7 +7,8 @@ describe('pullRequest', function () {
         cssColorClass = 'youngerThan2h';
 
     function getDirectiveHtml(createdAt) {
-        var html = '<pull-request class="block margin hPadding" pull-request="{createdAt: ' + createdAt + '}"></pull-request>';
+
+        var html = '<article class="dvb-pull-request overflowH" data-pull-request="{createdAt: ' + createdAt + '}" logged-in-user="{}"></article>';
         return html;
     }
 
