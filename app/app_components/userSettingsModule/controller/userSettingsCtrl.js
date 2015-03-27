@@ -20,7 +20,6 @@ angular.module('userSettingsModule')
                 return blacklist;
             }
 
-
             function init() {
                 var repoBlacklistHelperMap = {};
 

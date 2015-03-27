@@ -1,6 +1,6 @@
 'use strict';
 angular.module('loginModule')
-    .factory('userService', ['$cacheFactory', '$http', '$rootScope', '$filter', function ($cacheFactory, $http, $rootScope) {
+    .factory('userService', ['$cacheFactory', '$http', '$rootScope', function ($cacheFactory, $http, $rootScope) {
         function getCurrentUser() {
             return $http.get('/api/users/me', {cache: true}).then(
                 function (response) {
