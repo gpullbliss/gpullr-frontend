@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-md-3 author userBlock">
         <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
-        <p class="userName">
+        <p ng-if="pullRequest.author.fullName" class="userName">
             {{pullRequest.author.fullName}}<br/>
             <span>{{pullRequest.author.username}}</span>
         </p>
+        <p ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</p>
     </div>
 
     <div class="col-md-5">
@@ -34,10 +35,11 @@
             ng-if="pullRequest.assignee.id===loggedInUser.id" title="Unassign myself">
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
-        <p ng-if="pullRequest.assignee!==null" class="userName">
-          {{pullRequest.assignee.fullName}}<br/>
-          <span>{{pullRequest.assignee.username}}</span>
+        <p ng-if="pullRequest.author.fullName" class="userName">
+            {{pullRequest.author.fullName}}<br/>
+            <span>{{pullRequest.author.username}}</span>
         </p>
+        <p ng-if="!pullRequest.author.fullName" class="userName">{{pullRequest.author.username}}</p>
     </div>
 </div>
 
