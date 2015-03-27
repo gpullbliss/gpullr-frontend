@@ -1,4 +1,4 @@
-    <div class="col-md-3 author userBlock">
+    <div class="col-xs-3 author userBlock">
         <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
         <p ng-if="pullRequest.author.fullName" class="userName">
             {{pullRequest.author.fullName}}<br/>
@@ -7,21 +7,24 @@
         <p ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</p>
     </div>
 
-    <div class="col-md-5">
-        <a ng-href="{{pullRequest.url}}" target="_blank"><strong>#{{pullRequest.number}} {{pullRequest.title}}</strong></a>
-        <br>
-        Repo: {{pullRequest.repoName}} |
-        <span class="requestCreatedAt" am-time-ago="pullRequest.createdAt"></span> | Status: {{pullRequest.status}}
+    <div class="col-xs-6 facts">
+        <div class="branch">
+            <a class="branchName" ng-href="{{pullRequest.url}}" target="_blank">
+                <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
+            </a>
+            Repo: {{pullRequest.repoName}} |
+            <span class="requestCreatedAt" am-time-ago="pullRequest.createdAt"></span>
+        </div>
+
+        <div class="stats">
+            <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
+            <span class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
+            <br>
+            <span class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
+        </div>
     </div>
 
-    <div class="stats col-md-1">
-        <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
-        <span class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
-        <br>
-        <span class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
-    </div>
-
-    <div  class="assignee userBlock col-md-3">
+    <div  class="assignee userBlock col-xs-3">
         <a data-ng-click="assignToMe(pullRequest)" class="assignMe"  ng-class="{isAssigned: pullRequest.assignee!==null}" ng-if="pullRequest.assignee.id!==loggedInUser.id" title="Assign myself">
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>

@@ -3,10 +3,6 @@
     color: #fff;
 }
 
-.stats {
-    white-space: nowrap;
-}
-
 #wallboard {
     @resizeFactor: 1.6;
     font-size: 100% * @resizeFactor;
@@ -62,29 +58,23 @@
 
     .olderThanAMonth {
         .panel {
-            background-color: @warning5;
+            background-color: @warning3;
         }
     }
 
     .olderThan8h {
         .panel {
-            background-color: @warning4;
+            background-color: @warning3;
         }
     }
 
     .olderThan4h {
         .panel {
-            background-color: @warning3;
-        }
-    }
-
-    .olderThan2h {
-        .panel {
             background-color: @warning2;
         }
     }
 
-    .youngerThan2h {
+    .olderThan2h {
         .panel {
             background-color: @warning1;
         }
@@ -93,37 +83,29 @@
     .olderThanAMonth,
     .assignmentOlderThanAMonth {
         .panel-heading {
-            background: darken(@warning5, 10%);
-            border-color: darken(@warning5, 10%);
+            background: darken(@warning3, 10%);
+            border-color: darken(@warning3, 10%);
         }
     }
 
     .olderThan8h,
     .assignmentOlderThan8h {
         .panel-heading {
-            background: darken(@warning4, 10%);
-            border-color: darken(@warning4, 10%);
+            background: darken(@warning3, 10%);
+            border-color: darken(@warning3, 10%);
         }
     }
 
     .olderThan4h,
     .assignmentOlderThan4h {
         .panel-heading {
-            background: darken(@warning3, 10%);
-            border-color: darken(@warning3, 10%);
-        }
-    }
-
-    .olderThan2h,
-    .assignmentOlderThan2h {
-        .panel-heading {
             background: darken(@warning2, 10%);
             border-color: darken(@warning2, 10%);
         }
     }
 
-    .youngerThan2h,
-    .assignmentYoungerThan2h {
+    .olderThan2h,
+    .assignmentOlderThan2h {
         .panel-heading {
             background: darken(@warning1, 10%);
             border-color: darken(@warning1, 10%);
