@@ -34,3 +34,78 @@
         }
     }
 }
+.pullRequests{
+    li{
+        .overflowH;
+        padding: @halfSpacing 0;
+        margin-bottom: @defaultSpacing;
+    }
+    .requestCreatedAt{
+        .iconFont;
+        &:before{
+            .fontSet(12px, 10px);
+            content: '\e604'' ';
+            color: @dbBlack;
+        }
+    }
+    .filesChanged{
+        .iconFont;
+        &:before{
+            content: '\e603';
+            color: @dbBlack;
+        }
+    }
+    .linesAdded {
+        .iconFont;
+        color: @added;
+        &:before{
+            content: '\e605'' ';
+            color: @dbBlack;
+        }
+    }
+
+    .linesRemoved {
+        color: @removed;
+    }
+    .youngerThan2h,
+    .olderThan2h,
+    .olderThan4h,
+    .olderThan8h,
+    .olderThanAMonth {
+        .borderRadius(@halfSpacing);
+        border: 2px solid @dbBlack;
+    }
+    .youngerThan2h {
+        background-color: @warning1;
+        border-color: #ddd;
+    }
+    .olderThan2h {
+        background-color: @warning2;
+        border-color: #cc0;
+    }
+    .olderThan4h {
+        background-color: @warning3;
+        border-color: #fc0;
+    }
+
+    .olderThan8h {
+        background-color: @warning4;
+//        border-color: #f88;
+    }
+
+    .olderThanAMonth {
+        background-color: @warning5;
+        border-color: #f00;
+    }
+
+    .helpIcon {
+        cursor: help;
+    }
+
+    .rankingList {
+        background-color: #F8F8F8;
+        border-width: 1px 0;
+        border: solid;
+        border-color: #DDD;
+    }
+}

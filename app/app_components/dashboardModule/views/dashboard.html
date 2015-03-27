@@ -1,41 +1,28 @@
-<div id="dashboard"
-     ui-view>
-    <h2>Open Pull Requests</h2>
-
-    <div class="striped">
-        <div class="row">
-            <div class="col-md-9"></div>
-            <div class="col-md-3">
-                <div class="dropdown pull-right">
-                    <button class="btn btn-default dropdown-toggle"
-                            type="button"
-                            id="sort-dropdown"
-                            data-toggle="dropdown"
-                            aria-expanded="true">
-                        Sort
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu"
-                        aria-labelledby="sort-dropdown"
-                        role="menu">
-                        <li>
-                            <a data-ng-click="orderPrList('DESC')"
-                               href="#">Latest first</a>
-                        </li>
-                        <li>
-                            <a data-ng-click="orderPrList('ASC')"
-                               href="#">Oldest first</a>
-                        </li>
-                    </ul>
-                </div>
+<div id="dashboard">
+    <div class="clear">
+        <div class="col-md-9">
+          <h2>Open Pull Requests</h2>
+        </div>
+        <div class="col-md-3">
+            <div class="dropdown pull-right">
+                <button class="btn btn-default dropdown-toggle" type="button" id="sort-dropdown" data-toggle="dropdown" aria-expanded="true">
+                  Sort <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="sort-dropdown" role="menu">
+                    <li>
+                      <a data-ng-click="orderPrList('DESC')"
+                         href="#">Latest first</a>
+                    </li>
+                    <li>
+                      <a data-ng-click="orderPrList('ASC')"
+                         href="#">Oldest first</a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <div ng-repeat="pr in pullRequests">
-            <pull-request
-                class="block margin hPadding"
-                pull-request="pr" logged-in-user="user">
-            </pull-request>
-        </div>
     </div>
+
+    <ul class="pullRequests clear">
+        <li class="dvb-pull-request overflowH" ng-repeat="pr in pullRequests" pull-request="pr" logged-in-user="user"></li>
+    </ul>
 </div>

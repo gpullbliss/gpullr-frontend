@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('dashboardModule')
-    .directive('pullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
+    .directive('dvbPullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
         return {
             scope: {
                 pullRequest: '=',
                 loggedInUser: '='
             },
-            restrict: 'E',
+            restrict: 'C',
             controller: function ($scope, pullRequestService) {
                 var currentPr = 'undefined';
                 $scope.assignToMe = function (selectedPr) {

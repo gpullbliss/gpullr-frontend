@@ -1,4 +1,3 @@
-<div class="row">
     <div class="col-md-3 author userBlock">
         <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
         <p class="userName">
@@ -8,30 +7,24 @@
     </div>
 
     <div class="col-md-5">
-        <a ng-href="{{pullRequest.url}}" target="_blank">#{{pullRequest.number}} {{pullRequest.title}}</a>
+        <a ng-href="{{pullRequest.url}}" target="_blank"><strong>#{{pullRequest.number}} {{pullRequest.title}}</strong></a>
         <br>
         Repo: {{pullRequest.repoName}} |
-        <i class="fa fa-clock-o helpIcon" title="Created"></i>
-        <span am-time-ago="pullRequest.createdAt"></span> | Status: {{pullRequest.status}}
+        <span class="requestCreatedAt" am-time-ago="pullRequest.createdAt"></span> | Status: {{pullRequest.status}}
     </div>
 
     <div class="stats col-md-1">
-        <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
-        <span class="linesAdded">+{{pullRequest.linesAdded}}</span>
+        <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
         <span class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
         <br>
-        <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pullRequest.filesChanged}}
+        <span class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
     </div>
 
     <div  class="assignee userBlock col-md-3">
-        <a data-ng-click="assignToMe(pullRequest)" class="assignMe" 
-            ng-class="{isAssigned: pullRequest.assignee!==null}" 
-            ng-if="pullRequest.assignee.id!==loggedInUser.id" title="Assign myself">
+        <a data-ng-click="assignToMe(pullRequest)" class="assignMe"  ng-class="{isAssigned: pullRequest.assignee!==null}" ng-if="pullRequest.assignee.id!==loggedInUser.id" title="Assign myself">
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
-        <a data-ng-click="unassignMe(pullRequest)" class="assignMe"
-            ng-class="{isAssignedToMe: pullRequest.assignee.id===loggedInUser.id}"
-            ng-if="pullRequest.assignee.id===loggedInUser.id" title="Unassign myself">
+        <a data-ng-click="unassignMe(pullRequest)" class="assignMe" ng-class="{isAssignedToMe: pullRequest.assignee.id===loggedInUser.id}" ng-if="pullRequest.assignee.id===loggedInUser.id" title="Unassign myself">
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
         <p ng-if="pullRequest.assignee!==null" class="userName">
@@ -39,12 +32,9 @@
           <span>{{pullRequest.assignee.username}}</span>
         </p>
     </div>
-</div>
-
-<!-- modal dialog for already assigned pull requests-->
-<modal-dialog show="modalShown" dialog-title="Pull request is already assigned." width="500px" height="30%"
-              on-close="modalClose()">
-    <p>Do you really want to assign it to you?</p>
-    <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
-    <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
-</modal-dialog>
+    <!-- modal dialog for already assigned pull requests-->
+    <modal-dialog show="modalShown" dialog-title="Pull request is already assigned." width="500px" height="30%" on-close="modalClose()">
+      <p>Do you really want to assign it to you?</p>
+      <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
+      <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
+    </modal-dialog>
