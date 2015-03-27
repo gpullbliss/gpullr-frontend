@@ -5,9 +5,13 @@
 
     <div class="panel-body">
         <h3 class="title">{{pullRequest.title}}</h3>
-        <strong class="author">{{pullRequest.author.username}}</strong>
+        <strong class="author" ng-if="pullRequest.author.fullName">{{pullRequest.author.fullName}}</strong>
+        <strong class="author" ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</strong>
     </div>
-    <strong ng-if="pullRequest.assignee" class="panel-footer assignee">
+    <strong ng-if="pullRequest.assignee.fullName" class="panel-footer assignee">
+        {{pullRequest.assignee.fullName}}
+    </strong>
+    <strong ng-if="!pullRequest.assignee.fullName" class="panel-footer assignee">
         {{pullRequest.assignee.username}}
     </strong>
 </div>
