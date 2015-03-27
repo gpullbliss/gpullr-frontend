@@ -2,7 +2,7 @@
     <div class="col-md-3 author userBlock">
         <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
         <p class="userName">
-            Real Name<br/>
+            {{pullRequest.author.fullName}}<br/>
             <span>{{pullRequest.author.username}}</span>
         </p>
     </div>
@@ -35,7 +35,7 @@
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
         <p ng-if="pullRequest.assignee!==null" class="userName">
-          Real Name<br/>
+          {{pullRequest.assignee.fullName}}<br/>
           <span>{{pullRequest.assignee.username}}</span>
         </p>
     </div>
