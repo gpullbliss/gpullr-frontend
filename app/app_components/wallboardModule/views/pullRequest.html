@@ -11,7 +11,7 @@
     <strong ng-if="pullRequest.assignee.fullName" class="panel-footer assignee">
         {{pullRequest.assignee.fullName}}
     </strong>
-    <strong ng-if="!pullRequest.assignee.fullName" class="panel-footer assignee">
+    <strong ng-if="!pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
         {{pullRequest.assignee.username}}
     </strong>
 </div>
