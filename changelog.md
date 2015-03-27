@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
  - [feature] html less cleanup dashboard
+ - [bug] fixed wallboard logic for non fullName and no assignee set
  - [refactor] intergrated backend fullName to templates
  - [feature] save user settings: backlist handling
  - [refactor] added some details to project README.md
