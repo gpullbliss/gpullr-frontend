@@ -7,7 +7,7 @@ angular.module('dashboardModule')
                 pullRequest: '=',
                 loggedInUser: '='
             },
-            restrict: 'C',
+            restrict: 'A',
             controller: function ($scope, pullRequestService) {
                 var currentPr = 'undefined';
                 $scope.assignToMe = function (selectedPr) {

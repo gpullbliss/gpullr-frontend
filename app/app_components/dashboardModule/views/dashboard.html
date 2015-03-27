@@ -1,28 +1,30 @@
 <div id="dashboard">
-    <div class="clear">
-        <div class="col-md-9">
-          <h2>Open Pull Requests</h2>
-        </div>
-        <div class="col-md-3">
-            <div class="dropdown pull-right">
-                <button class="btn btn-default dropdown-toggle" type="button" id="sort-dropdown" data-toggle="dropdown" aria-expanded="true">
-                  Sort <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="sort-dropdown" role="menu">
-                    <li>
-                      <a data-ng-click="orderPrList('DESC')"
-                         href="#">Latest first</a>
-                    </li>
-                    <li>
-                      <a data-ng-click="orderPrList('ASC')"
-                         href="#">Oldest first</a>
-                    </li>
-                </ul>
+    <div class="col-xs-12 marginBottom">
+        <div class="row">
+            <div class="col-md-9">
+              <h2>Open Pull Requests</h2>
+            </div>
+            <div class="col-md-3">
+                <div class="dropdown pull-right">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="sort-dropdown" data-toggle="dropdown" aria-expanded="true">
+                      Sort <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="sort-dropdown" role="menu">
+                        <li>
+                          <a data-ng-click="orderPrList('DESC')"
+                             href="#">Latest first</a>
+                        </li>
+                        <li>
+                          <a data-ng-click="orderPrList('ASC')"
+                             href="#">Oldest first</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="pullRequests clear">
-        <article class="dvb-pull-request overflowH" data-ng-repeat="pr in pullRequests" data-pull-request="pr" data-logged-in-user="user"></article>
+        <section class="overflowH" data-ng-repeat="pr in pullRequests" data-dvb-pull-request data-pull-request="pr" data-logged-in-user="user"></section>
     </div>
 </div>

@@ -6,7 +6,7 @@ describe('pullRequestDirectiveController', function () {
         pullRequestCssClassService,
         pullRequestService,
         directiveScope,
-        html = '<article class="dvb-pull-request overflowH" pull-request="{createdAt: 89}" logged-in-user="{}"></article>';
+        html = '<section class="overflowH" data-dvb-pull-request data-pull-request="{createdAt: 89}" data-logged-in-user="{}"></section>';
 
     beforeEach(function () {
         pullRequestCssClassService = {
