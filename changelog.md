@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] intergrated backend fullName to templates
  - [feature] save user settings: backlist handling
  - [refactor] added some details to project README.md
  - [feature] optimise header html && less vars
@@ -31,4 +32,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 26 14:59:11 CET 2015
+-- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Fri Mar 27 14:09:43 CET 2015

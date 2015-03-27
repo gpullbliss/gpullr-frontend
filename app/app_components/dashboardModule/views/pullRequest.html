@@ -1,9 +1,10 @@
     <div class="col-md-3 author userBlock">
         <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
-        <p class="userName">
-            Real Name<br/>
+        <p ng-if="pullRequest.author.fullName" class="userName">
+            {{pullRequest.author.fullName}}<br/>
             <span>{{pullRequest.author.username}}</span>
         </p>
+        <p ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</p>
     </div>
 
     <div class="col-md-5">
@@ -27,10 +28,11 @@
         <a data-ng-click="unassignMe(pullRequest)" class="assignMe" ng-class="{isAssignedToMe: pullRequest.assignee.id===loggedInUser.id}" ng-if="pullRequest.assignee.id===loggedInUser.id" title="Unassign myself">
             <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
-        <p ng-if="pullRequest.assignee!==null" class="userName">
-          Real Name<br/>
-          <span>{{pullRequest.assignee.username}}</span>
+        <p ng-if="pullRequest.assignee.fullName" class="userName">
+            {{pullRequest.assignee.fullName}}<br/>
+            <span>{{pullRequest.assignee.username}}</span>
         </p>
+        <p ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</p>
     </div>
     <!-- modal dialog for already assigned pull requests-->
     <modal-dialog show="modalShown" dialog-title="Pull request is already assigned." width="500px" height="30%" on-close="modalClose()">
