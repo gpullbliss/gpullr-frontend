@@ -63,14 +63,14 @@ angular.module('userSettingsModule')
                 userSettingsService.persistUserSettings(currentUser);
             };
 
-            $scope.checkAll = function () {
-                angular.forEach($scope.repos, function (repo) {
+            $scope.checkAll = function (filtered) {
+                angular.forEach(filtered, function (repo) {
                     repo.checked = true;
                 });
             };
 
-            $scope.uncheckAll = function () {
-                angular.forEach($scope.repos, function (repo) {
+            $scope.uncheckAll = function (filtered) {
+                angular.forEach(filtered, function (repo) {
                     repo.checked = false;
                 });
             };
