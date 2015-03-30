@@ -1,15 +1,15 @@
-<header id="header" class="container navbar navbar-inverse container-fluid">
-  <a class="logo" ui-sref="{{navBar[0].state}}"></a>
-  <nav class="pull-left">
-      <ul class="nav navbar-nav">
-          <li ui-sref-active="active" ng-repeat="item in navBar" ng-click="navigate(item)">
-              <a ui-sref="{{item.state}}">{{item.title}}
-                  <span ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
-              </a>
-          </li>
-      </ul>
-  </nav>
-  <div class="pull-right" ng-if="user">
+<header id="header" class="col-xs-12 navbar navbar-inverse overflowH">
+    <a class="logo" ui-sref="{{navBar[0].state}}"></a>
+    <nav class="pull-left">
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active" ng-repeat="item in navBar" ng-click="navigate(item)">
+                <a ui-sref="{{item.state}}">{{item.title}}
+                    <span ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="pull-right" ng-if="user">
         <span class="navbar-text">{{user.username}}</span>
         <img class="avatarWrapper" ng-src="{{user.avatarUrl}}" />
     </div>

@@ -1,4 +1,2 @@
-<div id="wrapper">
-    <div id="navbar" ng-controller="headerCtrl" ng-include="'../app_components/headerModule/views/header.html'"></div>
-    <div id="content" class="container" ui-view></div>
-</div>
+<div ng-controller="headerCtrl" class="container" ng-include="'../app_components/headerModule/views/header.html'"></div>
+<div id="content" class="clear container" ui-view></div>

@@ -1,5 +1,8 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] html less cleanup dashboard
+ - [bug] fixed wallboard logic for non fullName and no assignee set
+ - [refactor] intergrated backend fullName to templates
  - [feature] save user settings: backlist handling
  - [refactor] added some details to project README.md
  - [feature] optimise header html && less vars
@@ -31,4 +34,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Thu Mar 26 14:59:11 CET 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri Mar 27 15:48:37 CET 2015
