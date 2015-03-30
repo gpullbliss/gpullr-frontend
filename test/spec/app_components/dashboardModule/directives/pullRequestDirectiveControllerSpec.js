@@ -6,7 +6,7 @@ describe('pullRequestDirectiveController', function () {
         pullRequestCssClassService,
         pullRequestService,
         directiveScope,
-        html = '<pull-request class="block margin hPadding" pull-request="{createdAt: 89}"></pull-request>';
+        html = '<section class="overflowH" data-dvb-pull-request data-pull-request="{createdAt: 89}" data-logged-in-user="{}"></section>';
 
     beforeEach(function () {
         pullRequestCssClassService = {

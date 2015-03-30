@@ -3,64 +3,6 @@
     color: #fff;
 }
 
-.stats {
-    white-space: nowrap;
-}
-
-.linesAdded {
-    color: #55a532;
-}
-
-.linesRemoved {
-    color: #bd2c00;
-}
-
-.youngerThan2h {
-    background-color: @warning1;
-    border-width: 1px 0;
-    border: solid;
-    border-color: #ddd;
-}
-
-.olderThan2h {
-    background-color: @warning2;
-    border-width: 1px 0;
-    border: solid;
-    border-color: #cc0;
-}
-
-.olderThan4h {
-    background-color: @warning3;
-    border-width: 1px 0;
-    border: solid;
-    border-color: #fc0;
-}
-
-.olderThan8h {
-    background-color: @warning4;
-    border-width: 1px 0;
-    border: solid;
-    border-color: #f88;
-}
-
-.olderThanAMonth {
-    background-color: @warning5;
-    border-width: 1px 0;
-    border: solid;
-    border-color: #f00;
-}
-
-.helpIcon {
-    cursor: help;
-}
-
-.rankingList {
-    background-color: #F8F8F8;
-    border-width: 1px 0;
-    border: solid;
-    border-color: #DDD;
-}
-
 #wallboard {
     @resizeFactor: 1.6;
     font-size: 100% * @resizeFactor;
@@ -116,29 +58,23 @@
 
     .olderThanAMonth {
         .panel {
-            background-color: @warning5;
+            background-color: @warning3;
         }
     }
 
     .olderThan8h {
         .panel {
-            background-color: @warning4;
+            background-color: @warning3;
         }
     }
 
     .olderThan4h {
         .panel {
-            background-color: @warning3;
-        }
-    }
-
-    .olderThan2h {
-        .panel {
             background-color: @warning2;
         }
     }
 
-    .youngerThan2h {
+    .olderThan2h {
         .panel {
             background-color: @warning1;
         }
@@ -147,37 +83,29 @@
     .olderThanAMonth,
     .assignmentOlderThanAMonth {
         .panel-heading {
-            background: darken(@warning5, 10%);
-            border-color: darken(@warning5, 10%);
+            background: darken(@warning3, 10%);
+            border-color: darken(@warning3, 10%);
         }
     }
 
     .olderThan8h,
     .assignmentOlderThan8h {
         .panel-heading {
-            background: darken(@warning4, 10%);
-            border-color: darken(@warning4, 10%);
+            background: darken(@warning3, 10%);
+            border-color: darken(@warning3, 10%);
         }
     }
 
     .olderThan4h,
     .assignmentOlderThan4h {
         .panel-heading {
-            background: darken(@warning3, 10%);
-            border-color: darken(@warning3, 10%);
-        }
-    }
-
-    .olderThan2h,
-    .assignmentOlderThan2h {
-        .panel-heading {
             background: darken(@warning2, 10%);
             border-color: darken(@warning2, 10%);
         }
     }
 
-    .youngerThan2h,
-    .assignmentYoungerThan2h {
+    .olderThan2h,
+    .assignmentOlderThan2h {
         .panel-heading {
             background: darken(@warning1, 10%);
             border-color: darken(@warning1, 10%);
