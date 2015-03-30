@@ -81,16 +81,18 @@ describe('userSettingsCtrl', function () {
             // blacklisting ids: 1, 4, 5
             expect(
                 scope.filteredRepos.map(function (o) {
-                    return {id: o.id, checked: o.checked};
+                    var res = {};
+                    res[o.id] = o.checked;
+                    return res;
                 })
             ).toEqual(
                 [
-                    {id: 1, checked: false},
-                    {id: 2, checked: true},
-                    {id: 3, checked: true},
-                    {id: 4, checked: false},
-                    {id: 5, checked: false},
-                    {id: 6, checked: true}
+                    {1: false},
+                    {2: true},
+                    {3: true},
+                    {4: false},
+                    {5: false},
+                    {6: true}
                 ]
             );
 
