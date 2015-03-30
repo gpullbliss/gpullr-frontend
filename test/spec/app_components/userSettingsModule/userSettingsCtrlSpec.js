@@ -2,13 +2,13 @@
 
 describe('userSettingsCtrl', function () {
     var controller,
-        $scope,
-        $state,
-        $timeout,
-        $filter,
+        scope,
+        state,
+        timeout,
+        filter,
         repoService,
         user,
-        $q,
+        q,
         userSettingsService,
         userService;
 
@@ -20,10 +20,10 @@ describe('userSettingsCtrl', function () {
             userSettingsService = _userSettingsService_;
             repoService = _repoService_;
             userService = _userService_;
-            $q = _$q_;
-            $scope = _$rootScope_.$new();
-            $timeout = _$timeout_;
-            $filter = _$filter_;
+            q = _$q_;
+            scope = _$rootScope_.$new();
+            timeout = _$timeout_;
+            filter = _$filter_('filter');
 
             _$rootScope_.user = user;
 
@@ -40,26 +40,26 @@ describe('userSettingsCtrl', function () {
                 {id: 4, name: 'FGH'}, {id: 5, name: 'HIJ'}, {id: 6, name: 'XYZ'}];
 
             spyOn(repoService, 'getRepoList').and.callFake(function () {
-                var deferred = $q.defer();
+                var deferred = q.defer();
                 deferred.resolve(repositories);
                 return deferred.promise;
             });
 
             spyOn(userService, 'getCurrentUser').and.callFake(function () {
-                var deferred = $q.defer();
+                var deferred = q.defer();
                 deferred.resolve(user);
                 return deferred.promise;
             });
 
             spyOn(userSettingsService, 'persistUserSettings').and.callFake(function () {
-                var deferred = $q.defer();
+                var deferred = q.defer();
                 deferred.resolve();
                 return deferred.promise;
             });
 
             controller = $controller('userSettingsCtrl', {
-                $scope: $scope,
-                $state: $state,
+                $scope: scope,
+                $state: state,
                 repoService: repoService,
                 userSettingsService: userSettingsService,
                 userService: userService
@@ -69,86 +69,103 @@ describe('userSettingsCtrl', function () {
 
     describe('user settings controller', function () {
         it('calls getRepoList and verify results count', function () {
-            $scope.$digest();
+            scope.$digest();
             expect(userService.getCurrentUser).toHaveBeenCalled();
             expect(repoService.getRepoList).toHaveBeenCalled();
-            expect($scope.filteredRepos.length).toEqual(6);
+            expect(scope.filteredRepos.length).toEqual(6);
         });
 
         it('blacklisted filteredRepos are unchecked in the list', function () {
-            $scope.$digest();
+            scope.$digest();
 
             // blacklisting ids: 1, 4, 5
-            expect($scope.filteredRepos[0].id).toEqual(1);
-            expect($scope.filteredRepos[0].checked).toBeFalsy();
+            expect(
+                scope.filteredRepos.map(function (o) {
+                    return {id: o.id, checked: o.checked};
+                })
+            ).toEqual(
+                [
+                    {id: 1, checked: false},
+                    {id: 2, checked: true},
+                    {id: 3, checked: true},
+                    {id: 4, checked: false},
+                    {id: 5, checked: false},
+                    {id: 6, checked: true}
+                ]
+            );
 
-            expect($scope.filteredRepos[1].id).toEqual(2);
-            expect($scope.filteredRepos[1].checked).toBeTruthy();
+            // same as....
 
-            expect($scope.filteredRepos[2].id).toEqual(3);
-            expect($scope.filteredRepos[2].checked).toBeTruthy();
+            expect(scope.filteredRepos[0].id).toEqual(1);
+            expect(scope.filteredRepos[0].checked).toBeFalsy();
 
-            expect($scope.filteredRepos[3].id).toEqual(4);
-            expect($scope.filteredRepos[3].checked).toBeFalsy();
+            expect(scope.filteredRepos[1].id).toEqual(2);
+            expect(scope.filteredRepos[1].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[4].id).toEqual(5);
-            expect($scope.filteredRepos[4].checked).toBeFalsy();
+            expect(scope.filteredRepos[2].id).toEqual(3);
+            expect(scope.filteredRepos[2].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[5].id).toEqual(6);
-            expect($scope.filteredRepos[5].checked).toBeTruthy();
+            expect(scope.filteredRepos[3].id).toEqual(4);
+            expect(scope.filteredRepos[3].checked).toBeFalsy();
+
+            expect(scope.filteredRepos[4].id).toEqual(5);
+            expect(scope.filteredRepos[4].checked).toBeFalsy();
+
+            expect(scope.filteredRepos[5].id).toEqual(6);
+            expect(scope.filteredRepos[5].checked).toBeTruthy();
         });
 
         it('should send an empty list of blacklisted ids to the backend', function () {
-            $scope.$digest();
-            $scope.checkAll();
+            scope.$digest();
+            scope.checkAll();
 
-            expect($scope.filteredRepos[0].id).toEqual(1);
-            expect($scope.filteredRepos[0].checked).toBeTruthy();
+            expect(scope.filteredRepos[0].id).toEqual(1);
+            expect(scope.filteredRepos[0].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[1].id).toEqual(2);
-            expect($scope.filteredRepos[1].checked).toBeTruthy();
+            expect(scope.filteredRepos[1].id).toEqual(2);
+            expect(scope.filteredRepos[1].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[2].id).toEqual(3);
-            expect($scope.filteredRepos[2].checked).toBeTruthy();
+            expect(scope.filteredRepos[2].id).toEqual(3);
+            expect(scope.filteredRepos[2].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[3].id).toEqual(4);
-            expect($scope.filteredRepos[3].checked).toBeTruthy();
+            expect(scope.filteredRepos[3].id).toEqual(4);
+            expect(scope.filteredRepos[3].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[4].id).toEqual(5);
-            expect($scope.filteredRepos[4].checked).toBeTruthy();
+            expect(scope.filteredRepos[4].id).toEqual(5);
+            expect(scope.filteredRepos[4].checked).toBeTruthy();
 
-            expect($scope.filteredRepos[5].id).toEqual(6);
-            expect($scope.filteredRepos[5].checked).toBeTruthy();
+            expect(scope.filteredRepos[5].id).toEqual(6);
+            expect(scope.filteredRepos[5].checked).toBeTruthy();
 
-            $scope.saveBlacklist();
+            scope.saveBlacklist();
 
             expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
             expect(user.userSettingsDto.repoBlackList.length).toBe(0);
         });
 
         it('should send a fully populated list of (blacklisted) ids to the backend', function () {
-            $scope.$digest();
-            $scope.uncheckAll();
+            scope.$digest();
+            scope.uncheckAll();
 
-            expect($scope.filteredRepos[0].id).toEqual(1);
-            expect($scope.filteredRepos[0].checked).toBeFalsy();
+            expect(scope.filteredRepos[0].id).toEqual(1);
+            expect(scope.filteredRepos[0].checked).toBeFalsy();
 
-            expect($scope.filteredRepos[1].id).toEqual(2);
-            expect($scope.filteredRepos[1].checked).toBeFalsy();
+            expect(scope.filteredRepos[1].id).toEqual(2);
+            expect(scope.filteredRepos[1].checked).toBeFalsy();
 
-            expect($scope.filteredRepos[2].id).toEqual(3);
-            expect($scope.filteredRepos[2].checked).toBeFalsy();
+            expect(scope.filteredRepos[2].id).toEqual(3);
+            expect(scope.filteredRepos[2].checked).toBeFalsy();
 
-            expect($scope.filteredRepos[3].id).toEqual(4);
-            expect($scope.filteredRepos[3].checked).toBeFalsy();
+            expect(scope.filteredRepos[3].id).toEqual(4);
+            expect(scope.filteredRepos[3].checked).toBeFalsy();
 
-            expect($scope.filteredRepos[4].id).toEqual(5);
-            expect($scope.filteredRepos[4].checked).toBeFalsy();
+            expect(scope.filteredRepos[4].id).toEqual(5);
+            expect(scope.filteredRepos[4].checked).toBeFalsy();
 
-            expect($scope.filteredRepos[5].id).toEqual(6);
-            expect($scope.filteredRepos[5].checked).toBeFalsy();
+            expect(scope.filteredRepos[5].id).toEqual(6);
+            expect(scope.filteredRepos[5].checked).toBeFalsy();
 
-            $scope.saveBlacklist();
+            scope.saveBlacklist();
 
             expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
             expect(user.userSettingsDto.repoBlackList.length).toBe(6);
@@ -156,45 +173,48 @@ describe('userSettingsCtrl', function () {
         });
 
         it('should send a fully populated list of (blacklisted) ids to the backend', function () {
-            $scope.$digest();
+            scope.$digest();
 
-            $scope.checkAll();
-            $scope.saveBlacklist();
+            scope.checkAll();
+            scope.saveBlacklist();
             expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
             expect(user.userSettingsDto.repoBlackList.length).toBe(0);
             expect(user.userSettingsDto.repoBlackList).toEqual([]);
 
-            $scope.uncheckAll();
-            $scope.saveBlacklist();
+            scope.uncheckAll();
+            scope.saveBlacklist();
             expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
             expect(user.userSettingsDto.repoBlackList.length).toBe(6);
             expect(user.userSettingsDto.repoBlackList).toEqual([1, 2, 3, 4, 5, 6]);
         });
 
         it('should list all repositories when the search query is empty', function () {
-            $timeout.flush();
+            timeout.flush();
 
-            expect($scope.filteredRepos.length).toEqual(6);
+            expect(scope.filteredRepos.length).toEqual(6);
         });
 
         it('should list only the repositories whose name match the search query', function () {
-            $scope.searchText = '';
-            $timeout.flush();
-            $scope.$digest;
-            $scope.searchText = 'A';
-            $timeout.flush();
-            $scope.$digest;
+            scope.searchText = 'A';
+            scope.$digest();
+            timeout.flush();
+            expect(scope.filteredRepos.length).toEqual(1);
+            expect(scope.filteredRepos[0].id).toEqual(1);
 
-            console.log('$scope.filteredRepos = ' + $scope.filteredRepos);
-            for (var i in $scope.filteredRepos) {
-                var repo = $scope.filteredRepos[i];
-                console.log('repo: ' + repo);
-                for (var j in repo) {
-                    console.log('repo[' + j + '] = ' + repo[j]);
-                }
-            }
+            scope.searchText = 'C';
+            scope.$digest();
+            timeout.flush();
+            expect(scope.filteredRepos.length).toEqual(3);
+            expect(scope.filteredRepos.map(function (o) {
+                return o.id;
+            })).toEqual([1, 2, 3]);
 
-            expect($scope.filteredRepos.length).toEqual(1);
+            scope.searchText = 'X';
+            scope.$digest();
+            timeout.flush();
+            expect(scope.filteredRepos.length).toEqual(1);
+            expect(scope.filteredRepos[0].id).toEqual(6);
+
         });
     });
 });

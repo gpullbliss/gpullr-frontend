@@ -9,8 +9,6 @@ angular.module('userSettingsModule')
             var currentUser = {};
             var timeoutPromise;
             var repos = [];
-            $scope.filteredRepos = [];
-
 
             function buildBlackList() {
                 var blacklist = [];
@@ -76,11 +74,10 @@ angular.module('userSettingsModule')
                 });
             };
 
-            $scope.$watch('searchText', function (val) {
+            $scope.$watch('searchText', function (value) {
                 $timeout.cancel(timeoutPromise);
                 timeoutPromise = $timeout(function () {
-                    console.log('searchText = ' + val);
-                    $scope.filteredRepos = $filter('filter')(repos, val);
+                    $scope.filteredRepos = $filter('filter')(repos, {name: value});
                 }, 300);
             });
 
