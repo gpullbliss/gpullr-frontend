@@ -75,6 +75,9 @@ angular.module('userSettingsModule')
             };
 
             $scope.$watch('searchText', function (value) {
+                if (value === undefined)
+                    return;
+
                 $timeout.cancel(timeoutPromise);
                 timeoutPromise = $timeout(function () {
                     $scope.filteredRepos = $filter('filter')(repos, {name: value});
