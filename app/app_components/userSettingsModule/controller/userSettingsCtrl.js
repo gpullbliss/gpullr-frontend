@@ -75,8 +75,9 @@ angular.module('userSettingsModule')
             };
 
             $scope.$watch('searchText', function (value) {
-                if (value === undefined)
+                if (value === undefined) {
                     return;
+                }
 
                 $timeout.cancel(timeoutPromise);
                 timeoutPromise = $timeout(function () {
