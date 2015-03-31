@@ -9,55 +9,42 @@ angular.module('dashboardModule')
             },
             restrict: 'E',
             controller: function ($scope, pullRequestService) {
-                //console.log($scope.pullRequest);  
-                //console.log($scope.loggedInUser);
-                
-                var assignMeClass = 'assignMe ';
+                var ACTION_ASSIGN_TO_ME = 'assignToMe',
+                    ACTION_UNASSIGN_ME = 'unassignMe',
+                    ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAassignToMe',
+                    currentPr = 'undefined',
+                    defaultTitle = 'Assign myself';
                  
-                
-                $scope.assigneeStyle = function () {
+                function init() {
                     if ($scope.pullRequest.assignee === null) {
-                        $scope.assignTitle='Assign myself';
-                        $scope.assignment = 'assignToMe'
-                        return assignMeClass;
+                        $scope.assignTitle= defaultTitle;
+                        $scope.assignment = ACTION_ASSIGN_TO_ME;
+                        $scope.assignmentStyle = '';
                     } else if ($scope.pullRequest.assignee.id === $scope.loggedInUser.id) {
-                        $scope.assignTitle='Unassign myself';
-                        $scope.assignment = 'unassignMe'
-                        return assignMeClass + 'isAssignedToMe';
+                        $scope.assignTitle= 'Unassign myself';
+                        $scope.assignment = ACTION_UNASSIGN_ME;
+                        $scope.assignmentStyle = 'isAssignedToMe';
                     } else {
-                        $scope.assignTitle='Assign myself';
-                        $scope.assignment = 'ConfirmAassignToMe'
-                        return assignMeClass + 'isAssigned';
+                        $scope.assignTitle= defaultTitle;
+                        $scope.assignment = ACTION_CONFIRM_ASSIGN_TO_ME;
+                        $scope.assignmentStyle = 'isAssigned';
                     }
                 };
                 
-                var currentPr = 'undefined';
                 $scope.assignmentAction = function (selectedPr, action) {
                     currentPr = selectedPr;
                     switch (action) {
-                        case 'assignToMe':
-                    console.log('assignToMe');
+                        case ACTION_ASSIGN_TO_ME:
                             pullRequestService.assignPullRequest(currentPr.id);
                             break;
-                        case 'ConfirmAassignToMe':
-                    console.log('ConfirmAssignToMe');
+                        case ACTION_CONFIRM_ASSIGN_TO_ME:
                             $scope.modalShown = true;
                             break;
-                        case 'unassignMe':
-                    console.log('unassignMe');
+                        case ACTION_UNASSIGN_ME:
                             pullRequestService.unassignPullRequest(currentPr.id);
                             break;
                     }
                 };
-                
-               /* $scope.assignToMe = function (selectedPr) {
-                    currentPr = selectedPr;
-                    if (currentPr.assignee === null) {
-                        pullRequestService.assignPullRequest(currentPr.id);
-                    } else {
-                        $scope.modalShown = true;
-                    }
-                }; */
 
                 $scope.confirmAssignment = function () {
                     pullRequestService.assignPullRequest(currentPr.id);
@@ -73,10 +60,7 @@ angular.module('dashboardModule')
                 $scope.modalClose = function () {
                     $scope.modalShown = false;
                 };
-                
-              /*  $scope.unassignMe = function (selectedPr) {
-                    pullRequestService.unassignPullRequest(selectedPr.id);
-                }; */
+                init();
             },
             templateUrl: 'app_components/dashboardModule/views/assignment.html'
         };
