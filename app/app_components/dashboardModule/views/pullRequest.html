@@ -1,30 +1,29 @@
-<div class="row">
-    <div class="col-md-3 author userBlock">
-        <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
-        <p ng-if="pullRequest.author.fullName" class="userName">
-            {{pullRequest.author.fullName}}<br/>
-            <span>{{pullRequest.author.username}}</span>
-        </p>
-        <p ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</p>
-    </div>
+<div class="col-md-3 author userBlock">
+    <img class="avatarWrapper" ng-src="{{pullRequest.author.avatarUrl}}">
+    <p ng-if="pullRequest.author.fullName" class="userName">
+        {{pullRequest.author.fullName}}<br/>
+        <span>{{pullRequest.author.username}}</span>
+    </p>
+    <p ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</p>
+</div>
 
-    <div class="col-md-5">
-        <a ng-href="{{pullRequest.url}}" target="_blank">#{{pullRequest.number}} {{pullRequest.title}}</a>
-        <br>
+<div class="col-xs-6 facts">
+    <div class="branch">
+        <a class="branchName" ng-href="{{pullRequest.url}}" target="_blank">
+            <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
+        </a>
         Repo: {{pullRequest.repoName}} |
-        <i class="fa fa-clock-o helpIcon" title="Created"></i>
-        <span am-time-ago="pullRequest.createdAt"></span> | Status: {{pullRequest.status}}
+        <span class="requestCreatedAt" am-time-ago="pullRequest.createdAt"></span>
     </div>
 
-    <div class="stats col-md-1">
-        <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
-        <span class="linesAdded">+{{pullRequest.linesAdded}}</span>
+    <div class="stats">
+        <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
         <span class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
         <br>
-        <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pullRequest.filesChanged}}
+        <span class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
     </div>
+</div>
 
-    <assignment
-        pull-request="pullRequest" logged-in-user="loggedInUser">
-    </assignment>
+<div data-dvb-assignment
+    data-pull-request="pullRequest" data-logged-in-user="loggedInUser">
 </div>

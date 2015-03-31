@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('dashboardModule')
-    .directive('assignment', function () {
+    .directive('dvbAssignment', function () {
         return {
             scope: {
                 pullRequest: '=',
                 loggedInUser: '='
             },
-            restrict: 'E',
+            restrict: 'A',
             controller: function ($scope, pullRequestService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
