@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [refactor] extracted assignment stuff from pull request directive into own assignment directive
+ - [feature] user settings repo search: (un)check all checks only the search result
  - [feature] html less cleanup dashboard
  - [bug] fixed wallboard logic for non fullName and no assignee set
  - [refactor] intergrated backend fullName to templates
@@ -35,4 +35,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Tue Mar 31 11:42:28 CEST 2015
+-- Last change by: Alexander Bluem <lxbluem@gmail.com> Mon Mar 30 18:26:55 CEST 2015
