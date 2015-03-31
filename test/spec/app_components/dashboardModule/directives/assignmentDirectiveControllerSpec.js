@@ -15,7 +15,7 @@ describe('assignmentDirectiveController', function () {
         }
 
         return '<div data-dvb-assignment data-pull-request="' + assigneeJson + '" data-logged-in-user="{id: 1234}"></div>';
-    }; 
+    }
 
     beforeEach(function () {
         module('dashboardModule');

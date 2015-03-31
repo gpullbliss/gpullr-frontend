@@ -29,7 +29,7 @@ angular.module('dashboardModule')
                         $scope.assignment = ACTION_CONFIRM_ASSIGN_TO_ME;
                         $scope.assignmentStyle = 'isAssigned';
                     }
-                };
+                }
                 
                 $scope.assignmentAction = function (selectedPr, action) {
                     currentPr = selectedPr;
