@@ -1,4 +1,4 @@
-<div class="contentWrapper" id="repoFilter" data-ui-view>
+<div class="contentWrapper" id="repoFilter">
     <div class="head">
       <h3 class="floatL">
         devbliss Repos
@@ -12,11 +12,11 @@
             <a class="btn btn-default"  data-ng-click="uncheckAll()" href="">unselect all</a>
         </div>
         <div class="col-xs-3">
-            <input type="text" placeholder="Search" class="search form-control" data-ng-model="searchText.$"/>
+            <input type="text" placeholder="Search" class="search form-control" data-ng-model="searchText"/>
         </div>
     </div>
     <ul class="row">
-        <li class="col-md-3" data-ng-repeat="repo in repos | filter:searchText | orderBy:['name']">
+        <li class="col-md-3" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
             <label for="{{repo.name}}"  data-ng-class="{striked : !repo.checked}">
                 <input  data-ng-model="repo.checked" id="{{repo.name}}" type="checkbox"/>
                 {{repo.name}}

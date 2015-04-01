@@ -1,0 +1,21 @@
+<div class="assignee userBlock col-xs-3">
+    <a data-ng-click="assignmentAction(pullRequest, assignment)" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
+        <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+    </a>
+
+    <p ng-if="pullRequest.assignee.fullName" class="userName">
+        {{pullRequest.assignee.fullName}}<br/>
+        <span>{{pullRequest.assignee.username}}</span>
+    </p>
+    <p ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</p>
+</div>
+
+<!-- modal dialog for already assigned pull requests-->
+<modal-dialog show="modalShown" dialog-title="Pull request is already assigned." width="30%" height="20%"
+              on-close="abortAssignment()">
+    <p>Do you really want to assign it to you?</p>
+    <div class="paddingTop">
+       <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
+       <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
+    </div>
+</modal-dialog>
