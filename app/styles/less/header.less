@@ -1,5 +1,12 @@
 #header {
     .borderRadius(0 0 @halfSpacing @halfSpacing);
+    background-color: @dbBlack;
+    a {
+        color: @white;
+        &.active {
+            background-color: #878B96;
+        }
+    }
     .logo {
         .floatL;
         .iconFont;
@@ -18,6 +25,6 @@
     }
     .avatarWrapper {
         .dimension(39px, 39px);
-        margin: @halfSpacing 0;
+        margin: 5px 0;
     }
 }

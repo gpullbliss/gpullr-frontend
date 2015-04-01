@@ -1,24 +1,34 @@
-<div class="podium">
-    <div class="podiumName">{{rankingList[2].username}}
-        <div class="podiumBlock thirdPlace">3.</div>
+<div class="col-md-6 col-md-offset-3 topRanks">
+    <div class="podium thirdPlace">
+        <p class="podiumName">
+            <strong class="block"  data-ng-repeat="user in rankingList[2].users">{{user.fullName}}</strong>
+        </p>
+        <div class="podiumBlock"></div>
     </div>
-    <div class="podiumName">{{rankingList[0].username}}
-        <div class="podiumBlock firstPlace">1.</div>
+    <div class="podium firstPlace">
+        <p class="podiumName">
+            <strong class="block"  data-ng-repeat="user in rankingList[0].users">{{user.fullName}}</strong>
+        </p>
+        <div class="podiumBlock"></div>
     </div>
-    <div class="podiumName">{{rankingList[1].username}}
-        <div class="podiumBlock secondPlace">2.</div>
+    <div class="podium secondPlace">
+        <p class="podiumName">
+            <strong class="block"  data-ng-repeat="user in rankingList[1].users">{{user.fullName}}</strong>
+        </p>
+        <div class="podiumBlock"></div>
     </div>
 </div>
 
-<div class="row rankingHeadline">
-    <div class="col-md-3">Developer</div>
-    <div class="col-md-3">Closed Pull Requests</div>
-    <div class="col-md-3">Lines of Code</div>
-    <div class="col-md-3">Rank</div>
+<div class="overflowH clear rankingHeadline">
+    <strong class="block col-xs-3">Developer</strong>
+<strong class="block col-xs-2">Closed Pull Requests</strong>
+    <strong class="block col-xs-6">Lines of Code</strong>
+        <strong class="block col-xs-1">Rank</strong>
 </div>
-<div class="striped" ng-repeat="rank in rankingList">
-    <ranking-list
-        class="block margin hPadding rankingStats"
-        rankdata="rank">
-    </ranking-list>
+
+<div class="listView"  data-ng-repeat="rank in rankingList">
+    <div  data-ng-repeat="user in rank.users">
+        <ranking-list class="rankingStats" rankdata="rank" userdata="user">
+        </ranking-list>
+    </div>
 </div>
