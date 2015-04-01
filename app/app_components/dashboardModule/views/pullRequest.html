@@ -1,9 +1,9 @@
     <div class="col-xs-3 author userBlock">
         <img class="avatarWrapper"  data-ng-src="{{pullRequest.author.avatarUrl}}">
-        <p  data-ng-if="pullRequest.author.fullName" class="userName">
+        <h5  data-ng-if="pullRequest.author.fullName" class="userName">
             {{pullRequest.author.fullName}}<br/>
             <span>{{pullRequest.author.username}}</span>
-        </p>
+        </h5>
         <p class="userName"  data-ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</p>
     </div>
 
@@ -32,10 +32,10 @@
         <a data-ng-click="unassignMe(pullRequest)" class="assignMe isAssignedToMe"  data-ng-if="pullRequest.assignee.id===loggedInUser.id" title="Unassign myself">
             <img class="avatarWrapper"  data-ng-if="pullRequest.assignee!==null"  data-ng-src="{{pullRequest.assignee.avatarUrl}}">
         </a>
-        <p  data-ng-if="pullRequest.assignee.fullName" class="userName">
+        <h5  data-ng-if="pullRequest.assignee.fullName" class="userName">
             {{pullRequest.assignee.fullName}}<br/>
             <span>{{pullRequest.assignee.username}}</span>
-        </p>
+        </h5>
         <p  data-ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</p>
     </div>
     <!-- modal dialog for already assigned pull requests-->
