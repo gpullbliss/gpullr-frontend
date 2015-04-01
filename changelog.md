@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] global layout changes
  - [feature] html less cleanup dashboard
  - [bug] fixed wallboard logic for non fullName and no assignee set
  - [refactor] intergrated backend fullName to templates
@@ -34,4 +35,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri Mar 27 15:48:37 CET 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 01 13:26:03 CEST 2015
