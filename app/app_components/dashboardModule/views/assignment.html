@@ -1,5 +1,5 @@
 <div class="assignee userBlock col-xs-3">
-    <a data-ng-click="assignmentAction(pullRequest, assignment)" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
+    <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
         <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
 
@@ -11,11 +11,20 @@
 </div>
 
 <!-- modal dialog for already assigned pull requests-->
-<modal-dialog show="modalShown" dialog-title="Pull request is already assigned." width="30%" height="20%"
-              on-close="abortAssignment()">
-    <p>Do you really want to assign it to you?</p>
-    <div class="paddingTop">
-       <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
-       <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
+<div class="modal fade" data-ng-if="assignmentModal" id="modal{{pullRequest.id}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="modalClose" data-dismiss="modal"></a>
+                <h4 class="modal-title">
+                    Pull request is already assigned.
+                </h4>
+            </div>
+            <p class="modal-body">Do you really want to assign it to you?</p>
+            <div class="modal-footer">
+                <button class="btn btn-default floatL" data-dismiss="modal">Abort</button>
+                <button class="btn" data-ng-click="confirmAssignment()">Confirm</button>
+            </div>
+        </div>
     </div>
-</modal-dialog>
+</div>
