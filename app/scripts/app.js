@@ -7,6 +7,5 @@ angular.module('gpullr', [
     'wallboardModule',
     'angularMoment',
     'userSettingsModule',
-    'ui.router',
-    'ngModal'
+    'ui.router'
 ]);
