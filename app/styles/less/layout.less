@@ -3,6 +3,17 @@
     color: #fff;
 }
 
+body {
+    background-color: @dbGray;
+}
+
+.contentWrapper {
+    .borderRadius(5px);
+    background-color: @dbLightGray;
+    margin-bottom: @defaultSpacing;
+    padding: @defaultSpacing @defaultSpacing 0 @defaultSpacing;
+}
+
 #wallboard {
     @resizeFactor: 1.6;
     font-size: 100% * @resizeFactor;
@@ -118,50 +129,6 @@
     text-align: center;
 }
 
-#stats {
-    .podium {
-        height: 150px;
-        margin: 40px auto;
-        width: 60%
-    }
-
-    .podiumName {
-        display: inline-block;
-        width: 20%;
-        text-align: center;
-    }
-
-    .rankingHeadline {
-        width: 1120px;
-        margin-left: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        border-width: 1px 0;
-        border: solid;
-        border-color: #DDD;
-    }
-
-    .podiumBlock {
-        font-size: 40px;
-        line-height: 50px;
-        text-align: center;
-    }
-
-    .firstPlace {
-        padding-top: 50px;
-        background-color: @gold;
-    }
-
-    .secondPlace {
-        padding-top: 20px;
-        background-color: @silver;
-    }
-
-    .thirdPlace {
-        background-color: @bronze;
-    }
-}
-
 .ng-modal-overlay {
     /* A dark translucent div that covers the whole screen */
     position: absolute;
@@ -207,4 +174,21 @@
     display: inline-block;
     font-weight: bold;
     font-family: 'arial', 'sans-serif';
+}
+
+#content .nav-tabs {
+    border-bottom: 1px solid @dbBlack;
+    li {
+        margin: 0;
+    }
+    a {
+        background-color: @dbGray;
+        border: none;
+        font-weight: bold;
+        margin-right: @halfSpacing;
+    }
+    .active a {
+        background-color: @dbBlack;
+        color: @white;
+    }
 }

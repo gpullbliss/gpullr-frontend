@@ -1,7 +1,7 @@
-<div id="stats">
-    <h2>gPullR Ranking</h2>
-    <ul class="nav nav-tabs">
-        <li ui-sref-active="active" ng-repeat="tab in tabs"><a ui-sref="{{tab.state}}">{{tab.title}}</a></li>
+<div class="contentWrapper" id="ranking">
+    <h2 class="marginBottom">User Ranking</h2>
+    <ul class="nav nav-tabs paddingLeft">
+        <li data-ui-sref-active="active" data-ng-repeat="tab in tabs"><a data-ui-sref="{{tab.state}}">{{tab.title}}</a></li>
     </ul>
-    <div ui-view></div>
+    <div data-ui-view></div>
 </div>

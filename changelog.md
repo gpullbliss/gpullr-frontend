@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] global layout changes
  - [refactor] extracted assignment stuff from pull request directive into own assignment directive
  - [feature] user settings repo search: (un)check all checks only the search result
  - [feature] html less cleanup dashboard
@@ -36,4 +37,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Philipp Karstedt <philipp.karstedt@devbliss.com> Tue Mar 31 13:36:22 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 01 13:26:03 CEST 2015

@@ -5,7 +5,8 @@ angular.module('dashboardModule')
         return {
             replace: true,
             scope: {
-                ranking: '=rankdata'
+                ranking: '=rankdata',
+                user: '=userdata'
             },
             restrict: 'E',
             templateUrl: 'app_components/dashboardModule/views/rankingList.html'
