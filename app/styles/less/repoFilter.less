@@ -1,21 +1,12 @@
 #repoFilter {
     .overflowH;
     .head {
-        border-bottom: 1px solid @black;
-        margin-bottom: @halfSpacing;
-        padding-bottom: @halfSpacing;
+        .overflowH;
+        margin-bottom: @defaultSpacing;
     }
     .configBar {
-        border-bottom: 1px solid @black;
-        margin-bottom: @halfSpacing;
-        padding-bottom: @halfSpacing;
-        a {
-            display: inline-block;
-            padding-top: 2px;
-        }
-        .search {
-            .floatR;
-        }
+        .overflowH;
+        margin-bottom: @defaultSpacing;
     }
     li {
         margin-bottom: @defaultSpacing;
@@ -23,7 +14,12 @@
             margin-right: @halfSpacing;
         }
         label {
+            .borderRadius(@halfSpacing);
             .ellipsis;
+            background: rgba(255, 255, 255, .7);
+            color: @dbBlack;
+            font-weight: bold;
+            padding: @halfSpacing;
             &.striked {
                 text-decoration: line-through;
             }
