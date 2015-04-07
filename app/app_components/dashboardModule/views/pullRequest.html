@@ -12,7 +12,9 @@
             <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
         </a>
         Repo: {{pullRequest.repoName}} |
-        <span class="requestCreatedAt" am-time-ago="pullRequest.createdAt"></span>
+        <span class="requestCreatedAt" am-time-ago="pullRequest.createdAt">|</span>
+        build state: {{pullRequest.buildStatus}} |
+        comments: {{pullRequest.numberOfComments}}
     </div>
 
     <div class="stats">
