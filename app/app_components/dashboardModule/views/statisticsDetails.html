@@ -19,16 +19,9 @@
     </div>
 </div>
 
-<div class="overflowH clear rankingHeadline">
-    <strong class="block col-xs-3">Developer</strong>
-<strong class="block col-xs-2">Closed Pull Requests</strong>
-    <strong class="block col-xs-6">Lines of Code</strong>
-        <strong class="block col-xs-1">Rank</strong>
-</div>
-
-<div class="listView"  data-ng-repeat="rank in rankingList">
+<div class="listView clear"  data-ng-repeat="rank in rankingList">
     <div  data-ng-repeat="user in rank.users">
-        <ranking-list class="rankingStats" rankdata="rank" userdata="user">
-        </ranking-list>
+        <div data-dvb-ranking-list class="rankingStats" rankdata="rank" userdata="user">
+        </div>
     </div>
 </div>

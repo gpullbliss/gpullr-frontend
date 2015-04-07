@@ -3,6 +3,7 @@
         display: table;
         margin-top: @doubleSpacing;
         margin-bottom: @doubleSpacing;
+        padding: 0;
     }
     .podium {
         display: table-cell;
@@ -50,7 +51,6 @@
             }
         }
     }
-
     .thirdPlace {
         .podiumBlock {
             .borderRadius(5px 0 0 0);
@@ -59,6 +59,14 @@
                 content: '\e608';
             }
         }
+    }
+    .rank{
+        .block;
+        .fontSet(30px, 46px);
+        .textC;
+        color: @dbLightGray;
+        text-shadow: 1px 1px @dbBlack;
+        font-weight: bold;
     }
 }
 
