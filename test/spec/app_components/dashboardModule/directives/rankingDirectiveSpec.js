@@ -7,7 +7,7 @@ describe('directive: ranking', function () {
     function getDirectiveHtml(ranking, user) {
         var html = '<div data-dvb-ranking-list class="rankingStats" rankdata="{rank: ' + ranking.rank + ', closedCount: ' + ranking.closedCount + '}" userdata="{username: ' + user.username + ', avatarUrl: ' + user.avatarUrl + '}"></div>';
         return html;
-    };
+    }
 
     beforeEach(function () {
         module('dashboardModule');
