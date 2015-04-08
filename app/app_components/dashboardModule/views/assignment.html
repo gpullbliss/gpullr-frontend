@@ -3,11 +3,11 @@
         <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
 
-    <p ng-if="pullRequest.assignee.fullName" class="userName">
+    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" ng-if="pullRequest.assignee.fullName" class="userName">
         {{pullRequest.assignee.fullName}}<br/>
         <span>{{pullRequest.assignee.username}}</span>
-    </p>
-    <p ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</p>
+    </a>
+    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</a>
 </div>
 
 <!-- modal dialog for already assigned pull requests-->

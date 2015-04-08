@@ -1,21 +1,24 @@
 <section>
     <div class="col-xs-3 userBlock">
-        <img class="avatarWrapper"  data-ng-src="{{user.avatarUrl}}">
-        <h5 class="userName">
-          {{user.fullName}}<br/>
-          <span>{{user.username}}</span>
-        </h5>
+        <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
+        <a class="userName" target="_blank" href="{{user.profileUrl}}">
+            {{user.fullName}}<br/>
+            <span>{{user.username}}</span>
+        </a>
     </div>
 
-    <div class="col-xs-2">
-        {{ranking.closedCount}}
+    <div class="facts col-xs-6">
+        <p>
+            <strong>Closed Pull Requests:</strong>
+            {{ranking.closedCount}}
+        </p>
+        <p>
+            <strong>Lines of Code:</strong>
+            not yet implemented
+        </p>
     </div>
 
-    <div class="col-xs-6">
-        not yet implemented
-    </div>
-
-    <div class="col-xs-1">
+    <div class="rank col-xs-1 col-md-offset-2">
         {{ranking.rank}}
     </div>
 </section>
