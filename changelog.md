@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [feature] redesign renkinglist
+ - [feature] redesign rankinglist
  - [feature] redesign modals
  - [feature] global layout changes
  - [refactor] extracted assignment stuff from pull request directive into own assignment directive
