@@ -16,7 +16,6 @@
     "angular-moment": "0.9.0",
     "angular-ui-router": "0.2.13",
     "components-font-awesome": "4.3.0",
-    "ngModal": "1.2.0",
     "components-bootstrap": "3.3.2"
   },
   "devDependencies": {

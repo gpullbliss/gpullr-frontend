@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] redesign modals
  - [feature] global layout changes
  - [refactor] extracted assignment stuff from pull request directive into own assignment directive
  - [feature] user settings repo search: (un)check all checks only the search result
@@ -37,4 +38,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 01 13:26:03 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Apr 07 13:48:51 CEST 2015

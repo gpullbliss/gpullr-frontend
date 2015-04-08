@@ -60,7 +60,7 @@ describe('assignmentDirectiveController', function () {
        }); 
     });
     
-    describe('assignmentAction', function () {
+    describe('assignmentAction without modal', function () {
         beforeEach(function () {
             spyOn(pullRequestService, 'unassignPullRequest').and.returnValue(true);
             spyOn(pullRequestService, 'assignPullRequest').and.returnValue(true);
@@ -68,59 +68,43 @@ describe('assignmentDirectiveController', function () {
             element = $compile(angular.element(getDirectiveHtml()))($scope);
             $scope.$digest();
             directiveScope = element.isolateScope();
-
         });
 
         it('calls with ACTION_ASSIGN_TO_ME', function () {
             var pr = {id: 123};
             directiveScope.assignmentAction(pr, 'assignToMe');
-            
-            expect(directiveScope.modalShown).toBeFalsy();
-            expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
-        });
 
-        it('calls with ACTION_CONFIRM_ASSIGN_TO_ME', function () {
-            var pr = {id: 123};
-            directiveScope.assignmentAction(pr, 'confirmAssignToMe');
-            
-            expect(directiveScope.modalShown).toBeTruthy();
-            expect(pullRequestService.assignPullRequest).not.toHaveBeenCalled();
+            expect(directiveScope.assignmentModal).toEqual('');
+            expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
         });
 
         it('calls with ACTION_UNASSIGN_ME', function () {
             var pr = {id: 123};
             directiveScope.assignmentAction(pr, 'unassignMe');
-            
-            expect(directiveScope.modalShown).toBeFalsy();
+
+            expect(directiveScope.assignmentModal).toEqual('');
             expect(pullRequestService.unassignPullRequest).toHaveBeenCalledWith(123);
         });
     });
     
-    describe('confirm assign to me', function () {
+    describe('assignmentAction with modal and confirm assign to me', function () {
         beforeEach(function () {
             spyOn(pullRequestService, 'assignPullRequest').and.returnValue(true);
 
-            element = $compile(angular.element(getDirectiveHtml()))($scope);
+            element = $compile(angular.element(getDirectiveHtml(4321)))($scope);
             $scope.$digest();
             directiveScope = element.isolateScope();
             
             var pr = {id: 123};
             directiveScope.assignmentAction(pr, 'confirmAssignToMe');
-            
-            expect(directiveScope.modalShown).toBeTruthy();
+
+            expect(directiveScope.assignmentModal).toEqual('modal');
             expect(pullRequestService.assignPullRequest).not.toHaveBeenCalled();
         });
 
         it('assigns the pull request because confirmAssignment was called', function () {
             directiveScope.confirmAssignment();
-            expect(directiveScope.modalShown).toBeFalsy();
             expect(pullRequestService.assignPullRequest).toHaveBeenCalledWith(123);
-        });
-
-        it('does not assign the pull request because abortAssginment was called', function () {
-            directiveScope.abortAssignment();
-            expect(directiveScope.modalShown).toBeFalsy();
-            expect(pullRequestService.assignPullRequest).not.toHaveBeenCalled();
         });
     });
 });
