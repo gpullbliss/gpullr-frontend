@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
  - [feature] redesign renkinglist
+ - [feature] redesign modals
  - [feature] global layout changes
  - [refactor] extracted assignment stuff from pull request directive into own assignment directive
  - [feature] user settings repo search: (un)check all checks only the search result

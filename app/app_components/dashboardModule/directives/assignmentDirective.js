@@ -12,6 +12,7 @@ angular.module('dashboardModule')
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
+                    ACTION_OPEN_MODAL = 'modal',
                     currentPr,
                     defaultTitle = 'Assign myself';
                  
@@ -20,14 +21,17 @@ angular.module('dashboardModule')
                         $scope.assignTitle= defaultTitle;
                         $scope.assignment = ACTION_ASSIGN_TO_ME;
                         $scope.assignmentStyle = '';
+                        $scope.assignmentModal = '';
                     } else if ($scope.pullRequest.assignee.id === $scope.loggedInUser.id) {
                         $scope.assignTitle= 'Unassign myself';
                         $scope.assignment = ACTION_UNASSIGN_ME;
                         $scope.assignmentStyle = 'isAssignedToMe';
+                        $scope.assignmentModal = '';
                     } else {
                         $scope.assignTitle= defaultTitle;
                         $scope.assignment = ACTION_CONFIRM_ASSIGN_TO_ME;
                         $scope.assignmentStyle = 'isAssigned';
+                        $scope.assignmentModal = ACTION_OPEN_MODAL;
                     }
                 }
                 
@@ -38,7 +42,6 @@ angular.module('dashboardModule')
                             pullRequestService.assignPullRequest(currentPr.id);
                             break;
                         case ACTION_CONFIRM_ASSIGN_TO_ME:
-                            $scope.modalShown = true;
                             break;
                         case ACTION_UNASSIGN_ME:
                             pullRequestService.unassignPullRequest(currentPr.id);
@@ -48,11 +51,6 @@ angular.module('dashboardModule')
 
                 $scope.confirmAssignment = function () {
                     pullRequestService.assignPullRequest(currentPr.id);
-                    $scope.modalShown = false;
-                };
-
-                $scope.abortAssignment = function () {
-                    $scope.modalShown = false;
                 };
 
                 init();
