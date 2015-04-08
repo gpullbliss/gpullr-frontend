@@ -30,7 +30,6 @@ describe('directive: ranking', function () {
             expect(element.find('img').attr('class')).toContain('avatar');
             expect(element.text()).toContain(rank.rank);
             expect(element.text()).toContain(rank.closedCount);
-            console.log('check' + element.text());
         });
     });
 });
