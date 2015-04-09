@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [feature] add new infos for PR
+ - [feature] add new infos for PR (comments & jenkins build status)
  - [feature] redesign modals
  - [feature] redesign rankinglist
  - [feature] global layout changes

@@ -4,12 +4,12 @@
         {{pullRequest.author.fullName}}<br/>
         <span>{{pullRequest.author.username}}</span>
     </a>
-    <a href="{{pullRequest.author.profileUrl}}" class="userName" data-ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</h5>
+    <a href="{{pullRequest.author.profileUrl}}" class="userName" data-ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</a>
 </div>
 <div class="col-xs-6 facts">
     <div class="overflowH">
         <div class="branch">
-            <a title="Build: {{pullRequest.buildStatus}}" data-ng-if="pullRequest.buildStatus !== ''" class="repoBuild {{pullRequest.buildStatus}}" target="_blank">
+            <a title="Build: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}" data-ng-if="pullRequest.buildStatus !== ''" class="repoBuild {{pullRequest.buildStatus}}" target="_blank">
             <a class="branchName" href="{{pullRequest.url}}" target="_blank">
                 <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
             </a>
