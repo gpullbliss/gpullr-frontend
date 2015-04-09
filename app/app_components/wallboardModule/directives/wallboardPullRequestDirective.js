@@ -1,8 +1,8 @@
 'use strict';
 angular.module('wallboardModule')
-    .directive('wallboardPullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
+    .directive('dvbWallboardPullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
         return {
-            restrict: 'E',
+            restrict: 'A',
             scope: {
                 pullRequest: '='
             },

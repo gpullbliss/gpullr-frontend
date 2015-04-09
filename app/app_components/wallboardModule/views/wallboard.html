@@ -1,29 +1,22 @@
-<h2 ng-if="errorMessage" class="alert alert-danger dMarginTop">{{errorMessage}}</h2>
+<h2 data-ng-if="errorMessage" class="alert alert-danger dMarginTop">{{errorMessage}}</h2>
 
-<div id="wallboard" ui-view>
-
-    <div class="row">
-        <div class="col-sm-8 unassignedPullRequests">
-            <h2>Open</h2>
-
-            <div class="row">
-                <div class="col-sm-6" ng-repeat="pr in unassignedPullRequests">
-                    <wallboard-pull-request
-                        pull-request="pr">
-                    </wallboard-pull-request>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 assignedPullRequests">
-            <h2>In Progress</h2>
-
-            <div class="row">
-                <div class="col-sm-12" ng-repeat="pr in assignedPullRequests">
-                    <wallboard-pull-request pull-request="pr"></wallboard-pull-request>
-                </div>
+<div id="wallboard" class="listView" data-ui-view>
+    <div class="col-sm-8 unassignedPullRequests">
+        <h2>Open</h2>
+        <div class="row">
+            <div class="col-sm-6" data-ng-repeat="pr in unassignedPullRequests">
+                <section data-dvb-wallboard-pull-request data-pull-request="pr"></section>
             </div>
         </div>
     </div>
 
+    <div class="col-sm-4 assignedPullRequests">
+        <h2>In Progress</h2>
+
+        <div class="row">
+            <div class="col-sm-12" data-ng-repeat="pr in assignedPullRequests">
+                <section data-dvb-wallboard-pull-request pull-request="pr"></section>
+            </div>
+        </div>
+    </div>
 </div>

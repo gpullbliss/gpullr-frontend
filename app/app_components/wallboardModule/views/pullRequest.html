@@ -1,17 +1,13 @@
-<div class="panel panel-default">
-    <h3 class="panel-heading">
-        #{{pullRequest.number}} {{pullRequest.repoName}}
-    </h3>
+<h3 class="facts">
+    #{{pullRequest.number}} {{pullRequest.repoName}}
+</h3>
 
-    <div class="panel-body">
-        <h3 class="title">{{pullRequest.title}}</h3>
-        <strong class="author" ng-if="pullRequest.author.fullName">{{pullRequest.author.fullName}}</strong>
-        <strong class="author" ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</strong>
-    </div>
-    <strong ng-if="pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
-        {{pullRequest.assignee.fullName}}
-    </strong>
-    <strong ng-if="!pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
-        {{pullRequest.assignee.username}}
-    </strong>
-</div>
+<h3 class="title">{{pullRequest.title}}</h3>
+<strong class="author facts" ng-if="pullRequest.author.fullName">{{pullRequest.author.fullName}}</strong>
+<strong class="author facts" ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</strong>
+<strong ng-if="pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
+    {{pullRequest.assignee.fullName}}
+</strong>
+<strong ng-if="!pullRequest.assignee.fullName && pullRequest.assignee" class="assignee">
+    {{pullRequest.assignee.username}}
+</strong>
