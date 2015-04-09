@@ -44,6 +44,28 @@
         margin-bottom: @defaultSpacing;
         padding: @defaultSpacing 0;
     }
+    .repoBuild{
+        .floatL;
+        //margin-right: @halfSpacing;
+        &:before{
+            .iconFont;
+            //.fontSet(18px, 14px);
+        }
+        &.SUCCESS:before{
+            content: '\e609';
+            color: @dbGreen;
+        }
+        &.FAILURE:before{
+            content: '\e60a';
+            color: @warning3;
+        }
+        &.PENDING{
+            .animation(2s, linear, 0s, normal, infinite, rotate);
+            .borderRadius(50%);
+            .dimension(12px, 12px);
+            margin:3px @halfSpacing 0 0;
+        }
+    }
     .branchName {
         .ellipsis;
     }
@@ -54,12 +76,23 @@
         padding-bottom: @halfSpacing;
         .branch {
             .floatL;
-            width: 83%;
+            width: 80%;
         }
         .stats {
+            .ellipsis;
             .floatL;
-            width: 17%;
+            .textR;
+            width: 20%;
         }
+    }
+    .requestCreatedAt,
+    .filesChanged,
+    .comments {
+        .block;
+        .floatL;
+        border-left: 1px solid @dbBlack;
+        padding-left: @halfSpacing;
+        margin-left: @halfSpacing;
     }
     .requestCreatedAt {
         &:before {
@@ -77,6 +110,10 @@
         }
     }
     .linesAdded {
+        .block;
+        .floatL;
+        .iconFont;
+        margin-right:@halfSpacing;
         color: @added;
         &:before {
             .iconFont;
@@ -84,9 +121,14 @@
             color: @dbBlack;
         }
     }
-
     .linesRemoved {
+        .block;
+        .floatL;
         color: @removed;
+    }
+    .comments:before{
+        .iconFont;
+        content: '\e60c'' ';
     }
     .olderThan2h {
         background-color: @warning1;
