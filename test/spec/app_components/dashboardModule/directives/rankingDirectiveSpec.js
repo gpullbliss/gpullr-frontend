@@ -4,12 +4,8 @@ describe('directive: ranking', function () {
     var $compile,
         $scope;
 
-    function getDirectiveHtml(rank) {
-        var html = '<ranking-list class="block margin hPadding rankingStats" ' +
-                   'rankdata="{username: ' + rank.username +
-                            ', avatarUrl: ' + rank.avatarUrl +
-                            ', rank: ' + rank.rank +
-                            ', closedCount: ' + rank.closedCount + '}"></ranking-list>';
+    function getDirectiveHtml(ranking, user) {
+        var html = '<div data-dvb-ranking-list class="rankingStats" rankdata="{rank: ' + ranking.rank + ', closedCount: ' + ranking.closedCount + '}" userdata="{username: ' + user.username + ', avatarUrl: ' + user.avatarUrl + '}"></div>';
         return html;
     }
 
@@ -25,8 +21,9 @@ describe('directive: ranking', function () {
 
     describe('ranking list', function () {
         it('check for ranking list item', function () {
-            var rank = {username: 'testuser', avatarUrl: 'www.jira.de', rank: 1, closedCount: 12},
-                element = $compile(getDirectiveHtml(rank))($scope);
+            var rank = {rank: 1, closedCount: 12},
+                user = {username: 'testuser', avatarUrl: 'www.jira.de'},
+                element = $compile(getDirectiveHtml(rank, user))($scope);
 
             $scope.$digest();
 

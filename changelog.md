@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
  - [feature] add new infos for PR
  - [feature] redesign modals
+ - [feature] redesign rankinglist
  - [feature] global layout changes
  - [refactor] extracted assignment stuff from pull request directive into own assignment directive
  - [feature] user settings repo search: (un)check all checks only the search result

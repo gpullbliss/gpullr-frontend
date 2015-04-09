@@ -1,10 +1,10 @@
 <div class="col-xs-3 author userBlock">
     <img class="avatarWrapper" data-ng-src="{{pullRequest.author.avatarUrl}}">
-    <h5  data-ng-if="pullRequest.author.fullName" class="userName">
+    <a target="_blank" href="{{pullRequest.author.profileUrl}}" data-ng-if="pullRequest.author.fullName" class="userName">
         {{pullRequest.author.fullName}}<br/>
         <span>{{pullRequest.author.username}}</span>
-    </h5>
-    <h5 class="userName" data-ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</h5>
+    </a>
+    <a href="{{pullRequest.author.profileUrl}}" class="userName" data-ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</h5>
 </div>
 <div class="col-xs-6 facts">
     <div class="overflowH">
