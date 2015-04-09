@@ -4,14 +4,17 @@
     -o-animation: @duration @ease @delay @direction @iteration-count @name; /* Opera 12+ */
     animation: @duration @ease @delay @direction @iteration-count @name; /* IE 10+ */
 }
-
 .borderRadius(@radius) {
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;
     border-radius: @radius;
 
 }
-
+.transform(@transformValues){
+    -webkit-transform: @transformValues;
+    -ms-transform: @transformValues;
+    transform: @transformValues;
+}
 .dimension(@height, @width: @height) {
     height: @height;
     width: @width;

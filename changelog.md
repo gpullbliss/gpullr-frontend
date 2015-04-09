@@ -1,6 +1,8 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] add new infos for PR (comments & jenkins build status)
  - [feature] redesign modals
+ - [feature] redesign rankinglist
  - [feature] global layout changes
  - [refactor] extracted assignment stuff from pull request directive into own assignment directive
  - [feature] user settings repo search: (un)check all checks only the search result
@@ -38,4 +40,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Apr 07 13:48:51 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 08 14:11:10 CEST 2015
