@@ -34,7 +34,7 @@ angular.module('dashboardModule')
                     data: {period: 'last_30_days'},
                     controller: 'statisticsDetailsCtrl',
                     templateUrl: 'app_components/dashboardModule/views/statisticsDetails.html',
-                    url: 'last-30-days'
+                    url: '/last-30-days'
                 })
                 .state('stats.all_time', {
                     data: {period: 'all_time'},
