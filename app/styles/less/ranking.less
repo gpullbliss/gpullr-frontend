@@ -1,0 +1,73 @@
+#ranking {
+    .topRanks {
+        display: table;
+        margin-top: @doubleSpacing;
+        margin-bottom: @doubleSpacing;
+        padding: 0;
+    }
+    .podium {
+        display: table-cell;
+        vertical-align: bottom;
+        width: 33.33%;
+    }
+    .podiumBlock {
+        .fontSet(80px, 80px);
+        .iconFont;
+        .textC;
+        .borderRadius(5px 5px 0 0);
+        vertical-align: baseline;
+        background-color: @dbBlack;
+        padding-top: @defaultSpacing;
+    }
+    .podiumName span {
+        .block;
+        font-weight: bold;
+    }
+    .secondPlace,
+    .thirdPlace {
+        .podiumBlock {
+            line-height: 80px;
+        }
+    }
+    .podiumName {
+        text-align: center;
+    }
+    .firstPlace {
+        .podiumBlock {
+            padding: 50px 0 20px;
+            color: @gold;
+            &:before {
+                content: '\e606';
+            }
+        }
+    }
+    .secondPlace {
+        .podiumBlock {
+            padding: 30px 0 10px;
+            color: @silver;
+            .borderRadius(0 5px 0 0);
+            &:before {
+                content: '\e607';
+            }
+        }
+    }
+    .thirdPlace {
+        .podiumBlock {
+            .borderRadius(5px 0 0 0);
+            color: @bronze;
+            padding-bottom: 10px;
+            &:before {
+                content: '\e608';
+            }
+        }
+    }
+    .rank {
+        .block;
+        .fontSet(30px, 46px);
+        .textC;
+        color: @dbLightGray;
+        text-shadow: 1px 1px @dbBlack;
+        font-weight: bold;
+    }
+}
+

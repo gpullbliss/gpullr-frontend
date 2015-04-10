@@ -10,9 +10,7 @@ module.exports = function (config) {
             'app/bower_components/angular/angular.js',
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-moment/angular-moment.min.js',
-            'app/bower_components/angular-smart-table/dist/smart-table.min.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-            'app/bower_components/ngModal/dist/ng-modal.min.js',
             'app/scripts/app.js',
             'app/scripts/**/*.js',
             'app/app_components/**/*module.js',
@@ -36,7 +34,7 @@ module.exports = function (config) {
         // possible values: 'dots', 'progress'
         // CLI --reporters progress
         // reporters: ['progress', 'junit'], // with jUnit output
-        reporters: ['progress'],
+        reporters: ['mocha'],
 
         junitReporter: {
             // will be resolved to basePath (in the same way as files/exclude patterns)
@@ -84,6 +82,7 @@ module.exports = function (config) {
             'karma-phantomjs-launcher',
             'karma-chrome-launcher',
             'karma-junit-reporter',
+            'karma-mocha-reporter',
             'karma-ng-html2js-preprocessor'
         ],
 

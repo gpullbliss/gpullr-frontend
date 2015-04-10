@@ -1,24 +1,27 @@
-<div class="podium">
-    <div class="podiumName">{{rankingList[2].username}}
-        <div class="podiumBlock thirdPlace">3.</div>
+<div class="col-md-6 col-md-offset-3 topRanks">
+    <div class="podium thirdPlace">
+        <div class="podiumName">
+            <h5 data-ng-repeat="user in rankingList[2].users">{{user.fullName}}</h5>
+        </div>
+        <div class="podiumBlock"></div>
     </div>
-    <div class="podiumName">{{rankingList[0].username}}
-        <div class="podiumBlock firstPlace">1.</div>
+    <div class="podium firstPlace">
+        <div class="podiumName">
+            <h5 data-ng-repeat="user in rankingList[0].users">{{user.fullName}}</h5>
+        </div>
+        <div class="podiumBlock"></div>
     </div>
-    <div class="podiumName">{{rankingList[1].username}}
-        <div class="podiumBlock secondPlace">2.</div>
+    <div class="podium secondPlace">
+        <div class="podiumName">
+            <h5 data-ng-repeat="user in rankingList[1].users">{{user.fullName}}</h5>
+        </div>
+        <div class="podiumBlock"></div>
     </div>
 </div>
 
-<div class="row rankingHeadline">
-    <div class="col-md-3">Developer</div>
-    <div class="col-md-3">Closed Pull Requests</div>
-    <div class="col-md-3">Lines of Code</div>
-    <div class="col-md-3">Rank</div>
-</div>
-<div class="striped">
-    <ranking-list
-        class="block margin hPadding rankingStats"
-        rankdata="rank"
-        data-ng-repeat="rank in rankingList"></ranking-list>
+<div class="listView clear" data-ng-repeat="rank in rankingList">
+    <div data-ng-repeat="user in rank.users">
+        <div data-dvb-ranking-list class="rankingStats" rankdata="rank" userdata="user">
+        </div>
+    </div>
 </div>

@@ -1,0 +1,27 @@
+.avatarWrapper {
+    .borderRadius(3px);
+    .dimension(@dashboardAvatarSize, @dashboardAvatarSize);
+    .floatL;
+    .marginRight;
+    border: 1px solid @dbBlack;
+    display: block;
+}
+
+.userBlock {
+    .userName {
+        .ellipsis;
+        color: @white;
+        font-weight: bold;
+        text-shadow: 1px 1px @dbBlack;
+        span {
+            .fontSet(11px, 1);
+            color: inherit;
+        }
+        .assignee& {
+            .textR;
+            p {
+                .ellipsis;
+            }
+        }
+    }
+}

@@ -1,0 +1,162 @@
+.assignMe {
+    .dimension(@dashboardAvatarSize, @dashboardAvatarSize);
+    .floatR;
+    .marginLeft;
+    .overflowH;
+    .textC;
+    color: @dbBlack;
+    cursor: pointer;
+    .fontSet(@assignMeIconSize, @dashboardAvatarSize);
+    &:after {
+        .iconFont;
+        content: "\e601";
+        color: @white;
+    }
+    &:hover:after {
+        color: @dbBlack;
+    }
+    &.isAssigned, &.isAssignedToMe {
+        overflow: hidden;
+        &:hover {
+            img {
+                display: none;
+            }
+            &:after {
+                content: "\e601";
+                color: @dbBlack;
+            }
+        }
+        &:after {
+            content: '';
+        }
+    }
+    &.isAssignedToMe:hover:after {
+        content: "\e602";
+    }
+}
+
+.listView {
+    .overflowH;
+    section {
+        .borderRadius(@halfSpacing);
+        .overflowH;
+        background-color: #BFC1C7;
+        margin-bottom: @defaultSpacing;
+        padding: @defaultSpacing 0;
+    }
+    .repoBuild{
+        .floatL;
+        //margin-right: @halfSpacing;
+        &:before{
+            .iconFont;
+            //.fontSet(18px, 14px);
+        }
+        &.SUCCESS:before{
+            content: '\e609';
+            color: @dbGreen;
+        }
+        &.FAILURE:before{
+            content: '\e60a';
+            color: @warning3;
+        }
+        &.PENDING{
+            .animation(2s, linear, 0s, normal, infinite, rotate);
+            .borderRadius(50%);
+            .dimension(12px, 12px);
+            margin:3px @halfSpacing 0 0;
+        }
+    }
+    .branchName {
+        .ellipsis;
+    }
+    .facts {
+        .borderRadius(@halfSpacing);
+        background: rgba(255, 255, 255, .7);
+        padding-top: @halfSpacing;
+        padding-bottom: @halfSpacing;
+        .branch {
+            .floatL;
+            width: 80%;
+        }
+        .stats {
+            .ellipsis;
+            .floatL;
+            .textR;
+            width: 20%;
+        }
+    }
+    .requestCreatedAt,
+    .filesChanged,
+    .comments {
+        .block;
+        .floatL;
+        border-left: 1px solid @dbBlack;
+        padding-left: @halfSpacing;
+        margin-left: @halfSpacing;
+    }
+    .requestCreatedAt {
+        &:before {
+            .iconFont;
+            .fontSet(12px, 10px);
+            content: '\e604'' ';
+            color: @dbBlack;
+        }
+    }
+    .filesChanged {
+        &:before {
+            .iconFont;
+            content: '\e603'' ';
+            color: @dbBlack;
+        }
+    }
+    .linesAdded {
+        .block;
+        .floatL;
+        .iconFont;
+        margin-right:@halfSpacing;
+        color: @added;
+        &:before {
+            .iconFont;
+            content: '\e605'' ';
+            color: @dbBlack;
+        }
+    }
+    .linesRemoved {
+        .block;
+        .floatL;
+        color: @removed;
+    }
+    .comments:before{
+        .iconFont;
+        content: '\e60c'' ';
+    }
+    .olderThan2h {
+        background-color: @warning1;
+    }
+    .olderThan4h,
+    .olderThan8h,
+    .olderThanAMonth {
+        .userName {
+            span {
+                color: inherit;
+            }
+        }
+    }
+
+    .olderThan4h {
+        background-color: @warning2;
+    }
+
+    .olderThan8h {
+        background-color: @warning3;
+    }
+
+    .olderThanAMonth {
+        background-color: @warning3;
+        background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+        background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+        background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+        -webkit-background-size: 40px 40px;
+        background-size: 40px 40px;
+    }
+}

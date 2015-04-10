@@ -1,22 +1,18 @@
-<div id="login" ui-view ng-controller="loginCtrl">
+<div class="contentWrapper" id="login"  ng-controller="loginCtrl">
     <h2>Login</h2>
 
-    <form class="form-horizontal" ng-submit="submit(selectedUser)">
-        <div ng-if="errorMessage" class="alert alert-danger" role="alert">Login failed: {{errorMessage}}</div>
+    <form class="overflowH"  data-ng-submit="submit(selectedUser)">
+        <div  data-ng-if="errorMessage" class="alert alert-danger" role="alert">Login failed: {{errorMessage}}</div>
 
-        <div class="form-group">
+        <div class="overflowH row marginBottom">
             <label class="col-sm-2">Username</label>
 
             <div class="col-sm-4">
-                <select class="form-control" ng-model="selectedUser" ng-options="user.username for user in users">
-                </select>
+                <select class="form-control" data-ng-model="selectedUser" data-ng-options="user.username for user in users"></select>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-4">
+            <div class="col-sm-4">
                 <button type="submit" class="btn btn-default">Sign in</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>

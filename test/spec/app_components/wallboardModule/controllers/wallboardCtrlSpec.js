@@ -2,25 +2,31 @@
 
 describe('wallboardCtrl', function () {
     var controller,
+        createController,
+        errorMessage,
         pullRequestService,
         pullRequests,
         assignedPullRequests,
         unassignedPullRequests,
         $interval,
+        $rootScope,
         $q,
         $scope,
-        $rootScope;
+        $stateParams,
+        $timeout,
+        $window;
 
     beforeEach(function () {
         module('wallboardModule');
-        module('dashboardModule');
 
-        inject(function (_pullRequestService_, $controller, _$interval_, _$rootScope_, _$q_) {
+        inject(function (_pullRequestService_, $controller, _$interval_, _$q_, _$rootScope_, _$stateParams_, _$timeout_) {
             pullRequestService = _pullRequestService_;
             $interval = _$interval_;
+            $q = _$q_;
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
-            $q = _$q_;
+            $stateParams = _$stateParams_;
+            $timeout = _$timeout_;
 
             assignedPullRequests = [{
                 id: 456,
@@ -35,21 +41,48 @@ describe('wallboardCtrl', function () {
             }];
             pullRequests = unassignedPullRequests.concat(assignedPullRequests);
 
-            spyOn(pullRequestService, 'getPullRequests').and.callFake(function () {
+            errorMessage = 'No repo found with id or name \'broken\'.';
+
+            spyOn(pullRequestService, 'getPullRequests').and.callFake(function (reposToInclude) {
                 var deferred = $q.defer();
-                deferred.resolve(pullRequests);
+                if (Array.isArray(reposToInclude) && reposToInclude.indexOf('broken') !== -1) {
+                    deferred.reject({
+                        data: {errorKey: 'NOT_FOUND', errorMessage: errorMessage}
+                    });
+                } else {
+                    deferred.resolve(pullRequests);
+                }
                 return deferred.promise;
             });
 
-            controller = $controller('wallboardCtrl', {
-                $scope: $scope,
-                $rootScope: $rootScope,
-                pullRequestService: pullRequestService
-            });
+            $window = {location: {reload: jasmine.createSpy('window')}};
+
+            createController = function (controllerParameters) {
+                var parameters = {
+                    $scope: $scope,
+                    $rootScope: $rootScope,
+                    $window: $window,
+                    pullRequestService: pullRequestService
+                };
+
+                for (var parameter in controllerParameters) {
+                    if (controllerParameters.hasOwnProperty(parameter)) {
+                        parameters[parameter] = controllerParameters[parameter];
+                    }
+                }
+                return $controller('wallboardCtrl', parameters);
+            };
+            controller = createController();
         });
     });
 
     describe('$scope.getPullRequests()', function () {
+        it('calls pullRequestService.getPullRequests() with empty reposToInclude if repos param not set', function () {
+            $scope.$digest();
+
+            expect(pullRequestService.getPullRequests).toHaveBeenCalledWith([]);
+        });
+
         it('sets unassignedPullRequests and assignedPullRequests on startup', function () {
             $scope.$digest();
 
@@ -57,14 +90,32 @@ describe('wallboardCtrl', function () {
             expect($scope.assignedPullRequests).toEqual(assignedPullRequests);
         });
 
-        it('calls pullRequestService.getPullRequests() via $timeout', function () {
-            $scope.$digest();
+        describe('with repos', function () {
+            afterEach(function () {
+                controller = createController();
+            });
 
-            expect(pullRequestService.getPullRequests.calls.count()).toEqual(1);
+            it('calls pullRequestService.getPullRequests() with reposToInclude if repos param is set', function () {
+                var stateParams = angular.copy($stateParams);
+                stateParams.repos = 'docbliss;gpullr-frontend';
 
-            $interval.flush(60000);
+                controller = createController({$stateParams: stateParams});
 
-            expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
+                $scope.$digest();
+
+                expect(pullRequestService.getPullRequests).toHaveBeenCalledWith(['docbliss', 'gpullr-frontend']);
+            });
+
+            it('sets $scope.errorMessage if the pullRequestService returns an error', function () {
+                var stateParams = angular.copy($stateParams);
+                stateParams.repos = 'broken;gpullr-frontend';
+
+                controller = createController({$stateParams: stateParams});
+
+                $scope.$digest();
+
+                expect($scope.errorMessage).toEqual(errorMessage);
+            });
         });
     });
 
@@ -73,11 +124,48 @@ describe('wallboardCtrl', function () {
             spyOn($interval, 'cancel');
         });
 
+        it('calls pullRequestService.getPullRequests() via $interval', function () {
+            $scope.$digest();
+
+            expect(pullRequestService.getPullRequests.calls.count()).toEqual(1);
+
+            $interval.flush(60000);
+
+            expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
+        });
+
         it('is cancelled on $destroy', function () {
             $scope.$broadcast('$destroy');
             $scope.$digest();
 
             expect($interval.cancel).toHaveBeenCalled();
+        });
+    });
+
+    describe('reloadApp', function () {
+        beforeEach(function () {
+            spyOn($timeout, 'cancel');
+        });
+
+        it('is called after 24 hours', function () {
+            var delayOneDay = 1000 * 60 * 60 * 24;
+            expect($window.location.reload.calls.count()).toEqual(0);
+
+            $timeout.flush(delayOneDay - 1);
+
+            expect($window.location.reload.calls.count()).toEqual(0);
+
+            $timeout.flush(delayOneDay);
+
+            expect($window.location.reload.calls.count()).toEqual(1);
+            $timeout.verifyNoPendingTasks();
+        });
+
+        it('is cancelled on $destroy', function () {
+            $scope.$broadcast('$destroy');
+            $scope.$digest();
+
+            expect($timeout.cancel).toHaveBeenCalled();
         });
     });
 });

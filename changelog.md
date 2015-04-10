@@ -1,5 +1,30 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] add new infos for PR (comments & jenkins build status)
+ - [feature] redesign modals
+ - [feature] redesign rankinglist
+ - [feature] global layout changes
+ - [refactor] extracted assignment stuff from pull request directive into own assignment directive
+ - [feature] user settings repo search: (un)check all checks only the search result
+ - [feature] html less cleanup dashboard
+ - [bug] fixed wallboard logic for non fullName and no assignee set
+ - [refactor] intergrated backend fullName to templates
+ - [feature] save user settings: backlist handling
+ - [refactor] added some details to project README.md
+ - [feature] optimise header html && less vars
+ - [refactor] removed angular-smart-table dependencies
+ - [feature] PRT-45 implemented unassign myself
+ - [feature] Added wallboard filter
+ - [feature] Added directive for colors on wallboard
+ - [refactor] added tests for ranking directive and adopted pullRequest directive tests for dashboard
+ - [bug] fix layout for wallboard
+ - [feature] add layout for repo filter list
+ - [refactor] Moved pull request service into own module
+ - [bug] user handling
+ - [feature] Use mocha reporter for karma
+ - [feature] PRT 39 sort PR list
+ - [feature] Added daily reload of application on wallboard page
+ - [refactor] Increased font size for wallboard
  - [refactor] Improved the way login / access control works
  - [refactor] Refactored app and test after moving response error log code into http interceptor
  - [feature] added statistics screen (PRT-41)
@@ -15,4 +40,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Michael Diodone <michael.diodone@devbliss.com> Fri Mar 13 16:27:01 CET 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 08 14:11:10 CEST 2015

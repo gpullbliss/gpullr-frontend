@@ -25,7 +25,8 @@ describe('headerCtrl', function () {
                 $rootScope: $rootScope,
                 userService: userService,
                 STATE_STATS: 'stats',
-                STATE_DASHBOARD: 'dashboard'
+                STATE_DASHBOARD: 'dashboard',
+                STATE_REPO_FILTER: 'repoFilter'
             });
         });
     });
@@ -39,18 +40,4 @@ describe('headerCtrl', function () {
         });
     });
 
-    describe('$scope.user', function () {
-        it('calls userService.getCurrentUser()', function () {
-            expect(userService.getCurrentUser).toHaveBeenCalled();
-        });
-
-        it('processes updateUser events and sets user', function () {
-            expect($scope.user).toBeUndefined();
-
-            $rootScope.$emit('updateUser', user);
-            $scope.$digest();
-
-            expect($scope.user).toEqual(user);
-        });
-    });
 });

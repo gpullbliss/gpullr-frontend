@@ -1,19 +1,21 @@
-
 .animation(@duration:2s, @ease:ease, @delay:0s, @direction:normal, @iteration-count:infinite, @name:pending) {
     -webkit-animation: @duration @ease @delay @direction @iteration-count @name; /* Safari 4+ */
-    -moz-animation:    @duration @ease @delay @direction @iteration-count @name; /* Fx 5+ */
-    -o-animation:      @duration @ease @delay @direction @iteration-count @name; /* Opera 12+ */
-    animation:         @duration @ease @delay @direction @iteration-count @name; /* IE 10+ */
+    -moz-animation: @duration @ease @delay @direction @iteration-count @name; /* Fx 5+ */
+    -o-animation: @duration @ease @delay @direction @iteration-count @name; /* Opera 12+ */
+    animation: @duration @ease @delay @direction @iteration-count @name; /* IE 10+ */
 }
-
-.borderRadius(@radius){
+.borderRadius(@radius) {
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;
     border-radius: @radius;
 
 }
-
-.dimension(@height, @width: @height){
+.transform(@transformValues){
+    -webkit-transform: @transformValues;
+    -ms-transform: @transformValues;
+    transform: @transformValues;
+}
+.dimension(@height, @width: @height) {
     height: @height;
     width: @width;
 }
@@ -24,18 +26,17 @@
 }
 
 .opacity(@opacity: 1) {
-  @ieOpacity: 100 * @opacity;
+    @ieOpacity: 100 * @opacity;
 
-  -khtml-opacity: @opacity;
+    -khtml-opacity: @opacity;
     -moz-opacity: @opacity;
-         opacity: @opacity;
+    opacity: @opacity;
 
-  -ms-filter: ~'"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})"';
-  filter: ~'"alpha(opacity=@{ieOpacity})"';
+    -ms-filter: ~'"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})"';
+    filter: ~'"alpha(opacity=@{ieOpacity})"';
 }
 
-
-/* 
+/*
 
 USAGE
 
@@ -46,36 +47,37 @@ POSITION
 */
 
 .position(@position: null, @top: null, @right: null, @bottom: null, @left: null) {
-  .property(position, @position);
-  .property(top, @top);
-  .property(right, @right);
-  .property(bottom, @bottom);
-  .property(left, @left);
+    .property(position, @position);
+    .property(top, @top);
+    .property(right, @right);
+    .property(bottom, @bottom);
+    .property(left, @left);
 
-  .property(@property, @value) {
+    .property(@property, @value) {
 
-    ._getProp(position) when not (@position = null) {
-      position: @value;
+        ._getProp(position) when not (@position = null) {
+            position: @value;
+        }
+
+        ._getProp(top) when not (@top = null) {
+            top: @value;
+        }
+
+        ._getProp(right) when not (@right = null) {
+            right: @value;
+        }
+
+        ._getProp(bottom) when not (@bottom = null) {
+            bottom: @value;
+        }
+
+        ._getProp(left) when not (@left = null) {
+            left: @value;
+        }
+
+        ._getProp(@property);
+
     }
-
-    ._getProp(top) when not (@top = null) {
-      top: @value;
-    }
-
-    ._getProp(right) when not (@right = null) {
-      right: @value;
-    }
-
-    ._getProp(bottom) when not (@bottom = null) {
-      bottom: @value;
-    }
-
-    ._getProp(left) when not (@left = null) {
-      left: @value;
-    }
-
-    ._getProp(@property);    
-
-  };
+;
 
 }

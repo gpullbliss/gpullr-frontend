@@ -1,3 +1,5 @@
+<h2 ng-if="errorMessage" class="alert alert-danger dMarginTop">{{errorMessage}}</h2>
+
 <div id="wallboard" ui-view>
 
     <div class="row">
@@ -5,17 +7,10 @@
             <h2>Open</h2>
 
             <div class="row">
-                <div class="col-sm-4" ng-repeat="pr in unassignedPullRequests">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            #{{pr.number}} - {{pr.repoName}}
-                        </div>
-
-                        <div class="panel-body">
-                            <div class="title">{{pr.title}}</div>
-                            <div class="author">{{pr.author.username}}</div>
-                        </div>
-                    </div>
+                <div class="col-sm-6" ng-repeat="pr in unassignedPullRequests">
+                    <wallboard-pull-request
+                        pull-request="pr">
+                    </wallboard-pull-request>
                 </div>
             </div>
         </div>
@@ -24,20 +19,8 @@
             <h2>In Progress</h2>
 
             <div class="row">
-                <div class="col-sm-8 col-sm-offset-4" ng-repeat="pr in assignedPullRequests">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            #{{pr.number}} - {{pr.repoName}}
-                        </div>
-
-                        <div class="panel-body">
-                            <div class="title">{{pr.title}}</div>
-                            <div class="author">{{pr.author.username}}</div>
-                        </div>
-                        <div class="panel-footer assignee">
-                            {{pr.assignee.username}}
-                        </div>
-                    </div>
+                <div class="col-sm-12" ng-repeat="pr in assignedPullRequests">
+                    <wallboard-pull-request pull-request="pr"></wallboard-pull-request>
                 </div>
             </div>
         </div>

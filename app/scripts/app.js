@@ -6,7 +6,6 @@ angular.module('gpullr', [
     'loginModule',
     'wallboardModule',
     'angularMoment',
-    'smart-table',
-    'ui.router',
-    'ngModal'
+    'userSettingsModule',
+    'ui.router'
 ]);

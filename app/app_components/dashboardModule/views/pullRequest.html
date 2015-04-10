@@ -1,36 +1,30 @@
-<div class="row">
-    <div class="col-md-3">
-        <span class="avatarWrapper"><img class="avatar" ng-src="{{pr.author.avatarUrl}}"></span>
-        {{pr.author.username}}
+<div class="col-xs-3 author userBlock">
+    <img class="avatarWrapper" data-ng-src="{{pullRequest.author.avatarUrl}}">
+    <a target="_blank" href="{{pullRequest.author.profileUrl}}" data-ng-if="pullRequest.author.fullName" class="userName">
+        {{pullRequest.author.fullName}}<br/>
+        <span>{{pullRequest.author.username}}</span>
+    </a>
+    <a href="{{pullRequest.author.profileUrl}}" class="userName" data-ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</a>
+</div>
+<div class="col-xs-6 facts">
+    <div class="overflowH">
+        <div class="branch">
+            <a title="Build: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}" data-ng-if="pullRequest.buildStatus !== ''" class="repoBuild {{pullRequest.buildStatus}}" target="_blank">
+            <a class="branchName" href="{{pullRequest.url}}" target="_blank">
+                <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
+            </a>
+        </div>
+        <div class="stats">
+            <strong>{{pullRequest.repoName}}</strong>
+        </div>
     </div>
-
-    <div class="col-md-5">
-        <a ng-href="{{pr.url}}" target="_blank">#{{pr.number}} {{pr.title}}</a>
-        <br>
-        Repo: {{pr.repoName}} |
-        <i class="fa fa-clock-o helpIcon" title="Created"></i>
-        <span am-time-ago="pr.createdAt"></span> | Status: {{pr.status}}
-    </div>
-
-    <div class="stats col-md-3">
-        <i class="fa fa-align-left helpIcon" title="Lines changed"></i>
-        <span class="linesAdded">+{{pr.linesAdded}}</span>
-        <span class="linesRemoved">-{{pr.linesRemoved}}</span>
-        <br>
-        <i class="fa fa-file-o helpIcon" title="Files changed"></i> {{pr.filesChanged}}
-    </div>
-
-    <div class="assignee col-md-1">
-        <a class="assignMe" ng-class="{isAssigned: pr.assignee!==null}" title="Assign myself">
-            <i data-ng-click="assignToMe(pr)" class="fa fa-user-plus "></i>
-            <img class="avatar" ng-if="pr.assignee!==null" ng-src="{{pr.assignee.avatarUrl}}">
-        </a>
-    </div>
+    <p>
+        <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
+        <span title="Lines removed" class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
+        <span title="Files changed" class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
+        <span class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
+        <a href="{{pullRequest.url}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
+    </p>
 </div>
 
-<!-- modal dialog for already assigned pull requests-->
-<modal-dialog show="modalShown" dialog-title="Pullrequest is already assigned." width="500px" height="30%" on-close="modalClose()">
-    <p>Do you really want to assign it to you?</p>
-    <button class="btn btn-primary btn-xs" ng-click="confirmAssignment()">Confirm</button>
-    <button class="btn btn-default btn-xs" ng-click="abortAssignment()">Abort</button>
-</modal-dialog>
+<div data-dvb-assignment data-pull-request="pullRequest" data-logged-in-user="loggedInUser"></div>

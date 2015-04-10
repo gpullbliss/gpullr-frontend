@@ -1,0 +1,22 @@
+.modal{
+    .modal-content{
+        background-color: @dbLightGray;
+    }
+    .modal-header,
+    .modal-body{
+        border-bottom: 1px solid @dbBlack;
+    }
+    .modal-body{
+        background-color: @white;
+    }
+    .modalClose{
+        .fontSet(20px, 1);
+        .iconFont;
+        .floatR;
+        color: @white;
+        cursor: pointer;
+        &:after{
+            content: '\e60b';
+        }
+    }
+}

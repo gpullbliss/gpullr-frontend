@@ -1,36 +1,60 @@
 'use strict';
 angular.module('wallboardModule')
-    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', function ($scope, $rootScope, $interval, pullRequestService) {
-        var updatePullRequestsInterval,
-            getPullRequests;
+    /* jshint maxparams:false */
+    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$stateParams', '$timeout', '$window', 'pullRequestService',
+        function ($scope, $rootScope, $interval, $stateParams, $timeout, $window, pullRequestService) {
+            var updatePullRequestsInterval,
+                getPullRequests,
+                reloadApp,
+                reloadAppTimeout,
+                reposToInclude = [];
 
-        getPullRequests = function () {
-            pullRequestService.getPullRequests().then(function (pullRequests) {
-                var assignedPullRequests = [],
-                    unassignedPullRequests = [];
-
-                angular.forEach(pullRequests, function (pullRequest) {
-                    if (angular.isObject(pullRequest.assignee)) {
-                        assignedPullRequests.push(pullRequest);
-                    } else {
-                        unassignedPullRequests.push(pullRequest);
-                    }
-                });
-
-                $scope.assignedPullRequests = assignedPullRequests;
-                $scope.unassignedPullRequests = unassignedPullRequests;
-            });
-        };
-
-        getPullRequests();
-
-        updatePullRequestsInterval = $interval(getPullRequests, 60000);
-
-        $scope.$on('$destroy', function () {
-                $interval.cancel(updatePullRequestsInterval);
-                updatePullRequestsInterval = undefined;
+            if (angular.isString($stateParams.repos)) {
+                reposToInclude = $stateParams.repos.split(';');
             }
-        );
 
-        $rootScope.bodyClass = 'dark';
-    }]);
+            getPullRequests = function () {
+                pullRequestService.getPullRequests(reposToInclude).then(
+                    function (pullRequests) {
+                        var assignedPullRequests = [],
+                            unassignedPullRequests = [];
+
+                        angular.forEach(pullRequests, function (pullRequest) {
+                            if (angular.isObject(pullRequest.assignee)) {
+                                assignedPullRequests.push(pullRequest);
+                            } else {
+                                unassignedPullRequests.push(pullRequest);
+                            }
+                        });
+
+                        $scope.assignedPullRequests = assignedPullRequests;
+                        $scope.unassignedPullRequests = unassignedPullRequests;
+                        $scope.errorMessage = undefined;
+                    },
+                    function (errorResponse) {
+                        $scope.errorMessage = errorResponse.data.errorMessage;
+                    }
+                );
+            };
+
+            getPullRequests();
+
+            updatePullRequestsInterval = $interval(getPullRequests, 60000);
+            $scope.$on('$destroy', function () {
+                    $interval.cancel(updatePullRequestsInterval);
+                }
+            );
+
+            reloadApp = function () {
+                $window.location.reload();
+            };
+
+            reloadAppTimeout = $timeout(reloadApp, 1000 * 60 * 60 * 24);
+
+            $scope.$on('$destroy', function () {
+                    $timeout.cancel(reloadAppTimeout);
+                }
+            );
+
+            $rootScope.bodyClass = 'dark';
+        }]);

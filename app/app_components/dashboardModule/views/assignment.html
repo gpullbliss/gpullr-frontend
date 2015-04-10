@@ -1,0 +1,30 @@
+<div class="assignee userBlock col-xs-3">
+    <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
+        <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+    </a>
+
+    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" ng-if="pullRequest.assignee.fullName" class="userName">
+        {{pullRequest.assignee.fullName}}<br/>
+        <span>{{pullRequest.assignee.username}}</span>
+    </a>
+    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</a>
+</div>
+
+<!-- modal dialog for already assigned pull requests-->
+<div class="modal fade" data-ng-if="assignmentModal" id="modal{{pullRequest.id}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="modalClose" data-dismiss="modal"></a>
+                <h4 class="modal-title">
+                    Pull request is already assigned.
+                </h4>
+            </div>
+            <p class="modal-body">Do you really want to assign it to you?</p>
+            <div class="modal-footer">
+                <button class="btn floatL" data-dismiss="modal">Abort</button>
+                <button class="btn btn-default" data-ng-click="confirmAssignment()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
