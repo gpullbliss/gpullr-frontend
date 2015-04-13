@@ -1,6 +1,7 @@
 all:
 
 finish:
+	@grunt test
 	@./gradlew changelogSnapshot
 
 release:
