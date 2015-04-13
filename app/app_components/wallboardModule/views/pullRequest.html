@@ -1,13 +1,13 @@
-<h3 class="facts">
+<h3 class="pullHead col-xs-12">
+    <span data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></span>
     #{{pullRequest.number}} {{pullRequest.repoName}}
 </h3>
-
 <h3 class="title">{{pullRequest.title}}</h3>
-<strong class="author facts" ng-if="pullRequest.author.fullName">{{pullRequest.author.fullName}}</strong>
-<strong class="author facts" ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</strong>
-<strong ng-if="pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
-    {{pullRequest.assignee.fullName}}
-</strong>
-<strong ng-if="!pullRequest.assignee.fullName && pullRequest.assignee" class="assignee">
-    {{pullRequest.assignee.username}}
-</strong>
+<p class="userBlock overflowH">
+    <strong class="author {{pullRequest.assignee ? 'col-xs-6' : 'col-xs-12'}}">
+        {{pullRequest.author.fullName ? pullRequest.author.fullName : pullRequest.author.username}}
+    </strong>
+    <strong ng-if="pullRequest.assignee" class="assignee col-xs-6">
+        {{pullRequest.assignee.fullName ? pullRequest.assignee.fullName : pullRequest.assignee.username}}
+    </strong>
+</p>

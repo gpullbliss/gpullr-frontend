@@ -10,12 +10,14 @@
 .userBlock {
     .userName {
         .ellipsis;
-        color: @white;
+        .shadowTxt;
         font-weight: bold;
-        text-shadow: 1px 1px @dbBlack;
         span {
-            .fontSet(11px, 1);
+            .block;
             color: inherit;
+        }
+        .subName{
+            .fontSet(11px, 1.5);
         }
         .assignee& {
             .textR;
@@ -23,5 +25,8 @@
                 .ellipsis;
             }
         }
+    }
+    .author{
+        .ellipsis;
     }
 }

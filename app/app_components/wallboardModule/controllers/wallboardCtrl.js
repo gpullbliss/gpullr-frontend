@@ -56,5 +56,4 @@ angular.module('wallboardModule')
                 }
             );
 
-            $rootScope.bodyClass = 'dark';
         }]);
