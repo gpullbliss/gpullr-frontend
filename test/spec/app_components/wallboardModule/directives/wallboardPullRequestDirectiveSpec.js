@@ -6,12 +6,12 @@ describe('wallboardPullRequest', function () {
         pullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
-    function getDirectiveHtml(createdAt, assignedAt) {
-        var html = '<wallboard-pull-request pull-request="{createdAt: \'' + createdAt + '\'';
+    function getDirectiveHtml(createdAt, assignedAt, assignee) {
+        var html = '<section data-dvb-wallboard-pull-request data-pull-request="{createdAt: \'' + createdAt + '\'';
         if (angular.isString(assignedAt)) {
-            html += ', assignedAt: \'' + assignedAt + '\'';
+            html += ', assignedAt: \'' + assignedAt + '\', assignee: {}';
         }
-        html += '}"></wallboard-pull-request>';
+        html += '}"></section>';
         return html;
     }
 
