@@ -9,7 +9,7 @@
     .fontSet(@assignMeIconSize, @dashboardAvatarSize);
     &:after {
         .iconFont;
-        content: "\e601";
+        content: "\e603";
         color: @white;
     }
     &:hover:after {
@@ -22,7 +22,7 @@
                 display: none;
             }
             &:after {
-                content: "\e601";
+                content: "\e603";
                 color: @dbBlack;
             }
         }
@@ -31,7 +31,7 @@
         }
     }
     &.isAssignedToMe:hover:after {
-        content: "\e602";
+        content: "\e604";
     }
 }
 
@@ -97,15 +97,14 @@
     .requestCreatedAt {
         &:before {
             .iconFont;
-            .fontSet(12px, 10px);
-            content: '\e604'' ';
+            content: '\e60a'' ';
             color: @dbBlack;
         }
     }
     .filesChanged {
         &:before {
             .iconFont;
-            content: '\e603'' ';
+            content: '\e606'' ';
             color: @dbBlack;
         }
     }
@@ -117,7 +116,7 @@
         color: @added;
         &:before {
             .iconFont;
-            content: '\e605'' ';
+            content: '\e607'' ';
             color: @dbBlack;
         }
     }
@@ -128,7 +127,7 @@
     }
     .comments:before{
         .iconFont;
-        content: '\e60c'' ';
+        content: '\e609'' ';
     }
     .olderThan2h {
         background-color: @warning1;

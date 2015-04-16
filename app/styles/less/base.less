@@ -13,3 +13,15 @@
 @import "modal";
 @import "listView";
 @import "ranking";
+@media (max-width: 768px) {
+    #header{
+        .dashboard{
+            position: relative;
+            .bubble{
+                .position(absolute, 0px, @halfSpacing, null, null);
+                background-color: transparent;
+                padding: 0;
+            }
+        }
+    }
+}
