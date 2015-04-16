@@ -3,11 +3,4 @@
     #{{pullRequest.number}} {{pullRequest.repoName}}
 </h3>
 <h3 class="title">{{pullRequest.title}}</h3>
-<p class="userBlock overflowH">
-    <strong class="author {{pullRequest.assignee ? 'col-xs-6' : 'col-xs-12'}}">
-        {{pullRequest.author.fullName ? pullRequest.author.fullName : pullRequest.author.username}}
-    </strong>
-    <strong ng-if="pullRequest.assignee" class="assignee col-xs-6">
-        {{pullRequest.assignee.fullName ? pullRequest.assignee.fullName : pullRequest.assignee.username}}
-    </strong>
-</p>
+<p data-dvb-wallboard-assignee data-pull-request="pullRequest" class="userBlock overflowH"></p>

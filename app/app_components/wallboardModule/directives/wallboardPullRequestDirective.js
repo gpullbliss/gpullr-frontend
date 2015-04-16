@@ -12,11 +12,6 @@ angular.module('wallboardModule')
 
                 colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
                 element.addClass(colorClass);
-
-                if (scope.pullRequest.assignedAt && scope.pullRequest.assignee) {
-                    colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.assignedAt, 'assignment');
-                    angular.element('.userBlock').addClass(colorClass);
-                }
             }
         };
     }]);
