@@ -1,6 +1,6 @@
 'use strict';
 angular.module('wallboardModule')
-    .directive('dvbWallboardPullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
+    .directive('dvbWallboardPullRequest', ['PullRequestCssClassService', function (PullRequestCssClassService) {
         return {
             restrict: 'A',
             scope: {
@@ -10,7 +10,7 @@ angular.module('wallboardModule')
             link: function (scope, element) {
                 var colorClass;
 
-                colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
+                colorClass = PullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
                 element.addClass(colorClass);
             }
         };

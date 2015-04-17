@@ -1,8 +1,8 @@
 'use strict';
 
-describe('pullRequestCssClassService', function () {
+describe('PullRequestCssClassService', function () {
     var momentMock;
-    /** @type {pullRequestCssClassService} */
+    /** @type {PullRequestCssClassService} */
     var service;
 
     beforeEach(function () {
@@ -22,8 +22,8 @@ describe('pullRequestCssClassService', function () {
             $provide.value('moment', moment);
         });
 
-        inject(function (pullRequestCssClassService) {
-            service = pullRequestCssClassService;
+        inject(function (PullRequestCssClassService) {
+            service = PullRequestCssClassService;
         });
     });
 

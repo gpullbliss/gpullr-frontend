@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboardModule')
-    .directive('dvbPullRequest', ['pullRequestCssClassService', function (pullRequestCssClassService) {
+    .directive('dvbPullRequest', ['PullRequestCssClassService', function (PullRequestCssClassService) {
         return {
             scope: {
                 pullRequest: '=',
@@ -10,7 +10,7 @@ angular.module('dashboardModule')
             restrict: 'A',
             templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
             link: function (scope, element) {
-                var colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
+                var colorClass = PullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
                 element.addClass(colorClass);
             }
         };

@@ -3,7 +3,7 @@
 describe('pullRequest', function () {
     var $compile,
         $scope,
-        pullRequestCssClassService,
+        PullRequestCssClassService,
         cssColorClass = 'youngerThan2h';
 
     function getDirectiveHtml(createdAt) {
@@ -12,17 +12,17 @@ describe('pullRequest', function () {
     }
 
     beforeEach(function () {
-        pullRequestCssClassService = {
+        PullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
 
-        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function () {
+        spyOn(PullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function () {
             return cssColorClass;
         });
 
         module('dashboardModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+            $provide.value('PullRequestCssClassService', PullRequestCssClassService);
         });
         module('appTemplates');
 
@@ -39,7 +39,7 @@ describe('pullRequest', function () {
 
             $scope.$digest();
 
-            expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
+            expect(PullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
             expect(element.attr('class')).toContain(cssColorClass);
         });
     });

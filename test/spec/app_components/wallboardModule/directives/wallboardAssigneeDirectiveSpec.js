@@ -3,11 +3,10 @@
 describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
-        pullRequestCssClassService,
+        PullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
     function getDirectiveHtml(assignedAt) {
-        console.log(assignedAt);
         var html = '<p data-dvb-wallboard-assignee data-pull-request="pullRequest"{';
         if (angular.isString(assignedAt)) {
             html += ', assignedAt: \'' + assignedAt + '\'';
@@ -17,11 +16,11 @@ describe('wallboardPullRequest', function () {
     }
 
     beforeEach(function () {
-        pullRequestCssClassService = {
+        PullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
-        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
+        spyOn(PullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
             var colorClass = cssColorClass;
             if (prefix) {
                 colorClass = prefix + colorClass;
@@ -30,7 +29,7 @@ describe('wallboardPullRequest', function () {
         });
 
         module('wallboardModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+            $provide.value('PullRequestCssClassService', PullRequestCssClassService);
         });
         module('appTemplates');
 

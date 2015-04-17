@@ -5,6 +5,7 @@ finish:
 	@./gradlew changelogSnapshot
 
 release:
+	@grunt test
 	@./gradlew changelogRelease
 
 changelog:
