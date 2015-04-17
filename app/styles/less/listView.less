@@ -46,10 +46,8 @@
     }
     .repoBuild{
         .floatL;
-        //margin-right: @halfSpacing;
         &:before{
             .iconFont;
-            //.fontSet(18px, 14px);
         }
         &.SUCCESS:before{
             content: '\e609';
@@ -72,8 +70,8 @@
     .facts {
         .borderRadius(@halfSpacing);
         background: rgba(255, 255, 255, .7);
-        padding-top: @halfSpacing;
-        padding-bottom: @halfSpacing;
+        overflow: hidden;
+        padding: @halfSpacing @defaultSpacing;
         .branch {
             .floatL;
             width: 80%;

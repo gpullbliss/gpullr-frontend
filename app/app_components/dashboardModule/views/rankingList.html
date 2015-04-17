@@ -1,5 +1,6 @@
 <section>
-    <div class="col-xs-3 userBlock">
+    <div class="col-sm-3 col-xs-6 userBlock">
+        <span data-ng-if="ranking.rank === 1" class="iconFont crown"></span>
         <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
         <a class="userName" target="_blank" href="{{user.profileUrl}}">
             {{user.fullName}}<br/>
@@ -7,18 +8,20 @@
         </a>
     </div>
 
-    <div class="facts col-xs-6">
-        <p>
-            <strong>Closed Pull Requests:</strong>
-            {{ranking.closedCount}}
-        </p>
-        <p>
-            <strong>Lines of Code:</strong>
-            not yet implemented
-        </p>
+    <div class="col-sm-6 col-xs-12">
+        <div class="facts prInfos">
+            <p>
+                <strong>Closed Pull Requests:</strong>
+                {{ranking.closedCount}}
+            </p>
+            <p>
+                <strong>Lines of Code:</strong>
+                not yet implemented
+            </p>
+        </div>
     </div>
 
-    <div class="rank col-xs-1 col-md-offset-2">
+    <div class="rank col-sm-1 col-sm-offset-2 col-xs-6">
         {{ranking.rank}}
     </div>
 </section>
