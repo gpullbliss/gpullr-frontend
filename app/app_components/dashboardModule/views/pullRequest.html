@@ -1,7 +1,7 @@
 <div class="col-xs-3 author userBlock">
     <img class="avatarWrapper" data-ng-src="{{pullRequest.author.avatarUrl}}">
     <a target="_blank" href="{{pullRequest.author.profileUrl}}" class="userName">
-        <span>{{pullRequest.author.fullName ? pullRequest.author.fullName : pullRequest.author.username}}</span>
+        <span>{{getName(pullRequest.author)}}</span>
         <span class="subName" data-ng-if="pullRequest.author.fullName">{{pullRequest.author.username}}</span>
     </a>
 </div>

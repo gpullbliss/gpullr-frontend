@@ -9,6 +9,7 @@ angular.module('dashboardModule')
                 user: '=userdata'
             },
             restrict: 'A',
+            controller:['$scope', 'UserNameService', function($scope, UserNameService){$scope.getName = UserNameService.getName;}],
             templateUrl: 'app_components/dashboardModule/views/rankingList.html'
         };
     });

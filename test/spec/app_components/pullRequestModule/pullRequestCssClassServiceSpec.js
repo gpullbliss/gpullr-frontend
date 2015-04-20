@@ -2,7 +2,7 @@
 
 describe('PullRequestCssClassService', function () {
     var momentMock;
-    /** @type {PullRequestCssClassService} */
+    /** @type {pullRequestCssClassService} */
     var service;
 
     beforeEach(function () {

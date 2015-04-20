@@ -1,9 +1,10 @@
 <div class="assignee userBlock col-xs-3">
     <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
-        <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+        <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
-    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" class="userName">
-        <span>{{pullRequest.assignee.fullName ? pullRequest.assignee.fullName : pullRequest.assignee.username}}</span>
+    <a ng-if="pullRequest.assignee" target="_blank" data-ng-href="pullRequest.assignee.profileUrl" class="userName">
+
+        <span>{{getName(pullRequest.assignee)}}</span>
         <span class="subName" data-ng-if="pullRequest.assignee.fullName">{{pullRequest.assignee.username}}</span>
     </a>
 </div>

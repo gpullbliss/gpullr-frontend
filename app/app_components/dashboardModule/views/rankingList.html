@@ -2,7 +2,7 @@
     <div class="col-xs-3 userBlock">
         <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
         <a class="userName" target="_blank" href="{{user.profileUrl}}">
-            <span>{{user.fullName ? user.fullName : user.username}}</span>
+            <span>{{getName(user)}}</span>
             <span class="subName" data-ng-if="user.fullName">{{user.username}}</span>
         </a>
     </div>

@@ -3,7 +3,7 @@
 describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
-        PullRequestCssClassService,
+        pullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
     function getDirectiveHtml(assignedAt) {
@@ -16,11 +16,11 @@ describe('wallboardPullRequest', function () {
     }
 
     beforeEach(function () {
-        PullRequestCssClassService = {
+        pullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
-        spyOn(PullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
+        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
             var colorClass = cssColorClass;
             if (prefix) {
                 colorClass = prefix + colorClass;
@@ -29,7 +29,7 @@ describe('wallboardPullRequest', function () {
         });
 
         module('wallboardModule', function ($provide) {
-            $provide.value('PullRequestCssClassService', PullRequestCssClassService);
+            $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
 

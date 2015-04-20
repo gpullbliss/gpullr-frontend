@@ -3,7 +3,7 @@
 describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
-        PullRequestCssClassService,
+        pullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
     function getDirectiveHtml(createdAt, assignedAt) {
@@ -16,11 +16,11 @@ describe('wallboardPullRequest', function () {
     }
 
     beforeEach(function () {
-        PullRequestCssClassService = {
+        pullRequestCssClassService = {
             getColorClassDependingOnAge: function () {
             }
         };
-        spyOn(PullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
+        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function (dateTime, prefix) {
             var colorClass = cssColorClass;
             if (prefix) {
                 colorClass = prefix + colorClass;
@@ -29,7 +29,7 @@ describe('wallboardPullRequest', function () {
         });
 
         module('wallboardModule', function ($provide) {
-            $provide.value('PullRequestCssClassService', PullRequestCssClassService);
+            $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
 
@@ -46,8 +46,8 @@ describe('wallboardPullRequest', function () {
             $compile(getDirectiveHtml(createdAt))($scope);
             $scope.$digest();
 
-            expect(PullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
-            expect(PullRequestCssClassService.getColorClassDependingOnAge.calls.count()).toEqual(1);
+            expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
+            expect(pullRequestCssClassService.getColorClassDependingOnAge.calls.count()).toEqual(1);
         });
 
         it('sets one css class for an unassigned pull request', function () {
@@ -69,9 +69,9 @@ describe('wallboardPullRequest', function () {
             $compile(getDirectiveHtml(createdAt, assignedAt))($scope);
             $scope.$digest();
 
-            expect(PullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
-            expect(PullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(assignedAt, 'assignment');
-            expect(PullRequestCssClassService.getColorClassDependingOnAge.calls.count()).toEqual(2);
+            expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
+            expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(assignedAt, 'assignment');
+            expect(pullRequestCssClassService.getColorClassDependingOnAge.calls.count()).toEqual(2);
         });
     });
 });

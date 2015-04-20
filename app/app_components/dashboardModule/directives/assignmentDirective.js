@@ -8,14 +8,15 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            controller: function ($scope, pullRequestService) {
+            controller:
+                ['$scope', 'PullRequestService', 'UserNameService', function ($scope, PullRequestService, UserNameService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
                     ACTION_OPEN_MODAL = 'modal',
                     currentPr,
                     defaultTitle = 'Assign myself';
-                 
+                $scope.getName = UserNameService.getName;
                 function init() {
                     if (!$scope.pullRequest.assignee) {
                         $scope.assignTitle= defaultTitle;
@@ -39,22 +40,21 @@ angular.module('dashboardModule')
                     currentPr = selectedPr;
                     switch (action) {
                         case ACTION_ASSIGN_TO_ME:
-                            pullRequestService.assignPullRequest(currentPr.id);
+                            PullRequestService.assignPullRequest(currentPr.id);
                             break;
                         case ACTION_CONFIRM_ASSIGN_TO_ME:
                             break;
                         case ACTION_UNASSIGN_ME:
-                            pullRequestService.unassignPullRequest(currentPr.id);
+                            PullRequestService.unassignPullRequest(currentPr.id);
                             break;
                     }
                 };
 
                 $scope.confirmAssignment = function () {
-                    pullRequestService.assignPullRequest(currentPr.id);
+                    PullRequestService.assignPullRequest(currentPr.id);
                 };
-
                 init();
-            },
+            }],
             templateUrl: 'app_components/dashboardModule/views/assignment.html'
         };
 });

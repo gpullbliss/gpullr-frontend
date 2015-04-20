@@ -1,6 +1,6 @@
 'use strict';
 
-describe('pullRequestService', function () {
+describe('PullRequestService', function () {
     var service,
         $httpBackend,
         response;
@@ -8,9 +8,9 @@ describe('pullRequestService', function () {
     beforeEach(function () {
         module('pullRequestModule');
 
-        inject(function (pullRequestService, _$httpBackend_) {
+        inject(function (PullRequestService, _$httpBackend_) {
             $httpBackend = _$httpBackend_;
-            service = pullRequestService;
+            service = PullRequestService;
         });
     });
 
