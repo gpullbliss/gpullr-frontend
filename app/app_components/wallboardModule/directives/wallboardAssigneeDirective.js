@@ -13,6 +13,7 @@ angular.module('wallboardModule')
                     colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.assignedAt, 'assignment');
                     element.addClass(colorClass);
                 }
-            }
+            },
+            controller:['$scope', 'UserNameService', function($scope, userNameService){$scope.getName = userNameService.getName;}]
         };
     }]);
