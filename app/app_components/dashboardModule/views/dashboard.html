@@ -27,4 +27,9 @@
     <div class="listView clear">
         <section class="overflowH" data-ng-repeat="pr in pullRequests" data-dvb-pull-request data-pull-request="pr" data-logged-in-user="user"></section>
     </div>
+    
+    <div>
+        Websocket-Action:
+        <button data-ng-click="websocketSend('Frontend sagt Hallo zur Websocke :P')">Websocket</button>
+    </div>
 </div>
