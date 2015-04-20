@@ -3,11 +3,12 @@
 describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
+        userNameService,
         pullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
     function getDirectiveHtml(createdAt, assignedAt) {
-        var html = '<section data-dvb-wallboard-pull-request data-pull-request="{createdAt: \'' + createdAt + '\'';
+        var html = '<section data-dvb-wallboard-pull-request data-pull-request="{createdAt: \'' + createdAt + '\', author: \'username\'';
         if (angular.isString(assignedAt)) {
             html += ', assignedAt: \'' + assignedAt + '\', assignee: {}';
         }
@@ -33,8 +34,9 @@ describe('wallboardPullRequest', function () {
         });
         module('appTemplates');
 
-        inject(function (_$compile_, _$rootScope_) {
+        inject(function (_$compile_, _$rootScope_, _UserNameService_) {
             $compile = _$compile_;
+            userNameService = _UserNameService_;
             $scope = _$rootScope_.$new();
         });
     });
