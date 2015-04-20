@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pullRequestModule')
-    .factory('pullRequestService', ['$http', '$rootScope', function ($http, $rootScope) {
+    .factory('PullRequestService', ['$http', '$rootScope', function ($http, $rootScope) {
         function assignPullRequest(prId) {
             return $http.post('/api/pulls/' + prId, '').then(
                 function () {

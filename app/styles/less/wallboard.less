@@ -1,0 +1,39 @@
+.wallboard{
+    background-color: @dbBlack;
+    section{
+        padding: 0;
+        margin-bottom: @doubleSpacing;
+    }
+    .repoBuild{
+        .dimension(20px, 20px);
+        .floatL;
+        margin-top: 9px;
+    }
+    .userBlock{
+        .borderRadius(0);
+        background-color: rgba(0, 0, 0, .1);
+        border-top: 1px solid @dbGray;
+        padding: @defaultSpacing 0;
+        strong{
+            .shadowTxt;
+            font-size: 17px;
+        }
+    }
+    .assignee{
+        .ellipsis;
+        .textR;
+    }
+    .pullHead{
+        .shadowTxt;
+        background-color: rgba(0, 0, 0, .1);
+        border-bottom: 1px solid @dbGray;
+        padding: 10px;
+    }
+    .title{
+        .shadowTxt;
+        padding: @doubleSpacing @defaultSpacing;
+    }
+}
+.assignedPullRequests .userBlock{
+    background-color: @dbGray;
+}

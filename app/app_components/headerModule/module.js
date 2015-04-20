@@ -1,3 +1,3 @@
-angular.module('headerModule', []);
+angular.module('headerModule', ['userSettingsModule']);
 
 

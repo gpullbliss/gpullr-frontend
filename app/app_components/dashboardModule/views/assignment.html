@@ -1,13 +1,12 @@
 <div class="assignee userBlock col-xs-3">
     <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
-        <img class="avatarWrapper" ng-if="pullRequest.assignee!==null" ng-src="{{pullRequest.assignee.avatarUrl}}">
+        <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
+    <a ng-if="pullRequest.assignee" target="_blank" data-ng-href="pullRequest.assignee.profileUrl" class="userName">
 
-    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" ng-if="pullRequest.assignee.fullName" class="userName">
-        {{pullRequest.assignee.fullName}}<br/>
-        <span>{{pullRequest.assignee.username}}</span>
+        <span>{{getName(pullRequest.assignee)}}</span>
+        <span class="subName" data-ng-if="pullRequest.assignee.fullName">{{pullRequest.assignee.username}}</span>
     </a>
-    <a target="_blank" href="{{pullRequest.assignee.profileUrl}}" ng-if="!pullRequest.assignee.fullName" class="userName">{{pullRequest.assignee.username}}</a>
 </div>
 
 <!-- modal dialog for already assigned pull requests-->
