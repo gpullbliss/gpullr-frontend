@@ -3,11 +3,12 @@
 describe('pullRequest', function () {
     var $compile,
         $scope,
+        userNameService,
         pullRequestCssClassService,
         cssColorClass = 'youngerThan2h';
 
     function getDirectiveHtml(createdAt) {
-        var html = '<section class="overflowH" data-dvb-pull-request data-pull-request="{createdAt: ' + createdAt + '}" data-logged-in-user="{}"></section>';
+        var html = '<section class="overflowH" data-dvb-pull-request data-pull-request="{createdAt: ' + createdAt + ',author: {fullName: \'user name\'}}" data-logged-in-user="{}"></section>';
         return html;
     }
 
@@ -22,11 +23,14 @@ describe('pullRequest', function () {
         });
 
         module('dashboardModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+            $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
+        module('userSettingsModule');
 
-        inject(function (_$compile_, _$rootScope_) {
+        inject(function (_$compile_, _$rootScope_, _UserNameService_) {
+            $compile = _$compile_;
+            userNameService = _UserNameService_;
             $compile = _$compile_;
             $scope = _$rootScope_.$new();
         });
@@ -41,6 +45,16 @@ describe('pullRequest', function () {
 
             expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
             expect(element.attr('class')).toContain(cssColorClass);
+        });
+
+        it('adds function getName to scope', function () {
+            var createdAt = 89,
+                element = $compile(getDirectiveHtml(createdAt))($scope);
+
+            $scope.$digest();
+
+            expect(element.isolateScope().getName).toBeDefined();
+            expect(element.isolateScope().getName).toBe(userNameService.getName);
         });
     });
 });

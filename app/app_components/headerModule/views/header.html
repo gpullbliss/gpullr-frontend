@@ -12,7 +12,7 @@
         </ul>
     </nav>
     <a href="{{user.profileUrl}}" target="_blank" class="pull-right" data-ng-if="user">
-        <span class="username">{{user.username}}</span>
+        <span class="username">{{getName(user)}}</span>
         <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}" />
     </a>
 </header>

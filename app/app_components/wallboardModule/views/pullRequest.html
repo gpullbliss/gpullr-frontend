@@ -1,17 +1,6 @@
-<div class="panel panel-default">
-    <h3 class="panel-heading">
-        #{{pullRequest.number}} {{pullRequest.repoName}}
-    </h3>
-
-    <div class="panel-body">
-        <h3 class="title">{{pullRequest.title}}</h3>
-        <strong class="author" ng-if="pullRequest.author.fullName">{{pullRequest.author.fullName}}</strong>
-        <strong class="author" ng-if="!pullRequest.author.fullName">{{pullRequest.author.username}}</strong>
-    </div>
-    <strong ng-if="pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
-        {{pullRequest.assignee.fullName}}
-    </strong>
-    <strong ng-if="!pullRequest.assignee.fullName && pullRequest.assignee" class="panel-footer assignee">
-        {{pullRequest.assignee.username}}
-    </strong>
-</div>
+<h3 class="pullHead col-xs-12">
+    <span data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></span>
+    #{{pullRequest.number}} {{pullRequest.repoName}}
+</h3>
+<h3 class="title">{{pullRequest.title}}</h3>
+<p data-dvb-wallboard-assignee data-pull-request="pullRequest" class="userBlock overflowH"></p>

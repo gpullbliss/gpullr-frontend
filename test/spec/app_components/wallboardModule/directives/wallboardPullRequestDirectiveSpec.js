@@ -3,15 +3,16 @@
 describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
+        userNameService,
         pullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
     function getDirectiveHtml(createdAt, assignedAt) {
-        var html = '<wallboard-pull-request pull-request="{createdAt: \'' + createdAt + '\'';
+        var html = '<section data-dvb-wallboard-pull-request data-pull-request="{createdAt: \'' + createdAt + '\', author: \'username\'';
         if (angular.isString(assignedAt)) {
-            html += ', assignedAt: \'' + assignedAt + '\'';
+            html += ', assignedAt: \'' + assignedAt + '\', assignee: {}';
         }
-        html += '}"></wallboard-pull-request>';
+        html += '}"></section>';
         return html;
     }
 
@@ -29,12 +30,13 @@ describe('wallboardPullRequest', function () {
         });
 
         module('wallboardModule', function ($provide) {
-            $provide.value('pullRequestCssClassService', pullRequestCssClassService);
+            $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
 
-        inject(function (_$compile_, _$rootScope_) {
+        inject(function (_$compile_, _$rootScope_, _UserNameService_) {
             $compile = _$compile_;
+            userNameService = _UserNameService_;
             $scope = _$rootScope_.$new();
         });
     });
@@ -72,17 +74,6 @@ describe('wallboardPullRequest', function () {
             expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(createdAt);
             expect(pullRequestCssClassService.getColorClassDependingOnAge).toHaveBeenCalledWith(assignedAt, 'assignment');
             expect(pullRequestCssClassService.getColorClassDependingOnAge.calls.count()).toEqual(2);
-        });
-
-        it('sets two css classes for an assigned pull request', function () {
-            var createdAt = '2014-03-03T18:58:10Z',
-                assignedAt = '2014-03-03T19:38:10Z',
-                element = $compile(getDirectiveHtml(createdAt, assignedAt))($scope);
-
-            $scope.$digest();
-
-            expect(element.attr('class')).toContain(cssColorClass);
-            expect(element.attr('class')).toContain('assignment' + cssColorClass);
         });
     });
 });

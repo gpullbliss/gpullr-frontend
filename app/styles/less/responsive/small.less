@@ -8,6 +8,9 @@
             font-weight: bold;
         }
     }
+    .navi li{
+        padding-bottom: 11px;
+    }
 }
 .listView{
     section{
@@ -33,13 +36,20 @@
     .rank{
         .position(absolute, 10px, 0, null, null)
     }
+    .stats{
+        margin-top: @defaultSpacing;
+    }
 }
 #ranking{
     .rank{
         .fontSet(38px, 1);
         .textR;
     }
-}
+    .topRanks {
+        padding: 0;
+    }
+
+    }
 .assignMe {
     .dimension(@dashboardAvatarSizeSmall, @dashboardAvatarSizeSmall);
     .fontSet(@assignMeIconSizeSmall, @dashboardAvatarSizeSmall)

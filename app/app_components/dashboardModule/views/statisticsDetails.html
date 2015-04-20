@@ -1,19 +1,19 @@
 <div class="col-sm-6 col-sm-offset-3 col-xs-12 topRanks">
     <div class="podium thirdPlace">
         <div class="podiumName">
-            <h5 data-ng-repeat="user in rankingList[2].users">{{user.fullName}}</h5>
+            <h5 data-ng-repeat="user in rankingList[2].users">{{getName(user)}}</h5>
         </div>
         <div class="podiumBlock"></div>
     </div>
     <div class="podium firstPlace">
         <div class="podiumName">
-            <h5 data-ng-repeat="user in rankingList[0].users">{{user.fullName}}</h5>
+            <h5 data-ng-repeat="user in rankingList[0].users">{{getName(user)}}</h5>
         </div>
         <div class="podiumBlock"></div>
     </div>
     <div class="podium secondPlace">
         <div class="podiumName">
-            <h5 data-ng-repeat="user in rankingList[1].users">{{user.fullName}}</h5>
+            <h5 data-ng-repeat="user in rankingList[1].users">{{getName(user)}}</h5>
         </div>
         <div class="podiumBlock"></div>
     </div>

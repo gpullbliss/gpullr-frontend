@@ -3,8 +3,8 @@
         <span data-ng-if="ranking.rank === 1" class="iconFont crown"></span>
         <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
         <a class="userName" target="_blank" href="{{user.profileUrl}}">
-            {{user.fullName}}<br/>
-            <span>{{user.username}}</span>
+            <span>{{getName(user)}}</span>
+            <span class="subName" data-ng-if="user.fullName">{{user.username}}</span>
         </a>
     </div>
 

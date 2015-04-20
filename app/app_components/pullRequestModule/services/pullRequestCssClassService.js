@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pullRequestModule')
-    .factory('pullRequestCssClassService', ['moment', function (moment) {
+    .factory('PullRequestCssClassService', ['moment', function (moment) {
         /**
          * @param {string} dateTime
          * @param {string=} cssClassPrefix

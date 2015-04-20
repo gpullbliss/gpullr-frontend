@@ -1,0 +1,6 @@
+<strong class="author {{pullRequest.assignee ? 'col-xs-6' : 'col-xs-12'}}">
+    {{getName(pullRequest.author)}}
+</strong>
+<strong ng-if="pullRequest.assignee" class="assignee col-xs-6">
+    {{getName(pullRequest.assignee)}}
+</strong>

@@ -8,14 +8,15 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            controller: function ($scope, pullRequestService) {
+            controller:
+                ['$scope', 'PullRequestService', 'UserNameService', function ($scope, pullRequestService, userNameService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
                     ACTION_OPEN_MODAL = 'modal',
                     currentPr,
                     defaultTitle = 'Assign myself';
-                 
+                $scope.getName = userNameService.getName;
                 function init() {
                     if (!$scope.pullRequest.assignee) {
                         $scope.assignTitle= defaultTitle;
@@ -52,9 +53,8 @@ angular.module('dashboardModule')
                 $scope.confirmAssignment = function () {
                     pullRequestService.assignPullRequest(currentPr.id);
                 };
-
                 init();
-            },
+            }],
             templateUrl: 'app_components/dashboardModule/views/assignment.html'
         };
 });
