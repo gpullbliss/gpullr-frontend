@@ -9,14 +9,14 @@ angular.module('dashboardModule')
             },
             restrict: 'A',
             controller:
-                ['$scope', 'PullRequestService', 'UserNameService', function ($scope, PullRequestService, UserNameService) {
+                ['$scope', 'PullRequestService', 'UserNameService', function ($scope, pullRequestService, userNameService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
                     ACTION_OPEN_MODAL = 'modal',
                     currentPr,
                     defaultTitle = 'Assign myself';
-                $scope.getName = UserNameService.getName;
+                $scope.getName = userNameService.getName;
                 function init() {
                     if (!$scope.pullRequest.assignee) {
                         $scope.assignTitle= defaultTitle;
@@ -40,18 +40,18 @@ angular.module('dashboardModule')
                     currentPr = selectedPr;
                     switch (action) {
                         case ACTION_ASSIGN_TO_ME:
-                            PullRequestService.assignPullRequest(currentPr.id);
+                            pullRequestService.assignPullRequest(currentPr.id);
                             break;
                         case ACTION_CONFIRM_ASSIGN_TO_ME:
                             break;
                         case ACTION_UNASSIGN_ME:
-                            PullRequestService.unassignPullRequest(currentPr.id);
+                            pullRequestService.unassignPullRequest(currentPr.id);
                             break;
                     }
                 };
 
                 $scope.confirmAssignment = function () {
-                    PullRequestService.assignPullRequest(currentPr.id);
+                    pullRequestService.assignPullRequest(currentPr.id);
                 };
                 init();
             }],
