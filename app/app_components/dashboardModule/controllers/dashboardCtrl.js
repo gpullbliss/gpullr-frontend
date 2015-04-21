@@ -2,13 +2,10 @@
 
 angular.module('dashboardModule')
     /* jshint maxparams: false */
-    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService', '$q', '$timeout', 'ngSocket',
-        function ($scope, $rootScope, $interval, pullRequestService, userSettingsService, $q, $timeout, ngSocket) {
-            
-            var ws = ngSocket('ws://foo/bar');
+    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService', '$q', '$timeout',
+        function ($scope, $rootScope, $interval, pullRequestService, userSettingsService, $q, $timeout) {
 
-             //Can call before socket has opened
-             ws.send({foo: 'bar'});            
+            var bla = new SockJS("http://localhost:9999");
 
             var updatePullRequestsInterval;
             var service = {};
