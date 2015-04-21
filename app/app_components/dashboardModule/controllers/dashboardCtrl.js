@@ -2,10 +2,40 @@
 
 angular.module('dashboardModule')
     /* jshint maxparams: false */
-    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService',
-        function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
+    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService', '$q', '$timeout', 'ngSocket',
+        function ($scope, $rootScope, $interval, pullRequestService, userSettingsService, $q, $timeout, ngSocket) {
+            
+            var ws = ngSocket('ws://foo/bar');
+
+             //Can call before socket has opened
+             ws.send({foo: 'bar'});            
 
             var updatePullRequestsInterval;
+            var service = {};
+            var listener = $q.defer();
+            var socket = {client: null, stomp: null};
+            
+            service.RECONNECT_TIMEOUT = 30000;
+            service.SOCKET_URL = '/api/notify';
+            service.TOPIC = '/topic/message';
+            service.BROKER = '/app/notify';
+            
+            service.receive = function() {
+              return listener.promise;  
+            };       
+            
+            var reconnect = function() {
+              $timeout(function() {
+                initialize();
+              }, this.RECONNECT_TIMEOUT);
+            };         
+            
+            var startListener = function() {
+                socket.stomp.subscribe(service.CHAT_TOPIC, function(data) {
+                   alert('RECEIVED DATA: ');
+                   alert(data);
+                });
+            };            
 
             function getPullRequests() {
                 pullRequestService.getPullRequests().then(function (pullRequests) {
@@ -38,8 +68,25 @@ angular.module('dashboardModule')
                 });
             };
             
+            $scope.websocketSend = function(message) {
+                  socket.stomp.send(service.BROKER, {
+                    priority: 9
+                  }, JSON.stringify({
+                    repoTitle: message,
+                    actorName: 'Some Actor'
+                  }));                
+            };
+            
+            var initialize = function() {
+                  //socket.client = new SockJS(service.SOCKET_URL);
+                  //socket.stomp = Stomp.over(socket.client);
+                  //socket.stomp.connect({}, startListener);
+                  //socket.stomp.onclose = reconnect;
+                };            
+            
             updatePullRequestsInterval = $interval(getPullRequests, 60000);
             getPullRequests();
+            initialize();
         }
     ]
 );
