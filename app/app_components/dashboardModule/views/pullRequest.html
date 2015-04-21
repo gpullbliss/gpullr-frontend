@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="row">
-            <strong class="col-md-6">{{pullRequest.repoName}}</strong>
+            <strong class="col-md-6 ellipsis">{{pullRequest.repoName}}</strong>
             <p class="stats col-md-6">
                 <a title="Build: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}"  data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
                 <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
