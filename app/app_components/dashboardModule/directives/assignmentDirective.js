@@ -8,8 +8,7 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            controller:
-                ['$scope', 'PullRequestService', 'UserNameService', function ($scope, pullRequestService, userNameService) {
+            controller: ['$scope', 'PullRequestService', 'UserNameService', function ($scope, pullRequestService, userNameService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
@@ -17,25 +16,26 @@ angular.module('dashboardModule')
                     currentPr,
                     defaultTitle = 'Assign myself';
                 $scope.getName = userNameService.getName;
+
                 function init() {
                     if (!$scope.pullRequest.assignee) {
-                        $scope.assignTitle= defaultTitle;
+                        $scope.assignTitle = defaultTitle;
                         $scope.assignment = ACTION_ASSIGN_TO_ME;
                         $scope.assignmentStyle = '';
                         $scope.assignmentModal = '';
                     } else if ($scope.pullRequest.assignee.id === $scope.loggedInUser.id) {
-                        $scope.assignTitle= 'Unassign myself';
+                        $scope.assignTitle = 'Unassign myself';
                         $scope.assignment = ACTION_UNASSIGN_ME;
                         $scope.assignmentStyle = 'isAssignedToMe';
                         $scope.assignmentModal = '';
                     } else {
-                        $scope.assignTitle= defaultTitle;
+                        $scope.assignTitle = defaultTitle;
                         $scope.assignment = ACTION_CONFIRM_ASSIGN_TO_ME;
                         $scope.assignmentStyle = 'isAssigned';
                         $scope.assignmentModal = ACTION_OPEN_MODAL;
                     }
                 }
-                
+
                 $scope.assignmentAction = function (selectedPr, action) {
                     currentPr = selectedPr;
                     switch (action) {
@@ -57,4 +57,4 @@ angular.module('dashboardModule')
             }],
             templateUrl: 'app_components/dashboardModule/views/assignment.html'
         };
-});
+    });
