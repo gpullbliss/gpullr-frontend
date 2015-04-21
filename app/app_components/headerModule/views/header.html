@@ -19,6 +19,7 @@
                     <li data-ng-repeat="item in notifications">
                         {{item.actorName}} closed your pull request {{item.pullRequestTitle}} in repository {{item.repoTitle}}
                     </li>
+                    <li data-ng-if="notifications.length > 4">{{notifications.length - 4}} additional notifications</li>
                 </ul>
             </li>
 
