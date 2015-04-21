@@ -15,12 +15,12 @@
         <div class="row">
             <strong class="col-md-6 ellipsis">{{pullRequest.repoName}}</strong>
             <p class="stats col-md-6">
-                <a title="Build: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}"  data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
-                <span title="Lines changed" class="linesAdded">+{{pullRequest.linesAdded}}</span>
-                <span title="Lines removed" class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
-                <span title="Files changed" class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
-                <a href="{{pullRequest.url}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
-                <span class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
+                <a title="{{'dashboard.pullRequest.infos.build' | translate}}: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}"  data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
+                <span title="{{'dashboard.pullRequest.infos.linesChanged' | translate}}" class="linesAdded">+{{pullRequest.linesAdded}}</span>
+                <span title="{{'dashboard.pullRequest.infos.filesRemoved' | translate}}" class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
+                <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}" class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
+                <a href="{{pullRequest.url}}" title="{{'dashboard.pullRequest.infos.comments' | translate}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
+                <span title="{{'dashboard.pullRequest.infos.createdAt' | translate}}" class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
             </p>
         </div>
     </div>

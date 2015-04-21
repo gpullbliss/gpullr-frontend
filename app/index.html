@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <base href="/">
-        <title>gPullR</title>
-        <meta name="description" content="">
+        <title>{{'meta.title' | translate}}</title>
+        <meta name="description" content="{{'meta.description' | translate}}">
         <meta name="viewport" content="width=device-width">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -29,11 +29,15 @@
         <script src="bower_components/angular-moment/angular-moment.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/components-bootstrap/js/bootstrap.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.js"></script>
         <!-- endbower -->
 
         <script src="scripts/app.js"></script>
         <script src="scripts/config/httpConfig.js"></script>
         <script src="scripts/config/routeConfig.js"></script>
+        <script src="scripts/config/translateConfig.js"></script>
+        <script src="scripts/services/translateConst_en.js"></script>
+        <script src="scripts/services/translateConst_de.js"></script>
         <script src="scripts/services/errorResponseHandler.js"></script>
         <script src="scripts/services/httpErrorResponseInterceptor.js"></script>
 

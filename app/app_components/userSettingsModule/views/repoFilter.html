@@ -1,26 +1,36 @@
-<div class="contentWrapper" id="repoFilter">
-    <div class="head">
-      <h3 class="floatL">
-        devbliss Repos
-      </h3>
-      <button type="button" class="btn floatR"  data-ng-click="saveBlacklist()">save</button>
-    </div>
+<div class="col-md-3">
+    <div class="contentWrapper">
+        <h3>{{'settings.headline.settings' | translate}}</h3>
+        <button class="btn btn-link btn-xs" type="button" ng-click="changeLanguage('en')" translate="HEADER.BUTTON_EN_TEXT">Placeholder</button>
+        <button class="btn btn-link btn-xs" type="button" ng-click="changeLanguage('de')" translate="HEADER.BUTTON_DE_TEXT">Placeholder</button>
 
-    <div class="configBar row">
-        <div class="col-xs-7 col-sm-9">
-            <a class="btn btn-default"  data-ng-click="checkAll()" href="">select all</a>
-            <a class="btn btn-default"  data-ng-click="uncheckAll()" href="">unselect all</a>
-        </div>
-        <div class="col-xs-5 col-sm-3">
-            <input type="text" placeholder="Search" class="search form-control" data-ng-model="searchText"/>
-        </div>
     </div>
-    <ul class="row">
-        <li class="col-md-3" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
-            <label for="{{repo.name}}"  data-ng-class="{striked : !repo.checked}">
-                <input  data-ng-model="repo.checked" id="{{repo.name}}" type="checkbox"/>
-                {{repo.name}}
-            </label>
-        </li>
-    </ul>
+</div>
+<div class="col-md-9">
+    <div class="contentWrapper" id="repoFilter">
+        <div class="head">
+          <h3 class="floatL">
+            {{'settings.headline.repo' | translate}}
+          </h3>
+          <button type="button" class="btn floatR"  data-ng-click="saveBlacklist()">{{'global.btn.save' | translate}}</button>
+        </div>
+
+        <div class="configBar row">
+            <div class="col-xs-7 col-sm-9">
+                <a class="btn btn-default"  data-ng-click="checkAll()" href="">{{'settings.filter.select.all' | translate}}</a>
+                <a class="btn btn-default"  data-ng-click="uncheckAll()" href="">{{'settings.filter.select.none' | translate}}</a>
+            </div>
+            <div class="col-xs-5 col-sm-3">
+                <input type="text" placeholder="{{'settings.filter.search' | translate}}" class="search form-control" data-ng-model="searchText"/>
+            </div>
+        </div>
+        <ul class="row">
+            <li class="col-md-4 col-sm-6" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
+                <label for="{{repo.name}}"  data-ng-class="{striked : !repo.checked}">
+                    <input  data-ng-model="repo.checked" id="{{repo.name}}" type="checkbox"/>
+                    {{repo.name}}
+                </label>
+            </li>
+        </ul>
+    </div>
 </div>
