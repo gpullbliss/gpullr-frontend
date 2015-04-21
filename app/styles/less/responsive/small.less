@@ -1,0 +1,56 @@
+#header{
+    .dashboard{
+        position: relative;
+        .bubble{
+            .position(absolute, 0px, @halfSpacing, null, null);
+            background-color: transparent;
+            padding: 0;
+            font-weight: bold;
+        }
+    }
+    .navi li{
+        padding-bottom: 11px;
+    }
+}
+.listView{
+    section{
+        position: relative;
+    }
+    .avatarWrapper{
+        .dimension(@dashboardAvatarSizeSmall, @dashboardAvatarSizeSmall);
+    }
+    .userName{
+        line-height: 1.2;
+    }
+    .authorBlock,
+    .prInfos,
+    .assignment{
+        //display: table-row;
+    }
+    .authorBlock{
+    }
+    .prInfos{
+        margin-top: @defaultSpacing;
+    }
+    .assignment,
+    .rank{
+        .position(absolute, 10px, 0, null, null)
+    }
+    .stats{
+        margin-top: @defaultSpacing;
+    }
+}
+#ranking{
+    .rank{
+        .fontSet(38px, 1);
+        .textR;
+    }
+    .topRanks {
+        padding: 0;
+    }
+
+    }
+.assignMe {
+    .dimension(@dashboardAvatarSizeSmall, @dashboardAvatarSizeSmall);
+    .fontSet(@assignMeIconSizeSmall, @dashboardAvatarSizeSmall)
+}

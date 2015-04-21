@@ -1,17 +1,18 @@
-<header id="header" class="col-xs-12 navbar navbar-inverse overflowH">
+<header id="header" class="col-xs-12 overflowH">
     <a class="logo" data-ui-sref="{{navBar[0].state}}"></a>
     <nav class="pull-left">
-        <ul class="nav navbar-nav">
-            <li data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
-                <a data-ui-sref="{{item.state}}">{{item.title}}
+        <ul class="navi">
+            <li class="{{item.state}}" data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
+                <a data-ui-sref="{{item.state}}">
+                    <span class="iconFont {{item.state}}Icon visible-xs"></span>
+                    <span class="hidden-xs">{{item.title}}</span>
                     <span data-ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
                 </a>
             </li>
         </ul>
     </nav>
     <a href="{{user.profileUrl}}" target="_blank" class="pull-right" data-ng-if="user">
-
-        <span class="navbar-text">{{getName(user)}}</span>
+        <span class="username hidden-xs">{{getName(user)}}</span>
         <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}" />
     </a>
 </header>

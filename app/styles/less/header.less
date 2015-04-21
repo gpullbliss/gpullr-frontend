@@ -1,20 +1,19 @@
 #header {
     .borderRadius(0 0 @halfSpacing @halfSpacing);
     background-color: @dbBlack;
-    a {
-        color: @white;
-        &.active {
-            background-color: #878B96;
-        }
+    margin-bottom: @doubleSpacing;
+    a.active {
+        background-color: #878B96;
     }
+    span {color: @white;}
     .logo {
         .floatL;
         .iconFont;
-        .fontSet(50px, 50px);
+        .fontSet(35px, 50px);
         margin-right: @defaultSpacing;
         &:after {
             color: @dbGreen;
-            content: '\e600';
+            content: '\e608';
         }
     }
     .bubble {
@@ -25,6 +24,38 @@
     }
     .avatarWrapper {
         .dimension(39px, 39px);
+        .floatL;
         margin: 5px 0;
+    }
+    .username{
+        padding: 16px @defaultSpacing 0 0;
+        .floatL;
+    }
+    .navi{
+        li{
+            .floatL;
+            padding: 16px @defaultSpacing;
+            a{
+                .block;
+            }
+            &.active{
+                background-color: #000;
+            }
+        }
+        .dashboardIcon:before,
+        .statsIcon:before,
+        .repoFilterIcon:before{
+            .fontSet(20px, 1)
+        }
+        .dashboardIcon:before{
+            content: '\e60b';
+        }
+        .statsIcon:before{
+            content: '\e60e';
+            font-weight: bold;
+        }
+        .repoFilterIcon:before{
+            content: '\e60d';
+        }
     }
 }

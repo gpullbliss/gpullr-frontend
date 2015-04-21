@@ -9,7 +9,7 @@
     .fontSet(@assignMeIconSize, @dashboardAvatarSize);
     &:after {
         .iconFont;
-        content: "\e601";
+        content: "\e603";
         color: @white;
     }
     &:hover:after {
@@ -22,7 +22,7 @@
                 display: none;
             }
             &:after {
-                content: "\e601";
+                content: "\e603";
                 color: @dbBlack;
             }
         }
@@ -31,7 +31,7 @@
         }
     }
     &.isAssignedToMe:hover:after {
-        content: "\e602";
+        content: "\e604";
     }
 }
 
@@ -68,8 +68,8 @@
     .facts {
         .borderRadius(@halfSpacing);
         background: rgba(255, 255, 255, .7);
-        padding-top: @halfSpacing;
-        padding-bottom: @halfSpacing;
+        overflow: hidden;
+        padding: @halfSpacing @defaultSpacing;
         .branch {
             .floatL;
             width: 80%;
@@ -86,7 +86,7 @@
     .requestCreatedAt {
         &:before {
             .iconFont;
-            content: '\e604'' ';
+            content: '\e60a'' ';
             color: @dbBlack;
             font-size: 12px;
         }
@@ -94,7 +94,7 @@
     .filesChanged {
         &:before {
             .iconFont;
-            content: '\e603'' ';
+            content: '\e606'' ';
             color: @dbBlack;
             font-size: 12px;
         }
@@ -103,7 +103,7 @@
         color: @added;
         &:before {
             .iconFont;
-            content: '\e605'' ';
+            content: '\e607'' ';
             color: @dbBlack;
             font-size: 12px;
         }
@@ -113,7 +113,7 @@
     }
     .comments:before{
         .iconFont;
-        content: '\e60c'' ';
+        content: '\e609'' ';
     }
     .olderThan2h,
     .assignedPullRequests .assignmentOlderThan2h {

@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] optimise mobile layout
  - [feature] redesign wallboard 
  - [bug] fixed missing slash in last 30 days
  - [feature] add new infos for PR (comments & jenkins build status)
@@ -42,4 +43,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Mon Apr 13 12:58:03 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Apr 21 10:24:35 CEST 2015
