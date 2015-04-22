@@ -11,14 +11,12 @@
             </li>
 
             <li class="dropdown">
-                <a href class="dropdown-toggle" data-toggle="dropdown"><span>Notifications</span>
+                <a href class="dropdown-toggle" data-toggle="dropdown" title="{{notifications.length}} notifications"><span>Notifications</span>
                     <span data-ng-if="notifications.length > 0" class="bubble">{{notifications.length}}</span>
                 </a>
 
-                <ul class="dropdown-menu">
-                    <li data-ng-repeat="item in notifications">
-                        {{item.actorName}} closed your pull request {{item.pullRequestTitle}} in repository {{item.repoTitle}}
-                    </li>
+                <ul class="dropdown-menu" data-ng-if="notifications.length > 0">
+                    <li data-ng-repeat="item in notifications" notification-dropdown-item data-notification="item"></li>
                     <li data-ng-if="notifications.length > 4">{{notifications.length - 4}} additional notifications</li>
                 </ul>
             </li>

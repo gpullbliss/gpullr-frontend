@@ -3,6 +3,8 @@ angular.module('headerModule')
     /* jshint maxparams:false */
     .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'UserNameService', 'notificationService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
         function ($scope, $rootScope, $interval, userService, userNameService, notificationService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
+            var notificationUpdaterPromise;
+
             $scope.navBar = [
                 {title: 'All Requests', bubble: true, state: STATE_DASHBOARD},
                 {title: 'Ranking', bubble: false, state: STATE_STATS},
@@ -15,12 +17,25 @@ angular.module('headerModule')
                 $scope.requestCount = requestCount;
             });
 
-            $interval(notificationService.getNotifications().then(
-                function(response){
-                    console.log('notification response items: ' + angular.toJson(response, true));
-                    $scope.notifications = response;
-                }
-            ), 5000);
+            function updateNotifications() {
+                notificationService.getNotifications().then(
+                    function (response) {
+                        $scope.notifications = response;
+                    }
+                    //function (error) {
+                    //    if (angular.isDefined(notificationUpdaterPromise)){
+                    //        console.log('cancelling periodic notifications poll');
+                    //        $interval.cancel(notificationUpdaterPromise);
+                    //        notificationUpdaterPromise = undefined;
+                    //    }
+                    //}
+                )
+            }
+
+            updateNotifications();
+            notificationUpdaterPromise = $interval(function () {
+                updateNotifications();
+            }, 10000);
 
         }]
 );
