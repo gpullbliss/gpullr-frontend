@@ -1,15 +1,27 @@
 #header{
-    .dashboard{
-        position: relative;
+    .navi .linkItem{
+        padding-bottom: 11px;
+        a{
+            position: relative;
+        }
         .bubble{
-            .position(absolute, 0px, @halfSpacing, null, null);
+            .position(absolute, -16px, -@halfSpacing, null, null);
             background-color: transparent;
             padding: 0;
             font-weight: bold;
         }
-    }
-    .navi li{
-        padding-bottom: 11px;
+        &.overlay{
+            position: static;
+            .overlayBtn:after{
+                top: 30px;
+            }
+            .overlayMenu{
+                width: 100%;
+            }
+            & .overlayBtn:after{
+                left: 0;
+            }
+        }
     }
 }
 .listView{
@@ -21,13 +33,6 @@
     }
     .userName{
         line-height: 1.2;
-    }
-    .authorBlock,
-    .prInfos,
-    .assignment{
-        //display: table-row;
-    }
-    .authorBlock{
     }
     .prInfos{
         margin-top: @defaultSpacing;
@@ -48,8 +53,7 @@
     .topRanks {
         padding: 0;
     }
-
-    }
+}
 .assignMe {
     .dimension(@dashboardAvatarSizeSmall, @dashboardAvatarSizeSmall);
     .fontSet(@assignMeIconSizeSmall, @dashboardAvatarSizeSmall)

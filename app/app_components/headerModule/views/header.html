@@ -2,22 +2,46 @@
     <a class="logo" data-ui-sref="{{navBar[0].state}}"></a>
     <nav class="pull-left">
         <ul class="navi">
-            <li class="{{item.state}}" data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
+            <li class="{{item.state}} linkItem" data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
                     <span class="iconFont {{item.state}}Icon visible-xs"></span>
                     <span class="hidden-xs">{{item.title}}</span>
                     <span data-ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
                 </a>
             </li>
-
-            <li class="dropdown">
-                <a href class="dropdown-toggle" data-toggle="dropdown" title="{{notifications.length}} notifications"><span>Notifications</span>
-                    <span data-ng-if="notifications.length > 0" class="bubble">{{notifications.length}}</span>
+            <li class="overlay linkItem">
+                <a href="#" class="overlayBtn" data-toggle="dropdown" title="{{notifications.length}} notifications">
+                    <span class="iconFont notificationsIcon visible-xs"></span>
+                    <span class="hidden-xs">Notifications</span>
+                    <span class="bubble">36</span>
+                    <!--<span data-ng-if="notifications.length > 0" class="bubble">{{notifications.length}}</span>-->
                 </a>
-
-                <ul class="dropdown-menu" data-ng-if="notifications.length > 0">
-                    <li data-ng-repeat="item in notifications" notification-dropdown-item data-notification="item"></li>
-                    <li data-ng-if="notifications.length > 4">{{notifications.length - 4}} additional notifications</li>
+                <ul class="overlayMenu">
+                    <li class="item">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        </p>
+                    </li>
+                    <li class="item">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        </p>
+                    </li>
+                    <li class="item">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        </p>
+                    </li>
+                    <li class="item">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        </p>
+                    </li>
+                    <!--<li data-ng-repeat="item in notifications" notification-dropdown-item data-notification="item">-->
+                        <!--{{item.actorName}} closed your pull request {{item.pullRequestTitle}} in repository {{item.repoTitle}}-->
+                    <!--</li>-->
+                    <li><a class="btn btn-default">{{notifications.length - 4}} additional notifications</a></li>
+                    <!--<li data-ng-if="notifications.length > 4">{{notifications.length - 4}} additional notifications</li>-->
                 </ul>
             </li>
 

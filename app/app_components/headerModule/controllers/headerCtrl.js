@@ -29,7 +29,7 @@ angular.module('headerModule')
                     //        notificationUpdaterPromise = undefined;
                     //    }
                     //}
-                )
+                );
             }
 
             updateNotifications();

@@ -7,7 +7,7 @@ angular.module('headerModule').
             },
             restrict: 'A',
             template: '{{text}} <a data-ng-click="markNotificationRead(n.id)"><i class="fa-user-times"></i></a>',
-            controller: ['$scope', 'notificationService', function ($scope, notificationService) {
+            controller: ['$scope', 'notificationService', function ($scope) {
                 var n = $scope.n;
 
                 switch (n.type) {
@@ -19,7 +19,7 @@ angular.module('headerModule').
 
                 $scope.markNotificationRead = function(id){
                     console.log('marking notification with id=' + id + '  as read...');
-                }
+                };
             }]
         };
     });
