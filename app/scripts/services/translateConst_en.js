@@ -58,7 +58,7 @@ angular.module('gpullr')
         settings: {
             headline:{
                 repo: 'Repo Filter',
-                settings: 'User Settings'
+                settings: 'Settings'
             },
             filter: {
                 select: {
@@ -66,6 +66,10 @@ angular.module('gpullr')
                     none: 'unselect all'
                 },
                 search: 'Search'
+            },
+            lang: {
+                de: 'Deutsch',
+                en: 'English'
             }
         }
     });

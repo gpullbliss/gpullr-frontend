@@ -49,20 +49,27 @@ angular.module('gpullr')
                 day: 'Tag',
                 week: 'Woche',
                 month: 'Monat',
-                allTime: 'aller Zeiten'
+                allTime: 'aller Zeit'
             },
             userInfos: {
                 prDone: 'geschlossene Pull Requests'
             }
         },
         settings: {
-            headline: 'Repos',
+            headline:{
+                repo: 'Repo Filter',
+                settings: 'Einstellungen'
+            },
             filter: {
                 select: {
                     all: 'alle auswählen',
                     none: 'alle abwählen'
                 },
                 search: 'suchen'
+            },
+            lang: {
+                de: 'Deutsch',
+                en: 'English'
             }
         }
     });

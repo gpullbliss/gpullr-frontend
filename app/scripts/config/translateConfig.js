@@ -13,8 +13,7 @@ angular.module('gpullr')
                 'en_US': 'en',
                 'en_UK': 'en',
                 'de_DE': 'de'
-            })
+            });
             /*.determinePreferredLanguage() <- removed until german translation is working */
             // add custom error handler
-            .useMissingTranslationHandler('translateErrorHandlerService');
     }]);

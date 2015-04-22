@@ -7,7 +7,7 @@ angular.module('userSettingsModule')
                 .state(STATE_REPO_FILTER, {
                     parent: 'page',
                     controller: 'userSettingsCtrl',
-                    templateUrl: 'app_components/userSettingsModule/views/repoFilter.html',
+                    templateUrl: 'app_components/userSettingsModule/views/userSettings.html',
                     url: '/repo-filter'
                 });
         }]);
