@@ -1,5 +1,5 @@
 'use strict';
-angular.module('gpullr')
+angular.module('translateModule')
     .controller('translateCtrl', ['$scope', '$translate', function ($scope, $translate) {
 
         // change language

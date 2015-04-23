@@ -1,3 +1,3 @@
-angular.module('headerModule', ['userSettingsModule']);
+angular.module('headerModule', ['userSettingsModule', 'translateModule']);
 
 

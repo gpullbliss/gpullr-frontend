@@ -1,1 +1,1 @@
-angular.module('dashboardModule', ['ui.router', 'loginModule', 'pullRequestModule', 'userSettingsModule']);
+angular.module('dashboardModule', ['ui.router', 'loginModule', 'pullRequestModule', 'userSettingsModule', 'translateModule']);

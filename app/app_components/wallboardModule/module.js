@@ -1,1 +1,1 @@
-angular.module('wallboardModule', ['ui.router', 'pullRequestModule', 'userSettingsModule']);
+angular.module('wallboardModule', ['ui.router', 'pullRequestModule', 'userSettingsModule', 'translateModule']);

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('gpullr')
+angular.module('translateModule')
     .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', function ($translateProvider, translateConstEn, translateConstDe) {
 
         // add translation table

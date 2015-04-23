@@ -1,5 +1,5 @@
 'use strict';
-angular.module('gpullr')
+angular.module('translateModule')
     .constant('TranslateConstDe', {
         global: {
             btn: {
