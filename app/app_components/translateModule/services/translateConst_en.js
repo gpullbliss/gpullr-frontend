@@ -20,6 +20,14 @@ angular.module('translateModule')
             linkRanking: 'Ranking',
             linkSettings: 'Settings'
         },
+        login: {
+            headline: 'Login',
+            errorMessage: 'Login failed',
+            username: 'Username',
+            btn:{
+                login: 'Sign in'
+            }
+        },
         dashboard: {
             headline: {
                 openRequest: 'Open PR\'s'
