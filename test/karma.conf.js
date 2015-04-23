@@ -12,6 +12,7 @@ module.exports = function (config) {
             'app/bower_components/angular-mocks/angular-mocks.js',
             'app/bower_components/angular-moment/angular-moment.min.js',
             'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
+            'app/bower_components/angular-translate/angular-translate.js',
             'app/scripts/app.js',
             'app/scripts/**/*.js',
             'app/app_components/**/*module.js',

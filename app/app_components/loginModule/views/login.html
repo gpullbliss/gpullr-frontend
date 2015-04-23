@@ -1,17 +1,17 @@
 <div class="contentWrapper" id="login"  ng-controller="loginCtrl">
-    <h2>Login</h2>
+    <h2>{{'login.headline'| translate }}</h2>
 
     <form class="overflowH"  data-ng-submit="submit(selectedUser)">
-        <div  data-ng-if="errorMessage" class="alert alert-danger" role="alert">Login failed: {{errorMessage}}</div>
+        <div  data-ng-if="errorMessage" class="alert alert-danger" role="alert">:{{'login.errorMessage'| translate }}: {{errorMessage}}</div>
 
         <div class="overflowH row marginBottom">
-            <label class="col-sm-2">Username</label>
+            <label class="col-sm-2">{{'login.username'| translate }}</label>
 
             <div class="col-sm-4">
                 <select class="form-control" data-ng-model="selectedUser" data-ng-options="user.username for user in users"></select>
             </div>
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-default">Sign in</button>
+                <button type="submit" class="btn btn-default">{{'login.btn.login'| translate }}</button>
             </div>
         </div>
     </div>

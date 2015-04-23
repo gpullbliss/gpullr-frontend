@@ -1,8 +1,8 @@
 <section>
     <div class="col-sm-3 col-xs-6 userBlock">
-        <span data-ng-if="ranking.rank === 1" class="iconFont crown"></span>
-        <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
         <a class="userName" target="_blank" href="{{user.profileUrl}}">
+            <span data-ng-if="ranking.rank === 1" class="iconFont crown"></span>
+            <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
             <span>{{getName(user)}}</span>
             <span class="subName" data-ng-if="user.fullName">{{user.username}}</span>
         </a>
@@ -11,7 +11,7 @@
     <div class="col-sm-6 col-xs-12">
         <div class="facts prInfos">
             <p>
-                <strong>Closed Pull Requests:</strong>
+                <strong>{{'ranking.userInfos.prDone' | translate}}:</strong>
                 {{ranking.closedCount}}
             </p>
         </div>

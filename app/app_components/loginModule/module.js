@@ -1,1 +1,1 @@
-angular.module('loginModule', ['ui.router']);
+angular.module('loginModule', ['ui.router', 'translateModule']);

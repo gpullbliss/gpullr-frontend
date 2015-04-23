@@ -1,1 +1,1 @@
-angular.module('userSettingsModule', ['ui.router']);
+angular.module('userSettingsModule', ['ui.router', 'translateModule']);
