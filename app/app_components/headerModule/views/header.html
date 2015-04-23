@@ -9,39 +9,17 @@
                     <span data-ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
                 </a>
             </li>
-            <li class="overlay linkItem">
+            <li data-ng-if="notifications.length > 0" class="overlay linkItem">
                 <a href="#" class="overlayBtn" data-toggle="dropdown" title="{{notifications.length}} notifications">
                     <span class="iconFont notificationsIcon visible-xs"></span>
                     <span class="hidden-xs">Notifications</span>
-                    <span class="bubble">36</span>
-                    <!--<span data-ng-if="notifications.length > 0" class="bubble">{{notifications.length}}</span>-->
+                    <span class="bubble">{{notifications.length}}</span>
                 </a>
                 <ul class="overlayMenu">
-                    <li class="item">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        </p>
+                    <li class="item" data-ng-repeat="item in notifications" notification-dropdown-item data-notification="item">
+                        <p>{{item.actorName}} closed your pull request {{item.pullRequestTitle}} in repository {{item.repoTitle}}</p>
                     </li>
-                    <li class="item">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        </p>
-                    </li>
-                    <li class="item">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        </p>
-                    </li>
-                    <li class="item">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        </p>
-                    </li>
-                    <!--<li data-ng-repeat="item in notifications" notification-dropdown-item data-notification="item">-->
-                        <!--{{item.actorName}} closed your pull request {{item.pullRequestTitle}} in repository {{item.repoTitle}}-->
-                    <!--</li>-->
-                    <li><a class="btn btn-default">{{notifications.length - 4}} additional notifications</a></li>
-                    <!--<li data-ng-if="notifications.length > 4">{{notifications.length - 4}} additional notifications</li>-->
+                    <li data-ng-if="notifications.length > 4">{{notifications.length - 4}}><a class="btn btn-default">{{notifications.length - 4}} additional notifications</a></li>
                 </ul>
             </li>
 
