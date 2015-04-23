@@ -13,7 +13,7 @@ angular.module('translateModule')
                 'en_US': 'en',
                 'en_UK': 'en',
                 'de_DE': 'de'
-            });
-            /*.determinePreferredLanguage() <- removed until german translation is working */
+            })
+            .determinePreferredLanguage();
             // add custom error handler
     }]);
