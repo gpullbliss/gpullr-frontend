@@ -1,8 +1,8 @@
 'use strict';
 angular.module('headerModule')
     /* jshint maxparams:false */
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'UserNameService', 'notificationService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
-        function ($scope, $rootScope, $interval, userService, userNameService, notificationService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
+    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'UserNameService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
+        function ($scope, $rootScope, $interval, userService, userNameService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
             var notificationUpdaterPromise;
 
             $scope.navBar = [
@@ -10,6 +10,7 @@ angular.module('headerModule')
                 {title: 'Ranking', bubble: false, state: STATE_STATS},
                 {title: 'Settings', bubble: false, state: STATE_REPO_FILTER}
             ];
+
             $scope.getName = userNameService.getName;
             userService.getCurrentUser();
 
@@ -31,6 +32,31 @@ angular.module('headerModule')
                     //}
                 );
             }
+
+            $scope.markAllNotificationsRead = function(){
+                notificationService.markAllNotificationsRead();
+                $scope.notifications = [];
+            };
+
+            $scope.markNotificationAsSeen = function(event, id){
+                event.stopPropagation();
+
+                notificationService.markNotificationRead(id);
+                for(var idx in $scope.notifications){
+                    if ($scope.notifications[idx].id === id){
+                        $scope.notifications.splice(idx, 1);
+                        break;
+                    }
+                }
+            };
+
+            $scope.$on('notificationRead', function(event, data){
+                console.log('== notificationRead event ==');
+                console.log('event: ' + angular.toJson(event));
+                console.log('data: ' + angular.toJson(data));
+            });
+
+            $scope.toText = notificationDropdownItemService.convert;
 
             updateNotifications();
             notificationUpdaterPromise = $interval(function () {

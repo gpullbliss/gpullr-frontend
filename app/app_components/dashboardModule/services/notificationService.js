@@ -15,8 +15,13 @@ angular.module('dashboardModule')
             return $http.delete(url + '/' + notificationId);
         }
 
+        function markAllNotificationsRead() {
+            return $http.delete(url);
+        }
+
         return {
             getNotifications: getNotificationList,
-            markNotificationRead: markNotificationRead
+            markNotificationRead: markNotificationRead,
+            markAllNotificationsRead: markAllNotificationsRead
         };
     }]);

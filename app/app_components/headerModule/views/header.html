@@ -2,7 +2,8 @@
     <a class="logo" data-ui-sref="{{navBar[0].state}}"></a>
     <nav class="pull-left">
         <ul class="navi">
-            <li class="{{item.state}} linkItem" data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
+            <li class="{{item.state}} linkItem" data-ui-sref-active="active" data-ng-repeat="item in navBar"
+                data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
                     <span class="iconFont {{item.state}}Icon visible-xs"></span>
                     <span class="hidden-xs">{{item.title}}</span>
@@ -15,11 +16,28 @@
                     <span class="hidden-xs">Notifications</span>
                     <span class="bubble">{{notifications.length}}</span>
                 </a>
+
                 <ul class="overlayMenu">
-                    <li class="item" data-ng-repeat="item in notifications" notification-dropdown-item data-notification="item">
-                        <p>{{item.actorName}} closed your pull request {{item.pullRequestTitle}} in repository {{item.repoTitle}}</p>
+                    <li class="item"
+                        data-ng-repeat="item in notifications | limitTo:3"
+                        data-notification="item">
+
+                        <p>{{ toText(item) }} </p>
+
+                        <a type="button"
+                           class="closeBtn"
+                           data-dismiss="modal"
+                           data-ng-click="markNotificationAsSeen($event, item.id)"></a>
                     </li>
-                    <li data-ng-if="notifications.length > 4">{{notifications.length - 4}}><a class="btn btn-default">{{notifications.length - 4}} additional notifications</a></li>
+
+                    <li data-ng-if="notifications.length > 3">
+                        <span>{{notifications.length - 3}} additional notifications</span>
+                    </li>
+
+                    <li>
+                        <a class="btn btn-default"
+                                data-ng-click="markAllNotificationsRead()">mark all as read</a>
+                    </li>
                 </ul>
             </li>
 
@@ -28,6 +46,6 @@
 
     <a href="{{user.profileUrl}}" target="_blank" class="pull-right" data-ng-if="user">
         <span class="username hidden-xs">{{getName(user)}}</span>
-        <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}" />
+        <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}"/>
     </a>
 </header>
