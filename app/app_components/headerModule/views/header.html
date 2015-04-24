@@ -1,12 +1,17 @@
+<<<<<<< HEAD
 <header id="header" class="col-xs-12">
     <a class="logo" data-ui-sref="{{navBar[0].state}}"></a>
+=======
+<header id="header" class="col-xs-12 overflowH">
+    <a class="logo" alt="{{'header.logoAlt' | translate}}" data-ui-sref="{{navBar[0].state}}"></a>
+>>>>>>> bff03f12de1d65821ef11ba2bd1e7dde7e3b454d
     <nav class="pull-left">
         <ul class="navi">
             <li class="{{item.state}} linkItem" data-ui-sref-active="active" data-ng-repeat="item in navBar"
                 data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
                     <span class="iconFont {{item.state}}Icon visible-xs"></span>
-                    <span class="hidden-xs">{{item.title}}</span>
+                    <span class="hidden-xs">{{item.title | translate}}</span>
                     <span data-ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
                 </a>
             </li>
