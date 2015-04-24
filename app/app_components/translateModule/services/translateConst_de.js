@@ -16,7 +16,7 @@ angular.module('translateModule')
             logoAlt: 'gPullRequestTool 2015'
         },
         navi: {
-            linkPullrequest: 'alle Requests',
+            linkPullrequest: 'alle Anfragen',
             linkRanking: 'Rangliste',
             linkSettings: 'Einstellungen',
             linkNotifications: 'Benachrichtigungen',
@@ -36,7 +36,7 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'offene PR\'s'
+                openRequest: 'offene Zieh Anfrage'
             },
             filter: {
                 byOldest: 'sortieren nach ältester zuerst',
