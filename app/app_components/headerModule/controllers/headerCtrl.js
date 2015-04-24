@@ -9,7 +9,7 @@ angular.module('headerModule')
                 {title: 'navi.linkSettings', bubble: false, state: STATE_REPO_FILTER}
             ];
 
-            $scope.getName = UserNameService.getName;
+            $scope.getName = userNameService.getName;
             userService.getCurrentUser();
 
             $rootScope.$on('changeRequestCount', function (event, requestCount) {

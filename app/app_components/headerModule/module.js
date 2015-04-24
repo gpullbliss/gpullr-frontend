@@ -1,1 +1,8 @@
-angular.module('headerModule', ['userSettingsModule', 'translateModule', 'loginModule', 'dashboardModule']);
+angular.module('headerModule',
+    [
+        'userSettingsModule',
+        'translateModule',
+        'loginModule',
+        'dashboardModule'
+    ]
+);
