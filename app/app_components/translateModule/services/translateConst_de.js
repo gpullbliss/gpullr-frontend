@@ -37,7 +37,7 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'offene Zieh Anfrage'
+                openRequest: 'offene Zieh Anfragen'
             },
             filter: {
                 byOldest: 'sortieren nach ältester zuerst',
