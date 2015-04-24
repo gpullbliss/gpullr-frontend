@@ -5,10 +5,11 @@
             <ul class="marginBottom"
                 data-ng-controller="translateCtrl">
                 <li data-ng-repeat="(languageKey, languageName) in languages">
-                    <label id="langToggle{{languageKey}}"
-                           data-ng-click="saveUserLang(languageKey)">
+                    <label id="langToggle{{languageKey}}">
                         <input name="langToggle"
                                value="{{languageKey}}"
+                               data-ng-model="currentUser.userSettings.language"
+                               data-ng-change="saveUserLang(languageKey)"
                                type="radio">
                         {{languageName}}
                     </label>
