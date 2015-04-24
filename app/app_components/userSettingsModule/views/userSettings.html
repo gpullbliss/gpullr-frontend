@@ -8,8 +8,8 @@
                     <label id="langToggle{{languageKey}}">
                         <input name="langToggle"
                                value="{{languageKey}}"
-                               data-ng-model="currentUser.userSettings.language"
-                               data-ng-change="saveUserLang(languageKey)"
+                               data-ng-model="user.userSettingsDto.language"
+                               data-ng-change="saveUserLang(languageKey); changeLanguage(languageKey)"
                                type="radio">
                         {{languageName}}
                     </label>
@@ -17,6 +17,7 @@
             </ul>
         </div>
     </div>
+
     <div class="col-md-9">
         <div class="contentWrapper"
              id="repoFilter">
