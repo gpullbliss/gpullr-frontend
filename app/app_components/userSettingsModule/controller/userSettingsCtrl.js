@@ -25,7 +25,7 @@ angular.module('userSettingsModule')
                 userService.getLanguages().then(function(languages){
                     $scope.languages = languages;
                 });
-            };
+            }
 
             function init() {
                 var repoBlacklistHelperMap = {};
