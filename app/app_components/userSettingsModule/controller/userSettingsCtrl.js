@@ -7,6 +7,7 @@ angular.module('userSettingsModule')
         function ($scope, $state, repoService, userSettingsService, userService, $timeout, $filter) {
 
             var currentUser = {};
+            $scope.languages = {};
             var timeoutPromise;
             var repos = [];
 
@@ -20,8 +21,15 @@ angular.module('userSettingsModule')
                 return blacklist;
             }
 
+            function loadLanguages () {
+                userService.getLanguages().then(function(languages){
+                    $scope.languages = languages;
+                });
+            };
+
             function init() {
                 var repoBlacklistHelperMap = {};
+                loadLanguages();
                 repoService
                     .getRepoList()
 
@@ -57,8 +65,20 @@ angular.module('userSettingsModule')
                     });
             }
 
+            $scope.getUserLang = function () {
+                if (currentUser.userSettingsDto) {
+                    return currentUser.userSettingsDto.language;
+                }
+                return 'en';
+            };
+
             $scope.saveBlacklist = function () {
                 currentUser.userSettingsDto.repoBlackList = buildBlackList();
+                userSettingsService.persistUserSettings(currentUser);
+            };
+
+            $scope.saveUserLang = function (langKey) {
+                currentUser.userSettingsDto.language = langKey;
                 userSettingsService.persistUserSettings(currentUser);
             };
 

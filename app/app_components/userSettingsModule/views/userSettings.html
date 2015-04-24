@@ -3,16 +3,10 @@
         <div class="contentWrapper overflowH">
             <h3 class="marginBottom">{{'settings.headline.settings' | translate}}</h3>
             <ul class="marginBottom" data-ng-controller="translateCtrl">
-                <li>
-                    <label id="langToggleEn" type="button" data-ng-click="changeLanguage('en')">
-                        <input for="langToggleEn" name="langToggle" checked="checked" value="en" type="radio">
-                        {{'settings.lang.en' | translate}}
-                    </label>
-                </li>
-                <li>
-                    <label id="langToggleDe" data-ng-click="changeLanguage('de')">
-                        <input for="langToggleDe" name="langToggle" value="en" type="radio">
-                        {{'settings.lang.de' | translate}}
+                <li data-ng-repeat="(languageKey, languageName) in languages">
+                    <label id="langToggle{{languageKey}}" type="button" data-ng-click="saveUserLang(languageKey)">
+                        <input for="langToggle{{languageKey}}" name="langToggle" checked="checked" value="{{languageKey}}" type="radio">
+                        {{languageName}}--{{user.userSettingsDto}}
                     </label>
                 </li>
             </ul>
