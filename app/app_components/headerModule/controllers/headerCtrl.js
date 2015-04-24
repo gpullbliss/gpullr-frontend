@@ -9,10 +9,11 @@ angular.module('headerModule')
                 {title: 'navi.linkSettings', bubble: false, state: STATE_REPO_FILTER}
             ];
 
-            $scope.getName = userNameService.getName;
+            $scope.getName = UserNameService.getName;
             userService.getCurrentUser();
 
             $rootScope.$on('changeRequestCount', function (event, requestCount) {
+                console.log('changeRequestCount EVENT, set requestCount to ' + requestCount);
                 $scope.requestCount = requestCount;
             });
 
@@ -31,24 +32,24 @@ angular.module('headerModule')
                 );
             }
 
-            $scope.markAllNotificationsRead = function(){
+            $scope.markAllNotificationsRead = function () {
                 notificationService.markAllNotificationsRead();
                 $scope.notifications = [];
             };
 
-            $scope.markNotificationAsSeen = function(event, id){
+            $scope.markNotificationAsSeen = function (event, id) {
                 event.stopPropagation();
 
                 notificationService.markNotificationRead(id);
-                for(var idx in $scope.notifications){
-                    if ($scope.notifications[idx].id === id){
+                for (var idx in $scope.notifications) {
+                    if ($scope.notifications[idx].id === id) {
                         $scope.notifications.splice(idx, 1);
                         break;
                     }
                 }
             };
 
-            $scope.$on('notificationRead', function(event, data){
+            $scope.$on('notificationRead', function (event, data) {
                 console.log('== notificationRead event ==');
                 console.log('event: ' + angular.toJson(event));
                 console.log('data: ' + angular.toJson(data));

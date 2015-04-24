@@ -9,8 +9,9 @@
                     <span data-ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
                 </a>
             </li>
+
             <li data-ng-if="notifications.length > 0" class="overlay linkItem">
-                <a href="#" class="overlayBtn" data-toggle="dropdown" title="{{notifications.length}} data-notifications">
+                <a href="#" class="overlayBtn" data-toggle="dropdown" title="{{notifications.length}} {{'navi.notifications.title' | translate}}">
                     <span class="iconFont notificationsIcon visible-xs"></span>
                     <span class="hidden-xs">{{'navi.linkNotifications' | translate}}</span>
                     <span class="bubble">{{notifications.length}}</span>

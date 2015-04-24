@@ -21,6 +21,7 @@ angular.module('translateModule')
             linkSettings: 'Settings',
             linkNotifications: 'Notifications',
             notifications: {
+                title: 'notifications',
                 closedPr: 'closed your pull request',
                 inRepo: 'in repository',
                 markAsSeen: 'mark all as read'

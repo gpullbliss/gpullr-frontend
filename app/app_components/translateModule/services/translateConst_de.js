@@ -21,6 +21,7 @@ angular.module('translateModule')
             linkSettings: 'Einstellungen',
             linkNotifications: 'Benachrichtigungen',
             notifications: {
+                title: 'Benachrichtigungen',
                 closedPr: 'schloss deine Zieh Anfrage',
                 inRepo: 'in Lager',
                 markAsSeen: 'alle löschen'
