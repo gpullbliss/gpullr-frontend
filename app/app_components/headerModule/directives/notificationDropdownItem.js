@@ -1,13 +1,16 @@
 'use strict';
 angular.module('headerModule').
-    factory('notificationDropdownItemService', function () {
+    factory('notificationDropdownItemService', ['$filter', function ($filter) {
         function convert(n) {
-            var text = '';
+            var text = '',
+                closedPr = $filter('translate')('navi.notifications.closedPr'),
+                inRepo = $filter('translate')('navi.notifications.inRepo');
+
 
             switch (n.type) {
                 case 'PULLREQUEST_CLOSED':
-                    text = n.actorName + ' closed your pull request "' + n.pullRequestTitle +
-                    '" in repository "' + n.repoTitle + '"';
+                    text = n.actorName + ' ' + closedPr + ' ' + n.pullRequestTitle +
+                    ' ' + inRepo + ' ' + n.repoTitle + '"';
                     break;
             }
 
@@ -17,5 +20,5 @@ angular.module('headerModule').
         return {
             convert: convert
         };
-    });
+    }]);
 

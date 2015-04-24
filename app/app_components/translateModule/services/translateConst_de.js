@@ -18,7 +18,13 @@ angular.module('translateModule')
         navi: {
             linkPullrequest: 'alle Requests',
             linkRanking: 'Rangliste',
-            linkSettings: 'Einstellungen'
+            linkSettings: 'Einstellungen',
+            linkNotifications: 'Benachrichtigungen',
+            notifications: {
+                closedPr: 'schloss deine Zieh Anfrage',
+                inRepo: 'in Lager',
+                markAsSeen: 'alle löschen'
+            }
         },
         login: {
             headline: 'Reingehen',
@@ -46,7 +52,7 @@ angular.module('translateModule')
                     filesChanged: 'Datein geändert',
                     filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
-                    createdAt: 'Pull Requests erstellt am',
+                    createdAt: 'Zieh Anfrage erstellt am',
                     build: 'Bau'
                 }
             }
@@ -60,12 +66,12 @@ angular.module('translateModule')
                 allTime: 'aller Zeit'
             },
             userInfos: {
-                prDone: 'geschlossene Pull Requests'
+                prDone: 'geschlossene Zieh Anfragen'
             }
         },
         settings: {
             headline:{
-                repo: 'Repo Filter',
+                repo: 'Lager Filter',
                 settings: 'Einstellungen'
             },
             filter: {

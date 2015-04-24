@@ -1,15 +1,8 @@
 'use strict';
 angular.module('headerModule')
     /* jshint maxparams:false */
-<<<<<<< HEAD
     .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'UserNameService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
         function ($scope, $rootScope, $interval, userService, userNameService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
-            var notificationUpdaterPromise;
-
-=======
-    .controller('headerCtrl', ['$scope', '$rootScope','userService', 'UserNameService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
-        function ($scope, $rootScope, userService, userNameService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
->>>>>>> bff03f12de1d65821ef11ba2bd1e7dde7e3b454d
             $scope.navBar = [
                 {title: 'navi.linkPullrequest', bubble: true, state: STATE_DASHBOARD},
                 {title: 'navi.linkRanking', bubble: false, state: STATE_STATS},
@@ -64,7 +57,7 @@ angular.module('headerModule')
             $scope.toText = notificationDropdownItemService.convert;
 
             updateNotifications();
-            notificationUpdaterPromise = $interval(function () {
+            $interval(function () {
                 updateNotifications();
             }, 10000);
 

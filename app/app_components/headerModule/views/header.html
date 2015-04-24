@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 <header id="header" class="col-xs-12">
-    <a class="logo" data-ui-sref="{{navBar[0].state}}"></a>
-=======
-<header id="header" class="col-xs-12 overflowH">
     <a class="logo" alt="{{'header.logoAlt' | translate}}" data-ui-sref="{{navBar[0].state}}"></a>
->>>>>>> bff03f12de1d65821ef11ba2bd1e7dde7e3b454d
     <nav class="pull-left">
         <ul class="navi">
-            <li class="{{item.state}} linkItem" data-ui-sref-active="active" data-ng-repeat="item in navBar"
-                data-ng-click="navigate(item)">
+            <li class="{{item.state}} linkItem" data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
                     <span class="iconFont {{item.state}}Icon visible-xs"></span>
                     <span class="hidden-xs">{{item.title | translate}}</span>
@@ -16,32 +10,19 @@
                 </a>
             </li>
             <li data-ng-if="notifications.length > 0" class="overlay linkItem">
-                <a href="#" class="overlayBtn" data-toggle="dropdown" title="{{notifications.length}} notifications">
+                <a href="#" class="overlayBtn" data-toggle="dropdown" title="{{notifications.length}} data-notifications">
                     <span class="iconFont notificationsIcon visible-xs"></span>
-                    <span class="hidden-xs">Notifications</span>
+                    <span class="hidden-xs">{{'navi.linkNotifications' | translate}}</span>
                     <span class="bubble">{{notifications.length}}</span>
                 </a>
 
                 <ul class="overlayMenu">
-                    <li class="item"
-                        data-ng-repeat="item in notifications | limitTo:3"
-                        data-notification="item">
-
-                        <p>{{ toText(item) }} </p>
-
-                        <a type="button"
-                           class="closeBtn"
-                           data-dismiss="modal"
-                           data-ng-click="markNotificationAsSeen($event, item.id)"></a>
+                    <li class="item overflowH row" data-ng-repeat="item in notifications | limitTo:3" data-notification="item">
+                        <p class="col-xs-11">{{toText(item)}}</p>
+                        <a type="button" class="closeBtn col-xs-1" data-dismiss="modal" data-ng-click="markNotificationAsSeen($event, item.id)"></a>
                     </li>
-
-                    <li data-ng-if="notifications.length > 3">
-                        <span>{{notifications.length - 3}} additional notifications</span>
-                    </li>
-
-                    <li>
-                        <a class="btn btn-default"
-                                data-ng-click="markAllNotificationsRead()">mark all as read</a>
+                    <li class="col-xs-12">
+                        <a class="btn btn-default"  data-ng-click="markAllNotificationsRead()">{{'navi.notifications.markAsSeen' | translate}} (+{{notifications.length - 3}})</a>
                     </li>
                 </ul>
             </li>

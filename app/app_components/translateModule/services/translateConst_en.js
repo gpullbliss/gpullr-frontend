@@ -18,7 +18,13 @@ angular.module('translateModule')
         navi: {
             linkPullrequest: 'All Requests',
             linkRanking: 'Ranking',
-            linkSettings: 'Settings'
+            linkSettings: 'Settings',
+            linkNotifications: 'Notifications',
+            notifications: {
+                closedPr: 'closed your pull request',
+                inRepo: 'in repository',
+                markAsSeen: 'mark all as read'
+            }
         },
         login: {
             headline: 'Login',

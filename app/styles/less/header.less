@@ -78,7 +78,8 @@
             background-color: @dbLightGray;
             float: none;
             margin: 0 @defaultSpacing @defaultSpacing @defaultSpacing;
-            padding: @defaultSpacing;
+            padding-top: @defaultSpacing;
+            padding-bottom: @defaultSpacing;
         }
         &.open{
             & .overlayBtn:after{
@@ -92,7 +93,7 @@
             .overlayMenu {
                 display: block;
                 .btn{
-                    margin: 0 @defaultSpacing @defaultSpacing;
+                    margin-bottom: @defaultSpacing;
                 }
             }
         }
