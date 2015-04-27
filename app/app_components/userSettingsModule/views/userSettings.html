@@ -1,18 +1,13 @@
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3" id="langSwitch">
         <div class="contentWrapper overflowH">
             <h3 class="marginBottom">{{'settings.headline.settings' | translate}}</h3>
-            <ul class="marginBottom"
-                data-ng-controller="translateCtrl">
+            <ul class="marginBottom" data-ng-controller="translateCtrl">
                 <li data-ng-repeat="(languageKey, languageName) in languages">
-                    <label id="langToggle{{languageKey}}">
-                        <input name="langToggle"
-                               value="{{languageKey}}"
-                               data-ng-model="user.userSettingsDto.language"
-                               data-ng-change="saveUserLang(languageKey); changeLanguage(languageKey)"
-                               type="radio">
+                    <span id="langToggle{{languageKey}}" data-ng-model="user.userSettingsDto.language" class="block {{user.userSettingsDto.language === languageKey ? 'active' : 'cPointer'}}"
+                       data-ng-click="saveUserLang(languageKey); changeLanguage(languageKey)">
                         {{languageName}}
-                    </label>
+                    </span>
                 </li>
             </ul>
         </div>

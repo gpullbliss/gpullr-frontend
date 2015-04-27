@@ -1,1 +1,1 @@
-angular.module('translateModule', ['pascalprecht.translate']);
+angular.module('translateModule', ['pascalprecht.translate', 'loginModule']);
