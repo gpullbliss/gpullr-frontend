@@ -17,6 +17,13 @@ angular.module('loginModule')
                 }
             );
         }
+        function getLanguages() {
+            return $http.get('api/users/languages').then(
+                function (response) {
+                    return response.data;
+                }
+            );
+        }
 
         function logInUser(user) {
             var successfulResponseStatus = 201;
@@ -41,6 +48,7 @@ angular.module('loginModule')
             getCurrentUser: getCurrentUser,
             getUsersForLogin: getUsersForLogin,
             logInUser: logInUser,
+            getLanguages: getLanguages,
 
             clearCacheForGetCurrentUser: clearCacheForGetCurrentUser
         };

@@ -2,7 +2,10 @@
     background-color: @dbBlack;
     section{
         padding: 0;
-        margin-bottom: @doubleSpacing;
+        margin-bottom: @defaultSpacing;
+    }
+    .section{
+        padding: 0 @halfSpacing;
     }
     .repoBuild{
         .dimension(20px, 20px);
@@ -33,7 +36,17 @@
         .shadowTxt;
         padding: @doubleSpacing @defaultSpacing;
     }
+    .unassignedPullRequests{
+        padding: 0 15px;
+    }
 }
-.assignedPullRequests .userBlock{
-    background-color: #A2A4A8;
+.assignedPullRequests{
+    .borderRadius(0 0 0 10px);
+    h2{
+        color: @dbBlack;
+    }
+    background-color: @gray;
+    .userBlock{
+        background-color: @dbGray;
+    }
 }
