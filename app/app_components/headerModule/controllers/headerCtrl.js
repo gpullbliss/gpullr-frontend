@@ -13,7 +13,6 @@ angular.module('headerModule')
             userService.getCurrentUser();
 
             $rootScope.$on('changeRequestCount', function (event, requestCount) {
-                console.log('changeRequestCount EVENT, set requestCount to ' + requestCount);
                 $scope.requestCount = requestCount;
             });
 
@@ -48,12 +47,6 @@ angular.module('headerModule')
                     }
                 }
             };
-
-            $scope.$on('notificationRead', function (event, data) {
-                console.log('== notificationRead event ==');
-                console.log('event: ' + angular.toJson(event));
-                console.log('data: ' + angular.toJson(data));
-            });
 
             $scope.toText = notificationDropdownItemService.convert;
 

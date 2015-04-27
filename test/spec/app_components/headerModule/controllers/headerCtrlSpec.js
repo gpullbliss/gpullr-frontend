@@ -9,13 +9,13 @@ describe('headerCtrl', function () {
         scope,
         interval,
         UserNameService,
+        notifications,
         notificationService,
         notificationDropdownItemService,
-        httpBackend;
-    ;
+        q;
 
     beforeEach(function () {
-        module('headerModule'   );
+        module('headerModule');
 
         inject(function (_$controller_,
                          _$rootScope_,
@@ -24,8 +24,7 @@ describe('headerCtrl', function () {
                          _UserNameService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
-                         _$httpBackend_
-        ) {
+                         _$q_) {
 
             $controller = _$controller_;
             userService = _userService_;
@@ -35,12 +34,22 @@ describe('headerCtrl', function () {
             UserNameService = _UserNameService_;
             notificationService = _notificationService_;
             notificationDropdownItemService = _notificationDropdownItemService_;
-            httpBackend = _$httpBackend_;
+            q = _$q_;
 
             user = {id: 1234, username: 'testUser', avatarUrl: 'http://www.jira.de'};
+            notifications = { 'items': [{'id': 1}, {'id': 2}, { 'id': 3}]};
 
             spyOn(userService, 'getCurrentUser');
 
+            spyOn(notificationService, 'getNotifications').and.callFake(function () {
+                var deferred = q.defer();
+                deferred.resolve(notifications.items);
+                return deferred.promise;
+            });
+
+            spyOn(notificationService, 'markAllNotificationsRead');
+
+            spyOn(notificationService, 'markNotificationRead');
 
             controller = $controller('headerCtrl', {
                 $scope: scope,
@@ -56,21 +65,47 @@ describe('headerCtrl', function () {
         });
     });
 
-    afterEach(function () {
-        httpBackend.verifyNoOutstandingExpectation();
-        httpBackend.verifyNoOutstandingRequest();
-    });
-
     describe('$scope.requestCount', function () {
         it('processes changeRequestCount events and sets requestCount', function () {
-
             rootScope.$emit('changeRequestCount', 44);
             scope.$digest();
-            $httpBackend.flush();
-
-            expect(notificationService.getNotifications()).toHaveBeenCalled();
-            expect($scope.requestCount).toEqual(44);
+            expect(scope.requestCount).toEqual(44);
         });
+    });
+
+    describe('notifications', function () {
+        it('fetches all pending unread notifications', function () {
+            scope.$digest();
+            expect(notificationService.getNotifications).toHaveBeenCalled();
+            expect(scope.notifications.length).toEqual(3);
+        });
+
+        it('remove a notification from notification list upon clicking the X button', function () {
+            var event = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
+            scope.$digest();
+            scope.markNotificationAsSeen(event, 2);
+            scope.$digest();
+
+            expect(notificationService.markNotificationRead).toHaveBeenCalledWith(2);
+
+            // originally list is three items long
+            expect(scope.notifications.length).toEqual(2);
+
+            // removing 2nd notification leaves the notifications array be filled with notifications 1 and 3
+            expect(scope.notifications[0].id).toEqual(1);
+            expect(scope.notifications[1].id).toEqual(3);
+        });
+
+        it('remove all notifications upon clicking "all read"', function () {
+            scope.$digest();
+            scope.markAllNotificationsRead();
+            scope.$digest();
+            expect(notificationService.markAllNotificationsRead).toHaveBeenCalled();
+
+            // originally list is three items long
+            expect(scope.notifications.length).toEqual(0);
+        })
+
     });
 
 });
