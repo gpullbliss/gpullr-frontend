@@ -104,7 +104,7 @@ describe('headerCtrl', function () {
 
             // originally list is three items long
             expect(scope.notifications.length).toEqual(0);
-        })
+        });
 
     });
 

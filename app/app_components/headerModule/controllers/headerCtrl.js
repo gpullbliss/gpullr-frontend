@@ -21,13 +21,6 @@ angular.module('headerModule')
                     function (response) {
                         $scope.notifications = response;
                     }
-                    //function (error) {
-                    //    if (angular.isDefined(notificationUpdaterPromise)){
-                    //        console.log('cancelling periodic notifications poll');
-                    //        $interval.cancel(notificationUpdaterPromise);
-                    //        notificationUpdaterPromise = undefined;
-                    //    }
-                    //}
                 );
             }
 
