@@ -5,7 +5,7 @@ angular.module('translateModule')
             btn: {
                 save: 'speichern',
                 cancel: 'abbrechen',
-                confirm: 'ok'
+                confirm: 'bestätigen'
             }
         },
         meta: {
@@ -49,7 +49,7 @@ angular.module('translateModule')
                     unassign: 'mir abweisen',
                     modal: {
                         headline: 'Zieh Anfrage ist schon zugewiesen.',
-                        text: 'Willst du ?'
+                        text: 'Willst du dich wirklich zuweisen?'
                     }
                 },
                 infos: {
