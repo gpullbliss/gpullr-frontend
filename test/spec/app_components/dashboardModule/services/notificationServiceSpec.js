@@ -2,8 +2,7 @@
 
 describe('notificationService', function () {
     var httpBackend,
-        service,
-        response;
+        service;
 
     beforeEach(function () {
         module('dashboardModule');
@@ -74,6 +73,6 @@ describe('notificationService', function () {
             httpBackend.flush();
         });
 
-    })
+    });
 
 });
