@@ -55,5 +55,5 @@ angular.module('wallboardModule')
                     $timeout.cancel(reloadAppTimeout);
                 }
             );
-
+            $rootScope.bodyClass = 'wallboard';
         }]);
