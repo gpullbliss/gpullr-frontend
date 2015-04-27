@@ -57,6 +57,12 @@ describe('userSettingsCtrl', function () {
                 return deferred.promise;
             });
 
+            spyOn(userService, 'getLanguages').and.callFake(function () {
+                var deferred = q.defer();
+                deferred.resolve();
+                return deferred.promise;
+            });
+
             controller = $controller('userSettingsCtrl', {
                 $scope: scope,
                 $state: state,

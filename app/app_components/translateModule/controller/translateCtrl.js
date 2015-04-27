@@ -6,5 +6,5 @@ angular.module('translateModule')
         $scope.changeLanguage = function (langKey) {
             $translate.use(langKey);
         };
-
-    }]);
+    }]
+);
