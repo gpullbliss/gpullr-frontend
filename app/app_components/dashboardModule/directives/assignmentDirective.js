@@ -14,7 +14,7 @@ angular.module('dashboardModule')
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
                     ACTION_OPEN_MODAL = 'modal',
                     currentPr,
-                    defaultTitle = 'Assign myself';
+                    defaultTitle = 'dashboard.pullRequest.assign.toMe';
                 $scope.getName = userNameService.getName;
 
                 function init() {
@@ -24,7 +24,7 @@ angular.module('dashboardModule')
                         $scope.assignmentStyle = '';
                         $scope.assignmentModal = '';
                     } else if ($scope.pullRequest.assignee.id === $scope.loggedInUser.id) {
-                        $scope.assignTitle = 'Unassign myself';
+                        $scope.assignTitle = 'dashboard.pullRequest.assign.unassign';
                         $scope.assignment = ACTION_UNASSIGN_ME;
                         $scope.assignmentStyle = 'isAssignedToMe';
                         $scope.assignmentModal = '';

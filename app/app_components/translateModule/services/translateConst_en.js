@@ -4,8 +4,8 @@ angular.module('translateModule')
         global: {
             btn: {
                 save: 'Save',
-                cancel: 'Cancel',
-                confirm: 'ok'
+                cancel: 'Abort',
+                confirm: 'Confirm'
             }
         },
         meta: {
@@ -46,7 +46,11 @@ angular.module('translateModule')
             pullRequest: {
                 assign: {
                     toMe: 'Assign myself',
-                    unassign: 'Unassign myself'
+                    unassign: 'Unassign myself',
+                    modal: {
+                        headline: 'Pull request is already assigned.',
+                        text: 'Do you really want to assign it to you?'
+                    }
                 },
                 infos: {
                     linesChanged: 'Lines Changed',

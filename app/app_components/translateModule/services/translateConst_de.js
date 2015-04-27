@@ -46,7 +46,11 @@ angular.module('translateModule')
             pullRequest: {
                 assign: {
                     toMe: 'mir zuweisen',
-                    unassign: 'mich entfernen'
+                    unassign: 'mir abweisen',
+                    modal: {
+                        headline: 'Zieh Anfrage ist schon zugewiesen.',
+                        text: 'Willst du ?'
+                    }
                 },
                 infos: {
                     linesChanged: 'Zeilen geändert',
