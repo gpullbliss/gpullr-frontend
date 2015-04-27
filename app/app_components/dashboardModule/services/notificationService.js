@@ -3,7 +3,7 @@ angular.module('dashboardModule')
     .factory('notificationService', ['$http', function ($http) {
         var url = '/api/notifications';
 
-        function getNotificationList() {
+        function getNotifications() {
             return $http.get(url).then(
                 function (response) {
                     return response.data.items;
@@ -20,7 +20,7 @@ angular.module('dashboardModule')
         }
 
         return {
-            getNotifications: getNotificationList,
+            getNotifications: getNotifications,
             markNotificationRead: markNotificationRead,
             markAllNotificationsRead: markAllNotificationsRead
         };

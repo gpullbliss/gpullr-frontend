@@ -66,7 +66,7 @@ describe('notificationService', function () {
             httpBackend.flush();
         });
 
-        it('calls correct URL for removal all notifications', function () {
+        it('calls correct URL for removal of all notifications', function () {
             httpBackend.expectDELETE(expectedUrl).respond();
             service.markAllNotificationsRead();
 
