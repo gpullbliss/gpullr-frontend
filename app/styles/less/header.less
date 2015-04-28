@@ -32,13 +32,13 @@
         .floatL;
     }
     .navi{
-        li{
+        .linkItem{
             .floatL;
             padding: 16px @defaultSpacing;
             a{
                 .block;
             }
-            &.active{
+            &.active, &.open{
                 background-color: #000;
             }
         }
@@ -56,6 +56,46 @@
         }
         .repoFilterIcon:before{
             content: '\e60d';
+        }
+        .notificationsIcon:before{
+            .fontSet(23px, 19px);
+            content: '\e609';
+        }
+    }
+    .overlay{
+        position: relative;
+        .overlayMenu{
+            .borderRadius(@halfSpacing);
+            .position(absolute, 60px, null, null, 0);
+            background-color: @dbBlack;
+            display: none;
+            padding-top: @defaultSpacing;
+            width: 400px;
+            z-index: 1;
+        }
+        .item{
+            .borderRadius(@halfSpacing);
+            background-color: @dbLightGray;
+            float: none;
+            margin: 0 @defaultSpacing @defaultSpacing @defaultSpacing;
+            padding-top: @defaultSpacing;
+            padding-bottom: @defaultSpacing;
+        }
+        &.open{
+            & .overlayBtn:after{
+                .dimension(10px, 10px);
+                .position(absolute, 45px, null, null, 10px);
+                background-color: #000;
+                content: '';
+                display: block;
+                transform: rotate(45deg);
+            }
+            .overlayMenu {
+                display: block;
+                .btn{
+                    margin-bottom: @defaultSpacing;
+                }
+            }
         }
     }
 }

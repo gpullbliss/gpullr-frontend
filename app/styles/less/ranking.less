@@ -14,7 +14,7 @@
         .fontSet(80px, 80px);
         .iconFont;
         .textC;
-        .borderRadius(5px 5px 0 0);
+        .borderRadius(@halfSpacing @halfSpacing 0 0);
         background-color: @dbBlack;
         padding: 10px 0 10px;
         vertical-align: baseline;
@@ -43,7 +43,7 @@
         .podiumBlock {
             color: @silver;
             padding-top: 30px;
-            .borderRadius(0 5px 0 0);
+            .borderRadius(0 @halfSpacing 0 0);
             &:before {
                 content: '\e601';
             }
@@ -51,7 +51,7 @@
     }
     .thirdPlace {
         .podiumBlock {
-            .borderRadius(5px 0 0 0);
+            .borderRadius(@halfSpacing 0 0 0);
             color: @bronze;
             &:before {
                 content: '\e602';

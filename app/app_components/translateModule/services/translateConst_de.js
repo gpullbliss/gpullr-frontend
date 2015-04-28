@@ -5,7 +5,7 @@ angular.module('translateModule')
             btn: {
                 save: 'speichern',
                 cancel: 'abbrechen',
-                confirm: 'ok'
+                confirm: 'bestätigen'
             }
         },
         meta: {
@@ -16,9 +16,16 @@ angular.module('translateModule')
             logoAlt: 'gPullRequestTool 2015'
         },
         navi: {
-            linkPullrequest: 'alle Requests',
+            linkPullrequest: 'alle Anfragen',
             linkRanking: 'Rangliste',
-            linkSettings: 'Einstellungen'
+            linkSettings: 'Einstellungen',
+            linkNotifications: 'Benachrichtigungen',
+            notifications: {
+                title: 'Benachrichtigungen',
+                closedPr: 'schloss deine Zieh Anfrage',
+                inRepo: 'in Lager',
+                markAsSeen: 'alle löschen'
+            }
         },
         login: {
             headline: 'Reingehen',
@@ -30,7 +37,7 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'offene PR\'s'
+                openRequest: 'offene Zieh Anfragen'
             },
             filter: {
                 byOldest: 'sortieren nach ältester zuerst',
@@ -39,14 +46,18 @@ angular.module('translateModule')
             pullRequest: {
                 assign: {
                     toMe: 'mir zuweisen',
-                    unassign: 'mich entfernen'
+                    unassign: 'mir abweisen',
+                    modal: {
+                        headline: 'Zieh Anfrage ist schon zugewiesen.',
+                        text: 'Willst du dich wirklich zuweisen?'
+                    }
                 },
                 infos: {
                     linesChanged: 'Zeilen geändert',
                     filesChanged: 'Datein geändert',
                     filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
-                    createdAt: 'Pull Requests erstellt am',
+                    createdAt: 'Zieh Anfrage erstellt am',
                     build: 'Bau'
                 }
             }
@@ -60,12 +71,12 @@ angular.module('translateModule')
                 allTime: 'aller Zeit'
             },
             userInfos: {
-                prDone: 'geschlossene Pull Requests'
+                prDone: 'geschlossene Zieh Anfragen'
             }
         },
         settings: {
             headline:{
-                repo: 'Repo Filter',
+                repo: 'Lager Filter',
                 settings: 'Einstellungen'
             },
             filter: {

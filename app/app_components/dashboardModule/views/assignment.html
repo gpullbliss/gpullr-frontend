@@ -1,9 +1,8 @@
 <div class="assignee userBlock">
-    <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle}}">
+    <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
         <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
     <a ng-if="pullRequest.assignee" target="_blank" data-ng-href="pullRequest.assignee.profileUrl" class="userName">
-
         <span>{{getName(pullRequest.assignee)}}</span>
         <span class="subName" data-ng-if="pullRequest.assignee.fullName">{{pullRequest.assignee.username}}</span>
     </a>
@@ -14,15 +13,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <a type="button" class="modalClose" data-dismiss="modal"></a>
+                <a type="button" class="closeBtn" data-dismiss="modal"></a>
                 <h4 class="modal-title">
-                    Pull request is already assigned.
+                    {{'dashboard.pullRequest.assign.modal.headline' | translate}}
                 </h4>
             </div>
-            <p class="modal-body">Do you really want to assign it to you?</p>
+            <p class="modal-body">{{'dashboard.pullRequest.assign.modal.text' | translate}}</p>
             <div class="modal-footer">
-                <button class="btn floatL" data-dismiss="modal">Abort</button>
-                <button class="btn btn-default" data-ng-click="confirmAssignment()">Confirm</button>
+                <button class="btn floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
+                <button class="btn btn-default" data-ng-click="confirmAssignment()">{{'global.btn.confirm' | translate}}</button>
             </div>
         </div>
     </div>
