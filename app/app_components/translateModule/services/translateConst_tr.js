@@ -1,0 +1,95 @@
+'use strict';
+angular.module('translateModule')
+    .constant('TranslateConstEn', {
+        global: {
+            btn: {
+                save: 'Kaydet',
+                cancel: 'İptal',
+                confirm: 'Onayla'
+            }
+        },
+        meta: {
+            title: 'gPullRequestTool',
+            description: 'gPullRequestTool'
+        },
+        header: {
+            logoAlt: 'gPullRequestTool 2015'
+        },
+        navi: {
+            linkPullrequest: 'Tüm talepler',
+            linkRanking: 'Sıralama',
+            linkSettings: 'Ayarlar',
+            linkNotifications: 'Bildiriler',
+            notifications: {
+                title: 'bildiriler',
+                closedPr: 'değişiklik talebini tamamladı',
+                inRepo: 'depoda',
+                markAsSeen: 'tümünü okunmuş olarak işaretle'
+            }
+        },
+        login: {
+            headline: 'Giriş',
+            errorMessage: 'Giriş yapılamadı',
+            username: 'Kullanıcı adı',
+            btn:{
+                login: 'Giriş yap'
+            }
+        },
+        dashboard: {
+            headline: {
+                openRequest: 'Açık Değişiklik Talepleri'
+            },
+            filter: {
+                byOldest: 'zamana göre filtrele, eskiden yeniye',
+                byNewest: 'zamana göre filtrele, yeniden eskiye'
+            },
+            pullRequest: {
+                assign: {
+                    toMe: 'Kendime tahsis et',
+                    unassign: 'Tahsisi kendimden kaldır',
+                    modal: {
+                        headline: 'Değişiklik talebi zaten tahsis edilmiş durumda.',
+                        text: 'Gerçekten kendine tahsis etmek istiyor musun?'
+                    }
+                },
+                infos: {
+                    linesChanged: 'Satırlar değiştirildi',
+                    filesChanged: 'Dosyalar değiştirildi',
+                    filesRemoved: 'Dosyalar silindi',
+                    comments: 'Yorum',
+                    createdAt: 'Değişiklik talebi şu tarihte oluşturuldu:',
+                    build: 'Oluştur'
+                }
+            }
+        },
+        ranking: {
+            headline: 'Kullanıcı sıralaması',
+            tabs: {
+                day: 'Gün',
+                week: 'Hafta',
+                month: 'Ay',
+                allTime: 'Tüm zaman'
+            },
+            userInfos: {
+                prDone: 'Kapanmış değişiklik talepleri'
+            }
+        },
+        settings: {
+            headline:{
+                repo: 'Depo filtresi',
+                settings: 'Ayarlar'
+            },
+            filter: {
+                select: {
+                    all: 'hepsini seç',
+                    none: 'hepsinden seçimi kaldır'
+                },
+                search: 'Arama'
+            },
+            lang: {
+                de: 'Almanca',
+                en: 'İngilizce',
+                it: 'İtalyanca'
+            }
+        }
+    });
