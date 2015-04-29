@@ -1,6 +1,6 @@
 'use strict';
 angular.module('translateModule')
-    .constant('TranslateConstDe', {
+    .constant('TranslateConstRu', {
         global: {
             btn: {
                 save: 'сохранить',
@@ -16,75 +16,75 @@ angular.module('translateModule')
             logoAlt: 'gPullRequestTool 2015'
         },
         navi: {
-            linkPullrequest: 'все запросы на включение',
-            linkRanking: 'лидеры',
-            linkSettings: 'настройки',
-            linkNotifications: 'уведомления',
+            linkPullrequest: 'Все запросы',
+            linkRanking: 'Горячая десятка',
+            linkSettings: 'Настройки',
+            linkNotifications: 'Уведомления',
             notifications: {
-                title: 'уведомления',
-                closedPr: 'закрыть запрос на включение',
-                inRepo: 'в хранилище',
-                markAsSeen: 'удалить все'
+                title: 'Уведомления',
+                closedPr: 'закрыл(а) твой запрос на включение',
+                inRepo: 'в проекте',
+                markAsSeen: 'все удалить'
             }
         },
         login: {
-            headline: 'войти',
+            headline: 'Вход в систему',
             errorMessage: 'ошибка при входе в систему',
-            username: 'имя пользователя',
+            username: 'Имя пользователя',
             btn:{
-                login: 'войти'
+                login: 'Войти'
             }
         },
         dashboard: {
             headline: {
-                openRequest: 'открытые запросы на включение'
+                openRequest: 'Открытые запросы'
             },
             filter: {
-                byOldest: 'старые вначале',
-                byNewest: 'новые вначале'
+                byOldest: 'сортировать по дате по убыванию',
+                byNewest: 'сортировать по дате по возрастанию'
             },
             pullRequest: {
                 assign: {
                     toMe: 'присвоить мне',
                     unassign: 'отменить присвоение',
                     modal: {
-                        headline: 'Запрос на слияние уже обрабатывается другим пользователем.',
-                        text: 'Хочешь ли ты действительно присвоить себе запрос на слияние?'
+                        headline: 'Запрос уже обрабатывается другим пользователем.',
+                        text: 'Действительно присвоить себе запрос?'
                     }
                 },
                 infos: {
-                    linesChanged: 'измененных строк',
-                    filesChanged: 'измененных файлов',
-                    filesRemoved: 'удаленных файлов',
+                    linesChanged: 'изменённых строк',
+                    filesChanged: 'изменённых файлов',
+                    filesRemoved: 'удалённых файлов',
                     comments: 'комментариев',
                     createdAt: 'дата создания',
-                    build: 'текущая сборка'
+                    build: 'Текущая сборка'
                 }
             }
         },
         ranking: {
-            headline: 'Лист лидеров',
+            headline: 'Горячая десятка',
             tabs: {
-                day: 'день',
-                week: 'неделя',
-                month: 'месяц',
-                allTime: 'всё время'
+                day: 'День',
+                week: 'Неделя',
+                month: 'Месяц',
+                allTime: 'Всё время'
             },
             userInfos: {
-                prDone: 'закрытые запросы на включение'
+                prDone: 'Закрытые запросы'
             }
         },
         settings: {
             headline:{
-                repo: 'фильтр репозитория',
-                settings: 'настройки'
+                repo: 'Фильтр проектов',
+                settings: 'Настройки'
             },
             filter: {
                 select: {
-                    all: 'выбрать все',
-                    none: 'отменить выборку'
+                    all: 'Выделить все',
+                    none: 'Снять выделение'
                 },
-                search: 'найти'
+                search: 'искать'
             },
             lang: {
                 de: 'Deutsch',
