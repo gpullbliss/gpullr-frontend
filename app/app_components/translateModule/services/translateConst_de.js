@@ -88,7 +88,8 @@ angular.module('translateModule')
             },
             lang: {
                 de: 'Deutsch',
-                en: 'English'
+                en: 'English',
+                it: 'Italiano'
             }
         }
     });
