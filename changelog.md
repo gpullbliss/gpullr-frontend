@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] added italian translation
  - [feature] pull request closed notifications in header
  - [feature] add dynamic lang controller
  - [feature] optimise mobile layout
