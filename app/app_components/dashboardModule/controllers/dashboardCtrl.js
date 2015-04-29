@@ -14,6 +14,20 @@ angular.module('dashboardModule')
                 });
             }
 
+            function orderPrList(selector, sortOrder) {
+                var user = angular.copy($rootScope.user);
+
+                if (user.userSettingsDto === null) {
+                    user.userSettingsDto = {};
+                }
+                console.log('ordering ' + selector);
+                console.log('sortOrder: ' + sortOrder);
+
+                user.userSettingsDto[selector] = sortOrder;
+                console.log(user.userSettingsDto);
+                userSettingsService.persistUserSettings(user);
+            }
+
             $scope.$on('$destroy', function () {
                     $interval.cancel(updatePullRequestsInterval);
                     updatePullRequestsInterval = undefined;
@@ -24,20 +38,15 @@ angular.module('dashboardModule')
                 getPullRequests();
             });
 
-            $scope.orderPrList = function (sortOrder) {
-                var user = angular.copy($rootScope.user);
-                if (user.userSettingsDto === null) {
-                    user.userSettingsDto = {
-                        orderOptionDto: sortOrder
-                    };
-                } else {
-                    user.userSettingsDto.orderOptionDto = sortOrder;
-                }
-                userSettingsService.persistUserSettings(user).then(function () {
-                    getPullRequests();
-                });
+
+            $scope.orderUnassignedPrList = function (sortOrder) {
+                orderPrList('unassignedPullRequestsOrdering', sortOrder);
             };
-            
+
+            $scope.orderAssignedPrList = function (sortOrder) {
+                orderPrList('assignedPullRequestsOrdering', sortOrder);
+            };
+
             updatePullRequestsInterval = $interval(getPullRequests, 60000);
             getPullRequests();
         }
