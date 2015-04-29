@@ -40,8 +40,8 @@ angular.module('translateModule')
                 openRequest: 'Açık Değişiklik Talepleri'
             },
             filter: {
-                byOldest: 'zamana göre filtrele, eskiden yeniye',
-                byNewest: 'zamana göre filtrele, yeniden eskiye'
+                byOldest: 'eskiden yeniye sırala',
+                byNewest: 'yeniden eskiye sırala'
             },
             pullRequest: {
                 assign: {
