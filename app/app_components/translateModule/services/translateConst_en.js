@@ -37,7 +37,7 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'Open PR\'s'
+                openRequest: 'Open PRs'
             },
             filter: {
                 byOldest: 'filter by time oldest first',

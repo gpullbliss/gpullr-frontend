@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] add touch icon & favicon
  - [feature] added italian translation
  - [feature] pull request closed notifications in header
  - [feature] add dynamic lang controller
@@ -46,4 +47,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri Apr 24 14:37:05 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 29 15:12:15 CEST 2015
