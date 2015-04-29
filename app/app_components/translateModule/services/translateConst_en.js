@@ -31,13 +31,14 @@ angular.module('translateModule')
             headline: 'Login',
             errorMessage: 'Login failed',
             username: 'Username',
-            btn:{
+            btn: {
                 login: 'Sign in'
             }
         },
         dashboard: {
             headline: {
-                openRequest: 'Open PR\'s'
+                openRequest: 'Unassigned PR\'s',
+                assignedRequest: 'Assigned PR\'s'
             },
             filter: {
                 byOldest: 'filter by time oldest first',
@@ -75,7 +76,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Repo Filter',
                 settings: 'Settings'
             },
