@@ -1,21 +1,24 @@
 <h2 data-ng-if="errorMessage" class="alert alert-danger dMarginTop">{{errorMessage}}</h2>
 
-<div id="wallboard" class="listView col-xs-12">
-    <div class="row">
-        <div class="col-md-8 unassignedPullRequests">
-            <h2>Open</h2>
-            <div class="row">
-                <div class="col-md-6 section" data-ng-repeat="pr in unassignedPullRequests">
-                    <section data-dvb-wallboard-pull-request data-pull-request="pr"></section>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 assignedPullRequests">
-            <h2>In Progress</h2>
-            <div data-ng-repeat="pr in assignedPullRequests">
+<div id="wallboard" class="listView">
+    <div class="col-md-8 unassignedPullRequests">
+        <h2>Open</h2>
+        <div class="row">
+            <div class="col-md-6 section" data-ng-repeat="pr in unassignedPullRequests">
                 <section data-dvb-wallboard-pull-request data-pull-request="pr"></section>
+
             </div>
         </div>
     </div>
+
+    <div class="col-md-4 assignedPullRequests">
+        <h2>In Progress</h2>
+        <div data-ng-repeat="pr in assignedPullRequests">
+            <section data-dvb-wallboard-pull-request data-pull-request="pr"></section>
+        </div>
+    </div>
+</div>
+<div data-ng-if="assignedPullRequests.length === 0 && unassignedPullRequests.length === 0" class="noContent">
+    <h2 class="textC dMarginTop">NOTING?!?<br> Nobody is Working?</h2>
+    <img class="col-xs-6 col col-xs-offset-3" src="styles/img/fry.png">
 </div>
