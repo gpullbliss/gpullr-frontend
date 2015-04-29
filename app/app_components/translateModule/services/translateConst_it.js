@@ -1,6 +1,6 @@
 'use strict';
 angular.module('translateModule')
-    .constant('TranslateConstEn', {
+    .constant('TranslateConstIt', {
         global: {
             btn: {
                 save: 'Salva',
