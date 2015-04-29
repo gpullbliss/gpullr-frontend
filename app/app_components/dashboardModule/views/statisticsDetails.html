@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-sm-offset-3 col-xs-12 topRanks" data-ng-if="rankingList != ''">
+<div class="col-sm-6 col-sm-offset-3 col-xs-12 topRanks" data-ng-if="rankingList.length > 0">
     <div class="podium thirdPlace">
         <div class="podiumImg">
             <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in rankingList[2].users">
@@ -25,4 +25,4 @@
         </div>
     </div>
 </div>
-<h2 class="col-xs-12 dMarginVerti textC" data-ng-if="rankingList === ''">{{'ranking.noResultsJet' | translate}}</h2>
+<h2 class="col-xs-12 dMarginVerti textC" data-ng-if="rankingList.length === 0">{{'ranking.noResultsJet' | translate}}</h2>

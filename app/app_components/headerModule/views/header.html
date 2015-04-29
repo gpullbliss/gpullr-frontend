@@ -1,18 +1,62 @@
-<header id="header" class="col-xs-12 overflowH">
-    <a class="logo" alt="{{'header.logoAlt' | translate}}" data-ui-sref="{{navBar[0].state}}"></a>
+<header id="header"
+        class="col-xs-12">
+    <a class="logo"
+       alt="{{'header.logoAlt' | translate}}"
+       data-ui-sref="{{navBar[0].state}}"></a>
     <nav class="pull-left">
         <ul class="navi">
-            <li class="{{item.state}}" data-ui-sref-active="active" data-ng-repeat="item in navBar" data-ng-click="navigate(item)">
+            <li class="{{item.state}} linkItem"
+                data-ui-sref-active="active"
+                data-ng-repeat="item in navBar"
+                data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
                     <span class="iconFont {{item.state}}Icon visible-xs"></span>
                     <span class="hidden-xs">{{item.title | translate}}</span>
-                    <span data-ng-if="item.bubble && requestCount" class="bubble">{{requestCount}}</span>
+                    <span data-ng-if="item.bubble && requestCount"
+                          class="bubble">{{requestCount}}</span>
                 </a>
             </li>
+
+            <li data-ng-if="notifications.length > 0"
+                class="overlay linkItem">
+                <a href="#"
+                   class="overlayBtn"
+                   data-toggle="dropdown"
+                   title="{{notifications.length}} {{'navi.notifications.title' | translate}}">
+                    <span class="iconFont notificationsIcon visible-xs"></span>
+                    <span class="hidden-xs">{{'navi.linkNotifications' | translate}}</span>
+                    <span class="bubble">{{notifications.length}}</span>
+                </a>
+
+                <ul class="overlayMenu">
+                    <li class="item overflowH row"
+                        data-ng-repeat="item in notifications | limitTo:3"
+                        data-notification="item">
+                        <p class="col-xs-11">{{toText(item)}}</p>
+                        <a type="button"
+                           class="closeBtn col-xs-1"
+                           data-dismiss="modal"
+                           data-ng-click="markNotificationAsSeen($event, item.id)"></a>
+                    </li>
+                    <li class="col-xs-12">
+                        <a class="btn btn-default"
+                           data-ng-click="markAllNotificationsRead()">
+                            {{'navi.notifications.markAsSeen' | translate}}
+                            {{notifications.length > 3 ? '(+' + (notifications.length - 3) + ')' : ''}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </nav>
-    <a href="{{user.profileUrl}}" target="_blank" class="pull-right" data-ng-if="user">
+
+    <a href="{{user.profileUrl}}"
+       target="_blank"
+       class="pull-right"
+       data-ng-if="user">
         <span class="username hidden-xs">{{getName(user)}}</span>
-        <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}" />
+        <img class="avatarWrapper"
+             data-ng-src="{{user.avatarUrl}}"/>
     </a>
 </header>

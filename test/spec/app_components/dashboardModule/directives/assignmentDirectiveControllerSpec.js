@@ -36,7 +36,7 @@ describe('assignmentDirectiveController', function () {
             $scope.$digest();
             directiveScope = element.isolateScope();
 
-            expect(directiveScope.assignTitle).toEqual('Assign myself');
+            expect(directiveScope.assignTitle).toEqual('dashboard.pullRequest.assign.toMe');
             expect(directiveScope.assignment).toEqual('assignToMe');
             expect(directiveScope.assignmentStyle).toEqual('');
         });
@@ -46,7 +46,7 @@ describe('assignmentDirectiveController', function () {
             $scope.$digest();
             directiveScope = element.isolateScope();
 
-            expect(directiveScope.assignTitle).toEqual('Unassign myself');
+            expect(directiveScope.assignTitle).toEqual('dashboard.pullRequest.assign.unassign');
             expect(directiveScope.assignment).toEqual('unassignMe');
             expect(directiveScope.assignmentStyle).toEqual('isAssignedToMe');
         });
@@ -56,7 +56,7 @@ describe('assignmentDirectiveController', function () {
             $scope.$digest();
             directiveScope = element.isolateScope();
 
-            expect(directiveScope.assignTitle).toEqual('Assign myself');
+            expect(directiveScope.assignTitle).toEqual('dashboard.pullRequest.assign.toMe');
             expect(directiveScope.assignment).toEqual('confirmAssignToMe');
             expect(directiveScope.assignmentStyle).toEqual('isAssigned');
        }); 

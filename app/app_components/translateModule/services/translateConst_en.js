@@ -4,8 +4,8 @@ angular.module('translateModule')
         global: {
             btn: {
                 save: 'Save',
-                cancel: 'Cancel',
-                confirm: 'ok'
+                cancel: 'Abort',
+                confirm: 'Confirm'
             }
         },
         meta: {
@@ -18,7 +18,14 @@ angular.module('translateModule')
         navi: {
             linkPullrequest: 'All Requests',
             linkRanking: 'Ranking',
-            linkSettings: 'Settings'
+            linkSettings: 'Settings',
+            linkNotifications: 'Notifications',
+            notifications: {
+                title: 'notifications',
+                closedPr: 'closed your pull request',
+                inRepo: 'in repository',
+                markAsSeen: 'mark all as read'
+            }
         },
         login: {
             headline: 'Login',
@@ -30,7 +37,7 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'Open PR\'s'
+                openRequest: 'Open PRs'
             },
             filter: {
                 byOldest: 'filter by time oldest first',
@@ -39,7 +46,11 @@ angular.module('translateModule')
             pullRequest: {
                 assign: {
                     toMe: 'Assign myself',
-                    unassign: 'Unassign myself'
+                    unassign: 'Unassign myself',
+                    modal: {
+                        headline: 'Pull request is already assigned.',
+                        text: 'Do you really want to assign it to you?'
+                    }
                 },
                 infos: {
                     linesChanged: 'Lines Changed',
@@ -78,7 +89,8 @@ angular.module('translateModule')
             },
             lang: {
                 de: 'Deutsch',
-                en: 'English'
+                en: 'English',
+                it: 'Italiano'
             }
         }
     });
