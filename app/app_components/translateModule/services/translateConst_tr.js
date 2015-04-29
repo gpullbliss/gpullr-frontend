@@ -87,9 +87,10 @@ angular.module('translateModule')
                 search: 'Arama'
             },
             lang: {
-                de: 'Almanca',
-                en: 'İngilizce',
-                it: 'İtalyanca'
+                de: 'Deutsch',
+                en: 'English',
+                it: 'Italiano',
+                tr: 'Türkçe'
             }
         }
     });
