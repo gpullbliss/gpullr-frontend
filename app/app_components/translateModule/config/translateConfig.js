@@ -1,6 +1,6 @@
 'use strict';
 angular.module('translateModule')
-    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', 'TranslateConstIt', function ($translateProvider, translateConstEn, translateConstDe, translateConstIt, translateConstTR) {
+    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstTr', function ($translateProvider, translateConstEn, translateConstDe, translateConstIt, translateConstTr) {
 
         // add translation table
         $translateProvider
@@ -8,7 +8,7 @@ angular.module('translateModule')
             .translations('en', translateConstEn)
             .translations('de', translateConstDe)            
             .translations('it', translateConstIt)
-            .translations('tr', translateConstTR)
+            .translations('tr', translateConstTr)
             .preferredLanguage('en')
        
             // remember language
