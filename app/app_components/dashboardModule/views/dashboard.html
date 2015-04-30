@@ -20,6 +20,7 @@
                  data-ng-repeat="pr in pullRequests | filter: {assignee: 'null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'"
                  data-dvb-pull-request
                  data-pull-request="pr"
+                 data-age-property="'createdAt'"
                  data-logged-in-user="user"></section>
     </div>
 
@@ -41,6 +42,7 @@
                  data-ng-repeat="pr in pullRequests | filter: {assignee: '!null'} | orderBy: 'assignedAt': user.userSettingsDto.assignedPullRequestsOrdering === 'DESC'"
                  data-dvb-pull-request
                  data-pull-request="pr"
+                 data-age-property="'assignedAt'"
                  data-logged-in-user="user"></section>
     </div>
 </div>
