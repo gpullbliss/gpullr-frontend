@@ -1,4 +1,5 @@
 'use strict';
+/* jshint maxparams: false */
 angular.module('translateModule')
     .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', function ($translateProvider, translateConstEn, translateConstDe, translateConstIt, translateConstRu) {
 
