@@ -91,6 +91,7 @@ angular.module('translateModule')
                 de: 'Deutsch',
                 en: 'English',
                 it: 'Italiano',
+                tr: 'Türkçe',
                 ru: 'Русский'
             }
         }
