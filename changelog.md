@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - add PL lang
  - [feature] add ES translation
  - [feature] added turkish translation
  - [feature] added russian translation
@@ -50,4 +51,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Thu Apr 30 17:03:06 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Thu Apr 30 17:16:29 CEST 2015
