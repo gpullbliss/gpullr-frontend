@@ -1,8 +1,8 @@
 'use strict';
 /* jshint maxparams: false */
 angular.module('translateModule')
-    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstEs', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu',
-        function ($translateProvider, translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu) {
+    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstEs', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', 'TranslateConstTr',
+        function ($translateProvider, translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu, translateConstTr) {
 
             // add translation table
             $translateProvider
