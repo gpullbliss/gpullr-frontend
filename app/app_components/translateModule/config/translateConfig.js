@@ -11,6 +11,7 @@ angular.module('translateModule')
                 .translations('es', translateConstEs)
                 .translations('de', translateConstDe)
                 .translations('it', translateConstIt)
+                .translations('tr', translateConstTr)
                 .translations('ru', translateConstRu)
                  .preferredLanguage('en')
 
