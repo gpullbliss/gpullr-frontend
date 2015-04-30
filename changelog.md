@@ -1,5 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - add PL lang
+ - [feature] add ES translation
  - [feature] added turkish translation
  - [feature] added russian translation
  - [feature] add touch icon & favicon
@@ -49,4 +51,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Ömer Karahan <oemer.karahan@devbliss.com> Thu Apr 30 15:26:13 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Thu Apr 30 17:16:29 CEST 2015
