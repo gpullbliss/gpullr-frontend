@@ -1,27 +1,32 @@
 'use strict';
 /* jshint maxparams: false */
 angular.module('translateModule')
-    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', function ($translateProvider, translateConstEn, translateConstDe, translateConstIt, translateConstRu) {
+    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstEs', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', 'TranslateConstTr', 'TranslateConstPl',
+        function ($translateProvider, translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu, translateConstTr, translateConstPl) {
 
         // add translation table
         $translateProvider
             // add translation tables
             .translations('en', translateConstEn)
+            .translations('es', translateConstEs)
             .translations('de', translateConstDe)
             .translations('it', translateConstIt)
             .translations('ru', translateConstRu)
+            .translations('tr', translateConstTr)
             .translations('pl', translateConstPl)
             .preferredLanguage('en')
 
             // remember language
-            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', ru'], {
+            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru', 'tr'], {
                 'de_AT': 'de',
                 'de_CH': 'de',
                 'de_DE': 'de',
                 'en_UK': 'en',
                 'en_US': 'en',
+                'es_ES': 'es',
                 'it_IT': 'it',
-                'pl_PL': 'pl',
-                'ru_RU': 'ru'
+                'ru_RU': 'ru',
+                'tr_TR': 'tr',
+                'pl_PL': 'pl'
             });
     }]);
