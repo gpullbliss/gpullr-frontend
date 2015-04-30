@@ -10,14 +10,18 @@ angular.module('translateModule')
             .translations('de', translateConstDe)
             .translations('it', translateConstIt)
             .translations('ru', translateConstRu)
+            .translations('pl', translateConstPl)
             .preferredLanguage('en')
 
             // remember language
-            .registerAvailableLanguageKeys(['en', 'de', 'it', 'ru'], {
-                'en_US': 'en',
+            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', ru'], {
+                'de_AT': 'de',
+                'de_CH': 'de',
+                'de_DE': 'de',
                 'en_UK': 'en',
+                'en_US': 'en',
                 'it_IT': 'it',
-                'ru_RU': 'ru',
-                'de_DE': 'de'
+                'pl_PL': 'pl',
+                'ru_RU': 'ru'
             });
     }]);
