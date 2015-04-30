@@ -4,7 +4,7 @@ angular.module('translateModule')
         global: {
             btn: {
                 save: 'Zachowaj',
-                cancel: 'Poniechaj',
+                cancel: 'Anuluj',
                 confirm: 'Potwierdź'
             }
         },
@@ -21,7 +21,7 @@ angular.module('translateModule')
             linkSettings: 'Ustawienia',
             linkNotifications: 'Powiadomienia',
             notifications: {
-                title: 'powiadomienia',
+                title: 'Powiadomienia',
                 closedPr: 'zamknął twoją prośbę o połączenie',
                 inRepo: 'w repozytorium',
                 markAsSeen: 'oznaczyć wszystkie jako przeczytane'
@@ -30,7 +30,7 @@ angular.module('translateModule')
         login: {
             headline: 'Logowanie',
             errorMessage: 'Błąd logowania',
-            username: 'Użytkownik ',
+            username: 'Użytkownik',
             btn:{
                 login: 'Login'
             }
@@ -40,8 +40,8 @@ angular.module('translateModule')
                 openRequest: 'Otwarte prośby o połączenie'
             },
             filter: {
-                byOldest: 'najpierw najstarszy',
-                byNewest: 'najpierw najnowszy'
+                byOldest: 'najpierw najstarsze',
+                byNewest: 'najpierw najnowsze'
             },
             pullRequest: {
                 assign: {
@@ -49,7 +49,7 @@ angular.module('translateModule')
                     unassign: 'cofnąć przydzielenie',
                     modal: {
                         headline: 'Prośba o połączenie już jest przydzielona',
-                        text: 'na pewno chcesz to sobie przydzielić?'
+                        text: 'Czy na pewno chcesz to sobie przydzielić?'
                     }
                 },
                 infos: {
