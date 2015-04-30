@@ -1,11 +1,13 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] added turkish translation
+ - [feature] added russian translation
  - [feature] add touch icon & favicon
  - [feature] added italian translation
  - [feature] pull request closed notifications in header
  - [feature] add dynamic lang controller
  - [feature] optimise mobile layout
- - [feature] redesign wallboard 
+ - [feature] redesign wallboard
  - [bug] fixed missing slash in last 30 days
  - [feature] add new infos for PR (comments & jenkins build status)
  - [feature] redesign modals
@@ -47,4 +49,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Apr 29 15:12:15 CEST 2015
+-- Last change by: Ömer Karahan <oemer.karahan@devbliss.com> Thu Apr 30 15:26:13 CEST 2015
