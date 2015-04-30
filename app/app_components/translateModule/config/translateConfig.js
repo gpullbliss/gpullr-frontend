@@ -1,7 +1,7 @@
 'use strict';
 /* jshint maxparams: false */
 angular.module('translateModule')
-    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', function ($translateProvider, translateConstEn, translateConstDe, translateConstIt, translateConstRu) {
+    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstPl', 'TranslateConstRu', function ($translateProvider, translateConstEn, translateConstDe, translateConstIt, translateConstPl, translateConstRu) {
 
         // add translation table
         $translateProvider
@@ -14,7 +14,7 @@ angular.module('translateModule')
             .preferredLanguage('en')
 
             // remember language
-            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', ru'], {
+            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru'], {
                 'de_AT': 'de',
                 'de_CH': 'de',
                 'de_DE': 'de',
