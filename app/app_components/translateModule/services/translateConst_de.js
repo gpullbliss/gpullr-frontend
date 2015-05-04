@@ -31,7 +31,7 @@ angular.module('translateModule')
             headline: 'Reingehen',
             errorMessage: 'Login fehlgeschlagen',
             username: 'Nutzername',
-            btn:{
+            btn: {
                 login: 'reingehn'
             }
         },
@@ -58,6 +58,7 @@ angular.module('translateModule')
                     filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
                     createdAt: 'Zieh Anfrage erstellt am',
+                    assignedAt: 'Reviewer zugewiesen am',
                     build: 'Bau'
                 }
             }
@@ -75,7 +76,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Lager Filter',
                 settings: 'Einstellungen'
             },
