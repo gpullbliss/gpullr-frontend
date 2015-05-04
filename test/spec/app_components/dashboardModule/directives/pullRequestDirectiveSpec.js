@@ -8,7 +8,7 @@ describe('pullRequest', function () {
         cssColorClass = 'youngerThan2h';
 
     function getDirectiveHtml(createdAt) {
-        var html = '<section class="overflowH" data-dvb-pull-request data-pull-request="{createdAt: ' + createdAt + ',author: {fullName: \'user name\'}}" data-logged-in-user="{}"></section>';
+        var html = '<section data-dvb-pull-request data-age-property="\'createdAt\'" data-pull-request="{createdAt: ' + createdAt + ',author: {fullName: \'user name\'}}" data-logged-in-user="{}"></section>';
         return html;
     }
 
@@ -31,7 +31,6 @@ describe('pullRequest', function () {
         inject(function (_$compile_, _$rootScope_, _UserNameService_) {
             $compile = _$compile_;
             userNameService = _UserNameService_;
-            $compile = _$compile_;
             $scope = _$rootScope_.$new();
         });
     });
