@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] group pull requests by status
  - add PL lang
  - [feature] add ES translation
  - [feature] added turkish translation
@@ -51,4 +52,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Thu Apr 30 17:16:29 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Mon May 04 15:48:47 CEST 2015
