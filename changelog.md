@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [feature] small layout fixes
+ - [feature] layout fixes (no content info for ranking & wallboard, change language switch view, fix preferred language & optimise wallboard code)
  - add PL lang
  - [feature] add ES translation
  - [feature] added turkish translation

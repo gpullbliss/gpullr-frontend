@@ -64,7 +64,7 @@ angular.module('translateModule')
         },
         ranking: {
             headline: 'User Ranking',
-            noResultsJet: 'No Ranks jet! Do Something!',
+            noResultsJet: 'No ranks yet! Do something!',
             tabs: {
                 day: 'Day',
                 week: 'Week',
