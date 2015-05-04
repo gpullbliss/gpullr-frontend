@@ -30,6 +30,14 @@ angular.module('loginModule')
                 );
             }
 
+            // private methods
+            function setUserLanguage(user) {
+                var userSettings = user.userSettingsDto;
+                if (userSettings && userSettings.language) {
+                    $translate.use(userSettings.language);
+                }
+            }
+
             function logInUser(user) {
                 var successfulResponseStatus = 201;
                 clearCacheForGetCurrentUser();
@@ -57,15 +65,5 @@ angular.module('loginModule')
 
                 clearCacheForGetCurrentUser: clearCacheForGetCurrentUser
             };
-
-
-            // private methods
-            function setUserLanguage(user) {
-                console.log('setting user configured language');
-                var userSettings = user.userSettingsDto;
-                if (userSettings && userSettings.language) {
-                    $translate.use(userSettings.language);
-                }
-            }
         }]
 );
