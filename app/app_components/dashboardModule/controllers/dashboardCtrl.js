@@ -20,11 +20,8 @@ angular.module('dashboardModule')
                 if (user.userSettingsDto === null) {
                     user.userSettingsDto = {};
                 }
-                console.log('ordering ' + selector);
-                console.log('sortOrder: ' + sortOrder);
 
                 user.userSettingsDto[selector] = sortOrder;
-                console.log(user.userSettingsDto);
                 userSettingsService.persistUserSettings(user);
             }
 
