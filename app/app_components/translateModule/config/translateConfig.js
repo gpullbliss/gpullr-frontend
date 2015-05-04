@@ -14,7 +14,6 @@ angular.module('translateModule')
             .translations('ru', translateConstRu)
             .translations('tr', translateConstTr)
             .translations('pl', translateConstPl)
-            .preferredLanguage('en')
 
             // remember language
             .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru', 'tr'], {
