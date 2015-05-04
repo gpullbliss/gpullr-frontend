@@ -12,14 +12,22 @@
                 <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
             </a>
         </div>
+
         <div class="row">
             <strong class="col-md-6 ellipsis">{{pullRequest.repoName}}</strong>
+
             <p class="stats col-md-6">
-                <a title="{{'dashboard.pullRequest.infos.build' | translate}}: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}"  data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
+                <a title="{{'dashboard.pullRequest.infos.build' | translate}}: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}" data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
                 <span title="{{'dashboard.pullRequest.infos.linesChanged' | translate}}" class="linesAdded">+{{pullRequest.linesAdded}}</span>
                 <span title="{{'dashboard.pullRequest.infos.filesRemoved' | translate}}" class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
                 <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}" class="filesChanged" title="Files changed"> {{pullRequest.filesChanged}}</span>
                 <a href="{{pullRequest.url}}" title="{{'dashboard.pullRequest.infos.comments' | translate}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
+
+                <span data-ng-if="pullRequest.assignedAt"
+                      title="{{'dashboard.pullRequest.infos.assignedAt' | translate}}"
+                      class="requestAssignedAt"
+                      data-am-time-ago="pullRequest.assignedAt">
+                </span>
                 <span title="{{'dashboard.pullRequest.infos.createdAt' | translate}}" class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
             </p>
         </div>
