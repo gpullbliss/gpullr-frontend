@@ -17,8 +17,6 @@ angular.module('dashboardModule')
                 var propertyName = scope.ageProperty;
                 var age = scope.pullRequest[propertyName];
 
-                console.log(propertyName + ": " + age);
-
                 var colorClass = pullRequestCssClassService.getColorClassDependingOnAge(age);
                 element.addClass(colorClass);
             }
