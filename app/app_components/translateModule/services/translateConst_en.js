@@ -37,8 +37,8 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'Unassigned PR\'s',
-                assignedRequest: 'Assigned PR\'s'
+                openRequest: 'Unassigned PRs',
+                assignedRequest: 'Assigned PRs'
             },
             filter: {
                 byOldest: 'filter by time oldest first',
