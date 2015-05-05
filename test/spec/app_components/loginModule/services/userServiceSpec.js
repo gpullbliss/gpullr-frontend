@@ -125,7 +125,14 @@ describe('userService', function () {
     describe('logInUser', function () {
         var user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
             expectedUrl = '/api/users/login/' + user.id,
-            successPayload = {status: 201},
+            successPayload = {
+                data: {
+                    id: 42, username: 'user2', avatarUrl: 'http://example.org', userSettingsDto: {
+                        language: 'de'
+                    }
+                },
+                status: 201
+            },
             errorPayload = {
                 data: {errorKey: 'AnyErrorKey', errorMessage: 'login failed'},
                 status: 400
