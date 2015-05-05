@@ -5,13 +5,19 @@ angular.module('dashboardModule')
         return {
             scope: {
                 pullRequest: '=',
+                ageProperty: '=',
                 loggedInUser: '='
             },
             restrict: 'A',
             templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
-            controller:['$scope', 'UserNameService', function($scope, userNameService){$scope.getName = userNameService.getName;}],
+            controller: ['$scope', 'UserNameService', function ($scope, userNameService) {
+                $scope.getName = userNameService.getName;
+            }],
             link: function (scope, element) {
-                var colorClass = pullRequestCssClassService.getColorClassDependingOnAge(scope.pullRequest.createdAt);
+                var propertyName = scope.ageProperty;
+                var age = scope.pullRequest[propertyName];
+
+                var colorClass = pullRequestCssClassService.getColorClassDependingOnAge(age);
                 element.addClass(colorClass);
             }
         };

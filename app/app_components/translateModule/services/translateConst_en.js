@@ -31,13 +31,14 @@ angular.module('translateModule')
             headline: 'Login',
             errorMessage: 'Login failed',
             username: 'Username',
-            btn:{
+            btn: {
                 login: 'Sign in'
             }
         },
         dashboard: {
             headline: {
-                openRequest: 'Open PRs'
+                openRequest: 'Unassigned PRs',
+                assignedRequest: 'Assigned PRs'
             },
             filter: {
                 byOldest: 'filter by time oldest first',
@@ -58,6 +59,7 @@ angular.module('translateModule')
                     filesRemoved: 'Files Removed',
                     comments: 'Comments',
                     createdAt: 'Pull Requests created at',
+                    assignedAt:'Reviewer assigned at',
                     build: 'Build'
                 }
             }
@@ -76,7 +78,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Repo Filter',
                 settings: 'Settings'
             },

@@ -31,13 +31,14 @@ angular.module('translateModule')
             headline: 'Reingehen',
             errorMessage: 'Login fehlgeschlagen',
             username: 'Nutzername',
-            btn:{
+            btn: {
                 login: 'reingehn'
             }
         },
         dashboard: {
             headline: {
-                openRequest: 'offene Zieh Anfragen'
+                openRequest: 'offene Zieh Anfragen',
+                assignedRequest: 'zugewiesene Zieh Anfragen'
             },
             filter: {
                 byOldest: 'sortieren nach ältester zuerst',
@@ -58,6 +59,7 @@ angular.module('translateModule')
                     filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
                     createdAt: 'Zieh Anfrage erstellt am',
+                    assignedAt: 'Gutachter zugewiesen am',
                     build: 'Bau'
                 }
             }
@@ -76,7 +78,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Lager Filter',
                 settings: 'Einstellungen'
             },
