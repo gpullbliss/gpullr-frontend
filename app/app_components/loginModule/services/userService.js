@@ -38,6 +38,10 @@ angular.module('loginModule')
                 }
             }
 
+            function authenticateAndLogInUser(code) {
+                return $http.post('/api/users/oauth/github/' + code, '');
+            }
+
             function logInUser(user) {
                 var successfulResponseStatus = 201;
                 clearCacheForGetCurrentUser();
@@ -60,6 +64,7 @@ angular.module('loginModule')
             return {
                 getCurrentUser: getCurrentUser,
                 getUsersForLogin: getUsersForLogin,
+                authenticateAndLogInUser: authenticateAndLogInUser,
                 logInUser: logInUser,
                 getLanguages: getLanguages,
 

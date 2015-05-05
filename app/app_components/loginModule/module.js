@@ -1,1 +1,1 @@
-angular.module('loginModule', ['ui.router', 'translateModule']);
+angular.module('loginModule', ['ui.router', 'translateModule', 'ngCookies']);
