@@ -53,8 +53,8 @@ angular.module('translateModule')
                     }
                 },
                 infos: {
-                    linesAdded: 'изменённых строк',
-                    linesRemoved: 'удалённых файлов',
+                    linesAdded: 'добавленных строк',
+                    linesRemoved: 'удалённых строк',
                     filesChanged: 'изменённых файлов',
                     comments: 'комментариев',
                     createdAt: 'дата создания',
