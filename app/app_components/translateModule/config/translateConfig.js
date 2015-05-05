@@ -2,8 +2,7 @@
 /* jshint maxparams: false */
 angular.module('translateModule')
     .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstEs', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', 'TranslateConstTr', 'TranslateConstPl',
-        function ($translateProvider, translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu, translateConstTr, translateConstPl) {
-
+        function ($translateProvider ,translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu, translateConstTr, translateConstPl) {
         // add translation table
         $translateProvider
             // add translation tables
@@ -15,8 +14,7 @@ angular.module('translateModule')
             .translations('tr', translateConstTr)
             .translations('pl', translateConstPl)
             .preferredLanguage('en')
-
-            // remember language
+            // add relations
             .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru', 'tr'], {
                 'de_AT': 'de',
                 'de_CH': 'de',
@@ -29,4 +27,5 @@ angular.module('translateModule')
                 'tr_TR': 'tr',
                 'pl_PL': 'pl'
             });
+            $translateProvider.useSanitizeValueStrategy('escaped');
     }]);

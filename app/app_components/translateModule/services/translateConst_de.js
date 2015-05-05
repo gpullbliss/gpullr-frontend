@@ -64,6 +64,7 @@ angular.module('translateModule')
         },
         ranking: {
             headline: 'Rangliste',
+            noResultsJet: 'Keine Wertung bis jetzt! Mach was!',
             tabs: {
                 day: 'Tag',
                 week: 'Woche',
