@@ -53,9 +53,9 @@ angular.module('translateModule')
                     }
                 },
                 infos: {
-                    linesChanged: 'Zeilen geändert',
+                    linesAdded: 'Zeilen hinzugefügt',
+                    linesRemoved: 'Zeilen entfernt',
                     filesChanged: 'Datein geändert',
-                    filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
                     createdAt: 'Zieh Anfrage erstellt am',
                     build: 'Bau'

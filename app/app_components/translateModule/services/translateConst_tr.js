@@ -53,9 +53,9 @@ angular.module('translateModule')
                     }
                 },
                 infos: {
-                    linesChanged: 'Satırlar değiştirildi',
+                    linesAdded: 'Satırlar değiştirildi',
+                    linesRemoved: 'Satırlar silindi',
                     filesChanged: 'Dosyalar değiştirildi',
-                    filesRemoved: 'Dosyalar silindi',
                     comments: 'Yorum',
                     createdAt: 'Değişiklik talebi şu tarihte oluşturuldu:',
                     build: 'Oluştur'
