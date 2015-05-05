@@ -31,9 +31,10 @@ angular.module('translateModule')
             headline: 'Giriş',
             errorMessage: 'Giriş yapılamadı',
             username: 'Kullanıcı adı',
-            btn:{
+            btn: {
                 login: 'Giriş yap'
-            }
+            },
+            oauthGithub: 'Login with GitHub'
         },
         dashboard: {
             headline: {
@@ -75,7 +76,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Depo filtresi',
                 settings: 'Ayarlar'
             },

@@ -31,9 +31,10 @@ angular.module('translateModule')
             headline: 'Reingehen',
             errorMessage: 'Login fehlgeschlagen',
             username: 'Nutzername',
-            btn:{
+            btn: {
                 login: 'reingehn'
-            }
+            },
+            oauthGithub: 'Reingehen mit GitHub'
         },
         dashboard: {
             headline: {
@@ -75,7 +76,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Lager Filter',
                 settings: 'Einstellungen'
             },
