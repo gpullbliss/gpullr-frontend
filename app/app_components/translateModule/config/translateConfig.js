@@ -13,8 +13,8 @@ angular.module('translateModule')
             .translations('ru', translateConstRu)
             .translations('tr', translateConstTr)
             .translations('pl', translateConstPl)
-
-            // remember language
+            .preferredLanguage('en')
+            // add relations
             .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru', 'tr'], {
                 'de_AT': 'de',
                 'de_CH': 'de',
@@ -27,4 +27,5 @@ angular.module('translateModule')
                 'tr_TR': 'tr',
                 'pl_PL': 'pl'
             });
+            $translateProvider.useSanitizeValueStrategy('escaped');
     }]);
