@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] group PRs by status
  - [feature] layout fixes (no content info for ranking & wallboard, change language switch view, fix preferred language & optimise wallboard code)
  - add PL lang
  - [feature] add ES translation
@@ -52,4 +53,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Mon May 04 13:41:02 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Tue May 05 12:49:20 CEST 2015
