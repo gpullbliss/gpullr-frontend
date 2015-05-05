@@ -58,7 +58,7 @@ angular.module('translateModule')
                     filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
                     createdAt: 'Zieh Anfrage erstellt am',
-                    assignedAt: 'Reviewer zugewiesen am',
+                    assignedAt: 'Gutachter zugewiesen am',
                     build: 'Bau'
                 }
             }
