@@ -74,7 +74,10 @@ angular.module('translateModule')
                 allTime: 'aller Zeit'
             },
             userInfos: {
-                prDone: 'geschlossene Zieh Anfragen'
+                prDone: 'geschlossene Zieh Anfragen',
+                linesAdded: 'Zeilen hinzugefügt',
+                linesRemoved: 'Zeilen entfernt',
+                filesChanged: 'Dateien geändert'
             }
         },
         settings: {

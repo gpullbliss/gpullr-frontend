@@ -71,7 +71,10 @@ angular.module('translateModule')
                 allTime: 'Всё время'
             },
             userInfos: {
-                prDone: 'Закрытые запросы'
+                prDone: 'Закрытые запросы',
+                linesAdded: 'добавленных строк',
+                linesRemoved: 'удалённых строк',
+                filesChanged: 'изменённых файлов'
             }
         },
         settings: {

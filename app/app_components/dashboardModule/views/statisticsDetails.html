@@ -1,28 +1,26 @@
 <div class="col-sm-6 col-sm-offset-3 col-xs-12 topRanks" data-ng-if="rankingList.length > 0">
     <div class="podium thirdPlace">
         <div class="podiumImg">
-            <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in rankingList[2].users">
+            <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in podium['3']">
         </div>
         <div class="podiumBlock"></div>
     </div>
     <div class="podium firstPlace">
         <div class="podiumImg">
-            <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in rankingList[0].users">
+            <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in podium['1']">
         </div>
         <div class="podiumBlock"></div>
     </div>
     <div class="podium secondPlace">
         <div class="podiumImg">
-            <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in rankingList[1].users">
+            <img data-ng-src="{{user.avatarUrl}}" title="{{getName(user)}}" class="avatarWrapper" data-ng-repeat="user in podium['2']">
         </div>
         <div class="podiumBlock"></div>
     </div>
 </div>
 
 <div class="listView clear" data-ng-repeat="rank in rankingList">
-    <div data-ng-repeat="user in rank.users">
-        <div data-dvb-ranking-list class="rankingStats" rankdata="rank" userdata="user">
-        </div>
+    <div data-dvb-ranking-list class="rankingStats" rankdata="rank" userdata="rank.user">
     </div>
 </div>
 <h2 class="col-xs-12 dMarginVerti textC" data-ng-if="rankingList.length === 0">{{'ranking.noResultsJet' | translate}}</h2>

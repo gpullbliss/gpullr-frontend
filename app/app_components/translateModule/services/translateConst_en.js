@@ -74,7 +74,10 @@ angular.module('translateModule')
                 allTime: 'All Time'
             },
             userInfos: {
-                prDone: 'Closed Pull Requests'
+                prDone: 'Closed Pull Requests',
+                linesAdded: 'Lines added',
+                linesRemoved: 'Lines Removed',
+                filesChanged: 'Files Changed'
             }
         },
         settings: {

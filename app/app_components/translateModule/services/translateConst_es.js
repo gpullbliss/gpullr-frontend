@@ -71,7 +71,10 @@ angular.module('translateModule')
                 allTime: 'siempre'
             },
             userInfos: {
-                prDone: 'Solicitudes finalizadas'
+                prDone: 'Solicitudes finalizadas',
+                linesAdded: 'Líneas cambiadas',
+                linesRemoved: 'Líneas borrados',
+                filesChanged: 'Archivos cambiados'
             }
         },
         settings: {
