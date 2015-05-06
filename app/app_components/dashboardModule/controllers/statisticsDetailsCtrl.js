@@ -16,7 +16,7 @@ angular.module('dashboardModule')
                 if (rankListItem.rank > 3){
                     return;
                 }
-                if (this[rankListItem.rank] == undefined){
+                if (this[rankListItem.rank] === undefined){
                     this[rankListItem.rank] = [];
                 }
                 this[rankListItem.rank].push(rankListItem.user);
