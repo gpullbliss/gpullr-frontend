@@ -1,6 +1,7 @@
-
 ### Version 0.1.0-SNAPSHOT
  - [feature] prt90 Implementierung fairer Ranking-Algorithmus
+ - [bug] fixed broken 'assignedAt' icon
+ - [feature] replaced icon for 'time-sort-button'
  - [bug] fixed display bug for unassigned PRs
  - [feature] group PRs by status
  - [feature] layout fixes (no content info for ranking & wallboard, change language switch view, fix preferred language & optimise wallboard code)
