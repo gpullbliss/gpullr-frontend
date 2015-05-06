@@ -1,6 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
- - [bug] fixed broken icon
+ - [bug] fixed display bug for unassigned PRs
  - [feature] group PRs by status
  - [feature] layout fixes (no content info for ranking & wallboard, change language switch view, fix preferred language & optimise wallboard code)
  - add PL lang
@@ -54,4 +54,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Wed May 06 09:12:50 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Tue May 05 16:38:00 CEST 2015
