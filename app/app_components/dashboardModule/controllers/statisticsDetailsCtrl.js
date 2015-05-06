@@ -11,7 +11,7 @@ angular.module('dashboardModule')
         statisticsService.getRankingList(currentPeriod).then(function (items) {
             $scope.rankingList = items;
 
-            // ASSUME SORTED INPUT; BACKEND PROVIDES
+            // ASSUME SORTED INPUT; BACKEND PROVIDES IT
             angular.forEach(items, function (rankListItem) {
                 if (rankListItem.rank > 3){
                     return;
