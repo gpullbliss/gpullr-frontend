@@ -53,9 +53,9 @@ angular.module('translateModule')
                     }
                 },
                 infos: {
-                    linesChanged: 'Zmienione linijki',
+                    linesAdded: 'Dodane linijki',
+                    linesRemoved: 'Usuniete linijki',
                     filesChanged: 'Zmienione pliki',
-                    filesRemoved: 'Usuniete pliki',
                     comments: 'komentarze',
                     createdAt: 'Wiek prośby o połączenie',
                     build: 'Budowa'
