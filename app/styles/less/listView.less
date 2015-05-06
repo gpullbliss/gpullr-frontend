@@ -80,7 +80,8 @@
     }
     .requestCreatedAt,
     .filesChanged,
-    .comments {
+    .comments,
+    .requestAssignedAt {
         margin-left: @halfSpacing;
     }
     .requestCreatedAt {
@@ -114,6 +115,11 @@
     .comments:before{
         .iconFont;
         content: '\e609'' ';
+    }
+    .requestAssignedAt:before{
+        .iconFont;
+        .fontSet(17px, 1);
+        content: '\e612'' ';
     }
     .olderThan2h,
     .assignedPullRequests .assignmentOlderThan2h {

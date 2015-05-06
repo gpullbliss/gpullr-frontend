@@ -78,19 +78,5 @@ describe('dashboardCtrl', function () {
             expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
         });
 
-        it('fetches pull requests after change sortOrder', function () {
-            $scope.user = user;
-            spyOn(userSettingsService, 'persistUserSettings').and.callFake(function() {
-                var deferred = $q.defer();
-                deferred.resolve();
-                return deferred.promise;
-            });
-            $scope.orderPrList('DESC');
-            $scope.$digest();
-
-            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(user);
-            expect(pullRequestService.getPullRequests).toHaveBeenCalled();
-            expect(pullRequestService.getPullRequests.calls.count()).toEqual(2);
-        });
     });
 });

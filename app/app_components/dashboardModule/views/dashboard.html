@@ -1,16 +1,48 @@
-<div class="contentWrapper" id="dashboard">
+<div class="contentWrapper"
+     id="dashboard">
+
     <div class="marginBottom">
         <div class="row">
             <div class="col-xs-10">
-              <h3>{{'dashboard.headline.openRequest' | translate}}</h3>
+                <h3>{{'dashboard.headline.openRequest' | translate}}</h3>
             </div>
             <div class="col-xs-2">
-                <a title="filtered by time {{user.userSettingsDto.orderOptionDto === 'ASC' ? 'oldest' : 'newest'  }}" data-ng-click="orderPrList(user.userSettingsDto.orderOptionDto === 'ASC' ? 'DESC' : 'ASC')" class="filterTimeOrder icon{{user.userSettingsDto.orderOptionDto === 'ASC' ? 'Newest' : 'Oldest' }}" href="#"></a>
+                <a title="filtered by time {{user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'oldest' : 'newest'  }}"
+                   data-ng-click="orderUnassignedPrList(user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
+                   class="filterTimeOrder icon{{user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
+                   href="#"></a>
             </div>
         </div>
     </div>
 
     <div class="listView clear">
-        <section class="overflowH" data-ng-repeat="pr in pullRequests" data-dvb-pull-request data-pull-request="pr" data-logged-in-user="user"></section>
+        <section class="overflowH"
+                 data-ng-repeat="pr in pullRequests | filter: {assignee: 'null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'"
+                 data-dvb-pull-request
+                 data-pull-request="pr"
+                 data-age-property="'createdAt'"
+                 data-logged-in-user="user"></section>
+    </div>
+
+    <div class="marginBottom marginTop">
+        <div class="row">
+            <div class="col-xs-10">
+                <h3>{{'dashboard.headline.assignedRequest' | translate}}</h3>
+            </div>
+            <div class="col-xs-2">
+                <a title="filtered by time {{user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'oldest' : 'newest'  }}"
+                   data-ng-click="orderAssignedPrList(user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
+                   class="filterTimeOrder icon{{user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
+                   href="#"></a>
+            </div>
+        </div>
+    </div>
+    <div class="listView clear">
+        <section class="overflowH"
+                 data-ng-repeat="pr in pullRequests | filter: {assignee: '!null'} | orderBy: 'assignedAt': user.userSettingsDto.assignedPullRequestsOrdering === 'DESC'"
+                 data-dvb-pull-request
+                 data-pull-request="pr"
+                 data-age-property="'assignedAt'"
+                 data-logged-in-user="user"></section>
     </div>
 </div>

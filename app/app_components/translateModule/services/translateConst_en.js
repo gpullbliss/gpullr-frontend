@@ -38,7 +38,8 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'Open PRs'
+                openRequest: 'Unassigned PRs',
+                assignedRequest: 'Assigned PRs'
             },
             filter: {
                 byOldest: 'filter by time oldest first',
@@ -54,11 +55,12 @@ angular.module('translateModule')
                     }
                 },
                 infos: {
-                    linesChanged: 'Lines Changed',
+                    linesAdded: 'Lines added',
+                    linesRemoved: 'Lines Removed',
                     filesChanged: 'Files Changed',
-                    filesRemoved: 'Files Removed',
                     comments: 'Comments',
                     createdAt: 'Pull Requests created at',
+                    assignedAt:'Reviewer assigned at',
                     build: 'Build'
                 }
             }

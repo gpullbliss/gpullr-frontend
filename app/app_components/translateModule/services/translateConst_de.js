@@ -38,7 +38,8 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'offene Zieh Anfragen'
+                openRequest: 'offene Zieh Anfragen',
+                assignedRequest: 'zugewiesene Zieh Anfragen'
             },
             filter: {
                 byOldest: 'sortieren nach ältester zuerst',
@@ -54,11 +55,12 @@ angular.module('translateModule')
                     }
                 },
                 infos: {
-                    linesChanged: 'Zeilen geändert',
+                    linesAdded: 'Zeilen hinzugefügt',
+                    linesRemoved: 'Zeilen entfernt',
                     filesChanged: 'Datein geändert',
-                    filesRemoved: 'Datein entfernt',
                     comments: 'Kommentare',
                     createdAt: 'Zieh Anfrage erstellt am',
+                    assignedAt: 'Gutachter zugewiesen am',
                     build: 'Bau'
                 }
             }
