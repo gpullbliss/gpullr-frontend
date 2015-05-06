@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dashboardModule')
-    .controller('statisticsDetailsCtrl', ['$scope', '$state', 'statisticsService', 'UserNameService', '$filter', function ($scope, $state, statisticsService, userNameService, $filter) {
+    .controller('statisticsDetailsCtrl', ['$scope', '$state', 'statisticsService', 'UserNameService', function ($scope, $state, statisticsService, userNameService) {
 
         var currentPeriod = $state.current.data.period;
 
