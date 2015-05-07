@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [refactor] fix jshint config
  - [bug] fixed broken 'assignedAt' icon
  - [feature] replaced icon for 'time-sort-button'
  - [bug] fixed display bug for unassigned PRs
@@ -56,4 +57,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Wed May 06 09:59:45 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Thu May 07 13:26:24 CEST 2015
