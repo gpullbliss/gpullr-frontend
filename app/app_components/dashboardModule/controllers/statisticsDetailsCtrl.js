@@ -2,6 +2,12 @@
 
 angular.module('dashboardModule')
     .controller('statisticsDetailsCtrl', ['$scope', '$state', 'statisticsService', 'UserNameService', function ($scope, $state, statisticsService, userNameService) {
+        $scope.podium = {};
+        $scope.rankingList = [];
+
+        $scope.getName = function () {
+            return userNameService.getName();
+        };
 
         function init() {
             var currentPeriod = $state.current.data.period;
@@ -18,8 +24,6 @@ angular.module('dashboardModule')
                 }, podium);
             };
 
-            $scope.getName = userNameService.getName;
-            $scope.podium = {};
 
             statisticsService.getRankingList(currentPeriod).then(function (items) {
                 $scope.rankingList = items;
