@@ -90,14 +90,6 @@ angular.module('translateModule')
                     none: 'Снять выделение'
                 },
                 search: 'искать'
-            },
-            lang: {
-                de: 'Deutsch',
-                en: 'English',
-                es: 'Castellano',
-                it: 'Italiano',
-                tr: 'Türkçe',
-                ru: 'Русский'
             }
         }
     });

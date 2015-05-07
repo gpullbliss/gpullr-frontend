@@ -1,5 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] added Fränkisch translation
+ - [bug] fix not interpolated template method call for getting username
  - [refactor] fix jshint config 
  - [feature] prt90 Implementierung fairer Ranking-Algorithmus
  - [bug] fixed broken 'assignedAt' icon
@@ -58,4 +60,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Thu May 07 13:26:24 CEST 2015
+-- Last change by: hschuetz <henning.schuetz@devbliss.com> Thu May 07 15:53:04 CEST 2015

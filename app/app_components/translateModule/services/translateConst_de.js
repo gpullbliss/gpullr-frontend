@@ -99,14 +99,6 @@ angular.module('translateModule')
                     none: 'alle abwählen'
                 },
                 search: 'suchen'
-            },
-            lang: {
-                de: 'Deutsch',
-                en: 'English',
-                es: 'Castellano',
-                it: 'Italiano',
-                tr: 'Türkçe',
-                ru: 'Русский'
             }
         }
     });
