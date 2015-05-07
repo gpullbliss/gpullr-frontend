@@ -56,7 +56,7 @@ angular.module('translateModule')
                 infos: {
                     linesAdded: 'naia Zeiln',
                     linesRemoved: 'nausgebfefferde Zeiln',
-                    filesChanged: 'Datein geändert',
+                    filesChanged: 'geänderde Dodain',
                     comments: 'Oomergunga',
                     createdAt: 'Bullrequesd gschdelld om',
                     assignedAt: 'zugwiesn om',
@@ -74,7 +74,11 @@ angular.module('translateModule')
                 allTime: 'allawall'
             },
             userInfos: {
-                prDone: 'gschlossne Bullrequesds'
+                score: 'Bungde',
+                prDone: 'gschlossne Bullrequesds',
+                linesAdded: 'naia Zeiln',
+                linesRemoved: 'nausgebfefferde Zeiln',
+                filesChanged: 'geänderde Dodain'                
             }
         },
         settings: {
@@ -96,6 +100,7 @@ angular.module('translateModule')
                 it: 'Italiano',
                 tr: 'Türkçe',
                 ru: 'Русский',
+                pl: 'Polski',
                 vmf: 'Fränggisch'
             }
         }

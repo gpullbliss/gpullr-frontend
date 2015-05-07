@@ -89,8 +89,11 @@ angular.module('translateModule')
             lang: {
                 de: 'Deutsch',
                 en: 'English',
+                es: 'Castellano',
                 it: 'Italiano',
-                pl: 'polski',
+                tr: 'Türkçe',
+                ru: 'Русский',
+                pl: 'Polski',
                 vmf: 'Fränggisch'
             }
         }

@@ -92,6 +92,7 @@ angular.module('translateModule')
                 es: 'Castellano',
                 it: 'Italiano',
                 ru: 'Русский',
+                pl: 'Polski',
                 vmf: 'Fränggisch'
             }
         }
