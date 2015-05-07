@@ -71,11 +71,11 @@ angular.module('translateModule')
                 allTime: 'Всё время'
             },
             userInfos: {
-                score: 'SCORE',
-                prDone: 'Закрытые запросы',
-                linesAdded: 'добавленных строк',
-                linesRemoved: 'удалённых строк',
-                filesChanged: 'изменённых файлов'
+                score: 'Рейтинг',
+                prDone: 'Закрытых запросов',
+                linesAdded: 'Добавленных строк',
+                linesRemoved: 'Удалённых строк',
+                filesChanged: 'Изменённых файлов'
             }
         },
         settings: {
