@@ -1,6 +1,5 @@
 'use strict';
 angular.module('headerModule')
-    /* jshint maxparams:false */
     .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'UserNameService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
         function ($scope, $rootScope, $interval, userService, userNameService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
             $scope.navBar = [

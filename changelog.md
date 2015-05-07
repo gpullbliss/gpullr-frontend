@@ -1,5 +1,7 @@
+
 ### Version 0.1.0-SNAPSHOT
  - [bug] fix not interpolated template method call for getting username
+ - [refactor] fix jshint config 
  - [feature] prt90 Implementierung fairer Ranking-Algorithmus
  - [bug] fixed broken 'assignedAt' icon
  - [feature] replaced icon for 'time-sort-button'

@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('dashboardModule')
-    /* jshint maxparams: false */
     .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'PullRequestService', 'userSettingsService',
         function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
 
