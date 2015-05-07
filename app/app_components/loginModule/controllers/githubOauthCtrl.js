@@ -1,6 +1,6 @@
 'use strict';
 angular.module('loginModule')
-    .controller('oauthCtrl',
+    .controller('githubOauthCtrl',
     /* jshint maxparams:false */
     ['$scope', '$state', '$stateParams', '$cookieStore', 'userService', 'STATE_DASHBOARD', 'STATE_LOGIN',
         function ($scope, $state, $stateParams, $cookieStore, userService, STATE_DASHBOARD, STATE_LOGIN) {
@@ -14,7 +14,7 @@ angular.module('loginModule')
                 $scope.errorMessage = 'Verification failed';
                 $state.go(STATE_LOGIN);
             } else {
-                userService.authenticateAndLogInUser($stateParams.code).then(
+                userService.authenticateWithGithubAndLogInUser($stateParams.code).then(
                     function () {
                         $state.go(STATE_DASHBOARD);
                     }, function (error) {

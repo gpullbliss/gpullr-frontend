@@ -9,10 +9,10 @@ angular.module('loginModule')
                     controller: 'loginCtrl',
                     templateUrl: 'app_components/loginModule/views/login.html',
                     url: '/login'
-                }).state('oauth', {
+                }).state('githuboauth', {
                     parent: 'page',
-                    controller: 'oauthCtrl',
-                    templateUrl: 'app_components/loginModule/views/oauth.html',
+                    controller: 'githubOauthCtrl',
+                    templateUrl: 'app_components/loginModule/views/githuboauth.html',
                     url: '/oauth/github?code&state'
                 });
         }]);

@@ -38,7 +38,7 @@ angular.module('loginModule')
                 }
             }
 
-            function authenticateAndLogInUser(code) {
+            function authenticateWithGithubAndLogInUser(code) {
                 return $http.post('/api/users/oauth/github/' + code, '');
             }
 
@@ -64,7 +64,7 @@ angular.module('loginModule')
             return {
                 getCurrentUser: getCurrentUser,
                 getUsersForLogin: getUsersForLogin,
-                authenticateAndLogInUser: authenticateAndLogInUser,
+                authenticateWithGithubAndLogInUser: authenticateWithGithubAndLogInUser,
                 logInUser: logInUser,
                 getLanguages: getLanguages,
 
