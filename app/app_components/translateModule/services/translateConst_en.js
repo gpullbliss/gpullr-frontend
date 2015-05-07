@@ -36,6 +36,12 @@ angular.module('translateModule')
             },
             oauthGithub: 'Login with GitHub'
         },
+        oauth: {
+            verifyGithub: 'Verifying GitHub login',
+            backToLogin: 'Back to Login',
+            error: 'Error!',
+            errorText: 'A problem has been occurred.'
+        },
         dashboard: {
             headline: {
                 openRequest: 'Unassigned PRs',

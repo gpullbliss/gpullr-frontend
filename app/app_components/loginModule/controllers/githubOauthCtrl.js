@@ -8,12 +8,12 @@ angular.module('loginModule')
             $cookieStore.remove('state');
 
             if (typeof(cookieState) === 'undefined') {
-                $scope.errorMessage = 'Verification failed';
-                $state.go(STATE_LOGIN);
+                $scope.errorState = true;
             } else if (cookieState !== $stateParams.state) {
-                $scope.errorMessage = 'Verification failed';
-                $state.go(STATE_LOGIN);
+                $scope.errorState = true;
             } else {
+                $scope.errorState = false;
+                console.log('foo');
                 userService.authenticateWithGithubAndLogInUser($stateParams.code).then(
                     function () {
                         $state.go(STATE_DASHBOARD);

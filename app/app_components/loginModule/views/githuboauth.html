@@ -1,1 +1,14 @@
-<div class="textC">Waiting for Github</div>
+<div class="modal show">
+    <div class="modal-dialog centered">
+        <div class="modal-content">
+            <div class="modal-header noBorder textC headline">
+                <h1>{{'oauth.verifyGithub'| translate }}</h1>
+            </div>
+            <div class="modal-body dark textC">
+                <span data-ng-if="!errorState" class="fa fa-5x fa-cog fa-spin textC"></span>
+                <span data-ng-if="errorState" class="alert alert-error"><strong>{{'oauth.error'| translate }}</strong> {{'oauth.errorText'| translate }}</span>
+            </div>
+            <div class="modal-footer textC" ng-if="errorState"><a class="btn btn-default" href="/" role="button">{{'oauth.backToLogin'| translate }}</a></div>
+        </div>
+    </div>
+</div>
