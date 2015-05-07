@@ -85,15 +85,6 @@ angular.module('translateModule')
                     none: 'deseleccionar todas'
                 },
                 search: 'Busqueda'
-            },
-            lang: {
-                de: 'Deutsch',
-                en: 'English',
-                es: 'Castellano',
-                it: 'Italiano',
-                ru: 'Русский',
-                pl: 'Polski',
-                vmf: 'Fränggisch'
             }
         }
     });
