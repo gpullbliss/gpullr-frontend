@@ -1,6 +1,5 @@
 'use strict';
 angular.module('wallboardModule')
-    /* jshint maxparams:false */
     .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$stateParams', '$timeout', '$window', 'PullRequestService',
         function ($scope, $rootScope, $interval, $stateParams, $timeout, $window, pullRequestService) {
             var updatePullRequestsInterval,
