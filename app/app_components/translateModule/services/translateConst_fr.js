@@ -30,7 +30,7 @@ angular.module('translateModule')
         login: {
             headline: 'Se connecter',
             errorMessage: 'La connexion a échoué',
-            username: 'Nom d'utilisateur',
+            username: 'Nom d\'utilisateur',
             btn: {
                 login: 'Se connecter'
             }
@@ -66,7 +66,7 @@ angular.module('translateModule')
         },
         ranking: {
             headline: 'Classement',
-            noResultsJet: 'Pas de score pour l'instant. Au boulot!',
+            noResultsJet: 'Pas de score pour l\'instant. Au boulot!',
             tabs: {
                 day: 'Jour',
                 week: 'Semaine',
