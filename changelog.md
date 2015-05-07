@@ -1,4 +1,5 @@
 ### Version 0.1.0-SNAPSHOT
+ - [bug] fix not interpolated template method call for getting username
  - [feature] prt90 Implementierung fairer Ranking-Algorithmus
  - [bug] fixed broken 'assignedAt' icon
  - [feature] replaced icon for 'time-sort-button'
@@ -56,4 +57,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Wed May 06 13:58:14 CEST 2015
+-- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Thu May 07 15:42:55 CEST 2015
