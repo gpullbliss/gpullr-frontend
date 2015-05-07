@@ -2,6 +2,7 @@
     // JSHint Default Configuration File
     // See http://jshint.com/docs/ for more details
     "maxerr" : 50, // {int} Maximum error before stopping
+
     // Enforcing
     "bitwise" : true, // true: Prohibit bitwise operators (&, |, ^, etc.)
     "camelcase" : true, // true: Identifiers must be in camelCase
@@ -15,7 +16,7 @@
     "maxcomplexity" : false, // {int} Max cyclomatic complexity per function
     "maxdepth" : false, // {int} Max depth of nested blocks (within functions)
     "maxlen" : 240, // {int} Max number of characters per line
-    "maxparams" : 4, // {int} Max number of formal params allowed per function
+    "maxparams" : false, // {int} Max number of formal params allowed per function
     "maxstatements" : false, // {int} Max number statements per function
     "newcap" : false, // true: Require capitalization of all constructor functions e.g. `new F()`
     "noarg" : true, // true: Prohibit use of `arguments.caller` and `arguments.callee`
@@ -28,10 +29,12 @@
     // true : ensure whatever is used is consistent
     // "single" : require single quotes
     // "double" : require double quotes
+
     "strict" : true, // true: Requires all functions run in ES5 Strict Mode
     "undef" : true, // true: Require all non-global variables to be declared (prevents global leaks)
     "unused" : true, // true: Require all defined variables be used
     // Relaxing
+
     "asi" : false, // true: Tolerate Automatic Semicolon Insertion (no semicolons)
     "boss" : false, // true: Tolerate assignments where comparisons would be expected
     "eqnull" : false, // true: Tolerate use of `== null`
@@ -48,6 +51,7 @@
     "laxcomma" : false, // true: Tolerate comma-first style coding
     "loopfunc" : false, // true: Tolerate functions being defined in loops
     "moz" : false, // true: Allow Mozilla specific syntax (extends and overrides esnext features)
+
     // (ex: `for each`, multiple try/catch, function expression…)
     "multistr" : false, // true: Tolerate multi-line strings
     "notypeof" : false, // true: Tolerate invalid typeof operator values
@@ -58,6 +62,7 @@
     "supernew" : false, // true: Tolerate `new function () { ... };` and `new Object;`
     "validthis" : false, // true: Tolerate using this in a non-constructor function
     "withstmt" : false, // true: suppresses warnings about the use of the with statement
+
     // Environments
     "browser" : true, // Web Browser (window, document, etc)
     "browserify" : false, // Browserify (node.js code in the browser)
@@ -77,6 +82,7 @@
     "worker" : false, // Web Workers
     "wsh" : false, // Windows Scripting Host
     "yui" : false, // Yahoo User Interface
+
     // Custom Globals
     "globals" : {
       "angular": false
