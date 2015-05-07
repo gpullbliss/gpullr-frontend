@@ -1,7 +1,7 @@
 'use strict';
 angular.module('translateModule')
-    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstEs', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', 'TranslateConstTr', 'TranslateConstPl',
-        function ($translateProvider ,translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu, translateConstTr, translateConstPl) {
+    .config(['$translateProvider', 'TranslateConstEn', 'TranslateConstEs', 'TranslateConstDe', 'TranslateConstIt', 'TranslateConstRu', 'TranslateConstTr', 'TranslateConstPl', 'TranslateConstVmf',
+        function ($translateProvider ,translateConstEn, translateConstEs, translateConstDe, translateConstIt, translateConstRu, translateConstTr, translateConstPl, translateConstVmf) {
         // add translation table
         $translateProvider
             // add translation tables
@@ -12,9 +12,10 @@ angular.module('translateModule')
             .translations('ru', translateConstRu)
             .translations('tr', translateConstTr)
             .translations('pl', translateConstPl)
+            .translations('vmf', translateConstVmf)
             .preferredLanguage('en')
             // add relations
-            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru', 'tr'], {
+            .registerAvailableLanguageKeys(['en', 'de', 'it', 'pl', 'ru', 'tr', 'vmf'], {
                 'de_AT': 'de',
                 'de_CH': 'de',
                 'de_DE': 'de',
@@ -24,7 +25,8 @@ angular.module('translateModule')
                 'it_IT': 'it',
                 'ru_RU': 'ru',
                 'tr_TR': 'tr',
-                'pl_PL': 'pl'
+                'pl_PL': 'pl',
+                'vmf': 'vmf'
             });
             $translateProvider.useSanitizeValueStrategy('escaped');
     }]);

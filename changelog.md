@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] added Fränkisch translation
  - [bug] fix not interpolated template method call for getting username
  - [refactor] fix jshint config 
  - [feature] prt90 Implementierung fairer Ranking-Algorithmus
@@ -59,4 +60,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Thu May 07 15:42:55 CEST 2015
+-- Last change by: hschuetz <henning.schuetz@devbliss.com> Thu May 07 15:53:04 CEST 2015
