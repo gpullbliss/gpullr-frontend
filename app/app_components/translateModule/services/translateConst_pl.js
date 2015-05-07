@@ -71,7 +71,11 @@ angular.module('translateModule')
                 allTime: 'Cały czas'
             },
             userInfos: {
-                prDone: 'Zamknięte prośby o połączenie'
+                score: 'Punkty',
+                prDone: 'Zamknięte prośby o połączenie',
+                linesAdded: 'Dodane linijki',
+                linesRemoved: 'Usuniete linijki',
+                filesChanged: 'Zmienione pliki'
             }
         },
         settings: {

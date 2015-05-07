@@ -71,7 +71,11 @@ angular.module('translateModule')
                 allTime: 'Permanante'
             },
             userInfos: {
-                prDone: 'Chiudi i pull request'
+                score: 'punteggio',
+                prDone: 'Chiudi i pull request',
+                linesAdded: 'Righe aggiunti',
+                linesRemoved: 'Righe cancellati',
+                filesChanged: 'Files cambiati'
             }
         },
         settings: {
