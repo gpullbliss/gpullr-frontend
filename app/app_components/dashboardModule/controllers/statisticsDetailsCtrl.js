@@ -5,8 +5,8 @@ angular.module('dashboardModule')
         $scope.podium = {};
         $scope.rankingList = [];
 
-        $scope.getName = function () {
-            return userNameService.getName();
+        $scope.getName = function (user) {
+            return userNameService.getName(user);
         };
 
         function init() {
