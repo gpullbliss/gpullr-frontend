@@ -71,6 +71,7 @@ angular.module('translateModule')
                 allTime: 'Cały czas'
             },
             userInfos: {
+                score: 'Punkty',
                 prDone: 'Zamknięte prośby o połączenie',
                 linesAdded: 'Dodane linijki',
                 linesRemoved: 'Usuniete linijki',
@@ -92,8 +93,10 @@ angular.module('translateModule')
             lang: {
                 de: 'Deutsch',
                 en: 'English',
+                es: 'Castellano',
                 it: 'Italiano',
-                pl: 'polski'
+                tr: 'Türkçe',
+                ru: 'Русский'
             }
         }
     });

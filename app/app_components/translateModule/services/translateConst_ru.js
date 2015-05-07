@@ -71,6 +71,7 @@ angular.module('translateModule')
                 allTime: 'Всё время'
             },
             userInfos: {
+                score: 'SCORE',
                 prDone: 'Закрытые запросы',
                 linesAdded: 'добавленных строк',
                 linesRemoved: 'удалённых строк',

@@ -71,6 +71,7 @@ angular.module('translateModule')
                 allTime: 'siempre'
             },
             userInfos: {
+                score: 'puntuación',
                 prDone: 'Solicitudes finalizadas',
                 linesAdded: 'Líneas cambiadas',
                 linesRemoved: 'Líneas borrados',
@@ -94,6 +95,7 @@ angular.module('translateModule')
                 en: 'English',
                 es: 'Castellano',
                 it: 'Italiano',
+                tr: 'Türkçe',
                 ru: 'Русский'
             }
         }

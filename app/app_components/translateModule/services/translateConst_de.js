@@ -74,6 +74,7 @@ angular.module('translateModule')
                 allTime: 'aller Zeit'
             },
             userInfos: {
+                score: 'Punkte',
                 prDone: 'geschlossene Zieh Anfragen',
                 linesAdded: 'Zeilen hinzugefügt',
                 linesRemoved: 'Zeilen entfernt',
