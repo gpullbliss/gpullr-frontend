@@ -90,7 +90,8 @@ angular.module('translateModule')
                 de: 'Deutsch',
                 en: 'English',
                 it: 'Italiano',
-                pl: 'polski'
+                pl: 'polski',
+                vmf: 'Fränggisch'
             }
         }
     });

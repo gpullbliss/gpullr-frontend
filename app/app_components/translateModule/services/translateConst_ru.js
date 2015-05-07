@@ -92,7 +92,8 @@ angular.module('translateModule')
                 es: 'Castellano',
                 it: 'Italiano',
                 tr: 'Türkçe',
-                ru: 'Русский'
+                ru: 'Русский',
+                vmf: 'Fränggisch'
             }
         }
     });
