@@ -72,7 +72,11 @@ angular.module('translateModule')
                 allTime: 'Tüm zaman'
             },
             userInfos: {
-                prDone: 'Kapanmış değişiklik talepleri'
+                score: 'puan',
+                prDone: 'Kapanmış değişiklik talepleri',
+                linesAdded: 'Satırlar değiştirildi',
+                linesRemoved: 'Satırlar silindi',
+                filesChanged: 'Dosyalar değiştirildi'
             }
         },
         settings: {
@@ -90,6 +94,7 @@ angular.module('translateModule')
             lang: {
                 de: 'Deutsch',
                 en: 'English',
+                es: 'Castellano',
                 it: 'Italiano',
                 tr: 'Türkçe',
                 ru: 'Русский'

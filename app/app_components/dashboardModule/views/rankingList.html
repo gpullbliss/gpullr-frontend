@@ -1,6 +1,6 @@
 <section>
     <div class="col-sm-3 col-xs-6 userBlock">
-        <a class="userName" target="_blank" href="{{user.profileUrl}}">
+        <a class="userName" target="_blank" data-ng-href="{{user.profileUrl}}">
             <span data-ng-if="ranking.rank === 1" class="iconFont crown"></span>
             <img class="avatarWrapper" data-ng-src="{{user.avatarUrl}}">
             <span>{{getName(user)}}</span>
@@ -11,8 +11,13 @@
     <div class="col-sm-6 col-xs-12">
         <div class="facts prInfos">
             <p>
-                <strong>{{'ranking.userInfos.prDone' | translate}}:</strong>
-                {{ranking.closedCount}}
+                <p>
+                    <strong>{{'ranking.userInfos.score' | translate}}: {{ranking.sumOfScores | number:1}}</strong>
+                </p>
+                <span>{{'ranking.userInfos.prDone' | translate}}: {{ranking.closedCount}}</span>
+                <span title="{{'ranking.userInfos.linesAdded' | translate}}" class="linesAdded">+{{ranking.sumOfLinesAdded}}</span>
+                <span title="{{'ranking.userInfos.linesRemoved' | translate}}" class="linesRemoved">-{{ranking.sumOfLinesRemoved}}</span>
+                <span title="{{'ranking.userInfos.filesChanged' | translate}}" class="filesChanged">{{ranking.sumOfFilesChanged}}</span>
             </p>
         </div>
     </div>
