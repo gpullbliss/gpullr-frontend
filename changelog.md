@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] added french translation
  - [feature] added Fränkisch translation
  - [bug] fix not interpolated template method call for getting username
  - [refactor] fix jshint config 
@@ -60,4 +61,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: hschuetz <henning.schuetz@devbliss.com> Thu May 07 15:53:04 CEST 2015
+-- Last change by: bmary <bastien.mary@devbliss.com> Fri May 08 13:08:04 CEST 2015
