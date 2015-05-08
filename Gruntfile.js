@@ -41,8 +41,8 @@ module.exports = function (grunt) {
             }
         },
 
-        copy:{
-            iconfont:{
+        copy: {
+            iconfont: {
                 expand: true,
                 cwd: 'app/styles/fonts',
                 dest: 'dist/styles/fonts',
@@ -56,9 +56,50 @@ module.exports = function (grunt) {
             port: 8889,
             testport: 9091,
             livereload: 9999
+        },
+
+        replace: {
+            development: {
+                options: {
+                    patterns: [{
+                        json: grunt.file.readJSON('config/environments/development.json')
+                    }]
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['config/envConfig.js'],
+                    dest: 'app/scripts/config/'
+                }]
+            },
+            production: {
+                options: {
+                    patterns: [{
+                        json: grunt.file.readJSON('config/environments/production.json')
+                    }]
+                },
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    src: ['./config/envConfig.js'],
+                    dest: 'dist/scripts/config/'
+                }]
+            }
+        },
+
+        clean: {
+            build: [
+                'dist/*'
+            ],
+            config: [
+                'app/scripts/config/envConfig.js'
+            ]
         }
     });
 
-    grunt.registerTask('test', ['devbliss-karma:jenkins']);
-    grunt.registerTask('buildpullr', ['build', 'copy:iconfont']);
+    grunt.registerTask('test', ['clean', 'replace:development', 'devbliss-karma:jenkins']);
+    grunt.registerTask('buildpullr', ['clean', 'build', 'copy:iconfont', 'replace:production']);
+
+    grunt.task.renameTask('serve', 'devbliss-serve');
+    grunt.registerTask('serve', ['clean', 'build', 'replace:development', 'devbliss-serve']);
 };

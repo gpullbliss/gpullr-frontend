@@ -1,6 +1,7 @@
 # app
 .tmp/
 /dist/
+app/scripts/config/envConfig.js
 
 # npm
 node_modules/

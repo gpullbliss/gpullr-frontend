@@ -31,9 +31,10 @@ angular.module('translateModule')
             headline: 'Ingreso',
             errorMessage: 'ingreso fallido',
             username: 'Nombre de Usuario',
-            btn:{
+            btn: {
                 login: 'Ingresar'
-            }
+            },
+            oauthGithub: 'Login with GitHub'
         },
         dashboard: {
             headline: {
@@ -79,7 +80,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Seleción de Repositorio',
                 settings: 'Configuración'
             },

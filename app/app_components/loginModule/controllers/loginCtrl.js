@@ -1,16 +1,21 @@
 'use strict';
 angular.module('loginModule')
     .controller('loginCtrl',
-    ['$scope', '$state', 'userService', 'STATE_DASHBOARD', function ($scope, $state, userService, STATE_DASHBOARD) {
-        userService.getUsersForLogin().then(function (users) {
-            $scope.users = users;
-        });
+    ['$scope', '$state', '$cookieStore', 'envConfig', function ($scope, $state, $cookieStore, envConfig) {
 
-        $scope.submit = function (selectedUser) {
-            userService.logInUser(selectedUser).then(function () {
-                $state.go(STATE_DASHBOARD);
-            }, function (error) {
-                $scope.errorMessage = error;
-            });
-        };
+        function getRandom() {
+            var text = '';
+            var possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+            for (var i = 0; i < 42; i++) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+
+            return text;
+        }
+
+        var state = getRandom();
+        $scope.state = state;
+        $scope.githubClientId = envConfig.githubClientId;
+        $cookieStore.put('state', state);
     }]);
