@@ -7,7 +7,6 @@ describe('headerCtrl', function () {
         user,
         rootScope,
         scope,
-        interval,
         UserNameService,
         notifications,
         notificationService,
@@ -19,7 +18,6 @@ describe('headerCtrl', function () {
 
         inject(function (_$controller_,
                          _$rootScope_,
-                         _$interval_,
                          _userService_,
                          _UserNameService_,
                          _notificationService_,
@@ -30,7 +28,6 @@ describe('headerCtrl', function () {
             userService = _userService_;
             rootScope = _$rootScope_;
             scope = rootScope.$new();
-            interval = _$interval_;
             UserNameService = _UserNameService_;
             notificationService = _notificationService_;
             notificationDropdownItemService = _notificationDropdownItemService_;

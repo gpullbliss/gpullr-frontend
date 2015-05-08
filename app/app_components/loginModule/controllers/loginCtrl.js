@@ -1,7 +1,6 @@
 'use strict';
 angular.module('loginModule')
     .controller('loginCtrl',
-    /* jshint maxparams:false */
     ['$scope', '$state', '$cookieStore', function ($scope, $state, $cookieStore) {
 
         function getRandom() {

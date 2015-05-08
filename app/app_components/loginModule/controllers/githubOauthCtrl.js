@@ -1,9 +1,8 @@
 'use strict';
 angular.module('loginModule')
     .controller('githubOauthCtrl',
-    /* jshint maxparams:false */
-    ['$scope', '$state', '$stateParams', '$cookieStore', 'userService', 'STATE_DASHBOARD', 'STATE_LOGIN',
-        function ($scope, $state, $stateParams, $cookieStore, userService, STATE_DASHBOARD, STATE_LOGIN) {
+    ['$scope', '$state', '$stateParams', '$cookieStore', 'userService', 'STATE_DASHBOARD',
+        function ($scope, $state, $stateParams, $cookieStore, userService, STATE_DASHBOARD) {
             var cookieState = $cookieStore.get('state');
             $cookieStore.remove('state');
 
@@ -16,11 +15,11 @@ angular.module('loginModule')
                 userService.authenticateWithGithubAndLogInUser($stateParams.code).then(
                     function () {
                         $state.go(STATE_DASHBOARD);
-                    }, function (error) {
-                        $scope.errorMessage = error;
-                        $state.go(STATE_LOGIN);
+                    }, function () {
+                        $scope.errorState = true;
                     }
                 );
+
             }
 
         }]);
