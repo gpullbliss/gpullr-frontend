@@ -14,14 +14,6 @@ angular.module('loginModule')
                 );
             }
 
-            function getUsersForLogin() {
-                return $http.get('/api/users').then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
-            }
-
             function getLanguages() {
                 return $http.get('api/users/languages').then(
                     function (response) {
@@ -42,30 +34,13 @@ angular.module('loginModule')
                 return $http.post('/api/users/oauth/github/' + code, '');
             }
 
-            function logInUser(user) {
-                var successfulResponseStatus = 201;
-                clearCacheForGetCurrentUser();
-
-                return $http.post('/api/users/login/' + user.id, '').then(
-                    function (response) {
-                        if (response.status !== successfulResponseStatus) {
-                            throw 'Got response code ' + response.status + ' instead of ' + successfulResponseStatus;
-                        } else {
-                            getCurrentUser();
-                        }
-                    }
-                );
-            }
-
             function clearCacheForGetCurrentUser() {
                 $cacheFactory.get('$http').remove('/api/users/me');
             }
 
             return {
                 getCurrentUser: getCurrentUser,
-                getUsersForLogin: getUsersForLogin,
                 authenticateWithGithubAndLogInUser: authenticateWithGithubAndLogInUser,
-                logInUser: logInUser,
                 getLanguages: getLanguages,
 
                 clearCacheForGetCurrentUser: clearCacheForGetCurrentUser

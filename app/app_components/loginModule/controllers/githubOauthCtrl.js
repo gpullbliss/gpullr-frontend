@@ -13,7 +13,6 @@ angular.module('loginModule')
                 $scope.errorState = true;
             } else {
                 $scope.errorState = false;
-                console.log('foo');
                 userService.authenticateWithGithubAndLogInUser($stateParams.code).then(
                     function () {
                         $state.go(STATE_DASHBOARD);

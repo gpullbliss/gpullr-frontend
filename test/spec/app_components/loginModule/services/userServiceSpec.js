@@ -74,7 +74,7 @@ describe('userService', function () {
             $httpBackend.flush();
         });
     });
-
+/*
     describe('getUsersForLogin', function () {
         var expectedUrl = '/api/users',
             successPayload = {
@@ -165,6 +165,55 @@ describe('userService', function () {
             response.respond(errorPayload.status, errorPayload.data);
 
             service.logInUser(user).then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
+            });
+
+            $httpBackend.flush();
+        });
+    });
+*/
+    describe('authenticateWithGithubAndLogInUser', function() {
+        var githubCode = 'some-random-code-123',
+            expectedUrl = '/api/users/oauth/github/' + githubCode,
+            successPayload = {
+                data: {
+                    id: 42, username: 'user2', avatarUrl: 'http://example.org', userSettingsDto: {
+                        language: 'de'
+                    }
+                },
+                status: 201
+            },
+            errorPayload = {
+                data: {errorKey: 'AnyErrorKey', errorMessage: 'login failed'},
+                status: 400
+            };
+
+        beforeEach(function () {
+            response = $httpBackend.expectPOST(expectedUrl).respond(successPayload.status);
+        });
+
+        it('calls correct URL', function () {
+            service.authenticateWithGithubAndLogInUser(githubCode);
+            $httpBackend.flush();
+        });
+
+        it('returns correct data', function () {
+            var success = null;
+
+            service.authenticateWithGithubAndLogInUser(githubCode).then(function () {
+                success = true;
+            });
+
+            $httpBackend.flush();
+            expect(success).toBeTruthy();
+        });
+
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.authenticateWithGithubAndLogInUser(githubCode).then(function (successResponse) {
                 expect(successResponse).toBeNull();
             }, function (errorResponse) {
                 expect(errorResponse.data).toEqual(errorPayload.data);
