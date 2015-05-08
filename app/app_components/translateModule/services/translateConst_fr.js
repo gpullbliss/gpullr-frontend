@@ -21,10 +21,10 @@ angular.module('translateModule')
             linkSettings: 'Préférences',
             linkNotifications: 'Notifications',
             notifications: {
-                title: 'Notifications',
-                closedPr: 'schloss deine Zieh Anfrage',
-                inRepo: 'in Lager',
-                markAsSeen: 'Tout effacer'
+                title: 'otifications',
+                closedPr: 'a contrôlé et accepté ta pull request',
+                inRepo: 'dans le répertoire',
+                markAsSeen: 'out effacer'
             }
         },
         login: {
@@ -37,8 +37,8 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'Pull Requests en attente',
-                assignedRequest: 'Pull Requests assignées'
+                openRequest: 'Pull requests en attente',
+                assignedRequest: 'Pull requests assignées'
             },
             filter: {
                 byOldest: 'Trier du plus ancien au plus récent',
@@ -47,9 +47,9 @@ angular.module('translateModule')
             pullRequest: {
                 assign: {
                     toMe: 'S\'assigner',
-                    unassign: 'quitter',
+                    unassign: 'Quitter',
                     modal: {
-                        headline: 'La Pull Request déjà assignée',
+                        headline: 'La pull request est déjà assignée',
                         text: 'Souhaites-tu vraiment t\'assigner?'
                     }
                 },
@@ -58,9 +58,9 @@ angular.module('translateModule')
                     linesRemoved: 'Lignes supprimées',
                     filesChanged: 'Fichiers changés',
                     comments: 'Commentaires',
-                    createdAt: 'Pull Request crée le',
+                    createdAt: 'Pull request créée le',
                     assignedAt: 'Reviewer assigné le',
-                    build: 'Bau'
+                    build: 'En cours'
                 }
             }
         },
@@ -83,7 +83,7 @@ angular.module('translateModule')
         },
         settings: {
             headline: {
-                repo: 'Lager Filter',
+                repo: 'Filtre répertoires',
                 settings: 'Préférences'
             },
             filter: {
@@ -91,7 +91,7 @@ angular.module('translateModule')
                     all: 'tout sélectionner',
                     none: 'tout déselectionner'
                 },
-                search: 'chercher'
+                search: 'Chercher'
             }
         }
     });
