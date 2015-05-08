@@ -85,12 +85,21 @@ module.exports = function (grunt) {
                     dest: 'dist/scripts/config/'
                 }]
             }
+        },
+
+        clean: {
+            build: [
+                'dist/*'
+            ],
+            config: [
+                'app/scripts/config/envConfig.js'
+            ]
         }
     });
 
-    grunt.registerTask('test', ['devbliss-karma:jenkins']);
-    grunt.registerTask('buildpullr', ['build', 'copy:iconfont', 'replace:production']);
+    grunt.registerTask('test', ['clean', 'replace:development', 'devbliss-karma:jenkins']);
+    grunt.registerTask('buildpullr', ['clean', 'build', 'copy:iconfont', 'replace:production']);
 
     grunt.task.renameTask('serve', 'devbliss-serve');
-    grunt.registerTask('serve', ['replace:development', 'devbliss-serve']);
+    grunt.registerTask('serve', ['clean', 'build', 'replace:development', 'devbliss-serve']);
 };
