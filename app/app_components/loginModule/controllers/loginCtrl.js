@@ -1,7 +1,7 @@
 'use strict';
 angular.module('loginModule')
     .controller('loginCtrl',
-    ['$scope', '$state', '$cookieStore', function ($scope, $state, $cookieStore) {
+    ['$scope', '$state', '$cookieStore', 'envConfig', function ($scope, $state, $cookieStore, envConfig) {
 
         function getRandom() {
             var text = '';
@@ -16,5 +16,6 @@ angular.module('loginModule')
 
         var state = getRandom();
         $scope.state = state;
+        $scope.githubClientId = envConfig.githubClientId;
         $cookieStore.put('state', state);
     }]);

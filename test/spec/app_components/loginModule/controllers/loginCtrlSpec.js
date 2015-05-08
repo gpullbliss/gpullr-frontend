@@ -5,7 +5,8 @@ describe('loginCtrl', function () {
         $controller,
         scope,
         $state,
-        $cookieStore;
+        $cookieStore,
+        thisEnvConfig;
 
     beforeEach(function () {
         module('loginModule');
@@ -13,18 +14,22 @@ describe('loginCtrl', function () {
         inject(function (_$controller_,
                          _$rootScope_,
                          _$state_,
-                         _$cookieStore_) {
+                         _$cookieStore_,
+                         envConfig) {
             $controller = _$controller_;
             scope = _$rootScope_.$new();
             $state = _$state_;
             $cookieStore = _$cookieStore_;
+            thisEnvConfig = envConfig;
 
             spyOn($cookieStore, 'put');
+            envConfig.githubClientId = 'a-client-id';
 
             controller = $controller('loginCtrl', {
                 $scope: scope,
                 $state: $state,
-                $cookieStore: $cookieStore
+                $cookieStore: $cookieStore,
+                envConfig: thisEnvConfig
             });
         });
     });
@@ -35,6 +40,7 @@ describe('loginCtrl', function () {
             scope.$digest();
 
             expect(scope.state).not.toBeNull();
+            expect(scope.githubClientId).toEqual(thisEnvConfig.githubClientId);
             expect($cookieStore.put).toHaveBeenCalledWith('state', scope.state);
         });
 
