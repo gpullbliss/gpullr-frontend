@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [bug] grunt file includes environment variable for dev and prod
  - [feature] implemented GitHub OAuth login web flow
  - [feature] added Fränkisch translation
  - [bug] fix not interpolated template method call for getting username
@@ -61,4 +62,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri May 08 12:36:15 CEST 2015
+-- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Mon May 11 13:37:44 CEST 2015
