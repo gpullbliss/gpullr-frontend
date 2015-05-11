@@ -21,10 +21,10 @@ angular.module('translateModule')
             linkSettings: 'Préférences',
             linkNotifications: 'Notifications',
             notifications: {
-                title: 'otifications',
+                title: 'Notifications',
                 closedPr: 'a contrôlé et accepté ta pull request',
                 inRepo: 'dans le répertoire',
-                markAsSeen: 'out effacer'
+                markAsSeen: 'Tout effacer'
             }
         },
         login: {
