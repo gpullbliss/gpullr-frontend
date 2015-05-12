@@ -1,6 +1,9 @@
 
 ### Version 0.1.0-SNAPSHOT
+
  - [feature] added french translation
+ - [bug] grunt file includes environment variable for dev and prod
+ - [feature] implemented GitHub OAuth login web flow
  - [feature] added Fränkisch translation
  - [bug] fix not interpolated template method call for getting username
  - [refactor] fix jshint config 
@@ -10,7 +13,7 @@
  - [bug] fixed display bug for unassigned PRs
  - [feature] group PRs by status
  - [feature] layout fixes (no content info for ranking & wallboard, change language switch view, fix preferred language & optimise wallboard code)
- - add PL lang
+ - [feature] add PL lang
  - [feature] add ES translation
  - [feature] added turkish translation
  - [feature] added russian translation

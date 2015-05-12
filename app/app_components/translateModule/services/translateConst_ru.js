@@ -31,9 +31,10 @@ angular.module('translateModule')
             headline: 'Вход в систему',
             errorMessage: 'ошибка при входе в систему',
             username: 'Имя пользователя',
-            btn:{
+            btn: {
                 login: 'Войти'
-            }
+            },
+            oauthGithub: 'Login with GitHub'
         },
         dashboard: {
             headline: {
@@ -79,7 +80,7 @@ angular.module('translateModule')
             }
         },
         settings: {
-            headline:{
+            headline: {
                 repo: 'Фильтр проектов',
                 settings: 'Настройки'
             },
