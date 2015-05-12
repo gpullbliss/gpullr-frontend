@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] redesign login flow
  - [bug] grunt file includes environment variable for dev and prod
  - [feature] implemented GitHub OAuth login web flow
  - [feature] added Fränkisch translation
@@ -62,4 +63,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Mon May 11 13:37:44 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue May 12 17:24:11 CEST 2015
