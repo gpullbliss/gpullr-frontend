@@ -1,5 +1,7 @@
-<div class="contentWrapper textC" id="login"  ng-controller="loginCtrl">
-    <h2 class="textC" >{{'login.headline'| translate }}</h2>
-
-    <a class="btn btn-default marginBottom" href="https://github.com/login/oauth/authorize?client_id={{githubClientId}}&state={{state}}">{{'login.oauthGithub'| translate }}</a>
+<div class="container overflowH">
+    <h3 class="textC marginTop dMarginBottom">{{'login.headline'| translate }}</h3>
+    <div class="iconWrapper">
+            <div class="iconAnni"></div><div class="iconAnniBg"></div>
+    </div>
+    <a class="btn btn-default marginBottom floatR" href="https://github.com/login/oauth/authorize?client_id={{githubClientId}}&state={{state}}">{{'login.oauthGithub'| translate }}</a>
 </div>
