@@ -1,5 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
+
+ - [feature] added french translation
  - [feature] redesign login flow
  - [bug] if logged out the settings page is not accessible anymore
  - [bug] grunt file includes environment variable for dev and prod
@@ -13,7 +15,7 @@
  - [bug] fixed display bug for unassigned PRs
  - [feature] group PRs by status
  - [feature] layout fixes (no content info for ranking & wallboard, change language switch view, fix preferred language & optimise wallboard code)
- - add PL lang
+ - [feature] add PL lang
  - [feature] add ES translation
  - [feature] added turkish translation
  - [feature] added russian translation
@@ -64,4 +66,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue May 12 17:24:11 CEST 2015
+-- Last change by: bmary <bastien.mary@devbliss.com> Fri May 08 13:08:04 CEST 2015
