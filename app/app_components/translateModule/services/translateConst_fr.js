@@ -33,7 +33,14 @@ angular.module('translateModule')
             username: 'Nom d\'utilisateur',
             btn: {
                 login: 'Se connecter'
-            }
+            },
+            oauthGithub: 'Connexion via GitHub'
+        },
+        oauth: {
+            verifyGithub: 'Vérification du login GitHub',
+            backToLogin: 'Retour à la connexion',
+            error: 'Erreur!',
+            errorText: 'Un problème est survenu.'
         },
         dashboard: {
             headline: {
