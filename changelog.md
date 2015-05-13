@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] added french translation
+ - [bug] if logged out the settings page is not accessible anymore
  - [bug] grunt file includes environment variable for dev and prod
  - [feature] implemented GitHub OAuth login web flow
  - [feature] added Fränkisch translation
