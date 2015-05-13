@@ -1,5 +1,6 @@
 
 ### Version 0.1.0-SNAPSHOT
+ - [feature] redesign login flow
  - [bug] if logged out the settings page is not accessible anymore
  - [bug] grunt file includes environment variable for dev and prod
  - [feature] implemented GitHub OAuth login web flow
@@ -63,4 +64,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Tue May 12 14:45:58 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue May 12 17:24:11 CEST 2015

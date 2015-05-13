@@ -5,12 +5,12 @@ angular.module('loginModule')
         '$stateProvider', 'STATE_LOGIN', function ($stateProvider, STATE_LOGIN) {
             $stateProvider
                 .state(STATE_LOGIN, {
-                    parent: 'page',
+                    parent: 'pageWithoutHeader',
                     controller: 'loginCtrl',
                     templateUrl: 'app_components/loginModule/views/login.html',
                     url: '/login'
                 }).state('githuboauth', {
-                    parent: 'page',
+                    parent: 'pageWithoutHeader',
                     controller: 'githubOauthCtrl',
                     templateUrl: 'app_components/loginModule/views/githuboauth.html',
                     url: '/oauth/github?code&state'
