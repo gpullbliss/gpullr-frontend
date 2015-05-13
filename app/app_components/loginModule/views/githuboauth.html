@@ -1,8 +1,7 @@
-<div class="container loginScreen">
+<div class="loginScreen">
     <h3>{{'oauth.verifyGithub'| translate }}</h3>
-    <!--<div data-ng-if="errorState" class="alert alert-danger"><strong>{{'oauth.error'| translate }}</strong> {{'oauth.errorText'| translate }}</div>-->
-    <div class="iconWrapper">
-    <!--<div data-ng-if="!errorState" class="iconWrapper">-->
+    <div data-ng-if="errorState" class="alert alert-danger"><strong>{{'oauth.error'| translate }}</strong> {{'oauth.errorText'| translate }}</div>
+    <div data-ng-if="!errorState" class="iconWrapper logProgress">
         <div class="iconAniBg"></div>
     </div>
     <a data-ng-if="errorState" class="btn btn-default" href="/" role="button">{{'oauth.backToLogin'| translate }}</a>

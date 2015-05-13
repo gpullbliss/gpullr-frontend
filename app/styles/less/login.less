@@ -1,5 +1,7 @@
 .loginScreen{
     .overflowH;
+    width: 350px;
+    margin: 0 auto;
     h3{
         .textC;
         margin: @doubleSpacing 0;
@@ -11,7 +13,7 @@
 .iconWrapper{
     position: relative;
     width: 300px;
-    margin: 0 auto @defaultSpacing;
+    margin: 0 auto 30px;
     &:before{
         .iconFont;
         .fontSet(300px, 1);
@@ -29,19 +31,23 @@
     .borderRadius(44px);
     background-color: @dbBlack;
     z-index: -1;
-    &:before,
-    &:after{
-        .borderRadius(50%);
-        .dimension(17px, 17px);
-        background-color:  @dbLightGray;
-        content: '';
-    }
-    &:before{
-        .animation(3s, linear, 0s, normal, infinite, masterBubble);
-        .position(absolute, 279px, null, null, 202px);
-    }
-    &:after{
-        .animation(3s, linear, 0s, normal, infinite, mergeBubble);
-        .position(absolute, 188px, null, null, 292px);
+}
+.logProgress{
+    .iconAniBg{
+        &:before,
+        &:after{
+            .borderRadius(50%);
+            .dimension(17px, 17px);
+            background-color:  @dbLightGray;
+            content: '';
+        }
+        &:before{
+            .animation(3s, linear, 0s, normal, infinite, masterBubble);
+            .position(absolute, 279px, null, null, 202px);
+        }
+        &:after{
+            .animation(3s, linear, 0s, normal, infinite, mergeBubble);
+            .position(absolute, 188px, null, null, 292px);
+        }
     }
 }
