@@ -1,9 +1,17 @@
+.loginScreen{
+    .overflowH;
+    h3{
+        .textC;
+        margin: @doubleSpacing 0;
+    }
+    .btn{
+        .floatR;
+    }
+}
 .iconWrapper{
     position: relative;
     width: 300px;
     margin: 0 auto @defaultSpacing;
-}
-.iconAnni{
     &:before{
         .iconFont;
         .fontSet(300px, 1);
@@ -12,28 +20,28 @@
         display: block;
         z-index: 10;
     }
-
 }
-.iconAnniBg{
+.iconAniBg{
     .dimension(236px, 235px);
-    .overflowH;
+    //.overflowH;
     .position(absolute, 32px, null, null, 32px);
     .transform(rotate(45deg));
     .borderRadius(44px);
     background-color: @dbBlack;
     z-index: -1;
-    .bubbleMaster,
-    .bubbleMerge{
+    &:before,
+    &:after{
         .borderRadius(50%);
-        .dimension(89px, 89px);
+        .dimension(17px, 17px);
         background-color:  @dbLightGray;
+        content: '';
     }
-    .bubbleMaster{
-        .animation(2s, linear, 0s, normal, infinite, masterBubble);
-        .position(absolute, 203px, null, null, 126px);
+    &:before{
+        .animation(3s, linear, 0s, normal, infinite, masterBubble);
+        .position(absolute, 279px, null, null, 202px);
     }
-    .bubbleMerge{
-        .animation(2s, linear, 0s, normal, infinite, mergeBubble);
-        .position(absolute, 30px, null, null, 134px);
+    &:after{
+        .animation(3s, linear, 0s, normal, infinite, mergeBubble);
+        .position(absolute, 188px, null, null, 292px);
     }
 }
