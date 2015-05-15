@@ -3,10 +3,9 @@
 angular.module('gpullr', [
     'dashboardModule',
     'headerModule',
-    'loginModule',
     'wallboardModule',
     'angularMoment',
-    'userSettingsModule',
+    'userModule',
     'ui.router',
     'ngCookies'
 ]);

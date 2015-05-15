@@ -1,5 +1,5 @@
 'use strict';
-angular.module('loginModule')
+angular.module('userModule')
     .controller('githubOauthCtrl',
     ['$scope', '$state', '$stateParams', '$cookieStore', 'userService', 'STATE_DASHBOARD',
         function ($scope, $state, $stateParams, $cookieStore, userService, STATE_DASHBOARD) {

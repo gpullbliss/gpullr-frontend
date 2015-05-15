@@ -38,10 +38,15 @@ angular.module('userModule')
                 $cacheFactory.get('$http').remove('/api/users/me');
             }
 
+            function getName(user) {
+                return user.fullName ? user.fullName : user.username;
+            }
+
             return {
                 getCurrentUser: getCurrentUser,
                 authenticateWithGithubAndLogInUser: authenticateWithGithubAndLogInUser,
                 getLanguages: getLanguages,
+                getName: getName,
 
                 clearCacheForGetCurrentUser: clearCacheForGetCurrentUser
             };

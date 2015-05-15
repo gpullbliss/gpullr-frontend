@@ -14,6 +14,8 @@ angular.module('wallboardModule')
                     element.addClass(colorClass);
                 }
             },
-            controller:['$scope', 'UserNameService', function($scope, userNameService){$scope.getName = userNameService.getName;}]
+            controller: ['$scope', 'userService', function ($scope, userService) {
+                $scope.getName = userService.getName;
+            }]
         };
     }]);

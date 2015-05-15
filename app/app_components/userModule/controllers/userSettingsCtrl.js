@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('userSettingsModule')
+angular.module('userModule')
     .controller('userSettingsCtrl', [
         '$scope', '$state', 'repoService', 'userSettingsService', 'userService', '$timeout', '$filter',
         function ($scope, $state, repoService, userSettingsService, userService, $timeout, $filter) {

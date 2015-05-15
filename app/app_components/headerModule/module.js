@@ -1,8 +1,7 @@
 angular.module('headerModule',
     [
-        'userSettingsModule',
         'translateModule',
-        'loginModule',
+        'userModule',
         'dashboardModule'
     ]
 );
