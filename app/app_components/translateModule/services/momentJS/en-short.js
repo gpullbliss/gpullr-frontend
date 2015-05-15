@@ -1,6 +1,5 @@
 // moment.js locale configuration
-// locale : great britain english (en-short)
-// author : Chris Gedrim : https://github.com/chrisgedrim
+// locale : abbreviation english (en-short)
 
 /* jshint ignore:start */
 (function (factory) {
