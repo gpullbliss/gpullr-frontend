@@ -22,6 +22,6 @@ angular.module('userModule')
                     controller: 'userSettingsCtrl',
                     data: {requireLogin: true},
                     templateUrl: 'app_components/userModule/views/userSettings.html',
-                    url: '/repo-filter'
+                    url: '/user-settings'
                 });
         }]);
