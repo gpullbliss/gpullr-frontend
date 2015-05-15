@@ -1,11 +1,11 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_REPO_FILTER',
-        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_REPO_FILTER) {
+    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
+        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
             $scope.navBar = [
                 {title: 'navi.linkPullrequest', bubble: true, state: STATE_DASHBOARD},
                 {title: 'navi.linkRanking', bubble: false, state: STATE_STATS},
-                {title: 'navi.linkSettings', bubble: false, state: STATE_REPO_FILTER}
+                {title: 'navi.linkSettings', bubble: false, state: STATE_USER_SETTINGS}
             ];
 
             $scope.getName = userService.getName;
