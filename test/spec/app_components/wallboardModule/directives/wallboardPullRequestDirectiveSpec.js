@@ -3,7 +3,7 @@
 describe('wallboardPullRequest', function () {
     var $compile,
         $scope,
-        userNameService,
+        userService,
         pullRequestCssClassService,
         cssColorClass = 'someCssClass';
 
@@ -34,9 +34,9 @@ describe('wallboardPullRequest', function () {
         });
         module('appTemplates');
 
-        inject(function (_$compile_, _$rootScope_, _UserNameService_) {
+        inject(function (_$compile_, _$rootScope_, _userService_) {
             $compile = _$compile_;
-            userNameService = _UserNameService_;
+            userService = _userService_;
             $scope = _$rootScope_.$new();
         });
     });

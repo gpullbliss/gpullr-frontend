@@ -8,7 +8,7 @@ describe('userService', function () {
         response;
 
     beforeEach(function () {
-        module('loginModule');
+        module('userModule');
 
         inject(function (userService, _$httpBackend_, _$rootScope_, _$state_) {
             service = userService;
