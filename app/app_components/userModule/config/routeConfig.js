@@ -10,12 +10,12 @@ angular.module('userModule')
                 .state(STATE_LOGIN, {
                     parent: 'pageWithoutHeader',
                     controller: 'loginCtrl',
-                    templateUrl: 'app_components/loginModule/views/login.html',
+                    templateUrl: 'app_components/userModule/views/login.html',
                     url: '/login'
                 }).state(STATE_GITHUB_OAUTH, {
                     parent: 'pageWithoutHeader',
                     controller: 'githubOauthCtrl',
-                    templateUrl: 'app_components/loginModule/views/githuboauth.html',
+                    templateUrl: 'app_components/userModule/views/githuboauth.html',
                     url: '/oauth/github?code&state'
                 }).state(STATE_REPO_FILTER, {
                     parent: 'page',
