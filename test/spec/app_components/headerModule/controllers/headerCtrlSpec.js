@@ -18,6 +18,7 @@ describe('headerCtrl', function () {
         inject(function (_$controller_,
                          _$rootScope_,
                          _userService_,
+                         _userService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
                          _$q_) {
@@ -53,7 +54,7 @@ describe('headerCtrl', function () {
                 notificationDropdownItemService: notificationDropdownItemService,
                 STATE_STATS: 'stats',
                 STATE_DASHBOARD: 'dashboard',
-                STATE_REPO_FILTER: 'repoFilter'
+                STATE_USER_SETTINGS: 'repoFilter'
             });
         });
     });
