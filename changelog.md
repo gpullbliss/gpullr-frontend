@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] PRT 113 shorten tima-ago texts
  - [feature] added french translation
  - [feature] redesign login flow
  - [bug] if logged out the settings page is not accessible anymore
@@ -66,4 +67,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: bmary <bastien.mary@devbliss.com> Fri May 08 13:08:04 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri May 15 13:47:05 CEST 2015
