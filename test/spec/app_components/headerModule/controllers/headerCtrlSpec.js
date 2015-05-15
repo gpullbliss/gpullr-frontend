@@ -18,7 +18,6 @@ describe('headerCtrl', function () {
         inject(function (_$controller_,
                          _$rootScope_,
                          _userService_,
-                         _userService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
                          _$q_) {
