@@ -1,11 +1,11 @@
 'use strict';
 angular.module('userModule')
     .constant('STATE_LOGIN', 'login')
-    .constant('STATE_GITHUB_OAUTH', 'githuboauth')
-    .constant('STATE_REPO_FILTER', 'repoFilter')
+    .constant('STATE_GITHUB_OAUTH', 'githubOAuth')
+    .constant('STATE_USER_SETTINGS', 'userSettings')
     .config([
-        '$stateProvider', 'STATE_LOGIN', 'STATE_GITHUB_OAUTH', 'STATE_REPO_FILTER',
-        function ($stateProvider, STATE_LOGIN, STATE_GITHUB_OAUTH, STATE_REPO_FILTER) {
+        '$stateProvider', 'STATE_LOGIN', 'STATE_GITHUB_OAUTH', 'STATE_USER_SETTINGS',
+        function ($stateProvider, STATE_LOGIN, STATE_GITHUB_OAUTH, STATE_USER_SETTINGS) {
             $stateProvider
                 .state(STATE_LOGIN, {
                     parent: 'pageWithoutHeader',
@@ -17,7 +17,7 @@ angular.module('userModule')
                     controller: 'githubOauthCtrl',
                     templateUrl: 'app_components/userModule/views/githuboauth.html',
                     url: '/oauth/github?code&state'
-                }).state(STATE_REPO_FILTER, {
+                }).state(STATE_USER_SETTINGS, {
                     parent: 'page',
                     controller: 'userSettingsCtrl',
                     data: {requireLogin: true},
