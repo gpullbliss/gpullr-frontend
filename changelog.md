@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] PRT 113 shorten time-ago texts
  - [refactor] consolidate user related code
  - [feature] added french translation
  - [feature] redesign login flow
@@ -67,4 +68,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri May 15 15:11:22 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri May 15 13:47:05 CEST 2015
