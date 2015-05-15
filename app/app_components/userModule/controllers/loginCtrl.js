@@ -1,5 +1,5 @@
 'use strict';
-angular.module('loginModule')
+angular.module('userModule')
     .controller('loginCtrl',
     ['$scope', '$state', '$cookieStore', 'envConfig', function ($scope, $state, $cookieStore, envConfig) {
 

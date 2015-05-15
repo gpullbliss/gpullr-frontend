@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('loginModule')
+angular.module('userModule')
     .service('userSettingsService', ['$http', 'userService', function ($http, userService) {
 
         function persistUserSettings(user) {

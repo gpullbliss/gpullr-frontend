@@ -7,7 +7,6 @@ describe('headerCtrl', function () {
         user,
         rootScope,
         scope,
-        UserNameService,
         notifications,
         notificationService,
         notificationDropdownItemService,
@@ -19,7 +18,6 @@ describe('headerCtrl', function () {
         inject(function (_$controller_,
                          _$rootScope_,
                          _userService_,
-                         _UserNameService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
                          _$q_) {
@@ -28,7 +26,6 @@ describe('headerCtrl', function () {
             userService = _userService_;
             rootScope = _$rootScope_;
             scope = rootScope.$new();
-            UserNameService = _UserNameService_;
             notificationService = _notificationService_;
             notificationDropdownItemService = _notificationDropdownItemService_;
             q = _$q_;
@@ -52,12 +49,11 @@ describe('headerCtrl', function () {
                 $scope: scope,
                 $rootScope: rootScope,
                 userService: userService,
-                UserNameService: UserNameService,
                 notificationService: notificationService,
                 notificationDropdownItemService: notificationDropdownItemService,
                 STATE_STATS: 'stats',
                 STATE_DASHBOARD: 'dashboard',
-                STATE_REPO_FILTER: 'repoFilter'
+                STATE_USER_SETTINGS: 'repoFilter'
             });
         });
     });

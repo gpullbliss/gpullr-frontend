@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('dashboardModule')
-    .controller('statisticsDetailsCtrl', ['$scope', '$state', 'statisticsService', 'UserNameService', function ($scope, $state, statisticsService, userNameService) {
+    .controller('statisticsDetailsCtrl', ['$scope', '$state', 'statisticsService', 'userService', function ($scope, $state, statisticsService, userService) {
         $scope.podium = {};
         $scope.rankingList = [];
 
         $scope.getName = function (user) {
-            return userNameService.getName(user);
+            return userService.getName(user);
         };
 
         function init() {

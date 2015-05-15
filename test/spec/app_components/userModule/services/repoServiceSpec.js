@@ -6,7 +6,7 @@ describe('repoService', function () {
         response;
 
     beforeEach(function () {
-        module('userSettingsModule');
+        module('userModule');
 
         inject(function (repoService,  _$httpBackend_) {
             $httpBackend =  _$httpBackend_;

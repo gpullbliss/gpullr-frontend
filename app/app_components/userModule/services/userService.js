@@ -1,5 +1,5 @@
 'use strict';
-angular.module('loginModule')
+angular.module('userModule')
     .factory('userService', ['$cacheFactory', '$http', '$rootScope', '$translate',
         function ($cacheFactory, $http, $rootScope, $translate) {
 
@@ -38,10 +38,15 @@ angular.module('loginModule')
                 $cacheFactory.get('$http').remove('/api/users/me');
             }
 
+            function getName(user) {
+                return user.fullName ? user.fullName : user.username;
+            }
+
             return {
                 getCurrentUser: getCurrentUser,
                 authenticateWithGithubAndLogInUser: authenticateWithGithubAndLogInUser,
                 getLanguages: getLanguages,
+                getName: getName,
 
                 clearCacheForGetCurrentUser: clearCacheForGetCurrentUser
             };

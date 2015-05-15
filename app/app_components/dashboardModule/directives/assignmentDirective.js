@@ -8,14 +8,14 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            controller: ['$scope', 'PullRequestService', 'UserNameService', function ($scope, pullRequestService, userNameService) {
+            controller: ['$scope', 'PullRequestService', 'userService', function ($scope, pullRequestService, userService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
                     ACTION_OPEN_MODAL = 'modal',
                     currentPr,
                     defaultTitle = 'dashboard.pullRequest.assign.toMe';
-                $scope.getName = userNameService.getName;
+                $scope.getName = userService.getName;
 
                 function init() {
                     if (!$scope.pullRequest.assignee) {

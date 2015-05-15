@@ -3,7 +3,7 @@
 describe('pullRequest', function () {
     var $compile,
         $scope,
-        userNameService,
+        userService,
         pullRequestCssClassService,
         cssColorClass = 'youngerThan2h';
 
@@ -26,11 +26,11 @@ describe('pullRequest', function () {
             $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
-        module('userSettingsModule');
+        module('userModule');
 
-        inject(function (_$compile_, _$rootScope_, _UserNameService_) {
+        inject(function (_$compile_, _$rootScope_, _userService_) {
             $compile = _$compile_;
-            userNameService = _UserNameService_;
+            userService = _userService_;
             $scope = _$rootScope_.$new();
         });
     });
@@ -53,7 +53,7 @@ describe('pullRequest', function () {
             $scope.$digest();
 
             expect(element.isolateScope().getName).toBeDefined();
-            expect(element.isolateScope().getName).toBe(userNameService.getName);
+            expect(element.isolateScope().getName).toBe(userService.getName);
         });
     });
 });

@@ -9,7 +9,7 @@ describe('loginCtrl', function () {
         thisEnvConfig;
 
     beforeEach(function () {
-        module('loginModule');
+        module('userModule');
 
         inject(function (_$controller_,
                          _$rootScope_,

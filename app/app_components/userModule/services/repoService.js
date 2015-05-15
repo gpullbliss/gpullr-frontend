@@ -1,5 +1,5 @@
 'use strict';
-angular.module('userSettingsModule')
+angular.module('userModule')
     .factory('repoService', ['$http', function ($http) {
         function getRepoList() {
             return $http.get('/api/repos').then(
