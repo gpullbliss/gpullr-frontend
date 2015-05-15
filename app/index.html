@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="styles/.tmp/base.css" />
         <!-- endbuild -->
     </head>
-    <body ng-class="bodyClass">
+    <body data-ng-class="bodyClass">
         <div  data-ui-view></div>
         <!-- build:js scripts/scripts.js -->
 
@@ -53,7 +53,6 @@
         <script src="app_components/translateModule/services/momentJS/ru-short.js"></script>
         <script src="app_components/translateModule/services/momentJS/vmf-short.js"></script>
 
-
         <script src="scripts/app.js"></script>
         <script src="scripts/config/httpConfig.js"></script>
         <script src="scripts/config/routeConfig.js"></script>
@@ -77,13 +76,6 @@
         <script src="app_components/headerModule/controllers/headerCtrl.js"></script>
         <script src="app_components/headerModule/services/notificationDropdownItem.js"></script>
 
-        <script src="app_components/loginModule/module.js"></script>
-        <script src="app_components/loginModule/config/routeConfig.js"></script>
-        <script src="app_components/loginModule/controllers/loginCtrl.js"></script>
-        <script src="app_components/loginModule/controllers/githubOauthCtrl.js"></script>
-        <script src="app_components/loginModule/services/userService.js"></script>
-        <script src="app_components/loginModule/services/UserSettingsService.js"></script>
-
         <script src="app_components/pullRequestModule/module.js"></script>
         <script src="app_components/pullRequestModule/services/pullRequestCssClassService.js"></script>
         <script src="app_components/pullRequestModule/services/pullRequestService.js"></script>
@@ -94,12 +86,14 @@
         <script src="app_components/wallboardModule/directives/wallboardPullRequestDirective.js"></script>
         <script src="app_components/wallboardModule/directives/wallboardAssigneeDirective.js"></script>
 
-        <script src="app_components/userSettingsModule/module.js"></script>
-        <script src="app_components/userSettingsModule/config/routeConfig.js"></script>
-        <script src="app_components/userSettingsModule/controller/userSettingsCtrl.js"></script>
-        <script src="app_components/userSettingsModule/services/repoService.js"></script>
-        <script src="app_components/userSettingsModule/services/userNameService.js"></script>
-
+        <script src="app_components/userModule/module.js"></script>
+        <script src="app_components/userModule/config/routeConfig.js"></script>
+        <script src="app_components/userModule/controllers/loginCtrl.js"></script>
+        <script src="app_components/userModule/controllers/githubOauthCtrl.js"></script>
+        <script src="app_components/userModule/controllers/userSettingsCtrl.js"></script>
+        <script src="app_components/userModule/services/repoService.js"></script>
+        <script src="app_components/userModule/services/userService.js"></script>
+        <script src="app_components/userModule/services/userSettingsService.js"></script>
         <!-- endbuild -->
     </body>
 </html>

@@ -10,8 +10,8 @@ angular.module('dashboardModule')
             },
             restrict: 'A',
             templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
-            controller: ['$scope', 'UserNameService', function ($scope, userNameService) {
-                $scope.getName = userNameService.getName;
+            controller: ['$scope', 'userService', function ($scope, userService) {
+                $scope.getName = userService.getName;
             }],
             link: function (scope, element) {
                 var propertyName = scope.ageProperty;

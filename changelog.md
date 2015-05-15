@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] PRT 113 shorten tima-ago texts
+ - [refactor] consolidate user related code
  - [feature] added french translation
  - [feature] redesign login flow
  - [bug] if logged out the settings page is not accessible anymore

@@ -13,8 +13,7 @@ describe('userSettingsCtrl', function () {
         userService;
 
     beforeEach(function () {
-        module('userSettingsModule');
-        module('loginModule');
+        module('userModule');
 
         inject(function (_repoService_, _userSettingsService_, $controller, _$q_, _$rootScope_, _userService_, _$filter_, _$timeout_) {
             userSettingsService = _userSettingsService_;

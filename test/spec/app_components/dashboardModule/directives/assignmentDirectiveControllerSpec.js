@@ -3,7 +3,7 @@
 describe('assignmentDirectiveController', function () {
     var $compile,
         $scope,
-        userNameService,
+        userService,
         pullRequestService,
         element,
         directiveScope;
@@ -18,15 +18,15 @@ describe('assignmentDirectiveController', function () {
         return '<div data-dvb-assignment data-pull-request="' + assigneeJson + '" data-logged-in-user="{id: 1234}"></div>';
     }
     beforeEach(function () {
-        module('userSettingsModule');
+        module('userModule');
         module('dashboardModule');
         module('appTemplates');
 
-        inject(function (_$compile_, _$rootScope_, _PullRequestService_, _UserNameService_) {
+        inject(function (_$compile_, _$rootScope_, _PullRequestService_, _userService_) {
             $compile = _$compile_;
             $scope = _$rootScope_.$new();
             pullRequestService = _PullRequestService_;
-            userNameService = _UserNameService_;
+            userService = _userService_;
         });
     });
 
