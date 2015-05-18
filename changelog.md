@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [refactor] headerModule cleanup
  - [feature] PRT 113 set date in title attribute of time-ago tag
  - [feature] PRT 113 shorten time-ago texts
  - [refactor] consolidate user related code
@@ -69,4 +70,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri May 15 17:17:43 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Mon May 18 13:18:34 CEST 2015
