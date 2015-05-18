@@ -2,18 +2,32 @@
 angular.module('headerModule')
     .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
         function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
-            $scope.navBar = [
-                {title: 'navi.linkPullrequest', bubble: true, state: STATE_DASHBOARD},
-                {title: 'navi.linkRanking', bubble: false, state: STATE_STATS},
-                {title: 'navi.linkSettings', bubble: false, state: STATE_USER_SETTINGS}
-            ];
 
-            $scope.getName = userService.getName;
-            userService.getCurrentUser();
+            function init() {
+                userService.getCurrentUser();
+                setupNavBar();
+                updateNotifications();
+                subscribeChangeRequestCountEvent();
 
-            $rootScope.$on('changeRequestCount', function (event, requestCount) {
-                $scope.requestCount = requestCount;
-            });
+                // periodically update notifications
+                $interval(function () {
+                    updateNotifications();
+                }, 10000);
+            }
+
+            function setupNavBar() {
+                $scope.navBar = [
+                    {title: 'navi.linkPullrequest', bubble: true, state: STATE_DASHBOARD},
+                    {title: 'navi.linkRanking', bubble: false, state: STATE_STATS},
+                    {title: 'navi.linkSettings', bubble: false, state: STATE_USER_SETTINGS}
+                ];
+            }
+
+            function subscribeChangeRequestCountEvent() {
+                $rootScope.$on('changeRequestCount', function (event, requestCount) {
+                    $scope.requestCount = requestCount;
+                });
+            }
 
             function updateNotifications() {
                 notificationService.getNotifications().then(
@@ -22,6 +36,14 @@ angular.module('headerModule')
                     }
                 );
             }
+
+            $scope.getName = function (user) {
+                return userService.getName(user);
+            };
+
+            $scope.toText = function (n) {
+                notificationDropdownItemService.convert(n);
+            };
 
             $scope.markAllNotificationsRead = function () {
                 notificationService.markAllNotificationsRead();
@@ -40,12 +62,6 @@ angular.module('headerModule')
                 }
             };
 
-            $scope.toText = notificationDropdownItemService.convert;
-
-            updateNotifications();
-            $interval(function () {
-                updateNotifications();
-            }, 10000);
-
+            init();
         }]
 );
