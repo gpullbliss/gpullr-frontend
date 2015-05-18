@@ -58,7 +58,6 @@ angular.module('translateModule')
                     linesRemoved: 'удалённых строк',
                     filesChanged: 'изменённых файлов',
                     comments: 'комментариев',
-                    createdAt: 'дата создания',
                     build: 'Текущая сборка'
                 }
             }

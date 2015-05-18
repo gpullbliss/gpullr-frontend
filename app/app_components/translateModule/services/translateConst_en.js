@@ -65,8 +65,6 @@ angular.module('translateModule')
                     linesRemoved: 'Lines Removed',
                     filesChanged: 'Files Changed',
                     comments: 'Comments',
-                    createdAt: 'Pull Requests created at',
-                    assignedAt:'Reviewer assigned at',
                     build: 'Build'
                 }
             }

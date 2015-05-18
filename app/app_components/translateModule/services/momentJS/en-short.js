@@ -12,11 +12,11 @@
     }
 }(function (moment) {
     return moment.defineLocale('en-short', {
-        months : 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
-        monthsShort : 'Ja_F_Mar_Ap_May_Jn_Jl_Au_S_O_N_D'.split('_'),
-        weekdays : 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
-        weekdaysShort : 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
-        weekdaysMin : 'Su_M_Tu_W_Th_F_Sa'.split('_'),
+        months : 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+        monthsShort : 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
+        weekdays : 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
+        weekdaysShort : 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+        weekdaysMin : 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
         longDateFormat : {
             LT : 'HH:mm',
             LTS : 'HH:mm:ss',

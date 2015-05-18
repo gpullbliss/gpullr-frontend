@@ -58,7 +58,6 @@ angular.module('translateModule')
                     linesRemoved: 'Líneas borrados',
                     filesChanged: 'Archivos cambiados',
                     comments: 'Comentarios',
-                    createdAt: 'Solicitud creada el',
                     build: 'Construye'
                 }
             }

@@ -58,8 +58,6 @@ angular.module('translateModule')
                     linesRemoved: 'nausgebfefferde Zeiln',
                     filesChanged: 'geänderde Dodain',
                     comments: 'Oomergunga',
-                    createdAt: 'Bullrequesd gschdelld om',
-                    assignedAt: 'zugwiesn om',
                     build: 'Build'
                 }
             }

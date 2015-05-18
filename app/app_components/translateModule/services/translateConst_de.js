@@ -65,8 +65,6 @@ angular.module('translateModule')
                     linesRemoved: 'Zeilen entfernt',
                     filesChanged: 'Datein geändert',
                     comments: 'Kommentare',
-                    createdAt: 'Zieh Anfrage erstellt am',
-                    assignedAt: 'Gutachter zugewiesen am',
                     build: 'Bau'
                 }
             }
