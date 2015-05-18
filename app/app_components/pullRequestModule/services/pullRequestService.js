@@ -30,7 +30,30 @@ angular.module('pullRequestModule')
 
             return $http.get(url).then(
                 function (response) {
-                    return response.data.items;
+                    var pullRequests = response.data.items;
+
+                    pullRequests.forEach(function(pullRequest) {
+                        if (pullRequest.assignee !== null) {
+                            return;
+                        }
+
+                        pullRequest.hasOlder = [];
+
+                        pullRequests.forEach(function (otherPullRequest) {
+                            if (otherPullRequest.assignee !== null) {
+                                return;
+                            }
+
+                            if (Date.parse(pullRequest.createdAt) > Date.parse(otherPullRequest.createdAt)) {
+                                pullRequest.hasOlder.push(otherPullRequest);
+
+                                console.log('>>'+pullRequest.title + '<< has older pr >>' + otherPullRequest.title + '<<');
+                            }
+                        });
+
+                    });
+
+                    return pullRequests;
                 }
             );
         }

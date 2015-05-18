@@ -1,11 +1,42 @@
 <div class="assignee userBlock">
-    <a data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
+
+    <a data-ng-if="pullRequest.hasOlder.length > 0"                            data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{olderCheckModal}}" data-target="#modalCheck{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
         <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
-    <a ng-if="pullRequest.assignee" target="_blank" data-ng-href="pullRequest.assignee.profileUrl" class="userName">
+
+    <a data-ng-if="!pullRequest.hasOlder || pullRequest.hasOlder.length === 0" data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}"      class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
+        <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
+    </a>
+
+    <a data-ng-if="pullRequest.assignee" target="_blank" data-ng-href="pullRequest.assignee.profileUrl" class="userName">
         <span>{{getName(pullRequest.assignee)}}</span>
         <span class="subName" data-ng-if="pullRequest.assignee.fullName">{{pullRequest.assignee.username}}</span>
     </a>
+
+</div>
+
+<!-- modal dialog for assigning pull requests while older pull requests exist-->
+<div class="modal fade" data-ng-if="olderCheckModal" id="modalCheck{{pullRequest.id}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="closeBtn" data-dismiss="modal"></a>
+                <h4 class="modal-title">
+                    WARNING! Older pull requests found.
+                </h4>
+            </div>
+            <ul>
+                <li class="modal-body" data-ng-repeat="olderPullRequest in pullRequest.hasOlder | orderBy:'createdAt'">
+                    <strong>#{{olderPullRequest.number}} {{olderPullRequest.title}}</strong> from {{olderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}
+                </li>
+            </ul>
+            <div class="modal-footer">
+                <button class="btn floatL" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-default" data-ng-click="confirmOtherAssignment((pullRequest.hasOlder| orderBy:'createdAt')[0])">Assign oldest</button>
+                <button class="btn btn-default" data-ng-click="confirmAssignment()">Do it anyways</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- modal dialog for already assigned pull requests-->
