@@ -19,6 +19,7 @@ angular.module('dashboardModule')
 
         function stopPolling() {
             doPoll = false;
+            notifications = {};
         }
 
         function fetchNotifications() {
@@ -29,7 +30,9 @@ angular.module('dashboardModule')
                     },
                     function (error) {
                         if (error.status === 403) {
-                            doPoll = false;
+                            stopPolling();
+                        } else if (error === null) {
+                            notifications = {};
                         }
                     }
                 );

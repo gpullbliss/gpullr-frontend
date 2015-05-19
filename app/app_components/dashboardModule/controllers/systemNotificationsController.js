@@ -1,6 +1,6 @@
 'use strict';
 angular.module('dashboardModule').
-    controller('systemNotificationsController', ['$scope', '$interval', 'notificationService', function ($scope, $interval, notficationService) {
+    controller('systemNotificationsController', ['$scope', '$interval', 'notificationService', 'moment', function ($scope, $interval, notificationService, moment) {
 
         function init() {
             // periodically update notifications
@@ -11,13 +11,12 @@ angular.module('dashboardModule').
         }
 
         function updateNotifications() {
-            notficationService.getNotifications().then(
+            notificationService.getNotifications().then(
                 function (response) {
                     $scope.messages = response.systemNotifications;
 
                     angular.forEach($scope.messages, function (msg) {
-                        msg.validUntil = moment(msg.validUntil).fromNow();
-                        console.log('moment(msg.validUntil).fromNow() = ' + moment(msg.validUntil).fromNow());
+                        msg.validUntilParsed = moment(msg.validUntil).fromNow(true);
                     });
                 }
             );

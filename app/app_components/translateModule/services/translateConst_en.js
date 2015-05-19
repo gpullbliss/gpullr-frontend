@@ -44,7 +44,7 @@ angular.module('translateModule')
         },
         dashboard: {
             systemNotification: {
-                apiRateLimitReached: 'Api rate limit reached. Rate limit will be reset at about {{ validUntil }}.'
+                apiRateLimitReached: 'Api rate limit reached. Rate limit will be reset in about {{ resetTime }}.'
             },
             headline: {
                 openRequest: 'Unassigned PRs',
