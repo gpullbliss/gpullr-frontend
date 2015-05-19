@@ -1,10 +1,10 @@
 <div class="assignee userBlock">
 
-    <a data-ng-if="pullRequest.hasOlder.length > 0"                            data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{olderCheckModal}}" data-target="#modalCheck{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
+    <a data-ng-if="pullRequest.elders.length > 0"                          data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{elderCheckModal}}" data-target="#modalCheck{{pullRequest.id}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
         <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
 
-    <a data-ng-if="!pullRequest.hasOlder || pullRequest.hasOlder.length === 0" data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}"      class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
+    <a data-ng-if="!pullRequest.elders || pullRequest.elders.length === 0" data-ng-click="assignmentAction(pullRequest, assignment)" data-toggle="{{assignmentModal}}" data-target="#modal{{pullRequest.id}}"      class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
         <img class="avatarWrapper" data-ng-if="pullRequest.assignee" data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
 
@@ -15,8 +15,8 @@
 
 </div>
 
-<!-- modal dialog for assigning pull requests while older pull requests exist-->
-<div class="modal fade" data-ng-if="olderCheckModal" id="modalCheck{{pullRequest.id}}">
+<!-- modal dialog for assigning pull requests while elder pull requests exist-->
+<div class="modal fade" data-ng-if="elderCheckModal" id="modalCheck{{pullRequest.id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -26,17 +26,17 @@
                 </h4>
             </div>
 
-            <div ng-class="{true:'signal-modal-body', false:'gray-modal-body'}[$first==true];" data-ng-repeat="olderPullRequest in pullRequest.hasOlder | orderBy:'createdAt'">
+            <div ng-class="{true:'signal-modal-body', false:'gray-modal-body'}[$first==true];" data-ng-repeat="elderPullRequest in pullRequest.elders | orderBy:'createdAt'">
                 <div class="facts prInfos">
                     <div class="row">
-                        #{{olderPullRequest.number}} {{olderPullRequest.title}}
-                        from {{olderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}
+                        #{{elderPullRequest.number}} {{elderPullRequest.title}}
+                        from {{elderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
-                <button class="btn btn-signal btn-default" data-ng-click="confirmOtherAssignment((pullRequest.hasOlder| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
+                <button class="btn btn-signal btn-default" data-ng-click="confirmOtherAssignment((pullRequest.elders| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
                 <button class="btn btn-default" data-ng-click="confirmAssignment()">{{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}</button>
             </div>
         </div>

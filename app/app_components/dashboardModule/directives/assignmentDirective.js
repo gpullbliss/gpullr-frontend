@@ -18,30 +18,30 @@ angular.module('dashboardModule')
                 $scope.getName = userService.getName;
 
                 function init() {
-                    if (!$scope.pullRequest.assignee && $scope.pullRequest.hasOlder.length === 0) {
+                    if (!$scope.pullRequest.assignee && $scope.pullRequest.elders.length === 0) {
                         $scope.assignTitle = defaultTitle;
                         $scope.assignment = ACTION_ASSIGN_TO_ME;
                         $scope.assignmentStyle = '';
                         $scope.assignmentModal = '';
-                        $scope.olderCheckModal = '';
-                    } else if (!$scope.pullRequest.assignee && $scope.pullRequest.hasOlder.length > 0) {
+                        $scope.elderCheckModal = '';
+                    } else if (!$scope.pullRequest.assignee && $scope.pullRequest.elders.length > 0) {
                         $scope.assignTitle = defaultTitle;
                         $scope.assignment = ACTION_CONFIRM_ASSIGN_TO_ME;
                         $scope.assignmentStyle = '';
                         $scope.assignmentModal = '';
-                        $scope.olderCheckModal = ACTION_OPEN_MODAL;
+                        $scope.elderCheckModal = ACTION_OPEN_MODAL;
                     } else if ($scope.pullRequest.assignee.id === $scope.loggedInUser.id) {
                         $scope.assignTitle = 'dashboard.pullRequest.assign.unassign';
                         $scope.assignment = ACTION_UNASSIGN_ME;
                         $scope.assignmentStyle = 'isAssignedToMe';
                         $scope.assignmentModal = '';
-                        $scope.olderCheckModal = '';
+                        $scope.elderCheckModal = '';
                     } else {
                         $scope.assignTitle = defaultTitle;
                         $scope.assignment = ACTION_CONFIRM_ASSIGN_TO_ME;
                         $scope.assignmentStyle = 'isAssigned';
                         $scope.assignmentModal = ACTION_OPEN_MODAL;
-                        $scope.olderCheckModal = '';
+                        $scope.elderCheckModal = '';
                     }
                 }
 

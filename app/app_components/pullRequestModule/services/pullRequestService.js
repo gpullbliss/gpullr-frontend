@@ -17,16 +17,16 @@ angular.module('pullRequestModule')
             );
         }
 
-        function isAssigned (pullRequest) {
+        function isAssigned(pullRequest) {
             return (pullRequest.assignee !== null);
         }
 
-        var enhanceEachWithListOfOlderPullRequests = function(pullRequest, index, allPullRequests) {
+        var enhanceEachWithListOfElderPullRequests = function(pullRequest, index, allPullRequests) {
             if (isAssigned(pullRequest)) {
                 return;
             }
 
-            pullRequest.hasOlder = [];
+            pullRequest.elders = [];
 
             var length = allPullRequests.length;
             for (var i = 0; i < length; i++) {
@@ -39,7 +39,7 @@ angular.module('pullRequestModule')
                 if (Date.parse(pullRequest.createdAt) > Date.parse(otherPullRequest.createdAt)) {
                     // this produces a dependency tree from current "pullRequest" to the oldest one
                     // because "otherPullRequest" is pushed to the array by reference
-                    pullRequest.hasOlder.push(otherPullRequest);
+                    pullRequest.elders.push(otherPullRequest);
                 }
             }
         };
@@ -59,7 +59,7 @@ angular.module('pullRequestModule')
                 function (response) {
                     var pullRequests = response.data.items;
 
-                    pullRequests.forEach(enhanceEachWithListOfOlderPullRequests);
+                    pullRequests.forEach(enhanceEachWithListOfElderPullRequests);
 
                     return pullRequests;
                 }
