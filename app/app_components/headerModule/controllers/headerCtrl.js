@@ -42,7 +42,7 @@ angular.module('headerModule')
             };
 
             $scope.toText = function (n) {
-                notificationDropdownItemService.convert(n);
+                return notificationDropdownItemService.convert(n);
             };
 
             $scope.markAllNotificationsRead = function () {
