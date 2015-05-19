@@ -17,6 +17,33 @@ angular.module('pullRequestModule')
             );
         }
 
+        function isAssigned (pullRequest) {
+            return (pullRequest.assignee !== null);
+        }
+
+        var enhanceEachWithListOfOlderPullRequests = function(pullRequest, index, allPullRequests) {
+            if (isAssigned(pullRequest)) {
+                return;
+            }
+
+            pullRequest.hasOlder = [];
+
+            var length = allPullRequests.length;
+            for (var i = 0; i < length; i++) {
+                var otherPullRequest = allPullRequests[i];
+
+                if (isAssigned(otherPullRequest)) {
+                    continue;
+                }
+
+                if (Date.parse(pullRequest.createdAt) > Date.parse(otherPullRequest.createdAt)) {
+                    // this produces a dependency tree from current "pullRequest" to the oldest one
+                    // because "otherPullRequest" is pushed to the array by reference
+                    pullRequest.hasOlder.push(otherPullRequest);
+                }
+            }
+        };
+
         /**
          * @param {Array<string>=} reposToInclude
          * @returns {Array<Object>}
@@ -32,26 +59,7 @@ angular.module('pullRequestModule')
                 function (response) {
                     var pullRequests = response.data.items;
 
-                    pullRequests.forEach(function(pullRequest) {
-                        if (pullRequest.assignee !== null) {
-                            return;
-                        }
-
-                        pullRequest.hasOlder = [];
-
-                        pullRequests.forEach(function (otherPullRequest) {
-                            if (otherPullRequest.assignee !== null) {
-                                return;
-                            }
-
-                            if (Date.parse(pullRequest.createdAt) > Date.parse(otherPullRequest.createdAt)) {
-                                pullRequest.hasOlder.push(otherPullRequest);
-
-                                console.log('>>'+pullRequest.title + '<< has older pr >>' + otherPullRequest.title + '<<');
-                            }
-                        });
-
-                    });
+                    pullRequests.forEach(enhanceEachWithListOfOlderPullRequests);
 
                     return pullRequests;
                 }

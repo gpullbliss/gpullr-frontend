@@ -29,7 +29,7 @@
             <div ng-class="{true:'signal-modal-body', false:'gray-modal-body'}[$first==true];" data-ng-repeat="olderPullRequest in pullRequest.hasOlder | orderBy:'createdAt'">
                 <div class="facts prInfos">
                     <div class="row">
-                        <strong>#{{olderPullRequest.number}} {{olderPullRequest.title}}</strong>
+                        #{{olderPullRequest.number}} {{olderPullRequest.title}}
                         from {{olderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}
                     </div>
                 </div>
