@@ -39,7 +39,8 @@ describe('PullRequestService', function () {
                             linesAdded: 112,
                             linesRemoved: 0,
                             assignee: null,
-                            status: 'Merged'
+                            status: 'Merged',
+                            elders: []
                         }, {
                             id: 12345,
                             title: 'refactor/testSourceSets',
@@ -57,7 +58,8 @@ describe('PullRequestService', function () {
                                 username: 'marcelb',
                                 avatarUrl: 'https://avatars1.githubusercontent.com/u/308374?v=3'
                             },
-                            status: 'Open'
+                            status: 'Open',
+                            elders: []
                         }
                     ]
                 },
@@ -121,7 +123,8 @@ describe('PullRequestService', function () {
                             linesAdded: 112,
                             linesRemoved: 0,
                             assignee: null,
-                            status: 'Merged'
+                            status: 'Merged',
+                            elders: []
                         }
                     ]
                 },

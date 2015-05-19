@@ -9,13 +9,15 @@ describe('assignmentDirectiveController', function () {
         directiveScope;
 
     function getDirectiveHtml(assigneeId) {
-        var assigneeJson = '{}';
+        var pullRequestJson = '{}';
         
         if (assigneeId) {
-            assigneeJson = '{assignee: {id: ' + assigneeId + ', fullName: \'user name\'}}';
+            pullRequestJson = '{assignee: {id: ' + assigneeId + ', fullName: \'user name\'}, elders: []}';
+        } else {
+            pullRequestJson = '{elders: []}';
         }
 
-        return '<div data-dvb-assignment data-pull-request="' + assigneeJson + '" data-logged-in-user="{id: 1234}"></div>';
+        return '<div data-dvb-assignment data-pull-request="' + pullRequestJson + '" data-logged-in-user="{id: 1234}"></div>';
     }
     beforeEach(function () {
         module('userModule');
