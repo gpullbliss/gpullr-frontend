@@ -43,6 +43,9 @@ angular.module('translateModule')
             errorText: 'A problem has been occurred.'
         },
         dashboard: {
+            systemNotification: {
+                apiRateLimitReached: 'Api rate limit reached. Rate limit will be reset at about {{ validUntil }}.'
+            },
             headline: {
                 openRequest: 'Unassigned PRs',
                 assignedRequest: 'Assigned PRs'
