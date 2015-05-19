@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] notifications in dropdown did not show text
  - [refactor] headerModule cleanup
  - [feature] PRT 113 set date in title attribute of time-ago tag
  - [feature] PRT 113 shorten time-ago texts
@@ -70,4 +71,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Mon May 18 13:18:34 CEST 2015
+-- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Tue May 19 17:27:51 CEST 2015
