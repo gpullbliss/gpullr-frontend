@@ -1,5 +1,14 @@
 'use strict';
 
+var gpullr = {
+    host: '0.0.0.0',
+    port: 8889,
+    backendHost: '0.0.0.0',
+    backendPort: 8888,
+    testPort: 9091,
+    liveReload: 9999
+};
+
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
@@ -11,49 +20,21 @@ module.exports = function (grunt) {
             }],
             proxies: [{
                 context: '/api',
-                host: 'localhost',
-                //host: 'gpullr.devbliss.com',
-                port: 8888,
+                host: gpullr.backendHost,
+                port: gpullr.backendPort,
                 rewrite: {
                     '^/api': ''
                 }
             }],
             options: {
-                port: 8889,
-                // Change this to '0.0.0.0' to access the server from outside.
-                hostname: '0.0.0.0',
-                middleware: function (connect, options) {
-                    var middlewares = [];
-                    if (!Array.isArray(options.base)) {
-                        options.base = [options.base];
-                    }
-
-                    // Setup the proxy Backend
-                    var proxyOptions1 = require('url').parse('http://172.17.42.1:8070/api');
-                    proxyOptions1.route = '/api';
-                    middlewares.push(require('proxy-middleware')(proxyOptions1));
-
-                    // Setup the proxy qti player
-                    var proxyOptions2 = require('url').parse('http://localhost:13771/');
-                    proxyOptions2.route = '/qtiplayer';
-                    middlewares.push(require('proxy-middleware')(proxyOptions2));
-
-
-                    // RewriteRules support
-                    middlewares.push(require('grunt-connect-rewrite/lib/utils').rewriteRequest);
-
-                    // Serve static files
-                    options.base.forEach(function (base) {
-                        middlewares.push(connect.static(base));
-                    });
-                    return middlewares;
-                }
+                port: gpullr.port,
+                hostname: gpullr.host
             },
 
             app: {
                 options: {
                     open: true,
-                    livereload: 35729,
+                    livereload: gpullr.liveReload,
                     base: ['.tmp', 'app']
                 }
             },
@@ -67,21 +48,21 @@ module.exports = function (grunt) {
 
             testApp: {
                 options: {
-                    port: 8888,
+                    port: gpullr.testPort,
                     base: ['.tmp', 'test', 'app']
                 }
             },
 
             testDist: {
                 options: {
-                    port: 8888,
+                    port: gpullr.testPort,
                     base: ['.tmp', 'test', 'dist']
                 }
             },
 
             e2eApp: {
                 options: {
-                    port: 8888,
+                    port: gpullr.testPort,
                     base: ['.tmp', 'test', 'app']
                 }
             }
@@ -184,12 +165,6 @@ module.exports = function (grunt) {
                     '*.*'
                 ]
             }
-        },
-
-        devbliss: {
-            port: 8889,
-            testport: 9091,
-            livereload: 9999
         },
 
         replace: {
@@ -379,7 +354,7 @@ module.exports = function (grunt) {
             html: {
                 files: ['app/**/*.html'],
                 options: {
-                    livereload: 35729
+                    livereload: gpullr.liveReload
                 }
             },
 
@@ -387,7 +362,7 @@ module.exports = function (grunt) {
                 files: ['app/**/*.js'],
                 tasks: ['eslint'],
                 options: {
-                    livereload: 35729
+                    livereload: gpullr.liveReload
                 }
             },
 
@@ -395,14 +370,14 @@ module.exports = function (grunt) {
                 files: ['app/styles/less/**/*.less'],
                 tasks: ['clean', 'recess'],
                 options: {
-                    livereload: 35729
+                    livereload: gpullr.liveReload
                 }
             },
 
             css: {
                 files: ['app/**/*.css'],
                 options: {
-                    livereload: 35729
+                    livereload: gpullr.liveReload
                 }
             },
 
@@ -425,7 +400,7 @@ module.exports = function (grunt) {
                 files: ['Gruntfile.js'],
 //                tasks: ['eslint'], TODO
                 options: {
-                    livereload: 35729
+                    livereload: gpullr.liveReload
                 }
             }
         }
@@ -463,7 +438,6 @@ module.exports = function (grunt) {
         'connect:app',
         'watch'
     ]);
-
 
     grunt.registerTask('test', [
         'replace:development',
