@@ -38,7 +38,8 @@ angular.module('translateModule')
         },
         dashboard: {
             headline: {
-                openRequest: 'Açık Değişiklik Talepleri'
+                openRequest: 'Tahsis Edilmemiş Değişiklik Talepleri',
+                assignedRequest: 'Tahsis Edilmiş Değişiklik Talepleri'
             },
             filter: {
                 byOldest: 'eskiden yeniye sırala',
