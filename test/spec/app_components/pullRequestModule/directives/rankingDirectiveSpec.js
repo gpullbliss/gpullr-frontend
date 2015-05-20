@@ -1,6 +1,6 @@
 'use strict';
 
-describe('directive: ranking', function () {
+describe('rankingDirective', function () {
     var $compile,
         $scope;
 
@@ -10,7 +10,7 @@ describe('directive: ranking', function () {
     }
 
     beforeEach(function () {
-        module('dashboardModule');
+        module('pullRequestModule');
         module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_) {
@@ -26,6 +26,7 @@ describe('directive: ranking', function () {
                 element = $compile(getDirectiveHtml(rank, user))($scope);
 
             $scope.$digest();
+            console.log(element);
 
             expect(element.find('img').attr('class')).toContain('avatar');
             expect(element.text()).toContain(rank.rank);

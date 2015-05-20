@@ -1,6 +1,6 @@
 'use strict';
 
-describe('pullRequest', function () {
+describe('pullRequestDirective', function () {
     var $compile,
         $scope,
         userService,
@@ -22,7 +22,7 @@ describe('pullRequest', function () {
             return cssColorClass;
         });
 
-        module('dashboardModule', function ($provide) {
+        module('pullRequestModule', function ($provide) {
             $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');

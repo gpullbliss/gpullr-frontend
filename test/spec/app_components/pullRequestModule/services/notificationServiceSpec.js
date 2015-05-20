@@ -5,7 +5,7 @@ describe('notificationService', function () {
         service;
 
     beforeEach(function () {
-        module('dashboardModule');
+        module('pullRequestModule');
 
         inject(function (notificationService, _$httpBackend_) {
             service = notificationService;
