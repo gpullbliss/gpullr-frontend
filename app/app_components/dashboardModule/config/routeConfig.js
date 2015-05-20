@@ -5,13 +5,6 @@ angular.module('dashboardModule')
     .config([
         '$stateProvider', 'STATE_DASHBOARD', 'STATE_STATS', function ($stateProvider, STATE_DASHBOARD, STATE_STATS) {
             $stateProvider
-                .state(STATE_DASHBOARD, {
-                    parent: 'page',
-                    controller: 'dashboardCtrl',
-                    data: {requireLogin: true},
-                    templateUrl: 'app_components/dashboardModule/views/dashboard.html',
-                    url: '/'
-                })
                 .state(STATE_STATS, {
                     parent: 'page',
                     controller: 'statisticsCtrl',

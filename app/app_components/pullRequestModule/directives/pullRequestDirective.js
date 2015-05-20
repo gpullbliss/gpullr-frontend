@@ -9,7 +9,7 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            templateUrl: 'app_components/dashboardModule/views/pullRequest.html',
+            templateUrl: 'app_components/pullRequestModule/views/dashboard/pullRequest.html',
             controller: ['$scope', 'userService', function ($scope, userService) {
                 $scope.getName = userService.getName;
             }],
