@@ -432,9 +432,10 @@ module.exports = function (grunt) {
 
     });
 
-    grunt.registerTask('buildpullr', [
-        'build'
-    ]);
+    grunt.registerTask('buildpullr', function (target) {
+        grunt.log.warn('The `buildpullr` task has been deprecated. Use `grunt build` to build the application.');
+        grunt.task.run(['build:' + target]);
+    });
 
     grunt.registerTask('build', [
         'replace:production',
@@ -447,13 +448,10 @@ module.exports = function (grunt) {
         'copy:font',
         'copy:img',
         'concat',
-//      'uglify',
         'cssmin',
         'copy:js',
         'rev:dist',
         'usemin',
-//      'unit-test-dist',
-//      'e2e-test-dist',
         'htmlmin',
         'copy:iconfont'
     ]);
