@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] PRT 99 added confirmation dialog, that asks to review older pull requests
+ - [bug] notifications in dropdown did not show text
  - [refactor] headerModule cleanup
  - [feature] PRT 113 set date in title attribute of time-ago tag
  - [feature] PRT 113 shorten time-ago texts
