@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dashboardModule')
+angular.module('pullRequestModule')
     .directive('dvbPullRequest', ['PullRequestCssClassService', function (pullRequestCssClassService) {
         return {
             scope: {
