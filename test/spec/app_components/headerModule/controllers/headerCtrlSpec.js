@@ -10,7 +10,8 @@ describe('headerCtrl', function () {
         notifications,
         notificationService,
         notificationDropdownItemService,
-        q;
+        q,
+        httpBackend;
 
     beforeEach(function () {
         module('headerModule');
@@ -20,7 +21,8 @@ describe('headerCtrl', function () {
                          _userService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
-                         _$q_) {
+                         _$q_,
+                         _$httpBackend_) {
 
             $controller = _$controller_;
             userService = _userService_;
@@ -29,21 +31,27 @@ describe('headerCtrl', function () {
             notificationService = _notificationService_;
             notificationDropdownItemService = _notificationDropdownItemService_;
             q = _$q_;
+            httpBackend = _$httpBackend_;
 
             user = {id: 1234, username: 'testUser', avatarUrl: 'http://www.jira.de'};
-            notifications = { 'items': [{'id': 1}, {'id': 2}, { 'id': 3}]};
+            notifications = { 'userNotifications': [{'id': 1}, {'id': 2}, { 'id': 3}]};
 
             spyOn(userService, 'getCurrentUser');
 
             spyOn(notificationService, 'getNotifications').and.callFake(function () {
                 var deferred = q.defer();
-                deferred.resolve(notifications.items);
+                deferred.resolve(notifications);
                 return deferred.promise;
             });
 
             spyOn(notificationService, 'markAllNotificationsRead');
 
             spyOn(notificationService, 'markNotificationRead');
+
+            // upon injecting the NotificationService the service immediately calles the backend
+            // getNotifications endpoint.
+            httpBackend.expectGET('/api/notifications').respond(notifications);
+            httpBackend.flush();
 
             controller = $controller('headerCtrl', {
                 $scope: scope,

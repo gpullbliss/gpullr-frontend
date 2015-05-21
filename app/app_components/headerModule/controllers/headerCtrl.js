@@ -1,7 +1,7 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
-        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
+    .controller('headerCtrl', ['$filter', '$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
+        function ($filter, $scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
 
             function init() {
                 userService.getCurrentUser();
