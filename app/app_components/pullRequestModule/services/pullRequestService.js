@@ -8,7 +8,7 @@ angular.module('pullRequestModule')
                 }
             );
         }
-        
+
         function unassignPullRequest(prId) {
             return $http.put('/api/pulls/' + prId, '').then(
                 function () {
@@ -21,7 +21,7 @@ angular.module('pullRequestModule')
             return (pullRequest.assignee !== null);
         }
 
-        var enhanceEachWithListOfElderPullRequests = function(pullRequest, index, allPullRequests) {
+        function enhanceEachWithListOfElderPullRequests(pullRequest, allPullRequests) {
             if (isAssigned(pullRequest)) {
                 return;
             }
@@ -59,7 +59,10 @@ angular.module('pullRequestModule')
                 function (response) {
                     var pullRequests = response.data.items;
 
-                    pullRequests.forEach(enhanceEachWithListOfElderPullRequests);
+                    var length = pullRequests.length;
+                    for (var i = 0; i < length; i++) {
+                        enhanceEachWithListOfElderPullRequests(pullRequests[i], pullRequests);
+                    }
 
                     return pullRequests;
                 }

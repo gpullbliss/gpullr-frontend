@@ -105,7 +105,7 @@ describe('PullRequestService', function () {
                 });
 
                 item1.elders = [];
-                item2.elders = [ item1 ];
+                item2.elders = [item1];
 
                 var expectedResult = [
                     item1, item2, item3
