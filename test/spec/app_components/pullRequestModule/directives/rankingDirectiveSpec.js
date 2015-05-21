@@ -26,7 +26,6 @@ describe('rankingDirective', function () {
                 element = $compile(getDirectiveHtml(rank, user))($scope);
 
             $scope.$digest();
-            console.log(element);
 
             expect(element.find('img').attr('class')).toContain('avatar');
             expect(element.text()).toContain(rank.rank);
