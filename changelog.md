@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] fixed displaying user settings icon in responsive design
  - [feature] added TR translation for assigned PRs
  - [bug] notifications in dropdown did not show text
  - [refactor] headerModule cleanup
@@ -72,4 +73,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Ömer Karahan <oemer.karahan@devbliss.com> Wed May 20 09:31:04 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Wed May 20 09:16:36 CEST 2015
