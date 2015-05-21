@@ -10,7 +10,7 @@ describe('rankingDirective', function () {
     }
 
     beforeEach(function () {
-        module('pullRequestModule');
+        module('dashboardModule');
         module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_) {
