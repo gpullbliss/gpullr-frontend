@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] close confirmation dialog completely
  - [feature] PRT 99 added confirmation dialog, that asks to review older pull requests
  - [bug] fixed displaying user settings icon in responsive design
  - [feature] added TR translation for assigned PRs
@@ -74,4 +75,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Wed May 20 09:16:36 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri May 22 10:17:17 CEST 2015
