@@ -36,8 +36,8 @@
             </div>
             <div class="modal-footer">
                 <button class="btn floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
-                <button class="btn btn-signal btn-default" data-ng-click="confirmOtherAssignment((pullRequest.elders| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
-                <button class="btn btn-default" data-ng-click="confirmAssignment()">{{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}</button>
+                <button class="btn btn-signal btn-default" data-dismiss="modal" data-ng-click="confirmOtherAssignment((pullRequest.elders| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
+                <button class="btn btn-default" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}</button>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
             <p class="modal-body">{{'dashboard.pullRequest.assign.modal.text' | translate}}</p>
             <div class="modal-footer">
                 <button class="btn floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
-                <button class="btn btn-default" data-ng-click="confirmAssignment()">{{'global.btn.confirm' | translate}}</button>
+                <button class="btn btn-default" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'global.btn.confirm' | translate}}</button>
             </div>
         </div>
     </div>
