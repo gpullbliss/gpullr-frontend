@@ -8,13 +8,40 @@ angular.module('pullRequestModule')
                 }
             );
         }
-        
+
         function unassignPullRequest(prId) {
             return $http.put('/api/pulls/' + prId, '').then(
                 function () {
                     $rootScope.$emit('changeAssignee');
                 }
             );
+        }
+
+        function isAssigned(pullRequest) {
+            return (pullRequest.assignee !== null);
+        }
+
+        function enhanceEachWithListOfElderPullRequests(pullRequest, allPullRequests) {
+            if (isAssigned(pullRequest)) {
+                return;
+            }
+
+            pullRequest.elders = [];
+
+            var length = allPullRequests.length;
+            for (var i = 0; i < length; i++) {
+                var otherPullRequest = allPullRequests[i];
+
+                if (isAssigned(otherPullRequest)) {
+                    continue;
+                }
+
+                if (Date.parse(pullRequest.createdAt) > Date.parse(otherPullRequest.createdAt)) {
+                    // this produces a dependency tree from current "pullRequest" to the oldest one
+                    // because "otherPullRequest" is pushed to the array by reference
+                    pullRequest.elders.push(otherPullRequest);
+                }
+            }
         }
 
         /**
@@ -30,7 +57,14 @@ angular.module('pullRequestModule')
 
             return $http.get(url).then(
                 function (response) {
-                    return response.data.items;
+                    var pullRequests = response.data.items;
+
+                    var length = pullRequests.length;
+                    for (var i = 0; i < length; i++) {
+                        enhanceEachWithListOfElderPullRequests(pullRequests[i], pullRequests);
+                    }
+
+                    return pullRequests;
                 }
             );
         }
