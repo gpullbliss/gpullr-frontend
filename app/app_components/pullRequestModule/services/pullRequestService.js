@@ -42,7 +42,7 @@ angular.module('pullRequestModule')
                     pullRequest.elders.push(otherPullRequest);
                 }
             }
-        };
+        }
 
         /**
          * @param {Array<string>=} reposToInclude
