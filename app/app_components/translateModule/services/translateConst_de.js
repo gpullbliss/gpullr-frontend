@@ -61,6 +61,13 @@ angular.module('translateModule')
                     modal: {
                         headline: 'Zieh Anfrage ist schon zugewiesen.',
                         text: 'Willst du dich wirklich zuweisen?'
+                    },
+                    checkModal: {
+                        headline: 'Es gibt Zieh Anfragen in deiner Liste, die schon länger auf Bearbeitung warten. Weise dir doch besser die älteste Zieh Anfrage zu.',
+                        btn: {
+                            assignSelected: 'Ausgewählten trotzdem zuweisen',
+                            assignOldest: 'Ältesten zuweisen',
+                        }
                     }
                 },
                 infos: {

@@ -2,6 +2,11 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] system notifications
+ - [bug] close confirmation dialog completely
+ - [feature] use a different github account for local dev development
+ - [feature] PRT 99 added confirmation dialog, that asks to review older pull requests
+ - [bug] fixed displaying user settings icon in responsive design
+ - [feature] added TR translation for assigned PRs
  - [bug] notifications in dropdown did not show text
  - [refactor] headerModule cleanup
  - [feature] PRT 113 set date in title attribute of time-ago tag
