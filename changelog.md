@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] system notifications
  - [bug] notifications in dropdown did not show text
  - [refactor] headerModule cleanup
  - [feature] PRT 113 set date in title attribute of time-ago tag
@@ -71,4 +72,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Tue May 19 17:27:51 CEST 2015
+-- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Fri May 22 14:33:21 CEST 2015
