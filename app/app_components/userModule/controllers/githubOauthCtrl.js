@@ -15,7 +15,6 @@ angular.module('userModule')
                 userService.authenticateWithGithubAndLogInUser($stateParams.code).then(
                     function () {
                         // start polling after login: cookie available --> no 403 errors
-                        console.log('POLL!!!');
                         notificationService.startPolling();
                         $state.go(STATE_DASHBOARD);
                     }, function () {

@@ -9,14 +9,11 @@ describe('githubOauthCtrl', function () {
         $cookieStore,
         userService,
         notificationService,
-        httpBackend,
         $q;
 
-    var printObject = function (o) {
-        console.log('====== ' + o);
-        for (var k in o) {
-            console.log('>>>> ' + k + ' = ' + o[k]);
-        }
+    notificationService = {
+        getNotifications: function () { },
+        startPolling: function () { }
     };
 
     var cookieState = 'some-state',
@@ -32,20 +29,23 @@ describe('githubOauthCtrl', function () {
                          _$stateParams_,
                          _$cookieStore_,
                          _userService_,
-                         _notificationService_,
-                         _$q_,
-                         _$httpBackend_) {
+                         _$q_) {
             $controller = _$controller_;
             scope = _$rootScope_.$new();
             $state = _$state_;
             $stateParams = _$stateParams_;
             $cookieStore = _$cookieStore_;
             userService = _userService_;
-            notificationService = _notificationService_;
             $q = _$q_;
-            httpBackend = _$httpBackend_;
 
             $stateParams.code = 'some-github-code';
+
+            spyOn(notificationService, 'getNotifications').and.callFake(function () {
+                var deferred = $q.defer();
+                deferred.resolve({});
+                return deferred.promise;
+            });
+
 
             spyOn(userService, 'authenticateWithGithubAndLogInUser').and.callFake(function (code) {
                 var deferred = $q.defer();
@@ -77,8 +77,6 @@ describe('githubOauthCtrl', function () {
                 return $controller('githubOauthCtrl', parameters);
             };
 
-            httpBackend.expectGET('/api/notifications').respond({});
-            httpBackend.flush();
         });
     });
 
@@ -124,9 +122,6 @@ describe('githubOauthCtrl', function () {
             spyOn(cookieStore, 'get').and.returnValue(cookieState);
             spyOn(cookieStore, 'remove');
 
-            // notificationService starts polling
-            httpBackend.expectGET('/api/notifications').respond({});
-
             stateParams.state = cookieState;
 
             controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
@@ -157,9 +152,6 @@ describe('githubOauthCtrl', function () {
         it('and the backend authentication went fine', function () {
             controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
 
-            // notificationService starts polling
-            httpBackend.expectGET('/api/notifications').respond({});
-
             scope.$digest();
 
             expect(scope.errorState).toBeFalsy();
@@ -170,9 +162,6 @@ describe('githubOauthCtrl', function () {
             stateParams.code = 'just-another-code';
 
             controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
-
-            // notificationService starts polling
-            httpBackend.expectGET('/api/notifications').respond({});
 
             scope.$digest();
 

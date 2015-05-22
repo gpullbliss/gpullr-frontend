@@ -34,7 +34,10 @@ describe('headerCtrl', function () {
             httpBackend = _$httpBackend_;
 
             user = {id: 1234, username: 'testUser', avatarUrl: 'http://www.jira.de'};
-            notifications = { 'userNotifications': [{'id': 1}, {'id': 2}, { 'id': 3}]};
+            notifications = {
+                'userNotifications': [{'id': 1}, {'id': 2}, { 'id': 3}],
+                'systemNotifications': []
+            };
 
             spyOn(userService, 'getCurrentUser');
 

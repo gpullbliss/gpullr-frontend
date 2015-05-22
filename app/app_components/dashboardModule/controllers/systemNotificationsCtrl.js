@@ -1,6 +1,7 @@
 'use strict';
 angular.module('dashboardModule').
-    controller('systemNotificationsController', ['$scope', '$interval', 'notificationService', 'moment', function ($scope, $interval, notificationService, moment) {
+    controller('systemNotificationsCtrl', ['$scope', '$interval', 'notificationService', 'moment',
+        function ($scope, $interval, notificationService, moment) {
 
         function init() {
             // periodically update notifications
