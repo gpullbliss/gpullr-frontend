@@ -1,8 +1,8 @@
 'use strict';
 angular.module('userModule')
     .controller('githubOauthCtrl',
-    ['$scope', '$state', '$stateParams', '$cookieStore', 'userService', 'notificationService', '$rootScope', 'STATE_DASHBOARD',
-        function ($scope, $state, $stateParams, $cookieStore, userService, notificationService, $rootScope, STATE_DASHBOARD) {
+    ['$scope', '$state', '$stateParams', '$cookieStore', 'userService', 'notificationService', 'STATE_DASHBOARD',
+        function ($scope, $state, $stateParams, $cookieStore, userService, notificationService, STATE_DASHBOARD) {
             var cookieState = $cookieStore.get('state');
             $cookieStore.remove('state');
 
@@ -21,7 +21,5 @@ angular.module('userModule')
                         $scope.errorState = true;
                     }
                 );
-
             }
-
         }]);

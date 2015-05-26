@@ -2,12 +2,10 @@
 angular.module('dashboardModule')
     .factory('notificationService', ['$http', '$interval', '$q', function ($http, $interval, $q) {
         var url = '/api/notifications';
-        var doPoll = false;
         var notifications = {};
         var intervalPromise = null;
 
         function startPolling() {
-            doPoll = true;
             fetchNotifications();
 
             if (intervalPromise !== null) {
@@ -18,25 +16,26 @@ angular.module('dashboardModule')
         }
 
         function stopPolling() {
-            doPoll = false;
+            if (intervalPromise !== null) {
+                $interval.cancel(intervalPromise);
+                intervalPromise = null;
+            }
             notifications = {};
         }
 
         function fetchNotifications() {
-            if (doPoll) {
-                $http.get(url).then(
-                    function (response) {
-                        notifications = response.data;
-                    },
-                    function (error) {
-                        if (error.status === 403) {
-                            stopPolling();
-                        } else if (error === null) {
-                            notifications = {};
-                        }
+            $http.get(url).then(
+                function (response) {
+                    notifications = response.data;
+                },
+                function (error) {
+                    if (error === null) {
+                        notifications = {};
+                    } else if (error.status === 403) {
+                        stopPolling();
                     }
-                );
-            }
+                }
+            );
         }
 
         function getNotifications() {
