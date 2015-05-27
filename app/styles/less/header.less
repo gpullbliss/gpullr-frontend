@@ -39,12 +39,12 @@
                 .block;
             }
             &.active, &.open{
-                background-color: #000;
+                background-color: @black;
             }
         }
         .dashboardIcon:before,
         .statsIcon:before,
-        .repoFilterIcon:before{
+        .userSettingsIcon:before{
             .fontSet(20px, 1)
         }
         .dashboardIcon:before{
@@ -54,7 +54,7 @@
             content: '\e60e';
             font-weight: bold;
         }
-        .repoFilterIcon:before{
+        .userSettingsIcon:before{
             content: '\e60d';
         }
         .notificationsIcon:before{
@@ -67,7 +67,7 @@
         .overlayMenu{
             .borderRadius(@halfSpacing);
             .position(absolute, 60px, null, null, 0);
-            background-color: @dbBlack;
+            background-color: @black;
             display: none;
             padding-top: @defaultSpacing;
             width: 400px;
@@ -85,14 +85,14 @@
             & .overlayBtn:after{
                 .dimension(10px, 10px);
                 .position(absolute, 45px, null, null, 10px);
-                background-color: #000;
+                background-color: @black;
                 content: '';
                 display: block;
                 transform: rotate(45deg);
             }
             .overlayMenu {
                 display: block;
-                .btn{
+                .button{
                     margin-bottom: @defaultSpacing;
                 }
             }

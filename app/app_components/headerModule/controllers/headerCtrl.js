@@ -12,7 +12,7 @@ angular.module('headerModule')
                 // periodically update notifications
                 $interval(function () {
                     updateNotifications();
-                }, 10000);
+                }, 2e3);
             }
 
             function setupNavBar() {
@@ -32,7 +32,9 @@ angular.module('headerModule')
             function updateNotifications() {
                 notificationService.getNotifications().then(
                     function (response) {
-                        $scope.notifications = response;
+                        if (response !== undefined) {
+                            $scope.notifications = response.userNotifications;
+                        }
                     }
                 );
             }
