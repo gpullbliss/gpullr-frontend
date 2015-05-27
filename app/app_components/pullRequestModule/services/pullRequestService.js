@@ -69,7 +69,7 @@ angular.module('pullRequestModule')
             );
         }
         function getAbbreviateLines(lines) {
-            return  lines < 999 ? lines : (lines/1000).toFixed(1) + 'k' ;
+            return  lines < 999 ? lines : (lines/1000).toFixed(0) + 'k' ;
         }
 
         return {

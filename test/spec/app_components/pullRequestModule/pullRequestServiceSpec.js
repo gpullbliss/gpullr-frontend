@@ -280,4 +280,63 @@ describe('PullRequestService', function () {
         });
     });
 
+    describe('unassignPullRequest', function () {
+        var pr = {id: 12345, repoName: 'testRepo'},
+            responseData =
+            {
+                items: [
+                    {
+                        id: 12345,
+                        title: 'feature/zuul-reverse-proxy',
+                        url: 'https://github.com/devbliss/docbliss/pull/25',
+                        repository: 'docbliss',
+                        author: {
+                            username: 'doernbrackandre',
+                            avatarUrl: 'https://avatars3.githubusercontent.com/u/7847193?v=3'
+                        },
+                        creationDate: '2015-02-11T12:12:31Z',
+                        filesChanged: 1,
+                        linesAdded: 112,
+                        linesRemoved: 0,
+                        assignee: null,
+                        status: 'Merged',
+                        elders: []
+                    }
+                ]
+            };
+
+        beforeEach(function () {
+            response = $httpBackend.expectPUT(expectedUrl).respond(successPayload.status);
+        });
+
+        it('calls correct URL', function () {
+            expect(service.unassignPullRequest(pr.id)).toBeDefined();
+
+            $httpBackend.flush();
+        });
+
+        it('returns correct data', function () {
+            var success = null;
+
+            service.unassignPullRequest(pr.id).then(function () {
+                success = true;
+            });
+
+            $httpBackend.flush();
+            expect(success).toBeTruthy();
+        });
+
+        it('forwards error', function () {
+            response.respond(errorPayload.status, errorPayload.data);
+
+            service.unassignPullRequest(pr.id).then(function (successResponse) {
+                expect(successResponse).toBeNull();
+            }, function (errorResponse) {
+                expect(errorResponse.data).toEqual(errorPayload.data);
+            });
+
+            $httpBackend.flush();
+        });
+    });
+
 });
