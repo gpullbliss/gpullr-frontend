@@ -1,0 +1,35 @@
+.input{
+    .borderRadius(@halfSpacing);
+    background-color: @white;
+    border: none;
+    line-height: 1;
+    padding: @halfSpacing @defaultSpacing;
+    width: 100%;
+}
+.button{
+    .borderRadius(@halfSpacing);
+    background-color: @dbBlack;
+    border: none;
+    color: @dbLightGray;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1;
+    padding: 6px @defaultSpacing;
+    outline: none;
+    &:visited{
+        color: @dbLightGray;
+    }
+    &:hover{
+        background-color: @dbLighterGray;
+        color: @dbBlack;
+    }
+    &.butChancel{
+        background-color: @dbLighterGray;
+        color: @dbBlack;
+        &:hover{
+            background-color: @dbBlack;
+            color: @dbLightGray;
+        }
+    }
+}

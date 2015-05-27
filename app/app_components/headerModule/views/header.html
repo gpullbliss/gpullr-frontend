@@ -18,7 +18,8 @@
                 </a>
             </li>
 
-            <li data-ng-if="notifications.length > 0"
+            <li
+                data-ng-if="notifications.length > 0"
                 class="overlay linkItem">
                 <a href="#"
                    class="overlayBtn"
@@ -40,7 +41,7 @@
                            data-ng-click="markNotificationAsSeen($event, item.id)"></a>
                     </li>
                     <li class="col-xs-12">
-                        <a class="btn btn-default"
+                        <a class="button textC"
                            data-ng-click="markAllNotificationsRead()">
                             {{'navi.notifications.markAsSeen' | translate}}
                             {{notifications.length > 3 ? '(+' + (notifications.length - 3) + ')' : ''}}
