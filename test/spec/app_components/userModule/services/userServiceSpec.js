@@ -125,9 +125,9 @@ describe('userService', function () {
     });
 
     describe('getNameService', function () {
-        var user = {fullName: 'Full Name', username: 'User Name'};
 
         it('has full name', function(){
+            var user = {fullName: 'Full Name', username: 'User Name'};
             expect(service.getName(user)).toEqual('Full Name');
         });
 
