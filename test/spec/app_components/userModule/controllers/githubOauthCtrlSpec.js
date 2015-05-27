@@ -8,13 +8,20 @@ describe('githubOauthCtrl', function () {
         $stateParams,
         $cookieStore,
         userService,
+        notificationService,
         $q;
+
+    notificationService = {
+        getNotifications: function () { },
+        startPolling: function () { }
+    };
 
     var cookieState = 'some-state',
         stateDashboard = 'dashboard';
 
     beforeEach(function () {
         module('userModule');
+        module('dashboardModule');
 
         inject(function (_$controller_,
                          _$rootScope_,
@@ -32,6 +39,13 @@ describe('githubOauthCtrl', function () {
             $q = _$q_;
 
             $stateParams.code = 'some-github-code';
+
+            spyOn(notificationService, 'getNotifications').and.callFake(function () {
+                var deferred = $q.defer();
+                deferred.resolve({});
+                return deferred.promise;
+            });
+
 
             spyOn(userService, 'authenticateWithGithubAndLogInUser').and.callFake(function (code) {
                 var deferred = $q.defer();
@@ -51,7 +65,8 @@ describe('githubOauthCtrl', function () {
                     $state: $state,
                     $stateParams: $stateParams,
                     $cookieStore: $cookieStore,
-                    STATE_DASHBOARD: stateDashboard
+                    STATE_DASHBOARD: stateDashboard,
+                    notificationService: notificationService
                 };
 
                 for (var parameter in controllerParameters) {
@@ -61,6 +76,7 @@ describe('githubOauthCtrl', function () {
                 }
                 return $controller('githubOauthCtrl', parameters);
             };
+
         });
     });
 
@@ -102,7 +118,7 @@ describe('githubOauthCtrl', function () {
             expect(scope.errorState).toBeTruthy();
         });
 
-        it('is the same like stateparams state, the errorstate is false', function () {
+        it('is the same as stateparams state, the errorstate is false', function () {
             spyOn(cookieStore, 'get').and.returnValue(cookieState);
             spyOn(cookieStore, 'remove');
 

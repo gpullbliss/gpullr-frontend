@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] system notifications
  - [bug] close confirmation dialog completely
  - [feature] use a different github account for local dev development
  - [feature] PRT 99 added confirmation dialog, that asks to review older pull requests
@@ -76,4 +77,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri May 22 10:17:17 CEST 2015
+-- Last change by: Alexander Blüm <alexander.bluem@devbliss.com> Fri May 22 14:33:21 CEST 2015
