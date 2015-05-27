@@ -21,7 +21,7 @@
                 <span title="{{'dashboard.pullRequest.infos.linesRemoved' | translate}}" class="linesRemoved">
                     -{{getAbbreviateLines(pullRequest.linesRemoved)}}
                 </span>
-                <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}" class="filesChanged"> {{pullRequest.filesChanged}}</span>
+                <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}" class="filesChanged"> {{getAbbreviateLines(pullRequest.filesChanged)}}</span>
                 <a href="{{pullRequest.url}}" title="{{'dashboard.pullRequest.infos.comments' | translate}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
                 <span class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
                 <span data-ng-if="pullRequest.assignee && pullRequest.assignedAt" class="requestAssignedAt" data-am-time-ago="pullRequest.assignedAt"></span>

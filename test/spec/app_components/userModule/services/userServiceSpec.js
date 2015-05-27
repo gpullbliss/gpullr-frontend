@@ -123,4 +123,18 @@ describe('userService', function () {
             $httpBackend.flush();
         });
     });
+
+    describe('getNameService', function () {
+        var user = {fullName: 'Full Name', username: 'User Name'};
+
+        it('has full name', function(){
+            expect(service.getName(user)).toEqual('Full Name');
+        });
+
+        it('has only username', function(){
+            var user = {fullName: '', username: 'User Name'};
+            expect(service.getName(user)).toEqual('User Name');
+        });
+    });
+
 });

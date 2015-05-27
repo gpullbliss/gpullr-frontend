@@ -280,63 +280,18 @@ describe('PullRequestService', function () {
         });
     });
 
-    describe('unassignPullRequest', function () {
-        var pr = {id: 12345, repoName: 'testRepo'},
-            responseData =
-            {
-                items: [
-                    {
-                        id: 12345,
-                        title: 'feature/zuul-reverse-proxy',
-                        url: 'https://github.com/devbliss/docbliss/pull/25',
-                        repository: 'docbliss',
-                        author: {
-                            username: 'doernbrackandre',
-                            avatarUrl: 'https://avatars3.githubusercontent.com/u/7847193?v=3'
-                        },
-                        creationDate: '2015-02-11T12:12:31Z',
-                        filesChanged: 1,
-                        linesAdded: 112,
-                        linesRemoved: 0,
-                        assignee: null,
-                        status: 'Merged',
-                        elders: []
-                    }
-                ]
-            };
+    describe('abbreviateLinesService', function () {
+        var pull = {linesAdded: 1111, linesRemoved: 1599};
 
-        beforeEach(function () {
-            response = $httpBackend.expectPUT(expectedUrl).respond(successPayload.status);
+        it('has more than 1000 lines', function(){
+            expect(service.getAbbreviateLines(pull.linesAdded)).toEqual('1k');
+            expect(service.getAbbreviateLines(pull.linesRemoved)).toEqual('2k');
         });
 
-        it('calls correct URL', function () {
-            expect(service.unassignPullRequest(pr.id)).toBeDefined();
-
-            $httpBackend.flush();
-        });
-
-        it('returns correct data', function () {
-            var success = null;
-
-            service.unassignPullRequest(pr.id).then(function () {
-                success = true;
-            });
-
-            $httpBackend.flush();
-            expect(success).toBeTruthy();
-        });
-
-        it('forwards error', function () {
-            response.respond(errorPayload.status, errorPayload.data);
-
-            service.unassignPullRequest(pr.id).then(function (successResponse) {
-                expect(successResponse).toBeNull();
-            }, function (errorResponse) {
-                expect(errorResponse.data).toEqual(errorPayload.data);
-            });
-
-            $httpBackend.flush();
+        it('has less than 1000 lines', function(){
+            var pull = {linesAdded: 111, linesRemoved: 222};
+            expect(service.getAbbreviateLines(pull.linesAdded)).toEqual(111);
+            expect(service.getAbbreviateLines(pull.linesRemoved)).toEqual(222);
         });
     });
-
 });
