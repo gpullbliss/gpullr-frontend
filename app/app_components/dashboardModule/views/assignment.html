@@ -36,7 +36,7 @@
             </div>
             <div class="modal-footer">
                 <button class="button butChancel floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
-                <button class="button" data-dismiss="modal" data-ng-click="confirmOtherAssignment((pullRequest.elders| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
+                <button class="button butDanger" data-dismiss="modal" data-ng-click="confirmOtherAssignment((pullRequest.elders| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
                 <button class="button" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}</button>
             </div>
         </div>
