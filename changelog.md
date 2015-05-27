@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] add abbreviate for ranking files and changed files
  - [feature] add Abbreviate Service 
  - [feature] add button design
  - [feature] system notifications
@@ -79,4 +80,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed May 27 14:49:25 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed May 27 16:27:01 CEST 2015
