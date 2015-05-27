@@ -20,24 +20,24 @@
                     {{'settings.headline.repo' | translate}}
                 </h3>
                 <button type="button"
-                        class="btn floatR"
+                        class="button floatR"
                         data-ng-click="saveBlacklist()">{{'global.btn.save' | translate}}
                 </button>
             </div>
 
             <div class="row">
                 <div class="marginBottom col-xs-12 col-md-8  col-sm-6">
-                    <a class="btn btn-default selectAllBtn"
+                    <a class="button selectAllBtn"
                        data-ng-click="checkAll()"
                        href="">{{'settings.filter.select.all' | translate}}</a>
-                    <a class="btn btn-default"
+                    <a class="button"
                        data-ng-click="uncheckAll()"
                        href="">{{'settings.filter.select.none' | translate}}</a>
                 </div>
                 <div class="marginBottom col-xs-12 col-md-4 col-sm-6">
                     <input type="text"
                            placeholder="{{'settings.filter.search' | translate}}"
-                           class="search form-control"
+                           class="input"
                            data-ng-model="searchText"/>
                 </div>
             </div>
