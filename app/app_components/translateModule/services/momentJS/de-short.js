@@ -14,13 +14,13 @@
     function processRelativeTime(number, withoutSuffix, key, isFuture) {
         var format = {
             'm': ['1 m', '1 m'],
-            'h': ['1 s', '1 s'],
-            'd': ['1 t', '1 t'],
-            'dd': [number + ' t', number + ' t'],
+            'h': ['1 h', '1 h'],
+            'd': ['1 d', '1 d'],
+            'dd': [number + ' d', number + ' d'],
             'M': ['1 M', '1 M'],
             'MM': [number + ' M', number + ' M'],
-            'y': ['1 j', '1 j'],
-            'yy': [number + ' j', number + ' j']
+            'y': ['1 a', '1 a'],
+            'yy': [number + ' a', number + ' a']
         };
         return withoutSuffix ? format[key][0] : format[key][1];
     }
