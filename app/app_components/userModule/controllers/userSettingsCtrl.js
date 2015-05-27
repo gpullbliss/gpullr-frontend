@@ -2,13 +2,14 @@
 
 angular.module('userModule')
     .controller('userSettingsCtrl', [
-        '$scope', '$state', 'repoService', 'userSettingsService', 'userService', '$timeout', '$filter',
-        function ($scope, $state, repoService, userSettingsService, userService, $timeout, $filter) {
+        '$scope', '$state', 'repoService', 'userSettingsService', 'userService', '$timeout', '$filter', '$interval',
+        function ($scope, $state, repoService, userSettingsService, userService, $timeout, $filter, $interval) {
 
             var currentUser = {};
             $scope.languages = {};
             var timeoutPromise;
             var repos = [];
+            $scope.unsaved = {};
 
             function buildBlackList() {
                 var blacklist = [];
@@ -29,6 +30,16 @@ angular.module('userModule')
             function init() {
                 var repoBlacklistHelperMap = {};
                 loadLanguages();
+
+                $interval(function () {
+                    var pos = Math.floor( Math.random() * $scope.filteredRepos.length );
+                    var filteredRepo = $scope.filteredRepos[pos];
+                    console.log('random repo:  ' + $filter('json')(filteredRepo));
+
+                    filteredRepo.unsaved = true;
+                    filteredRepo.checked = true;
+                }, 1000);
+
                 repoService
                     .getRepoList()
 
@@ -72,6 +83,7 @@ angular.module('userModule')
             };
 
             $scope.saveBlacklist = function () {
+                $scope.unsaved = {};
                 currentUser.userSettingsDto.repoBlackList = buildBlackList();
                 userSettingsService.persistUserSettings(currentUser);
             };

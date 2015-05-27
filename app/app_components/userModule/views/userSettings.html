@@ -47,9 +47,10 @@
                     <label for="{{repo.name}}"
                            data-ng-class="{striked : !repo.checked}">
                         <input data-ng-model="repo.checked"
+                               data-ng-change="unsaved[repo.name] = true"
                                id="{{repo.name}}"
                                type="checkbox"/>
-                        {{repo.name}}
+                        <span data-ng-class="unsaved[repo.name] === true ? 'unsaved' : 'saved' ">{{repo.name}}</span>
                     </label>
                 </li>
             </ul>
