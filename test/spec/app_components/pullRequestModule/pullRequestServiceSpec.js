@@ -280,4 +280,18 @@ describe('PullRequestService', function () {
         });
     });
 
+    describe('abbreviateLinesService', function () {
+
+        it('has more than 1000 lines', function(){
+            var pull = {linesAdded: 1111, linesRemoved: 1599};
+            expect(service.getAbbreviateLines(pull.linesAdded)).toEqual('1k');
+            expect(service.getAbbreviateLines(pull.linesRemoved)).toEqual('2k');
+        });
+
+        it('has less than 1000 lines', function(){
+            var pull = {linesAdded: 111, linesRemoved: 222};
+            expect(service.getAbbreviateLines(pull.linesAdded)).toEqual(111);
+            expect(service.getAbbreviateLines(pull.linesRemoved)).toEqual(222);
+        });
+    });
 });

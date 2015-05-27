@@ -68,10 +68,14 @@ angular.module('pullRequestModule')
                 }
             );
         }
+        function getAbbreviateLines(lines) {
+            return  lines < 999 ? lines : (lines/1000).toFixed(0) + 'k' ;
+        }
 
         return {
             assignPullRequest: assignPullRequest,
             unassignPullRequest: unassignPullRequest,
-            getPullRequests: getPullRequests
+            getPullRequests: getPullRequests,
+            getAbbreviateLines: getAbbreviateLines
         };
     }]);
