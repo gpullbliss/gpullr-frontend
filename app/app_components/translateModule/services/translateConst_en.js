@@ -44,7 +44,7 @@ angular.module('translateModule')
         },
         dashboard: {
             systemNotification: {
-                apiRateLimitReached: 'Api rate limit reached. Rate limit will be reset in about {{ resetTime }}.'
+                apiRateLimitReached: 'Maximum allowed requests to GitHub exceeded. It will progress in about {{ resetTime }}.'
             },
             headline: {
                 openRequest: 'Unassigned PRs',
