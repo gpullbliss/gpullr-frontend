@@ -17,6 +17,7 @@ angular.module('dashboardModule')
                     defaultTitle = 'dashboard.pullRequest.assign.toMe';
                 $scope.getName = userService.getName;
 
+
                 function init() {
                     if (!$scope.pullRequest.assignee && $scope.pullRequest.elders.length === 0) {
                         $scope.assignTitle = defaultTitle;

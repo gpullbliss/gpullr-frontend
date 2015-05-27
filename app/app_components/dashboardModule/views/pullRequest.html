@@ -7,19 +7,20 @@
 </div>
 <div class="col-sm-6 col-xs-12">
     <div class="facts prInfos">
-        <div class="overflowH">
-            <a class="branchName" href="{{pullRequest.url}}" target="_blank">
-                <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
-            </a>
-        </div>
-
+        <a class="branchName" href="{{pullRequest.url}}" target="_blank">
+            <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
+        </a>
         <div class="row">
-            <strong class="col-md-6 ellipsis">{{pullRequest.repoName}}</strong>
+            <strong class="col-lg-5 ellipsis">{{pullRequest.repoName}}</strong>
 
-            <p class="stats col-md-6">
+            <p class="stats col-lg-7">
                 <a title="{{'dashboard.pullRequest.infos.build' | translate}}: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}"  data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
-                <span title="{{'dashboard.pullRequest.infos.linesAdded' | translate}}" class="linesAdded">+{{pullRequest.linesAdded}}</span>
-                <span title="{{'dashboard.pullRequest.infos.linesRemoved' | translate}}" class="linesRemoved">-{{pullRequest.linesRemoved}}</span>
+                <span title="{{'dashboard.pullRequest.infos.linesAdded' | translate}}" class="linesAdded">
+                    +{{getAbbreviateLines(pullRequest.linesAdded)}}
+                </span>
+                <span title="{{'dashboard.pullRequest.infos.linesRemoved' | translate}}" class="linesRemoved">
+                    -{{getAbbreviateLines(pullRequest.linesRemoved)}}
+                </span>
                 <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}" class="filesChanged"> {{pullRequest.filesChanged}}</span>
                 <a href="{{pullRequest.url}}" title="{{'dashboard.pullRequest.infos.comments' | translate}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
                 <span class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
