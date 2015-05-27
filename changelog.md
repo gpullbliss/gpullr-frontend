@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] add abbreviate for ranking files and changed files
+ - [bug] fixed german abbreviations
  - [feature] add Abbreviate Service 
  - [feature] add button design
  - [feature] system notifications
