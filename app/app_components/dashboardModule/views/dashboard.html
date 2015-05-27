@@ -1,5 +1,12 @@
 <div id="dashboard">
 
+    <div class="marginBottom"
+         data-ng-controller="systemNotificationsCtrl">
+        <div class="alert alert-warning"
+             role="alert"
+             data-ng-repeat="msg in messages"> {{'dashboard.systemNotification.apiRateLimitReached' | translate: {resetTime: msg.validUntilParsed } }}</div>
+    </div>
+
     <div class="contentWrapper">
         <div class="marginBottom">
             <div class="row">

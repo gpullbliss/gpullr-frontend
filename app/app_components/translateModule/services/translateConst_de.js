@@ -43,6 +43,9 @@ angular.module('translateModule')
             errorText: 'Es trat ein Problem auf.'
         },
         dashboard: {
+            systemNotification: {
+                apiRateLimitReached: 'Anzahl zulässiger Requests an GitHub überschritten. In ca. {{ resetTime }} geht es weiter.'
+            },
             headline: {
                 openRequest: 'offene Zieh Anfragen',
                 assignedRequest: 'zugewiesene Zieh Anfragen'

@@ -43,6 +43,9 @@ angular.module('translateModule')
             errorText: 'A problem has been occurred.'
         },
         dashboard: {
+            systemNotification: {
+                apiRateLimitReached: 'Maximum allowed requests to GitHub exceeded. It will progress in about {{ resetTime }}.'
+            },
             headline: {
                 openRequest: 'Unassigned PRs',
                 assignedRequest: 'Assigned PRs'
