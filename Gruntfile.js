@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                         options.base = [options.base];
                     }
 
-                    //// Setup the proxy to the Backend
+                    // Setup the proxy to the Backend
                     var proxyOptions1 = require('url').parse('http://' + gpullr.backendHost + ':' + gpullr.backendPort + '/');
                     proxyOptions1.route = '/api';
                     middlewares.push(require('proxy-middleware')(proxyOptions1));
@@ -56,7 +56,14 @@ module.exports = function (grunt) {
         jshint: {
             options: {
                 jshintrc: true
-            }
+            },
+            all: [
+                'Gruntfile.js',
+                'app/app_components/**/*.js',
+                'app/scripts/**/*.js',
+                'test/**/*.js',
+                'config/**/*.js'
+            ]
         },
 
         karma: {
@@ -211,21 +218,6 @@ module.exports = function (grunt) {
             }
         },
 
-        eslint: {
-            target: [
-                'Gruntfile.js',
-                'app/scripts/**/*.js',
-                'app/app_components/**/*.js',
-                'app/app_dev_components/**/*.js'
-            ],
-            test: {
-                src: ['test/**/*.js']
-            },
-            options: {
-                configFile: 'config/eslint.json'
-            }
-        },
-
         usemin: {
             html: ['dist/index.html'],
             options: {
@@ -288,7 +280,7 @@ module.exports = function (grunt) {
 
             js: {
                 files: ['app/**/*.js'],
-//                tasks: ['jshint', 'eslint'], TODO
+                tasks: ['jshint'],
                 options: {
                     livereload: gpullr.liveReload
                 }
@@ -313,7 +305,7 @@ module.exports = function (grunt) {
 
             jsTest: {
                 files: ['test/**/*.js'],
-//                tasks: ['jshint', 'eslint:test'] TODO
+                tasks: ['jshint']
             },
 
             // setup
@@ -325,7 +317,7 @@ module.exports = function (grunt) {
 
             gruntfile: {
                 files: ['Gruntfile.js'],
-//                tasks: ['jshint', 'eslint'], TODO
+                tasks: ['jshint'],
                 options: {
                     livereload: gpullr.liveReload
                 }
@@ -345,7 +337,6 @@ module.exports = function (grunt) {
         'clean',
         'recess',
         'jshint',
-//      'eslint', TODO
         'useminPrepare',
         'copy:components',
         'copy:font',
@@ -360,7 +351,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('serve', [
-        'build',
+        'clean',
+        'recess',
         'replace:development',
         'configureRewriteRules',
         'connect:app',
