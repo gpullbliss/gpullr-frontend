@@ -1,9 +1,9 @@
 'use strict';
 
 var gpullr = {
-    host: '0.0.0.0',
+    host: 'localhost',
     port: 8889,
-    backendHost: '0.0.0.0',
+    backendHost: 'localhost',
     backendPort: 8888,
     testPort: 9091,
     liveReload: 9999
@@ -28,7 +28,29 @@ module.exports = function (grunt) {
             }],
             options: {
                 port: gpullr.port,
-                hostname: gpullr.host
+                hostname: gpullr.host,
+                middleware: function (connect, options) {
+                    var rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;
+
+                    var middlewares = [];
+                    if (!Array.isArray(options.base)) {
+                        options.base = [options.base];
+                    }
+
+                    // Setup the proxy Backend
+                    var proxyOptions1 = require('url').parse('http://' + gpullr.backendHost + ':8888/');
+                    proxyOptions1.route = '/api';
+                    middlewares.push(require('proxy-middleware')(proxyOptions1));
+
+                    // RewriteRules support
+                    middlewares.push(rewriteRulesSnippet);
+
+                    // Serve static files
+                    options.base.forEach(function (base) {
+                        middlewares.push(connect.static(base));
+                    });
+                    return middlewares;
+                }
             },
 
             app: {
