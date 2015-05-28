@@ -1,7 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
- - [feature] removed grunt-devbliss-conventions plugin
+ - [refactor] removed grunt-devbliss-conventions plugin
  - [feature] add abbreviate for ranking files and changed files
  - [bug] fixed german abbreviations
  - [feature] add Abbreviate Service 
