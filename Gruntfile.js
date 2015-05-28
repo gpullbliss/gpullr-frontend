@@ -364,12 +364,14 @@ module.exports = function (grunt) {
         'clean',
         'less',
         'replace:development',
+        'configureRewriteRules',
         'connect:app',
         'watch'
     ]);
 
     grunt.registerTask('serveDist', [
         'build',
+        'configureRewriteRules',
         'connect:dist'
     ]);
 
