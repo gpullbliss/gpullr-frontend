@@ -32,6 +32,7 @@
     "grunt-contrib-connect": "0.10.1",
     "grunt-contrib-watch": "0.6.1",
     "grunt-connect-rewrite": "0.2.1",
+    "grunt-contrib-jshint": "0.11.2",
     "load-grunt-tasks": "1.0.0",
     "jasmine-core": "2.3.4",
     "karma": "0.12.32",

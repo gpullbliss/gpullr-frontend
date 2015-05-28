@@ -5,7 +5,6 @@ var gpullr = {
     port: 8889,
     backendHost: 'localhost',
     backendPort: 8888,
-    testPort: 9091,
     liveReload: 9999
 };
 
@@ -18,14 +17,6 @@ module.exports = function (grunt) {
                 from: '^(.(?!\\.(css|html|jpg|js|png|eot|otf|svg|ttf|woff|woff2)))*$',
                 to: '/index.html'
             }],
-            proxies: [{
-                context: '/api',
-                host: gpullr.backendHost,
-                port: gpullr.backendPort,
-                rewrite: {
-                    '^/api': ''
-                }
-            }],
             options: {
                 port: gpullr.port,
                 hostname: gpullr.host,
@@ -37,8 +28,8 @@ module.exports = function (grunt) {
                         options.base = [options.base];
                     }
 
-                    // Setup the proxy Backend
-                    var proxyOptions1 = require('url').parse('http://' + gpullr.backendHost + ':8888/');
+                    //// Setup the proxy to the Backend
+                    var proxyOptions1 = require('url').parse('http://' + gpullr.backendHost + ':' + gpullr.backendPort + '/');
                     proxyOptions1.route = '/api';
                     middlewares.push(require('proxy-middleware')(proxyOptions1));
 
@@ -58,34 +49,6 @@ module.exports = function (grunt) {
                     open: true,
                     livereload: gpullr.liveReload,
                     base: ['.tmp', 'app']
-                }
-            },
-
-            dist: {
-                options: {
-                    open: true,
-                    base: 'dist'
-                }
-            },
-
-            testApp: {
-                options: {
-                    port: gpullr.testPort,
-                    base: ['.tmp', 'test', 'app']
-                }
-            },
-
-            testDist: {
-                options: {
-                    port: gpullr.testPort,
-                    base: ['.tmp', 'test', 'dist']
-                }
-            },
-
-            e2eApp: {
-                options: {
-                    port: gpullr.testPort,
-                    base: ['.tmp', 'test', 'app']
                 }
             }
         },
@@ -166,20 +129,7 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            release: {
-                files: [
-                    {
-                        expand: true,
-                        dot: true,
-                        cwd: 'app/app_components/pageModule/',
-                        dest: 'release/',
-                        src: [
-                            '**/*'
-                        ]
-                    }
-                ]
-            },
-            iconfont: {
+            iconFont: {
                 expand: true,
                 cwd: 'app/styles/fonts',
                 dest: 'dist/styles/fonts',
@@ -238,28 +188,6 @@ module.exports = function (grunt) {
                             'app/styles/css/base.min.css',
                             'dist/*',
                             '!dist/.git*'
-                        ]
-                    }
-                ]
-            },
-            e2eDist: {
-                files: [
-                    {
-                        dot: true,
-                        src: [
-                            'dist/app_dev_components',
-                            'dist/bower_components',
-                            'dist/index_e2e.html'
-                        ]
-                    }
-                ]
-            },
-            release: {
-                files: [
-                    {
-                        dot: true,
-                        src: [
-                            'release/*'
                         ]
                     }
                 ]
@@ -347,28 +275,6 @@ module.exports = function (grunt) {
             }
         },
 
-        configureRewriteRules: {
-            connect: {
-                rules: [{
-                    from: '^/lat/$',
-                    to: 'http://0.0.0.0:8096/',
-                    redirect: 'permanent'
-                }, {
-                    from: '^/edi/$',
-                    to: 'http://0.0.0.0:8084/',
-                    redirect: 'permanent'
-                }, {
-                    from: '^/prep/$',
-                    to: 'http://0.0.0.0:8087/',
-                    redirect: 'permanent'
-                }, {
-                    from: '^/monitoring/(.*)$',
-                    to: 'http://0.0.0.0:8082',
-                    redirect: 'permanent'
-                }]
-            }
-        },
-
         watch: {
 
             // application files
@@ -382,7 +288,7 @@ module.exports = function (grunt) {
 
             js: {
                 files: ['app/**/*.js'],
-                tasks: ['eslint'],
+//                tasks: ['jshint', 'eslint'], TODO
                 options: {
                     livereload: gpullr.liveReload
                 }
@@ -407,20 +313,19 @@ module.exports = function (grunt) {
 
             jsTest: {
                 files: ['test/**/*.js'],
-//                tasks: ['eslint:test'] TODO
+//                tasks: ['jshint', 'eslint:test'] TODO
             },
 
             // setup
 
             bower: {
                 files: ['bower.json'],
-
                 tasks: ['wiredep']
             },
 
             gruntfile: {
                 files: ['Gruntfile.js'],
-//                tasks: ['eslint'], TODO
+//                tasks: ['jshint', 'eslint'], TODO
                 options: {
                     livereload: gpullr.liveReload
                 }
@@ -439,6 +344,7 @@ module.exports = function (grunt) {
         'wiredep',
         'clean',
         'recess',
+        'jshint',
 //      'eslint', TODO
         'useminPrepare',
         'copy:components',
@@ -450,7 +356,7 @@ module.exports = function (grunt) {
         'rev:dist',
         'usemin',
         'htmlmin',
-        'copy:iconfont'
+        'copy:iconFont'
     ]);
 
     grunt.registerTask('serve', [
@@ -463,6 +369,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'replace:development',
+        'jshint',
         'karma:app'
     ]);
 };
