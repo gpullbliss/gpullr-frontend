@@ -3,8 +3,10 @@
 var gpullr = {
     host: 'localhost',
     port: 8889,
+    backendProtocol: 'http',
     backendHost: 'localhost',
     backendPort: 8888,
+    backendRoutePrefix: '/api',
     liveReload: 9999
 };
 
@@ -29,8 +31,8 @@ module.exports = function (grunt) {
                     }
 
                     // Setup the proxy to the Backend
-                    var proxyOptions1 = require('url').parse('http://' + gpullr.backendHost + ':' + gpullr.backendPort + '/');
-                    proxyOptions1.route = '/api';
+                    var proxyOptions1 = require('url').parse(gpullr.backendProtocol + '://' + gpullr.backendHost + ':' + gpullr.backendPort + '/');
+                    proxyOptions1.route = gpullr.backendRoutePrefix;
                     middlewares.push(require('proxy-middleware')(proxyOptions1));
 
                     // RewriteRules support
@@ -49,6 +51,14 @@ module.exports = function (grunt) {
                     open: true,
                     livereload: gpullr.liveReload,
                     base: ['.tmp', 'app']
+                }
+            },
+
+            dist: {
+                options: {
+                    open: true,
+                    keepalive: true,
+                    base: 'dist'
                 }
             }
         },
@@ -201,7 +211,7 @@ module.exports = function (grunt) {
             }
         },
 
-        recess: {
+        less: {
             options: {
                 compile: true
             },
@@ -288,7 +298,7 @@ module.exports = function (grunt) {
 
             less: {
                 files: ['app/styles/less/**/*.less'],
-                tasks: ['clean', 'recess'],
+                tasks: ['clean', 'less'],
                 options: {
                     livereload: gpullr.liveReload
                 }
@@ -332,10 +342,10 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
+        'clean',
         'replace:production',
         'wiredep',
-        'clean',
-        'recess',
+        'less',
         'jshint',
         'useminPrepare',
         'copy:components',
@@ -352,11 +362,15 @@ module.exports = function (grunt) {
 
     grunt.registerTask('serve', [
         'clean',
-        'recess',
+        'less',
         'replace:development',
-        'configureRewriteRules',
         'connect:app',
         'watch'
+    ]);
+
+    grunt.registerTask('serveDist', [
+        'build',
+        'connect:dist'
     ]);
 
     grunt.registerTask('test', [
