@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('headerModule')
     .factory('notificationDropdownItemService', ['$filter', function ($filter) {
         function convert(n) {
@@ -9,6 +10,12 @@ angular.module('headerModule')
             switch (n.type) {
                 case 'PULLREQUEST_CLOSED':
                     text = n.actorName + ' ' + closedPr + ' ' + n.pullRequestTitle + ' ' + inRepo + ' ' + n.repoTitle + '"';
+                    break;
+                case: 'NEW_COMMENT':
+                    text = '';
+                    break;
+                case: 'NEW_COMMIT':
+                    text = '';
                     break;
             }
 
