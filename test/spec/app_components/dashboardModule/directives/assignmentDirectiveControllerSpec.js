@@ -6,6 +6,8 @@ describe('assignmentDirectiveController', function () {
         userService,
         pullRequestService,
         element,
+        pullRequestCssClassService,
+        cssColorClass = 'youngerThan2h',
         directiveScope;
 
     function getDirectiveHtmlWithAnElder() {
@@ -21,15 +23,28 @@ describe('assignmentDirectiveController', function () {
     }
 
     beforeEach(function () {
+        pullRequestCssClassService = {
+            getColorClassDependingOnAge: function () {
+            }
+        };
+
+        spyOn(pullRequestCssClassService, 'getColorClassDependingOnAge').and.callFake(function () {
+            return cssColorClass;
+        });
+
+        module('dashboardModule', function ($provide) {
+            $provide.value('PullRequestCssClassService', pullRequestCssClassService);
+        });
         module('userModule');
         module('dashboardModule');
         module('appTemplates');
 
-        inject(function (_$compile_, _$rootScope_, _PullRequestService_, _userService_) {
+        inject(function (_$compile_, _$rootScope_, _PullRequestService_, _userService_, _PullRequestCssClassService_) {
             $compile = _$compile_;
             $scope = _$rootScope_.$new();
             pullRequestService = _PullRequestService_;
             userService = _userService_;
+            pullRequestCssClassService = _PullRequestCssClassService_;
         });
     });
 

@@ -9,7 +9,7 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            controller: ['$scope', 'PullRequestService', 'userService', 'PullRequestCssClassService', function ($scope, pullRequestService, userService) {
+            controller: ['$scope', 'PullRequestService', 'userService', function ($scope, pullRequestService, userService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
@@ -56,29 +56,22 @@ angular.module('dashboardModule')
                             break;
                         case ACTION_CONFIRM_ASSIGN_TO_ME:
                             break;
-                case ACTION_UNASSIGN_ME:
-                    pullRequestService.unassignPullRequest(currentPr.id);
-                break;
-            }
-        };
+                        case ACTION_UNASSIGN_ME:
+                            pullRequestService.unassignPullRequest(currentPr.id);
+                        break;
+                    }
+                };
 
-        $scope.confirmAssignment = function () {
-            pullRequestService.assignPullRequest(currentPr.id);
-        };
+                $scope.confirmAssignment = function () {
+                    pullRequestService.assignPullRequest(currentPr.id);
+                };
 
-        $scope.confirmOtherAssignment = function (selectedPr) {
-            currentPr = selectedPr;
-            pullRequestService.assignPullRequest(currentPr.id);
-        };
-        init();
-    }],
-    link: function (scope, element) {
-        var propertyName = scope.ageProperty;
-        var age = scope.pullRequest[propertyName];
-
-        var colorClass = pullRequestCssClassService.getColorClassDependingOnAge(age);
-        element.addClass(colorClass);
-    },
-    templateUrl: 'app_components/dashboardModule/views/assignment.html'
+                $scope.confirmOtherAssignment = function (selectedPr) {
+                    currentPr = selectedPr;
+                    pullRequestService.assignPullRequest(currentPr.id);
+                };
+                init();
+            }],
+            templateUrl: 'app_components/dashboardModule/views/assignment.html'
         };
     }]);
