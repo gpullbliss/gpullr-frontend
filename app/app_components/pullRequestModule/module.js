@@ -1,1 +1,1 @@
-angular.module('pullRequestModule', ['ui.router', 'pullRequestModule', 'userModule', 'translateModule']);
+angular.module('pullRequestModule', ['ui.router', 'userModule', 'translateModule']);
