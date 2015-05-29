@@ -3,7 +3,7 @@
 angular.module('gpullr', [
     'dashboardModule',
     'headerModule',
-    'wallboardModule',
+    'pullRequestModule',
     'angularMoment',
     'userModule',
     'ui.router',

@@ -1,12 +1,12 @@
 'use strict';
-angular.module('wallboardModule')
+angular.module('pullRequestModule')
     .directive('dvbWallboardAssignee', ['PullRequestCssClassService', function (pullRequestCssClassService) {
         return {
             restrict: 'A',
             scope: {
                 pullRequest: '='
             },
-            templateUrl: 'app_components/wallboardModule/views/pullAssignee.html',
+            templateUrl: 'app_components/pullRequestModule/views/wallboard/pullAssignee.html',
             link: function (scope, element) {
                 var colorClass;
                 if (scope.pullRequest.assignedAt) {
