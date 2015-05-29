@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dashboardModule')
+angular.module('pullRequestModule')
     .directive('dvbAssignment', function () {
         return {
             scope: {
@@ -70,6 +70,6 @@ angular.module('dashboardModule')
                 };
                 init();
             }],
-            templateUrl: 'app_components/dashboardModule/views/assignment.html'
+            templateUrl: 'app_components/pullRequestModule/views/dashboard/assignment.html'
         };
     });

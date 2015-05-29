@@ -17,7 +17,7 @@ describe('wallboardCtrl', function () {
         $window;
 
     beforeEach(function () {
-        module('wallboardModule');
+        module('pullRequestModule');
 
         inject(function (_PullRequestService_, $controller, _$interval_, _$q_, _$rootScope_, _$stateParams_, _$timeout_) {
             pullRequestService = _PullRequestService_;
