@@ -9,8 +9,9 @@ angular.module('dashboardModule')
                 user: '=userdata'
             },
             restrict: 'A',
-            controller: ['$scope', 'userService', function ($scope, userService) {
+            controller: ['$scope', 'userService', 'PullRequestService', function ($scope, userService, pullRequestService) {
                 $scope.getName = userService.getName;
+                $scope.getAbbreviateLines = pullRequestService.getAbbreviateLines;
             }],
             templateUrl: 'app_components/dashboardModule/views/rankingList.html'
         };

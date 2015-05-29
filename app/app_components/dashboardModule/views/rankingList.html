@@ -15,9 +15,11 @@
                     <strong>{{'ranking.userInfos.score' | translate}}: {{ranking.sumOfScores | number:1}}</strong>
                 </p>
                 <span>{{'ranking.userInfos.prDone' | translate}}: {{ranking.closedCount}}</span>
-                <span title="{{'ranking.userInfos.linesAdded' | translate}}" class="linesAdded">+{{ranking.sumOfLinesAdded}}</span>
-                <span title="{{'ranking.userInfos.linesRemoved' | translate}}" class="linesRemoved">-{{ranking.sumOfLinesRemoved}}</span>
-                <span title="{{'ranking.userInfos.filesChanged' | translate}}" class="filesChanged">{{ranking.sumOfFilesChanged}}</span>
+                <span title="{{'ranking.userInfos.linesAdded' | translate}}" class="linesAdded">
+                    +{{getAbbreviateLines(ranking.sumOfLinesAdded)}}
+                </span>
+                <span title="{{'ranking.userInfos.linesRemoved' | translate}}" class="linesRemoved">-{{getAbbreviateLines(ranking.sumOfLinesRemoved)}}</span>
+                <span title="{{'ranking.userInfos.filesChanged' | translate}}" class="filesChanged">{{getAbbreviateLines(ranking.sumOfFilesChanged)}}</span>
             </p>
         </div>
     </div>

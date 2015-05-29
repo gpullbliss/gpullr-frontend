@@ -8,7 +8,7 @@ describe('pullRequestDirective', function () {
         cssColorClass = 'youngerThan2h';
 
     function getDirectiveHtml(createdAt) {
-        var html = '<section data-dvb-pull-request data-age-property="\'createdAt\'" data-pull-request="{createdAt: ' + createdAt + ',author: {fullName: \'user name\'}}" data-logged-in-user="{}"></section>';
+        var html = '<section data-dvb-pull-request data-age-property="\'createdAt\'" data-pull-request="{createdAt: ' + createdAt + ',author: {fullName: \'user name\'},elders: []}" data-logged-in-user="{}"></section>';
         return html;
     }
 

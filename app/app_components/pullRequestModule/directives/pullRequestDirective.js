@@ -12,6 +12,7 @@ angular.module('pullRequestModule')
             templateUrl: 'app_components/pullRequestModule/views/dashboard/pullRequest.html',
             controller: ['$scope', 'userService', function ($scope, userService) {
                 $scope.getName = userService.getName;
+                $scope.getAbbreviateLines = pullRequestService.getAbbreviateLines;
             }],
             link: function (scope, element) {
                 var propertyName = scope.ageProperty;
