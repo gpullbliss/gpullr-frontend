@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] redesign old PR modal
  - [bug] fixed german abbreviations
  - [feature] add Abbreviate Service 
  - [feature] add button design
@@ -80,4 +81,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Wed May 27 16:12:56 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri May 29 15:34:34 CEST 2015
