@@ -1,6 +1,6 @@
 'use strict';
 
-describe('wallboardPullRequest', function () {
+describe('wallboardPullRequestDirective', function () {
     var $compile,
         $scope,
         userService,
@@ -29,7 +29,7 @@ describe('wallboardPullRequest', function () {
             return colorClass;
         });
 
-        module('wallboardModule', function ($provide) {
+        module('pullRequestModule', function ($provide) {
             $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');

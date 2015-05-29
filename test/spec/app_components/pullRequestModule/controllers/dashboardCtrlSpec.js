@@ -13,7 +13,7 @@ describe('dashboardCtrl', function () {
         $rootScope;
 
     beforeEach(function () {
-        module('dashboardModule');
+        module('pullRequestModule');
 
         inject(function (_PullRequestService_, _userSettingsService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _PullRequestService_;

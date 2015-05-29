@@ -1,6 +1,6 @@
 'use strict';
 
-describe('directive: ranking', function () {
+describe('rankingDirective', function () {
     var $compile,
         $scope;
 
