@@ -1,6 +1,6 @@
 'use strict';
 
-describe('wallboardPullRequest', function () {
+describe('wallboardAssigneeDirective', function () {
     var $compile,
         $scope,
         pullRequestCssClassService,
@@ -28,7 +28,7 @@ describe('wallboardPullRequest', function () {
             return colorClass;
         });
 
-        module('wallboardModule', function ($provide) {
+        module('pullRequestModule', function ($provide) {
             $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');

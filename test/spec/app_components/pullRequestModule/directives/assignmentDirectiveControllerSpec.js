@@ -1,6 +1,6 @@
 'use strict';
 
-describe('assignmentDirectiveController', function () {
+describe('assignmentDirective', function () {
     var $compile,
         $scope,
         userService,
@@ -22,7 +22,7 @@ describe('assignmentDirectiveController', function () {
 
     beforeEach(function () {
         module('userModule');
-        module('dashboardModule');
+        module('pullRequestModule');
         module('appTemplates');
 
         inject(function (_$compile_, _$rootScope_, _PullRequestService_, _userService_) {
