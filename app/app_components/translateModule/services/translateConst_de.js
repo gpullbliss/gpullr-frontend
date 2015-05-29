@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstDe', {
         global: {
+            bcp47: 'de-DE',
             btn: {
                 save: 'speichern',
                 cancel: 'abbrechen',

@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstVmf', {
         global: {
+            bcp47: 'de-VMF',
             btn: {
                 save: 'schbeichern',
                 cancel: 'obbrechn',
