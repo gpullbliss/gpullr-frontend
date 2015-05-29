@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [refactor] pullRequest related code refactoring
  - [feature] add abbreviate for ranking files and changed files
  - [bug] fixed german abbreviations
  - [feature] add Abbreviate Service 
@@ -81,4 +82,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed May 27 16:27:01 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri May 29 08:57:02 CEST 2015
