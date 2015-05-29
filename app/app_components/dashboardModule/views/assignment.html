@@ -26,7 +26,7 @@
                 </h4>
             </div>
             <div class="listView col-xs-12">
-                <section ng-class="" data-ng-repeat="elderPullRequest in pullRequest.elders | orderBy:'createdAt'">
+                <section class="{{getColorClassDependingOnAge(elderPullRequest.createdAt)}}" data-ng-repeat="elderPullRequest in pullRequest.elders | orderBy:'createdAt'">
                     <div class="col-xs-10">
                         <strong class="block ellipsis">#{{elderPullRequest.number}} {{elderPullRequest.title}}</strong>
                         <strong class="block">from {{elderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}</strong>

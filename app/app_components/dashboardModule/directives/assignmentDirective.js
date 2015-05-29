@@ -17,6 +17,7 @@ angular.module('dashboardModule')
                     currentPr,
                     defaultTitle = 'dashboard.pullRequest.assign.toMe';
                 $scope.getName = userService.getName;
+                $scope.getColorClassDependingOnAge = pullRequestCssClassService.getColorClassDependingOnAge;
 
 
                 function init() {
