@@ -15,6 +15,11 @@
     -ms-transform: @transformValues;
     transform: @transformValues;
 }
+.transition(@transitionValues){
+    -webkit-transition: @transitionValues;
+    -o-transition: @transitionValues;
+    transition: @transitionValues;
+}
 .dimension(@height, @width: @height) {
     height: @height;
     width: @width;
