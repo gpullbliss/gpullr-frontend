@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [refactor] change DE to real DE wording
  - [feature] redesign old PR modal
  - [refactor] PRT 121 removed grunt-devbliss-conventions plugin
  - [refactor] pullRequest related code refactoring
@@ -84,4 +85,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri May 29 15:34:34 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Mon Jun 01 13:47:24 CEST 2015
