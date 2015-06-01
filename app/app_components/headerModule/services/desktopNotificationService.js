@@ -4,12 +4,12 @@ angular.module('headerModule')
 
         var COOKIE_KEY = 'notifications';
 
-        function getNotificationDiff(newNotificationList, exitingNotififcationList) {
+        function getNotificationDiff(newNotificationList, existingNotificationList) {
             var diffNotificationList = [];
 
             newNotificationList.forEach(function (newNotification) {
                 var match = false;
-                exitingNotififcationList.forEach(function (existingNotification) {
+                existingNotificationList.forEach(function (existingNotification) {
                     if (existingNotification.id === newNotification.id) {
                         match = true;
                         return;
