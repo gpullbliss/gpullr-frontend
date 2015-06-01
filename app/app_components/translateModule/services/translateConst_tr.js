@@ -42,8 +42,7 @@ angular.module('translateModule')
                 assignedRequest: 'Tahsis Edilmiş Değişiklik Talepleri'
             },
             filter: {
-                byOldest: 'eskiden yeniye sırala',
-                byNewest: 'yeniden eskiye sırala'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {

@@ -41,8 +41,7 @@ angular.module('translateModule')
                 openRequest: 'Открытые запросы'
             },
             filter: {
-                byOldest: 'сортировать по дате по убыванию',
-                byNewest: 'сортировать по дате по возрастанию'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {

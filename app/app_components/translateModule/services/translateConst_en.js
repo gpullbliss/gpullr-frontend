@@ -51,8 +51,7 @@ angular.module('translateModule')
                 assignedRequest: 'Assigned PRs'
             },
             filter: {
-                byOldest: 'filter by time oldest first',
-                byNewest: 'filter by time newest first'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {
