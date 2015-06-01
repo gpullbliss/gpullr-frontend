@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [refactor] PRT 121 removed grunt-devbliss-conventions plugin
  - [refactor] pullRequest related code refactoring
  - [feature] add abbreviate for ranking files and changed files
  - [bug] fixed german abbreviations
@@ -82,4 +83,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri May 29 08:57:02 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu May 28 12:54:26 CEST 2015
