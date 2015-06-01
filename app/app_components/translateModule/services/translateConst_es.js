@@ -41,7 +41,8 @@ angular.module('translateModule')
                 openRequest: 'solicitudes abiertas'
             },
             filter: {
-                byTime: 'filter by time'
+                byOldest: 'ordena decreciente por edad',
+                byNewest: 'ordena ascendiente por edad'
             },
             pullRequest: {
                 assign: {

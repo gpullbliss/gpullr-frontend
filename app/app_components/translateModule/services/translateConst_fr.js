@@ -48,7 +48,8 @@ angular.module('translateModule')
                 assignedRequest: 'Pull requests assignées'
             },
             filter: {
-                byTime: 'filter by time'
+                byOldest: 'Trier du plus ancien au plus récent',
+                byNewest: 'Trier du plus récent au plus ancien'
             },
             pullRequest: {
                 assign: {
