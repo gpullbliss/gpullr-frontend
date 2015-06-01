@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [refactor] change DE to real DE wording
+ - [feature] redesign old PR modal
  - [refactor] PRT 121 removed grunt-devbliss-conventions plugin
  - [refactor] pullRequest related code refactoring
  - [feature] add abbreviate for ranking files and changed files

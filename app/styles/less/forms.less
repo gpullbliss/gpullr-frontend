@@ -36,3 +36,12 @@
         background-color: @warning3;
     }
 }
+.closeBtn{
+    .position(absolute, @defaultSpacing, @defaultSpacing, null, null);
+    .iconFont;
+    color: @dbBlack;
+    cursor: pointer;
+    &:after{
+        content: '\e605';
+    }
+}
