@@ -10,11 +10,6 @@ body {
     padding: @defaultSpacing @defaultSpacing 0 @defaultSpacing;
 }
 
-// table col style for assignee
-.assignee {
-    text-align: center;
-}
-
 #content .nav-tabs {
     border-bottom: 1px solid @dbBlack;
     li {
@@ -33,53 +28,4 @@ body {
         background-color: @dbBlack;
         color: @white;
     }
-}
-.closeBtn{
-    .floatR;
-    .iconFont;
-    color: @dbBlack;
-    cursor: pointer;
-    &:after{
-        content: '\e605';
-    }
-}
-.btn {
-    color: @white;
-    background-color: @dbBlack;
-    font-weight: bold;
-    &:hover{
-        color: @dbBlack;
-        background-color: @dbGray;
-    }
-
-}
-.btn-signal {
-    color: @white;
-    background-color: @warning3;
-    font-weight: bold;
-    &:hover{
-        color: @dbBlack;
-        background-color: @warning1;
-    }
-
-}
-.signal-modal-body {
-    position: relative;
-    padding: 7px 15px;
-    color: @white;
-    background-color: @warning3;
-    font-weight: bold;
-}
-.signal-modal-body div {
-    padding: 7px 15px;
-}
-.gray-modal-body {
-    position: relative;
-    padding: 7px 15px;
-    color: @white;
-    background-color: @dbGray;
-    font-weight: bold;
-}
-.gray-modal-body div {
-    padding: 7px 15px;
 }
