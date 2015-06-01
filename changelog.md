@@ -1,7 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
- - [refactor] optimise language button
+ - [refactor] optimise time filter button
  - [refactor] change DE to real DE wording
  - [feature] redesign old PR modal
  - [refactor] PRT 121 removed grunt-devbliss-conventions plugin
