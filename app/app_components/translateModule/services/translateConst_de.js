@@ -34,17 +34,17 @@ angular.module('translateModule')
             btn: {
                 login: 'Login'
             },
-            oauthGithub: 'mit Github Einloggen'
+            oauthGithub: 'mit GitHub Einloggen'
         },
         oauth: {
-            verifyGithub: 'Github Daten überprüfen',
+            verifyGithub: 'GitHub Daten überprüfen',
             backToLogin: 'Zurück zum Login',
             error: 'Fehler!',
             errorText: 'Es trat ein Problem auf.'
         },
         dashboard: {
             systemNotification: {
-                apiRateLimitReached: 'Anzahl zulässiger Requests an Github überschritten. In ca. {{ resetTime }} geht es weiter.'
+                apiRateLimitReached: 'Anzahl zulässiger Requests an GitHub überschritten. In ca. {{ resetTime }} geht es weiter.'
             },
             headline: {
                 openRequest: 'offene Pull Requests',
