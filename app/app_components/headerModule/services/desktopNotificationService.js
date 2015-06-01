@@ -36,73 +36,56 @@ angular.module('headerModule')
             $cookieStore.put(COOKIE_KEY, knownNotifications);
         }
 
-        function sendNotificationIfNew(existingNotificationList, newNotificationList) {
-            var diffNotificationList = [];
+        function notificationIsKnown(notification) {
+            var knownNotifications = $cookieStore.get(COOKIE_KEY);
 
-            if (typeof existingNotificationList === 'undefined' && typeof newNotificationList === 'undefined') {
-                return;
-            } else if (typeof existingNotificationList === 'undefined') {
-                diffNotificationList = newNotificationList;
-            } else {
-                diffNotificationList = getNotificationDiff(newNotificationList, existingNotificationList);
+            if (typeof knownNotifications === 'undefined') {
+                return false;
             }
 
-            diffNotificationList.forEach(sendNewNotification);
-
-            if (typeof newNotificationList !== 'undefined') {
-                updateCookie(newNotificationList);
-            }
+            return typeof knownNotifications[notification.id] !== 'undefined';
         }
 
-        function sendNotificationToDevice(title, message, tag) {
+        function sendNotification(notification) {
+            if (notificationIsKnown(notification)) {
+                return;
+            }
+
+            var title = notification.repoTitle + ' - ' + notification.pullRequestTitle;
+            var options = {
+                body: notificationDropdownItemService.convert(notification),
+                tag: notification.repoTitle,
+                lang: $filter('translate')('global.bcp47'),
+                icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+            };
+
+            new Notification(title, options);
+        }
+
+        function sendNotificationsIfNew(existingNotificationList, newNotificationList) {
             if ('Notification' in window) {
-                Notification.requestPermission(function () {
-                    var options = {
-                        body: message,
-                        tag: tag,
-                        lang: $filter('translate')('global.bcp47'),
-                        icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
-                    };
+                Notification.requestPermission(function() {
+                    var diffNotificationList = [];
 
-                    var notification = new Notification(title, options);
+                    if (typeof existingNotificationList === 'undefined' && typeof newNotificationList === 'undefined') {
+                        return;
+                    } else if (typeof existingNotificationList === 'undefined') {
+                        diffNotificationList = newNotificationList;
+                    } else {
+                        diffNotificationList = getNotificationDiff(newNotificationList, existingNotificationList);
+                    }
 
-                    notification.onshow = function () {
-                        console.log('Notification shown');
-                    };
+                    diffNotificationList.forEach(sendNotification);
 
-                    notification.onclose = function () {
-                        console.log('Notification closed');
-                    };
-
-                    notification.onclick = function () {
-                        console.log('Notification clicked');
-                    };
+                    if (typeof newNotificationList !== 'undefined') {
+                        updateCookie(newNotificationList);
+                    }
                 });
             }
         }
 
-        function notificationHasNotBeenSentYet(sentNotifications, notificationId) {
-            return typeof sentNotifications[notificationId] === 'undefined';
-        }
-
-        function sendNewNotification(notification) {
-            var sentNotifications = $cookieStore.get(COOKIE_KEY);
-            if (typeof sentNotifications === 'undefined') {
-                sentNotifications = {};
-            }
-
-            var notificationId = notification.id;
-            if (notificationHasNotBeenSentYet(sentNotifications, notificationId)) {
-                var title = notification.repoTitle + ' - ' + notification.pullRequestTitle;
-                var message = notificationDropdownItemService.convert(notification);
-                var tag = notification.repoTitle;
-
-                sendNotificationToDevice(title, message, tag);
-            }
-        }
-
         return {
-            sendNotificationIfNew: sendNotificationIfNew
+            sendNotificationsIfNew: sendNotificationsIfNew
         };
 
     }]

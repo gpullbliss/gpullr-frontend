@@ -33,7 +33,7 @@ angular.module('headerModule')
                 notificationService.getNotifications().then(
                     function (response) {
                         if (response !== undefined) {
-                            desktopNotificationService.sendNotificationIfNew($scope.notifications, response.userNotifications);
+                            desktopNotificationService.sendNotificationsIfNew($scope.notifications, response.userNotifications);
                             $scope.notifications = response.userNotifications;
                         }
                     }
