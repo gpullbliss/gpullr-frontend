@@ -42,8 +42,7 @@ angular.module('translateModule')
                 openRequest: 'Otwarte prośby o połączenie'
             },
             filter: {
-                byOldest: 'najpierw najstarsze',
-                byNewest: 'najpierw najnowsze'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {

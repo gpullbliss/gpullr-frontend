@@ -16,28 +16,31 @@
 </div>
 
 <!-- modal dialog for assigning pull requests while elder pull requests exist-->
-<div class="modal fade" data-ng-if="elderCheckModal" id="modalCheck{{pullRequest.id}}">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="modalCheck modal fade" data-ng-if="elderCheckModal" id="modalCheck{{pullRequest.id}}">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <div class="mWrapper">
+            <div class="mHeader">
                 <a type="button" class="closeBtn" data-dismiss="modal"></a>
-                <h4 class="modal-title">
+                <h4>
                     {{'dashboard.pullRequest.assign.checkModal.headline' | translate}}
                 </h4>
             </div>
-
-            <div ng-class="{true:'signal-modal-body', false:'gray-modal-body'}[$first==true];" data-ng-repeat="elderPullRequest in pullRequest.elders | orderBy:'createdAt'">
-                <div class="facts prInfos">
-                    <div class="row">
-                        #{{elderPullRequest.number}} {{elderPullRequest.title}}
-                        from {{elderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}
+            <div class="listView col-xs-12">
+                <section class="{{getColorClassDependingOnAge(elderPullRequest.createdAt)}}" data-ng-repeat="elderPullRequest in pullRequest.elders | orderBy:'createdAt'">
+                    <div class="col-xs-10">
+                        <strong class="block ellipsis">#{{elderPullRequest.number}} {{elderPullRequest.title}}</strong>
+                        <strong class="block">from {{elderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}</strong>
                     </div>
-                </div>
+
+                    <div class="col-xs-2">
+                        <a data-ng-click="confirmOtherAssignment(elderPullRequest)" data-dismiss="modal" data-toggle="{{elderCheckModal}}" class="assignMe {{assignmentStyle}}" title="{{assignTitle | translate}}">
+                        </a>
+                    </div>
+                </section>
             </div>
-            <div class="modal-footer">
+            <div class="mFooter">
                 <button class="button butChancel floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
-                <button class="button butDanger" data-dismiss="modal" data-ng-click="confirmOtherAssignment((pullRequest.elders| orderBy:'createdAt')[0])">{{'dashboard.pullRequest.assign.checkModal.btn.assignOldest' | translate}}</button>
-                <button class="button" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}</button>
+                <button class="button floatR" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}</button>
             </div>
         </div>
     </div>
@@ -45,18 +48,18 @@
 
 <!-- modal dialog for already assigned pull requests-->
 <div class="modal fade" data-ng-if="assignmentModal" id="modal{{pullRequest.id}}">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <div class="mWrapper">
+            <div class="mHeader">
                 <a type="button" class="closeBtn" data-dismiss="modal"></a>
-                <h4 class="modal-title">
+                <h4>
                     {{'dashboard.pullRequest.assign.modal.headline' | translate}}
                 </h4>
             </div>
-            <p class="modal-body">{{'dashboard.pullRequest.assign.modal.text' | translate}}</p>
-            <div class="modal-footer">
+            <p class="mBody">{{'dashboard.pullRequest.assign.modal.text' | translate}}</p>
+            <div class="mFooter">
                 <button class="button butChancel floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}</button>
-                <button class="button" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'global.btn.confirm' | translate}}</button>
+                <button class="button floatR" data-dismiss="modal" data-ng-click="confirmAssignment()">{{'global.btn.confirm' | translate}}</button>
             </div>
         </div>
     </div>
