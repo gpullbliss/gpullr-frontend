@@ -72,6 +72,6 @@ angular.module('dashboardModule')
                 };
                 init();
             }],
-            templateUrl: 'app_components/dashboardModule/views/assignment.html'
+            templateUrl: 'app_components/pullRequestModule/views/dashboard/assignment.html'
         };
     }]);

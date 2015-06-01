@@ -4,6 +4,8 @@
  - [feature] redesign old PR modal
  - [bug] fixed german abbreviations
  - [feature] add Abbreviate Service 
+ - [refactor] pullRequest related code refactoring
+ - [feature] add abbreviate for ranking files and changed files
  - [feature] add button design
  - [feature] system notifications
  - [bug] close confirmation dialog completely

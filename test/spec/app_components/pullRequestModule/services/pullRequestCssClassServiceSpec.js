@@ -1,6 +1,6 @@
 'use strict';
 
-describe('PullRequestCssClassService', function () {
+describe('pullRequestCssClassService', function () {
     var momentMock;
     /** @type {pullRequestCssClassService} */
     var service;
