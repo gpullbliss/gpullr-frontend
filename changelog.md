@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [refactor] change DE to real DE wording
  - [refactor] pullRequest related code refactoring
  - [feature] add abbreviate for ranking files and changed files
  - [bug] fixed german abbreviations
@@ -82,4 +83,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri May 29 08:57:02 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Mon Jun 01 13:47:24 CEST 2015
