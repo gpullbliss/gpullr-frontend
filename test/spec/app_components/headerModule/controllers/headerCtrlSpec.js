@@ -9,7 +9,6 @@ describe('headerCtrl', function () {
         scope,
         notifications,
         notificationService,
-        notificationDropdownItemService,
         q,
         httpBackend;
 
@@ -20,7 +19,6 @@ describe('headerCtrl', function () {
                          _$rootScope_,
                          _userService_,
                          _notificationService_,
-                         _notificationDropdownItemService_,
                          _$q_,
                          _$httpBackend_) {
 
@@ -29,7 +27,6 @@ describe('headerCtrl', function () {
             rootScope = _$rootScope_;
             scope = rootScope.$new();
             notificationService = _notificationService_;
-            notificationDropdownItemService = _notificationDropdownItemService_;
             q = _$q_;
             httpBackend = _$httpBackend_;
 
@@ -61,7 +58,6 @@ describe('headerCtrl', function () {
                 $rootScope: rootScope,
                 userService: userService,
                 notificationService: notificationService,
-                notificationDropdownItemService: notificationDropdownItemService,
                 STATE_STATS: 'stats',
                 STATE_DASHBOARD: 'dashboard',
                 STATE_USER_SETTINGS: 'repoFilter'

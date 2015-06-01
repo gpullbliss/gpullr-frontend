@@ -21,9 +21,8 @@ angular.module('translateModule')
             linkSettings: 'Settings',
             linkNotifications: 'Notifications',
             notifications: {
+                merged: '{{user}} closed your pull request {{prName}} in repository {{repoName}}',
                 title: 'notifications',
-                closedPr: 'closed your pull request',
-                inRepo: 'in repository',
                 markAsSeen: 'mark all as read'
             }
         },

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
-        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
+    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
+        function ($scope, $rootScope, $interval, userService, notificationService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
 
             function init() {
                 userService.getCurrentUser();
@@ -44,7 +44,7 @@ angular.module('headerModule')
             };
 
             $scope.toText = function (n) {
-                return notificationDropdownItemService.convert(n);
+                return notificationService.getNotificationMessage(n);
             };
 
             $scope.markAllNotificationsRead = function () {
