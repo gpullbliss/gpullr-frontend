@@ -16,7 +16,7 @@ angular.module('translateModule')
             logoAlt: 'gPullRequestTool 2015'
         },
         navi: {
-            linkPullrequest: 'alle Anfragen',
+            linkPullrequest: 'Pull Requests',
             linkRanking: 'Rangliste',
             linkSettings: 'Einstellungen',
             linkNotifications: 'Benachrichtigungen',
@@ -34,7 +34,7 @@ angular.module('translateModule')
             btn: {
                 login: 'Login'
             },
-            oauthGithub: 'mit GitHub Einloggen'
+            oauthGithub: 'mit Github Einloggen'
         },
         oauth: {
             verifyGithub: 'Github Daten überprüfen',
@@ -44,7 +44,7 @@ angular.module('translateModule')
         },
         dashboard: {
             systemNotification: {
-                apiRateLimitReached: 'Anzahl zulässiger Requests an GitHub überschritten. In ca. {{ resetTime }} geht es weiter.'
+                apiRateLimitReached: 'Anzahl zulässiger Requests an Github überschritten. In ca. {{ resetTime }} geht es weiter.'
             },
             headline: {
                 openRequest: 'offene Pull Requests',
