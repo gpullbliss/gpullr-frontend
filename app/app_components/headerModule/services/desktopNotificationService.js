@@ -67,7 +67,7 @@ angular.module('headerModule')
                 Notification.requestPermission(function() {
                     var diffNotificationList = [];
 
-                    if (typeof existingNotificationList === 'undefined' && typeof newNotificationList === 'undefined') {
+                    if (typeof newNotificationList === 'undefined') {
                         return;
                     } else if (typeof existingNotificationList === 'undefined') {
                         diffNotificationList = newNotificationList;

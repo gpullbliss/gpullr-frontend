@@ -9,7 +9,7 @@ angular.module('headerModule')
 
             switch (n.type) {
                 case 'PULLREQUEST_CLOSED':
-                    text = n.actorName + ' ' + closedPr + ' ' + n.pullRequestTitle + ' ' + inRepo + ' ' + n.repoTitle + '"';
+                    text = n.actorName + ' ' + closedPr + ' ' + n.pullRequestTitle + ' ' + inRepo + ' ' + n.repoTitle;
                     break;
             }
 
