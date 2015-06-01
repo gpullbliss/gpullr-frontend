@@ -1,15 +1,72 @@
 .modal {
-  .modal-content {
-    background-color: @dbLightGray;
-  }
-  .modal-header,
-  .modal-body {
-    border-bottom: 1px solid @dbBlack;
-  }
-  .modal-body {
-    background-color: @white;
-  }
-  .closeBtn {
-    .fontSet(20px, 1);
-  }
+    .position(fixed, 0, 0, 0, 0);
+    z-index: 1040;
+    display: none;
+    overflow: hidden;
+    .mWrapper {
+        margin-top: @doubleSpacing;
+        .borderRadius(@defaultSpacing);
+        .boxShadow(0 @halfSpacing @defaultSpacing rgba(0, 0, 0, .5));
+        background-color: @dbLightGray;
+    }
+    .mHeader,
+    .mBody,
+    .mFooter {
+        .overflowH;
+        padding: @defaultSpacing;
+    }
+    .mHeader h4{
+        padding-right: @doubleSpacing;
+    }
+    .mBody {
+        background-color: @white;
+        border: 1px solid @dbBlack;
+        border-width: 1px 0;
+    }
+    .closeBtn {
+        .fontSet(20px, 1);
+    }
+    &.fade .mWrapper {
+        .transition(-webkit-transform .3s ease-out);
+        .transform(translate(0, -25%));
+    }
+    &.in .mWrapper {
+        .transform(translate(0, 0));
+    }
+    .modal-backdrop {
+        .position(absolute, 0, 0, 0, 0);
+        background-color: @black;
+        &.fade {
+            opacity: 0;
+        }
+        &.in {
+            opacity: .5;
+        }
+    }
+}
+.modal-open{
+    overflow: visible;
+}
+.modalCheck{
+    .mHeader{
+        overflow: hidden;
+        h4{
+            &:before{
+                .iconFont;
+                .fontSet(120px, 82px);
+                .floatL;
+                padding-right: @defaultSpacing;
+                content: '\e614';
+                display: inline;
+            }
+        }
+    }
+    .assignMe{
+        .dimension(35px, 35px);
+        .fontSet(29px, 35px);
+    }
+    strong{
+        color: @white;
+        text-shadow: 1px 1px @dbBlack;
+    }
 }

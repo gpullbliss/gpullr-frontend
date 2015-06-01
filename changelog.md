@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] redesign old PR modal
  - [refactor] PRT 121 removed grunt-devbliss-conventions plugin
  - [refactor] pullRequest related code refactoring
  - [feature] add abbreviate for ranking files and changed files
@@ -83,4 +84,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu May 28 12:54:26 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri May 29 15:34:34 CEST 2015

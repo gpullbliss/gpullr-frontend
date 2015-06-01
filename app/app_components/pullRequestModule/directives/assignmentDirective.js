@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('pullRequestModule')
-    .directive('dvbAssignment', function () {
+angular.module('dashboardModule')
+    .directive('dvbAssignment', ['PullRequestCssClassService', function (pullRequestCssClassService) {
         return {
             scope: {
                 pullRequest: '=',
+                ageProperty: '=',
                 loggedInUser: '='
             },
             restrict: 'A',
@@ -16,6 +17,7 @@ angular.module('pullRequestModule')
                     currentPr,
                     defaultTitle = 'dashboard.pullRequest.assign.toMe';
                 $scope.getName = userService.getName;
+                $scope.getColorClassDependingOnAge = pullRequestCssClassService.getColorClassDependingOnAge;
 
 
                 function init() {
@@ -56,7 +58,7 @@ angular.module('pullRequestModule')
                             break;
                         case ACTION_UNASSIGN_ME:
                             pullRequestService.unassignPullRequest(currentPr.id);
-                            break;
+                        break;
                     }
                 };
 
@@ -72,4 +74,4 @@ angular.module('pullRequestModule')
             }],
             templateUrl: 'app_components/pullRequestModule/views/dashboard/assignment.html'
         };
-    });
+    }]);
