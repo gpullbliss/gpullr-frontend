@@ -41,8 +41,7 @@ angular.module('translateModule')
                 openRequest: 'PR aperti'
             },
             filter: {
-                byOldest: 'in ordine decrescente di età',
-                byNewest: 'in ordine ascendente di età'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {

@@ -41,8 +41,7 @@ angular.module('translateModule')
                 assignedRequest: 'zugwiesne Bullrequesds'
             },
             filter: {
-                byOldest: 'aaordna nooch ältester zuerschd',
-                byNewest: 'aaordna nooch jüngster zuerschd'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {

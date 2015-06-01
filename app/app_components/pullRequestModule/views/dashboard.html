@@ -14,7 +14,7 @@
                     <h3>{{'dashboard.headline.openRequest' | translate}}</h3>
                 </div>
                 <div class="col-xs-2">
-                    <a title="filtered by time {{user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'oldest' : 'newest'  }}"
+                    <a title="{{'dashboard.filter.byTime' | translate}}"
                        data-ng-click="orderUnassignedPrList(user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
                        class="filterTimeOrder icon{{user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
                        href="#"></a>
