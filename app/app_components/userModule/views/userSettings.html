@@ -14,7 +14,7 @@
             <label for="desktopNotification"
                    data-ng-class="{striked : !user.userSettingsDto.desktopNotification}">
                 <input type="checkbox" id="desktopNotification" data-ng-model="user.userSettingsDto.desktopNotification" data-ng-click="saveNotification()">
-                Desktop notification
+                {{'settings.desktopNotification' | translate}}
             </label>
         </div>
     </div>

@@ -97,6 +97,7 @@ angular.module('translateModule')
                     none: 'alla wechhaun'
                 },
                 search: 'suchn'
-            }
+            },
+            desktopNotification: 'Deschktob Benochrichtigunga'
         }
     });

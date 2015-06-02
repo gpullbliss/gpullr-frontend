@@ -96,6 +96,7 @@ angular.module('translateModule')
                     none: 'Снять выделение'
                 },
                 search: 'искать'
-            }
+            },
+            desktopNotification: 'Desktop notifications'
         }
     });
