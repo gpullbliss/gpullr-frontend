@@ -3,6 +3,7 @@
 describe('desktopNotificationService', function () {
     var filter,
         cookieStore,
+        rootScope,
         notificationDropdownItemService,
         service;
 
@@ -15,12 +16,19 @@ describe('desktopNotificationService', function () {
     beforeEach(function () {
         module('headerModule');
 
-        inject(function (desktopNotificationService, $filter, $cookieStore, _notificationDropdownItemService_) {
+        inject(function (desktopNotificationService, $filter, $cookieStore, $rootScope, _notificationDropdownItemService_) {
             service = desktopNotificationService;
             filter = $filter;
             cookieStore = $cookieStore;
+            rootScope = $rootScope;
             notificationDropdownItemService = _notificationDropdownItemService_;
         });
+
+        rootScope.user = {
+            userSettingsDto: {
+                desktopNotification: true
+            }
+        };
 
         spyOn(cookieStore, 'put');
         spyOn(cookieStore, 'remove');
