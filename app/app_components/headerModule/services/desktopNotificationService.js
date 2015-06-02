@@ -51,18 +51,19 @@ angular.module('headerModule')
             return !$rootScope.user.userSettingsDto.desktopNotification;
         }
 
-        function sendNotificationsIfNew(newNotificationList) {
+        function sendNotificationsIfNew(notifications) {
             if ('Notification' in window) {
                 Notification.requestPermission(function() {
+                    if (typeof notifications === 'undefined') {
+                        return;
+                    }
+
                     if (hasDesktopNotificationDisbled()) {
                         return;
                     }
 
-                    newNotificationList.forEach(sendNotification);
-
-                    if (typeof newNotificationList !== 'undefined') {
-                        updateCookie(newNotificationList);
-                    }
+                    notifications.forEach(sendNotification);
+                    updateCookie(notifications);
                 });
             }
         }

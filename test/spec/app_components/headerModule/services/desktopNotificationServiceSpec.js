@@ -7,7 +7,6 @@ describe('desktopNotificationService', function () {
         service;
 
     var fakeNotification,
-        existingNotifications,
         newNotifications,
         notificationSpy,
         convertedNotificationText = 'some converted notification text',
@@ -44,18 +43,12 @@ describe('desktopNotificationService', function () {
 
         notificationSpy = spyOn(window, 'Notification');
 
-        existingNotifications = [{
-            id: 1
-        }, {
-            id: 2
-        }];
-
         newNotifications = [{
             id: 1,
             repoTitle: 'repo 1st new notification',
             pullRequestTitle: 'pr 1st new notification'
         }, {
-            id: 3,
+            id: 2,
             repoTitle: 'repo 2nd new notification',
             pullRequestTitle: 'pr f2nd new notification'
         }];
@@ -70,7 +63,7 @@ describe('desktopNotificationService', function () {
         delete window.Notification;
     });
 
-    describe('when the Notification object', function () {
+    describe('when the Notification web API object', function () {
 
         beforeEach(function () {
             spyOn(cookieStore, 'get').and.returnValue({});
@@ -78,7 +71,7 @@ describe('desktopNotificationService', function () {
 
         it('is not set in our browser', function () {
             delete window.Notification;
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
+            service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
@@ -95,7 +88,7 @@ describe('desktopNotificationService', function () {
             };
             window.Notification = fakeNotification;
 
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
+            service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
@@ -108,13 +101,13 @@ describe('desktopNotificationService', function () {
 
     });
 
-    describe('there are two different notification lists (existing notifications and new ones)', function () {
+    describe('a notification lists have to be passed in order to send a desktop notification for each one', function () {
 
         beforeEach(function () {
             spyOn(cookieStore, 'get').and.returnValue({});
         });
 
-        it('when both are not set', function () {
+        it('when that list is not set', function () {
             service.sendNotificationsIfNew();
 
             expect(notificationSpy).not.toHaveBeenCalled();
@@ -126,22 +119,8 @@ describe('desktopNotificationService', function () {
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
 
-        it('when only the existing ones are set but no new ones', function () {
-            service.sendNotificationsIfNew(existingNotifications);
-
-            expect(notificationSpy).not.toHaveBeenCalled();
-
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
-
-            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
-        });
-
-        it('when only the new ones are set they\'re used to send notifications', function () {
-            var existingNotifications;
-
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
+        it('when that list is set all notifications are used to send to the desktop', function () {
+            service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(2);
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -173,40 +152,16 @@ describe('desktopNotificationService', function () {
             expect(notificationDropdownItemService.convert).toHaveBeenCalledWith(newNotifications[1]);
         });
 
-        it('when both lists are set, only the one notification is sent that is in the list of newNotifications but not in the list of existingNotifications', function () {
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
-
-            expect(notificationSpy.calls.count()).toEqual(1);
-            expect(notificationSpy).toHaveBeenCalledWith(
-                newNotifications[1].repoTitle + ' - ' + newNotifications[1].pullRequestTitle,
-                {
-                    body: convertedNotificationText,
-                    tag: newNotifications[1].repoTitle,
-                    lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
-                }
-            );
-
-            expect(cookieStore.get.calls.count()).toEqual(1);
-            expect(cookieStore.remove.calls.count()).toEqual(1);
-            expect(cookieStore.put.calls.count()).toEqual(1);
-            expect(cookieStore.put).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
-
-            expect(notificationDropdownItemService.convert.calls.count()).toEqual(1);
-            expect(notificationDropdownItemService.convert).toHaveBeenCalledWith(newNotifications[1]);
-        });
-
     });
 
     describe('the cookies are used to save already shown notifications', function () {
 
         it('when 2 new notifications have to be shown and none of them were shown before', function () {
-            var existingNotifications = [];
             var knownNotifications = {5: 5};
 
             spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
 
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
+            service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(2);
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -237,13 +192,12 @@ describe('desktopNotificationService', function () {
         });
 
         it('when 2 new notifications have to be shown and one of them was shown before', function () {
-            var existingNotifications = [];
             var knownNotifications = {5: 5};
             knownNotifications[newNotifications[0].id] = newNotifications[0].id;
 
             spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
 
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
+            service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(1);
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -265,14 +219,13 @@ describe('desktopNotificationService', function () {
         });
 
         it('when 2 new notifications have to be shown but both of them were shown before', function () {
-            var existingNotifications = [];
             var knownNotifications = {5: 5};
             knownNotifications[newNotifications[0].id] = newNotifications[0].id;
             knownNotifications[newNotifications[1].id] = newNotifications[1].id;
 
             spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
 
-            service.sendNotificationsIfNew(existingNotifications, newNotifications);
+            service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(0);
 
