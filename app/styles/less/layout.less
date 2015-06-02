@@ -10,16 +10,21 @@ body {
     padding: @defaultSpacing @defaultSpacing 0 @defaultSpacing;
 }
 
-#content .nav-tabs {
+.navTabs {
     border-bottom: 1px solid @dbBlack;
+    overflow: hidden;
     li {
+        float: left;
         margin: 0;
     }
     a {
+        .borderRadius(@halfSpacing @halfSpacing 0 0);
         background-color: @dbGray;
         border: none;
+        display: block;
         font-weight: bold;
         margin-right: @halfSpacing;
+        padding: @halfSpacing @defaultSpacing;
         &:hover{
             background-color: @dbBlack;
         }
@@ -28,4 +33,17 @@ body {
         background-color: @dbBlack;
         color: @white;
     }
+}
+.container{
+    padding-left: @defaultSpacing;
+    padding-right: @defaultSpacing;
+}
+.alert{
+    .borderRadius(@defaultSpacing);
+    background-color: @dbLighterGray;
+    padding: @defaultSpacing;
+    margin-bottom: @doubleSpacing;
+}
+.alertDanger{
+    background-color: @red;
 }

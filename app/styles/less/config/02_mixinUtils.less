@@ -46,6 +46,12 @@
     -moz-box-shadow: @value;
     box-shadow: @value;
 }
+
+.boxSizing(@value){
+    -webkit-box-sizing: @value;
+    -moz-box-sizing: @value;
+    box-sizing: @value;
+}
 /*
 
 USAGE
@@ -88,6 +94,4 @@ POSITION
         ._getProp(@property);
 
     }
-;
-
 }
