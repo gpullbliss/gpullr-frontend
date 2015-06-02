@@ -98,6 +98,6 @@ angular.module('translateModule')
                 },
                 search: 'suchn'
             },
-            desktopNotification: 'Deschktob Benochrichtigunga'
+            desktopNotification: 'Desgdobb Benochrichtigunga'
         }
     });
