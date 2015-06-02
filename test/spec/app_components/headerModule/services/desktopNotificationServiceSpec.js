@@ -10,7 +10,7 @@ describe('desktopNotificationService', function () {
         newNotifications,
         notificationSpy,
         convertedNotificationText = 'some converted notification text',
-        expectedNotificationListToSave = {};
+        expectedNotificationListToSave;
 
     beforeEach(function () {
         module('headerModule');
@@ -53,8 +53,9 @@ describe('desktopNotificationService', function () {
             pullRequestTitle: 'pr f2nd new notification'
         }];
 
+        expectedNotificationListToSave = [];
         newNotifications.forEach(function (notification) {
-            expectedNotificationListToSave[notification.id] = notification.id;
+            expectedNotificationListToSave.push(notification.id);
         });
 
     });
@@ -101,10 +102,10 @@ describe('desktopNotificationService', function () {
 
     });
 
-    describe('a notification lists have to be passed in order to send a desktop notification for each one', function () {
+    describe('check notification list behaviour', function () {
 
         beforeEach(function () {
-            spyOn(cookieStore, 'get').and.returnValue({});
+            spyOn(cookieStore, 'get').and.returnValue([]);
         });
 
         it('when that list is not set', function () {
@@ -119,7 +120,7 @@ describe('desktopNotificationService', function () {
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
 
-        it('when that list is set all notifications are used to send to the desktop', function () {
+        it('when that list is set all notifications should be send', function () {
             service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(2);
@@ -154,10 +155,10 @@ describe('desktopNotificationService', function () {
 
     });
 
-    describe('the cookies are used to save already shown notifications', function () {
+    describe('check cookies that save already shown notifications', function () {
 
-        it('when 2 new notifications have to be shown and none of them were shown before', function () {
-            var knownNotifications = {5: 5};
+        it('pass 2 new notifications and none was shown before', function () {
+            var knownNotifications = [5];
 
             spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
 
@@ -191,9 +192,9 @@ describe('desktopNotificationService', function () {
             expect(notificationDropdownItemService.convert.calls.count()).toEqual(2);
         });
 
-        it('when 2 new notifications have to be shown and one of them was shown before', function () {
-            var knownNotifications = {5: 5};
-            knownNotifications[newNotifications[0].id] = newNotifications[0].id;
+        it('pass 2 new notifications but one was shown before', function () {
+            var knownNotifications = [5];
+            knownNotifications.push(newNotifications[0].id);
 
             spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
 
@@ -218,10 +219,10 @@ describe('desktopNotificationService', function () {
             expect(notificationDropdownItemService.convert.calls.count()).toEqual(1);
         });
 
-        it('when 2 new notifications have to be shown but both of them were shown before', function () {
-            var knownNotifications = {5: 5};
-            knownNotifications[newNotifications[0].id] = newNotifications[0].id;
-            knownNotifications[newNotifications[1].id] = newNotifications[1].id;
+        it('pass 2 new notifications but both are marked as shown before', function () {
+            var knownNotifications = [5];
+            knownNotifications.push(newNotifications[0].id);
+            knownNotifications.push(newNotifications[1].id);
 
             spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
 
