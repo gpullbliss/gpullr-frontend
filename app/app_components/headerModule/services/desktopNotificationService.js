@@ -1,29 +1,8 @@
 'use strict';
 angular.module('headerModule')
-    .factory('desktopNotificationService', ['$filter', '$cookieStore', 'notificationDropdownItemService', function ($filter, $cookieStore, notificationDropdownItemService) {
+    .factory('desktopNotificationService', ['$filter', '$cookieStore', '$rootScope', 'notificationDropdownItemService', function ($filter, $cookieStore, $rootScope, notificationDropdownItemService) {
 
         var COOKIE_KEY = 'notifications';
-
-        function getNotificationDiff(newNotificationList, existingNotificationList) {
-            var diffNotificationList = [];
-
-            newNotificationList.forEach(function (newNotification) {
-                var match = false;
-                existingNotificationList.forEach(function (existingNotification) {
-                    if (existingNotification.id === newNotification.id) {
-                        match = true;
-                        return;
-                    }
-                });
-
-                if (match === false) {
-                    diffNotificationList.push(newNotification);
-                }
-
-            });
-
-            return diffNotificationList;
-        }
 
         function updateCookie(notificationList) {
             $cookieStore.remove(COOKIE_KEY);
@@ -62,20 +41,24 @@ angular.module('headerModule')
             new Notification(title, options);
         }
 
-        function sendNotificationsIfNew(existingNotificationList, newNotificationList) {
+        function hasDesktopNotificationDisbled() {
+            if (typeof $rootScope.user === 'undefined') {
+                return true;
+            } else if (typeof $rootScope.user.userSettingsDto === 'undefined') {
+                return true;
+            }
+
+            return !$rootScope.user.userSettingsDto.desktopNotification;
+        }
+
+        function sendNotificationsIfNew(newNotificationList) {
             if ('Notification' in window) {
                 Notification.requestPermission(function() {
-                    var diffNotificationList = [];
-
-                    if (typeof newNotificationList === 'undefined') {
+                    if (hasDesktopNotificationDisbled()) {
                         return;
-                    } else if (typeof existingNotificationList === 'undefined') {
-                        diffNotificationList = newNotificationList;
-                    } else {
-                        diffNotificationList = getNotificationDiff(newNotificationList, existingNotificationList);
                     }
 
-                    diffNotificationList.forEach(sendNotification);
+                    newNotificationList.forEach(sendNotification);
 
                     if (typeof newNotificationList !== 'undefined') {
                         updateCookie(newNotificationList);
