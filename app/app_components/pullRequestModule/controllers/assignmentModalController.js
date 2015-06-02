@@ -2,11 +2,27 @@
 
 angular.module('dashboardModule')
     .controller('statisticsCtrl', ['$scope', '$state', function ($scope, $state) {
-        $scope.tabs = [
-            {state: 'stats.today', title: 'ranking.tabs.day'},
-            {state: 'stats.last_7_days', title: 'ranking.tabs.week'},
-            {state: 'stats.last_30_days', title: 'ranking.tabs.month'},
-            {state: 'stats.all_time', title: 'ranking.tabs.allTime'}
-        ];
-        $state.go('stats.today');
+        var
+        $scope.assignmentAction = function (selectedPr, action) {
+            currentPr = selectedPr;
+            switch (action) {
+                case ACTION_ASSIGN_TO_ME:
+                    pullRequestService.assignPullRequest(currentPr.id);
+                    break;
+                case ACTION_CONFIRM_ASSIGN_TO_ME:
+                    break;
+                case ACTION_UNASSIGN_ME:
+                    pullRequestService.unassignPullRequest(currentPr.id);
+                    break;
+            }
+        };
+
+        $scope.confirmAssignment = function () {
+            pullRequestService.assignPullRequest(currentPr.id);
+        };
+
+        $scope.confirmOtherAssignment = function (selectedPr) {
+            currentPr = selectedPr;
+            pullRequestService.assignPullRequest(currentPr.id);
+        };
     }]);

@@ -9,7 +9,7 @@ angular.module('dashboardModule')
                 loggedInUser: '='
             },
             restrict: 'A',
-            controller: ['$scope', 'PullRequestService', 'userService', function ($scope, pullRequestService, userService) {
+            controller: ['$rootScope', '$scope', 'PullRequestService', 'userService', function ($rootScope, $scope, pullRequestService, userService) {
                 var ACTION_ASSIGN_TO_ME = 'assignToMe',
                     ACTION_UNASSIGN_ME = 'unassignMe',
                     ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
