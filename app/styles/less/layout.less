@@ -4,7 +4,7 @@ body {
 }
 
 .contentWrapper {
-    .borderRadius(5px);
+    .borderRadius(@halfSpacing);
     background-color: @dbLightGray;
     margin-bottom: @defaultSpacing;
     padding: @defaultSpacing @defaultSpacing 0 @defaultSpacing;
@@ -43,7 +43,7 @@ body {
     background-color: @dbLighterGray;
     padding: @defaultSpacing;
     margin-bottom: @doubleSpacing;
-}
-.alertDanger{
-    background-color: @warning2;
+    &.alertDanger{
+        background-color: @warning2;
+    }
 }
