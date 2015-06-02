@@ -4,27 +4,6 @@ angular.module('headerModule')
 
         var COOKIE_KEY = 'notifications';
 
-        function getNotificationDiff(newNotificationList, existingNotificationList) {
-            var diffNotificationList = [];
-
-            newNotificationList.forEach(function (newNotification) {
-                var match = false;
-                existingNotificationList.forEach(function (existingNotification) {
-                    if (existingNotification.id === newNotification.id) {
-                        match = true;
-                        return;
-                    }
-                });
-
-                if (match === false) {
-                    diffNotificationList.push(newNotification);
-                }
-
-            });
-
-            return diffNotificationList;
-        }
-
         function updateCookie(notificationList) {
             $cookieStore.remove(COOKIE_KEY);
 
@@ -62,24 +41,15 @@ angular.module('headerModule')
             new Notification(title, options);
         }
 
-        function sendNotificationsIfNew(existingNotificationList, newNotificationList) {
+        function sendNotificationsIfNew(notifications) {
             if ('Notification' in window) {
                 Notification.requestPermission(function() {
-                    var diffNotificationList = [];
-
-                    if (typeof newNotificationList === 'undefined') {
+                    if (typeof notifications === 'undefined') {
                         return;
-                    } else if (typeof existingNotificationList === 'undefined') {
-                        diffNotificationList = newNotificationList;
-                    } else {
-                        diffNotificationList = getNotificationDiff(newNotificationList, existingNotificationList);
                     }
 
-                    diffNotificationList.forEach(sendNotification);
-
-                    if (typeof newNotificationList !== 'undefined') {
-                        updateCookie(newNotificationList);
-                    }
+                    notifications.forEach(sendNotification);
+                    updateCookie(notifications);
                 });
             }
         }
