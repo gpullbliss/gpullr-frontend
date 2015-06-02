@@ -75,7 +75,7 @@ describe('desktopNotificationService', function () {
     describe('when the Notification web API object', function () {
 
         beforeEach(function () {
-            spyOn(cookieStore, 'get').and.returnValue({});
+            spyOn(cookieStore, 'get').and.returnValue([]);
         });
 
         it('is not set in our browser', function () {
@@ -96,6 +96,60 @@ describe('desktopNotificationService', function () {
                 // call no callback -> permission not granted
             };
             window.Notification = fakeNotification;
+
+            service.sendNotificationsIfNew(newNotifications);
+
+            expect(notificationSpy).not.toHaveBeenCalled();
+
+            expect(cookieStore.get).not.toHaveBeenCalled();
+            expect(cookieStore.remove).not.toHaveBeenCalled();
+            expect(cookieStore.put).not.toHaveBeenCalled();
+
+            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
+        });
+
+    });
+
+    describe('user can toggle desktop notifications', function () {
+
+        beforeEach(function () {
+            spyOn(cookieStore, 'get').and.returnValue([]);
+        });
+
+        it('when user disabled desktop notifications', function () {
+            rootScope.user = {
+                userSettingsDto: {
+                    desktopNotification: false
+                }
+            };
+
+            service.sendNotificationsIfNew(newNotifications);
+
+            expect(notificationSpy).not.toHaveBeenCalled();
+
+            expect(cookieStore.get).not.toHaveBeenCalled();
+            expect(cookieStore.remove).not.toHaveBeenCalled();
+            expect(cookieStore.put).not.toHaveBeenCalled();
+
+            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
+        });
+
+        it('when desktop notifications are not available', function () {
+            rootScope.user = {};
+
+            service.sendNotificationsIfNew(newNotifications);
+
+            expect(notificationSpy).not.toHaveBeenCalled();
+
+            expect(cookieStore.get).not.toHaveBeenCalled();
+            expect(cookieStore.remove).not.toHaveBeenCalled();
+            expect(cookieStore.put).not.toHaveBeenCalled();
+
+            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
+        });
+
+        it('when the user is not available', function () {
+            delete rootScope.user;
 
             service.sendNotificationsIfNew(newNotifications);
 
