@@ -15,8 +15,11 @@
         .overflowH;
         padding: @defaultSpacing;
     }
-    .mHeader h4{
-        padding-right: @doubleSpacing;
+    .mHeader{
+        position: relative;
+        h4{
+            padding-right: @doubleSpacing;
+        }
     }
     .mBody {
         background-color: @white;
@@ -27,11 +30,12 @@
         .fontSet(20px, 1);
     }
     &.fade .mWrapper {
-        .transition(-webkit-transform .3s ease-out);
-        .transform(translate(0, -25%));
+        opacity: 0;
+        .transition(opacity 5ms ease-in);
     }
     &.in .mWrapper {
-        .transform(translate(0, 0));
+        opacity: 1;
+        .transition(opacity 5ms ease-out);
     }
     .modal-backdrop {
         .position(absolute, 0, 0, 0, 0);
@@ -62,7 +66,7 @@
         }
     }
     .assignMe{
-        .dimension(35px, 35px);
+        .dimension(35px);
         .fontSet(29px, 35px);
     }
     strong{

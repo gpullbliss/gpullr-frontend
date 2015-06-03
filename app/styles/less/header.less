@@ -5,7 +5,9 @@
     a.active {
         background-color: #878B96;
     }
-    span {color: @white;}
+    span {
+        color: @white;
+    }
     .logo {
         .floatL;
         .iconFont;
@@ -23,57 +25,57 @@
         .borderRadius(@defaultSpacing);
     }
     .avatarWrapper {
-        .dimension(39px, 39px);
+        .dimension(39px);
         .floatL;
         margin: 5px 0;
     }
-    .username{
+    .username {
         padding: 16px @defaultSpacing 0 0;
         .floatL;
     }
-    .navi{
-        .linkItem{
+    .navi {
+        .linkItem {
             .floatL;
             padding: 16px @defaultSpacing;
-            a{
+            a {
                 .block;
             }
-            &.active, &.open{
+            &.active, &.open {
                 background-color: @black;
             }
         }
         .dashboardIcon:before,
         .statsIcon:before,
-        .userSettingsIcon:before{
+        .userSettingsIcon:before {
             .fontSet(20px, 1)
         }
-        .dashboardIcon:before{
+        .dashboardIcon:before {
             content: '\e60b';
         }
-        .statsIcon:before{
+        .statsIcon:before {
             content: '\e60e';
             font-weight: bold;
         }
-        .userSettingsIcon:before{
+        .userSettingsIcon:before {
             content: '\e60d';
         }
-        .notificationsIcon:before{
+        .notificationsIcon:before {
             .fontSet(23px, 19px);
             content: '\e609';
         }
     }
-    .overlay{
+    .overlay {
         position: relative;
-        .overlayMenu{
+        .overlayMenu {
             .borderRadius(@halfSpacing);
-            .position(absolute, 60px, null, null, 0);
+            .position(absolute, 60px, none, none, 0);
             background-color: @black;
             display: none;
             padding-top: @defaultSpacing;
             width: 400px;
             z-index: 1;
         }
-        .item{
+        .item {
             .borderRadius(@halfSpacing);
             .relative;
             background-color: @dbLightGray;
@@ -84,8 +86,8 @@
         }
         &.open{
             & .overlayBtn:after{
-                .dimension(10px, 10px);
-                .position(absolute, 45px, null, null, 10px);
+                .dimension(10px);
+                .position(absolute, 45px, none, none, 10px);
                 background-color: @black;
                 content: '';
                 display: block;
@@ -93,10 +95,57 @@
             }
             .overlayMenu {
                 display: block;
-                .button{
+                .button {
                     margin-bottom: @defaultSpacing;
                 }
             }
         }
+    }
+}
+
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
+    display: none;
+}
+
+@media (max-width: @screen-sm) {
+    .hidden-xs {
+        display: none;
+    }
+
+    .visible-xs {
+        display: block;
+    }
+}
+
+@media (min-width: @screen-sm) and (max-width: @screen-md) {
+    .hidden-sm {
+        display: none;
+    }
+
+    .visible-sm {
+        display: block;
+    }
+}
+
+@media (min-width: @screen-md) and (max-width: @screen-lg) {
+    .hidden-md {
+        display: none;
+    }
+
+    .visible-md {
+        display: block;
+    }
+}
+
+@media (min-width: @screen-lg) {
+    .hidden-lg {
+        display: none;
+    }
+
+    .visible-lg {
+        display: block;
     }
 }

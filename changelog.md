@@ -1,6 +1,9 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] replace bootstrap css with less
+ - [refactor] optimise less mixins
+ - [feature] PRT 31 - implemented desktop notifications
  - [refactor] optimise time filter button
  - [refactor] change DE to real DE wording
  - [feature] redesign old PR modal
@@ -86,4 +89,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Mon Jun 01 17:18:22 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Jun 02 16:41:24 CEST 2015

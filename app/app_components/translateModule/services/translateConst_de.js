@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstDe', {
         global: {
+            bcp47: 'de-DE',
             btn: {
                 save: 'speichern',
                 cancel: 'abbrechen',
@@ -22,7 +23,7 @@ angular.module('translateModule')
             linkNotifications: 'Benachrichtigungen',
             notifications: {
                 title: 'Benachrichtigungen',
-                closedPr: 'schloss dein Pull Request',
+                closedPr: 'schloss deinen Pull Request',
                 inRepo: 'im Repo',
                 markAsSeen: 'alle löschen'
             }
@@ -64,6 +65,7 @@ angular.module('translateModule')
                     checkModal: {
                         headline: 'Es gibt Pull Requests in deiner Liste, die schon länger auf Bearbeitung warten. Weise dir doch besser einen älteren Pull Request zu.',
                         btn: {
+                            assignSelected: 'ausgewählten zuweisen',
                             assignOldest: 'Ältesten zuweisen'
                         }
                     }

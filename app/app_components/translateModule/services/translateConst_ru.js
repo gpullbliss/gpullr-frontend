@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstRu', {
         global: {
+            bcp47: 'ru-RU',
             btn: {
                 save: 'сохранить',
                 cancel: 'отменить',
@@ -55,7 +56,7 @@ angular.module('translateModule')
                         headline: 'Dear Sir or Madam may I ask kindly for your attention to the older pull requests in your list. The author of the oldest pull request will be very pleased if you choose that pull request for review first.',
                         btn: {
                             assignSelected: 'Assign the one I selected',
-                            assignOldest: 'Assign oldest pull request',
+                            assignOldest: 'Assign oldest pull request'
                         }
                     }
                 },
