@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstRu', {
         global: {
+            bcp47: 'ru-RU',
             btn: {
                 save: 'сохранить',
                 cancel: 'отменить',
