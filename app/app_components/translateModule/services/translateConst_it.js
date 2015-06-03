@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstIt', {
         global: {
+            bcp47: 'it-IT',
             btn: {
                 save: 'Salva',
                 cancel: 'Annulla',

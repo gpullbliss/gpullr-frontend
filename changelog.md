@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [refactor] optimise less mixins
+ - [feature] PRT 31 - implemented desktop notifications
  - [refactor] optimise time filter button
  - [refactor] change DE to real DE wording
  - [feature] redesign old PR modal

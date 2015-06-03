@@ -1,6 +1,7 @@
 'use strict';
 angular.module('headerModule')
     .factory('notificationDropdownItemService', ['$filter', function ($filter) {
+
         function convert(n) {
             var text = '',
                 closedPr = $filter('translate')('navi.notifications.closedPr'),
@@ -8,7 +9,7 @@ angular.module('headerModule')
 
             switch (n.type) {
                 case 'PULLREQUEST_CLOSED':
-                    text = n.actorName + ' ' + closedPr + ' ' + n.pullRequestTitle + ' ' + inRepo + ' ' + n.repoTitle + '"';
+                    text = n.actorName + ' ' + closedPr + ' ' + n.pullRequestTitle + ' ' + inRepo + ' ' + n.repoTitle;
                     break;
             }
 
