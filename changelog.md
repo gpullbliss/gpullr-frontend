@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] replace bootstrap css with less
+ - [refactor] optimise less mixins
  - [feature] PRT 31 - implemented desktop notifications
  - [refactor] optimise time filter button
  - [refactor] change DE to real DE wording
@@ -88,4 +89,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Jun 02 15:56:13 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Jun 02 16:41:24 CEST 2015

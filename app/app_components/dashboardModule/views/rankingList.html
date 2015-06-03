@@ -14,7 +14,7 @@
                 <p>
                     <strong>{{'ranking.userInfos.score' | translate}}: {{ranking.sumOfScores | number:1}}</strong>
                 </p>
-                <span>{{'ranking.userInfos.prDone' | translate}}: {{ranking.closedCount}}</span>
+                <span title="{{'ranking.userInfos.prDone' | translate}}" class="closedPr">{{ranking.closedCount}}</span>
                 <span title="{{'ranking.userInfos.linesAdded' | translate}}" class="linesAdded">
                     +{{getAbbreviateLines(ranking.sumOfLinesAdded)}}
                 </span>

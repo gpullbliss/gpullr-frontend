@@ -1,12 +1,12 @@
 .assignMe {
-    .dimension(@dashboardAvatarSize, @dashboardAvatarSize);
+    .dimension(@dashboardAvatarSize);
     .floatR;
     .marginLeft;
     .overflowH;
     .textC;
     color: @dbBlack;
     cursor: pointer;
-    .fontSet(@dashboardAvatarSize, @dashboardAvatarSize);
+    .fontSet(@dashboardAvatarSize);
     &:after {
         .iconFont;
         content: "\e603";
@@ -47,8 +47,8 @@
     .repoBuild{
         .block;
         .borderRadius(50%);
-        .boxShadow( 0px 0px 5px 1px @dbGray);
-        .dimension(12px, 12px);
+        .boxShadow( 0px 0px @halfSpacing 1px @dbGray);
+        .dimension(12px);
         display: inline-block;
         margin-right: @halfSpacing;
         &.SUCCESS{
