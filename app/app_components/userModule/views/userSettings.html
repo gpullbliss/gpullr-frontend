@@ -47,14 +47,9 @@
             </div>
             <ul class="row">
                 <li class="col-md-4 col-sm-6" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
-                    <label for="{{repo.name}}" data-ng-class="{striked : !repo.checked}">
-                        <input data-ng-model="repo.checked"
-                               id="{{repo.name}}"
-                               type="checkbox"/>
-                        {{repo.name}}
-                    </label>
                     <a class="toggleWrapper marginBottom block"
                         data-ng-class="{toggleOff : repo.checked}"
+                        data-ng-click="repo.checked = repo.checked? false : true"
                         data-ng-model="repo.checked">
                         <span class="toggleBtn"></span>
                         {{repo.name}}
