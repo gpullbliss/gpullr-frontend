@@ -45,16 +45,20 @@
                            data-ng-model="searchText"/>
                 </div>
             </div>
-            <ul class="row overflowH">
-                <li class="col-md-4 col-sm-6"
-                    data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
-                    <label for="{{repo.name}}"
-                           data-ng-class="{striked : !repo.checked}">
+            <ul class="row">
+                <li class="col-md-4 col-sm-6" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
+                    <label for="{{repo.name}}" data-ng-class="{striked : !repo.checked}">
                         <input data-ng-model="repo.checked"
                                id="{{repo.name}}"
                                type="checkbox"/>
                         {{repo.name}}
                     </label>
+                    <a class="toggleWrapper marginBottom block"
+                        data-ng-class="{toggleOff : repo.checked}"
+                        data-ng-model="repo.checked">
+                        <span class="toggleBtn"></span>
+                        {{repo.name}}
+                    </a>
                 </li>
             </ul>
         </div>
