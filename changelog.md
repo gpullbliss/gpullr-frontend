@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] replace bootstrap css with less
  - [refactor] optimise less mixins
  - [feature] PRT 31 - implemented desktop notifications
  - [refactor] optimise time filter button

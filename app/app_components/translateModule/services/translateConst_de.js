@@ -65,6 +65,7 @@ angular.module('translateModule')
                     checkModal: {
                         headline: 'Es gibt Pull Requests in deiner Liste, die schon länger auf Bearbeitung warten. Weise dir doch besser einen älteren Pull Request zu.',
                         btn: {
+                            assignSelected: 'ausgewählten zuweisen',
                             assignOldest: 'Ältesten zuweisen'
                         }
                     }

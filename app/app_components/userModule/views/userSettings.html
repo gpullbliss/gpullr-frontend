@@ -25,7 +25,7 @@
                 </button>
             </div>
 
-            <div class="row">
+            <div class="row overflowH">
                 <div class="marginBottom col-xs-12 col-md-8  col-sm-6">
                     <a class="button selectAllBtn"
                        data-ng-click="checkAll()"
@@ -41,7 +41,7 @@
                            data-ng-model="searchText"/>
                 </div>
             </div>
-            <ul class="row">
+            <ul class="row overflowH">
                 <li class="col-md-4 col-sm-6"
                     data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
                     <label for="{{repo.name}}"
