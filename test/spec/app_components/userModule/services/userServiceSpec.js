@@ -4,18 +4,23 @@ describe('userService', function () {
     var $httpBackend,
         service,
         $rootScope,
-        $state,
+        $translate,
+        amMoment,
         response;
 
     beforeEach(function () {
         module('userModule');
         module('angularMoment');
 
-        inject(function (userService, _$httpBackend_, _$rootScope_, _$state_) {
+        inject(function (userService, _$httpBackend_, _$rootScope_, _$translate_, _amMoment_) {
             service = userService;
             $httpBackend = _$httpBackend_;
             $rootScope = _$rootScope_;
-            $state = _$state_;
+            $translate = _$translate_;
+            amMoment = _amMoment_;
+
+            spyOn($translate, 'use');
+            spyOn(amMoment, 'changeLocale');
         });
     });
 
@@ -27,7 +32,7 @@ describe('userService', function () {
     describe('getCurrentUser', function () {
         var expectedUrl = '/api/users/me',
             successPayload = {
-                data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de'},
+                data: {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: {language: 'en'}},
                 status: 200
             },
             errorPayload = {
@@ -61,6 +66,9 @@ describe('userService', function () {
             $rootScope.$digest();
 
             expect($rootScope.user).toEqual(successPayload.data);
+
+            expect($translate.use).toHaveBeenCalledWith(successPayload.data.userSettingsDto.language);
+            expect(amMoment.changeLocale).toHaveBeenCalledWith(successPayload.data.userSettingsDto.language + '-short');
         });
 
         it('forwards error', function () {
