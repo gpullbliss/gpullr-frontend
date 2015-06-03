@@ -10,7 +10,7 @@
                     </span>
                 </li>
             </ul>
-            <a class="toggleWrapper marginBottom block" data-ng-class="{toggleOff : !user.userSettingsDto.desktopNotification}" data-ng-model="user.userSettingsDto.desktopNotification" data-ng-click="saveNotification(!user.userSettingsDto.desktopNotification)">
+            <a class="toggleWrapper marginBottom block" data-ng-class="{toggleOff : !user.userSettingsDto.desktopNotification}" data-ng-click="saveNotificationStatus(!user.userSettingsDto.desktopNotification)">
                 <span class="toggleBtn"></span>
                 {{'settings.desktopNotification' | translate}}
             </a>

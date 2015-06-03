@@ -29,7 +29,8 @@ describe('userSettingsCtrl', function () {
             var userSettingsDto = {
                 id: 1,
                 orderOptionDto: 'DESC',
-                repoBlackList: [1, 4, 5]
+                repoBlackList: [1, 4, 5],
+                desktopNotification: false
             };
 
             user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: userSettingsDto};
@@ -223,6 +224,19 @@ describe('userSettingsCtrl', function () {
             expect(scope.filteredRepos.length).toEqual(1);
             expect(scope.filteredRepos[0].id).toEqual(6);
 
+        });
+
+        it('save notification status', function () {
+            scope.$digest();
+            var testUser = angular.copy(user);
+
+            scope.saveNotificationStatus(true);
+            testUser.userSettingsDto.desktopNotification = true;
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
+
+            scope.saveNotificationStatus(false);
+            testUser.userSettingsDto.desktopNotification = false;
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
         });
     });
 });

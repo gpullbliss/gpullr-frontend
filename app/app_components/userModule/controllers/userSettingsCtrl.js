@@ -76,8 +76,7 @@ angular.module('userModule')
                 userSettingsService.persistUserSettings($rootScope.user);
             };
 
-            $scope.saveNotification = function (value) {
-                console.log(value);
+            $scope.saveNotificationStatus = function (value) {
                 $rootScope.user.userSettingsDto.desktopNotification = value;
                 userSettingsService.persistUserSettings($rootScope.user);
             };
