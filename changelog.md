@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [feature] PRT 31 - enable/disable desktop notifications at user settings
+ - [refactor] optimise favicon & add fry.png
  - [feature] replace bootstrap css with less
  - [refactor] optimise less mixins
  - [feature] PRT 31 - implemented desktop notifications
