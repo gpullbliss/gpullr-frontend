@@ -2,6 +2,7 @@ angular.module('headerModule',
     [
         'translateModule',
         'userModule',
-        'dashboardModule'
+        'dashboardModule',
+        'ngCookies'
     ]
 );
