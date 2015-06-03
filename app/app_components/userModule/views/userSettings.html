@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-3" id="langSwitch">
-        <div class="contentWrapper overflowH">
+        <div class="contentWrapper overflowH marginBottom">
             <h3 class="marginBottom">{{'settings.headline.settings' | translate}}</h3>
             <ul class="marginBottom" data-ng-controller="translateCtrl">
                 <li data-ng-repeat="(languageKey, languageName) in languages">
@@ -10,12 +10,14 @@
                     </span>
                 </li>
             </ul>
+        </div>
+        <div class="contentWrapper overflowH">
             <a class="toggleWrapper marginBottom block" data-ng-class="{toggleOff : !user.userSettingsDto.desktopNotification}" data-ng-click="saveNotificationStatus(!user.userSettingsDto.desktopNotification)">
                 <span class="toggleBtn"></span>
                 {{'settings.desktopNotification' | translate}}
             </a>
         </div>
-    </div>
+        </div>
     <div class="col-md-9">
         <div class="contentWrapper"
              id="repoFilter">
