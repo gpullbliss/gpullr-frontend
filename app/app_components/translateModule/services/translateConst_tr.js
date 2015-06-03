@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstTr', {
         global: {
+            bcp47: 'tr-TR',
             btn: {
                 save: 'Kaydet',
                 cancel: 'İptal',

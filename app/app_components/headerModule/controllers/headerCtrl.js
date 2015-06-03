@@ -1,7 +1,7 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
-        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
+    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'desktopNotificationService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
+        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, desktopNotificationService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
 
             function init() {
                 userService.getCurrentUser();
@@ -33,6 +33,7 @@ angular.module('headerModule')
                 notificationService.getNotifications().then(
                     function (response) {
                         if (response !== undefined) {
+                            desktopNotificationService.sendNotificationsIfNew($scope.notifications, response.userNotifications);
                             $scope.notifications = response.userNotifications;
                         }
                     }
