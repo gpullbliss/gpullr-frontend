@@ -23,7 +23,7 @@ angular.module('translateModule')
             linkNotifications: 'Benachrichtigungen',
             notifications: {
                 title: 'Benachrichtigungen',
-                closedPr: 'schloss dein Pull Request',
+                closedPr: 'schloss deinen Pull Request',
                 inRepo: 'im Repo',
                 markAsSeen: 'alle löschen'
             }
