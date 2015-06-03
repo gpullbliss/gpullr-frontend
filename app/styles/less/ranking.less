@@ -12,7 +12,7 @@
         width: 33.33%;
     }
     .podiumBlock {
-        .fontSet(80px, 80px);
+        .fontSet(80px);
         .iconFont;
         .textC;
         .borderRadius(@halfSpacing @halfSpacing 0 0);
@@ -71,9 +71,17 @@
     }
     .crown:before{
         .fontSet(20px, 1);
-        .position(absolute, -9px, null, null, 1px);
+        .position(absolute, -9px, none, none, 1px);
         content: '\e60c';
         color: @dbBlack;
         text-shadow: -1px 0 @gold, 0 1px @gold, 1px 0 @gold, 0 -1px @gold;
+    }
+    .closedPr{
+        margin-right: @defaultSpacing;
+        &:before{
+            .fontSet(14px);
+            .iconFont;
+            content: '\e611'' ';
+        }
     }
 }
