@@ -192,7 +192,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[0].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -201,7 +201,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[1].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
 
@@ -233,7 +233,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[0].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -242,7 +242,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[1].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
 
@@ -269,7 +269,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[1].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
 
