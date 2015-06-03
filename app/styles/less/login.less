@@ -26,7 +26,7 @@
 .iconAniBg{
     .dimension(236px, 235px);
     //.overflowH;
-    .position(absolute, 32px, null, null, 32px);
+    .position(absolute, 32px, none, none, 32px);
     .transform(rotate(45deg));
     .borderRadius(44px);
     background-color: @dbBlack;
@@ -37,17 +37,17 @@
         &:before,
         &:after{
             .borderRadius(50%);
-            .dimension(17px, 17px);
+            .dimension(17px);
             background-color:  @dbLightGray;
             content: '';
         }
         &:before{
             .animation(3s, linear, 0s, normal, infinite, masterBubble);
-            .position(absolute, 279px, null, null, 202px);
+            .position(absolute, 279px, none, none, 202px);
         }
         &:after{
             .animation(3s, linear, 0s, normal, infinite, mergeBubble);
-            .position(absolute, 188px, null, null, 292px);
+            .position(absolute, 188px, none, none, 292px);
         }
     }
 }
