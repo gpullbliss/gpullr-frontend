@@ -22,6 +22,7 @@ describe('githubOauthCtrl', function () {
     beforeEach(function () {
         module('userModule');
         module('dashboardModule');
+        module('angularMoment');
 
         inject(function (_$controller_,
                          _$rootScope_,

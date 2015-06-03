@@ -9,6 +9,7 @@ describe('userSettingsService', function () {
 
     beforeEach(function () {
         module('userModule');
+        module('angularMoment');
 
         inject(function (userSettingsService, _$httpBackend_, _$rootScope_, _userService_) {
             service = userSettingsService;
