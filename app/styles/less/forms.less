@@ -45,3 +45,27 @@
         content: '\e605';
     }
 }
+.toggleWrapper{
+    cursor: pointer;
+}
+.toggleBtn{
+    .borderRadius(@defaultSpacing);
+    background-color: @dbLighterGray;
+    display: block;
+    float: left;
+    height: 10px;
+    margin: 4px 10px 0 0;
+    position: relative;
+    width: 20px;
+    &:after{
+        .borderRadius(50%);
+        .dimension(8px);
+        .position(absolute, 1px, null, null, 0);
+        background-color: @dbBlack;
+        content: '';
+        display: block;
+    }
+    .toggleOff &:after{
+        left: 11px;
+    }
+}

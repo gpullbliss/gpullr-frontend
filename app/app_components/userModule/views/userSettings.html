@@ -10,12 +10,10 @@
                     </span>
                 </li>
             </ul>
-            <hr>
-            <label for="desktopNotification"
-                   data-ng-class="{striked : !user.userSettingsDto.desktopNotification}">
-                <input type="checkbox" id="desktopNotification" data-ng-model="user.userSettingsDto.desktopNotification" data-ng-click="saveNotification()">
+            <a class="toggleWrapper marginBottom block" data-ng-class="{toggleOff : !user.userSettingsDto.desktopNotification}" data-ng-model="user.userSettingsDto.desktopNotification" data-ng-click="saveNotification(!user.userSettingsDto.desktopNotification)">
+                <span class="toggleBtn"></span>
                 {{'settings.desktopNotification' | translate}}
-            </label>
+            </a>
         </div>
     </div>
     <div class="col-md-9">
