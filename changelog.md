@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] PRT 31 - enable/disable desktop notifications at user settings
  - [feature] replace bootstrap css with less
  - [refactor] optimise less mixins
  - [feature] PRT 31 - implemented desktop notifications
@@ -89,4 +90,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Tue Jun 02 16:41:24 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Wed Jun 03 11:49:27 CEST 2015
