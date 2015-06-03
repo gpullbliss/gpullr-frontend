@@ -37,7 +37,7 @@ angular.module('headerModule')
                     body: notificationDropdownItemService.convert(notification),
                     tag: notification.repoTitle,
                     lang: $filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 };
 
                 new Notification(title, options);
