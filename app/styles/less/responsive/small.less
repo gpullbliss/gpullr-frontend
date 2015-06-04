@@ -1,25 +1,19 @@
 #header{
     .navi .linkItem{
-        padding-bottom: 11px;
         a{
             position: relative;
+            padding-bottom: 11px;
         }
         .bubble{
-            .position(absolute, -16px, -@halfSpacing, none, none);
+            .position(absolute, 1px, @halfSpacing, none, none);
             background-color: transparent;
             padding: 0;
             font-weight: bold;
         }
         &.overlay{
             position: static;
-            .overlayBtn:after{
-                top: 30px;
-            }
             .overlayMenu{
                 width: 100%;
-            }
-            & .overlayBtn:after{
-                left: 0;
             }
         }
     }
