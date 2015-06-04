@@ -1,7 +1,7 @@
 'use strict';
 angular.module('dashboardModule')
     .constant('STATE_STATS', 'stats')
-    .constant('STATE_STATS_TODAY', 'stats_today')
+    .constant('STATE_STATS_TODAY', 'stats.today')
 
     .config([
         '$stateProvider', 'STATE_STATS', 'STATE_STATS_TODAY',

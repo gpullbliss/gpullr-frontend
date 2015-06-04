@@ -17,9 +17,24 @@ angular.module('headerModule')
 
             function setupNavBar() {
                 $scope.navBar = [
-                    {title: 'navi.linkPullrequest', bubble: true, state: STATE_DASHBOARD},
-                    {title: 'navi.linkRanking', bubble: false, state: STATE_STATS_TODAY},
-                    {title: 'navi.linkSettings', bubble: false, state: STATE_USER_SETTINGS}
+                    {
+                        title: 'navi.linkPullrequest',
+                        bubble: true,
+                        class: 'dashboard',
+                        state: STATE_DASHBOARD
+                    },
+                    {
+                        title: 'navi.linkRanking',
+                        bubble: false,
+                        class: 'stats',
+                        state: STATE_STATS_TODAY
+                    },
+                    {
+                        title: 'navi.linkSettings',
+                        bubble: false,
+                        class: 'settings',
+                        state: STATE_USER_SETTINGS
+                    }
                 ];
             }
 
