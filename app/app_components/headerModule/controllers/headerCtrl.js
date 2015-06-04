@@ -1,7 +1,7 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'desktopNotificationService', 'STATE_STATS', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
-        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, desktopNotificationService, STATE_STATS, STATE_DASHBOARD, STATE_USER_SETTINGS) {
+    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'desktopNotificationService', 'STATE_STATS_TODAY', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
+        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, desktopNotificationService, STATE_STATS_TODAY, STATE_DASHBOARD, STATE_USER_SETTINGS) {
 
             function init() {
                 userService.getCurrentUser();
@@ -18,7 +18,7 @@ angular.module('headerModule')
             function setupNavBar() {
                 $scope.navBar = [
                     {title: 'navi.linkPullrequest', bubble: true, state: STATE_DASHBOARD},
-                    {title: 'navi.linkRanking', bubble: false, state: STATE_STATS},
+                    {title: 'navi.linkRanking', bubble: false, state: STATE_STATS_TODAY},
                     {title: 'navi.linkSettings', bubble: false, state: STATE_USER_SETTINGS}
                 ];
             }
