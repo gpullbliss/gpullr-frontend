@@ -13,20 +13,36 @@ The following technologies needs to be installed before you can start running th
   * [bower](http://bower.io/)
 
 ### How to run it locally
-After you cloned the application `git clone https://github.com/devbliss/gpullr-frontend.git && cd gpullr-frontend` the application is ready.
+After you cloned the application `git clone https://github.com/devbliss/gpullr-frontend.git && cd gpullr-frontend` you need to download and install all dependencies.
 
-To setup the application initially and download all dependencies, type
+To setup the application initially, download an install all dependencies, type
 ```
 npm install (on some machines, this requires admin privileges)
 bower install
 ```
 
+Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/refactor/109_documentation/README.md#how-to-run-it-locally).
+
 Now you may start the auto-refreshing development process with the following command:
-
 `grunt serve`
+Your default browser will load `http://localhost:8889/' and open the application when ready.
 
+To build the application, type
+`grunt build`
 
-It will run jshint checks and then open the app in your default browser when ready.
+To test the application, type
+`grunt test`
+
+### Deployment
+Deploying gPullR frontend is achieved by a [jenkins job](http://jenkins.devbliss.com/view/gPullR/job/gPullR-frontend-build/), which executes `grunt build` and copies all relevant stuff from the `dist` directory to the [live system](http://gpullr.devbliss.com/).
+
+### Server provisioning
+The Server which hosts the whole application is provisioned with puppet, hosted by [bingo-puppet](https://github.com/devbliss/bingo-puppet/tree/master/modules/gpullr) on a machine provided by [Bingo](http://staging.bingo.devbliss.com/instances).
+
+Nginx is used to deliver the gPullR frontend and you can also find the nginx configuration within the [puppet files](https://github.com/devbliss/bingo-puppet/blob/master/modules/gpullr/files/gpullr_nginx_conf.erb).
+
+## Using the application
+### GitHub OAuth login
 You have to choose a User to login from the dropdown, otherwise you can't assign any pullrequests to you,
 or filter pullrequest belonging to your project specific needs or interests.
 
@@ -41,21 +57,6 @@ Optional you can use the already deployed live-backend by adapting the `host` of
               '^/api': ''
           }
     }]
-
-### How to add features
-
-TODO
-
-### Deployment
-
-Deploying gPullR frontend is achieved by a jenkins job, which executes `grunt build` and copies all relevant stuff from the `dist` directory to the server.
-
-The Server which hosts the whole application is provisioned with puppet, hosted by [bingo-puppet](https://github.com/devbliss/bingo-puppet/tree/master/modules/gpullr) on a machine provided by [Bingo](http://staging.bingo.devbliss.com/instances).
-
-Nginx is used to deliver the gPullR frontend and you can also find the nginx configuration within the [puppet files](https://github.com/devbliss/bingo-puppet/blob/master/modules/gpullr/files/gpullr_nginx_conf.erb).
-
-
-## Using the application
 ### Configuring the wallboard view
 
 To display all open pull requests on a wallboard monitor, use the wallboard view located under [http://gpullr.devbliss.com/wallboard](http://gpullr.devbliss.com/wallboard).
