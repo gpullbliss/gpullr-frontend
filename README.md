@@ -1,7 +1,5 @@
 # gPullR frontend
-The purpose of gPullR is to provide a handy tool for visualization and organization of pull requests and the process of code review. This project provides the frontend and its underlying view logic. It provides two different views for pull requests that are open or currently in review. The frontend consumes a RESTful API for information exchange with the backend.
-
-This is the frontend for the pull request tool. It is written with JavaScript using AngularJS. 
+The purpose of gPullR is to provide a handy tool for visualization and organization of pull requests and the process of code review. This project provides the frontend and its underlying view logic. It provides two different views for pull requests that are open or currently in review. The frontend consumes a RESTful interface for information exchange with the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/master/README.md).
 
 ![components](/docs/components.png)
 
@@ -21,7 +19,7 @@ npm install (on some machines, this requires admin privileges)
 bower install
 ```
 
-Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/refactor/109_documentation/README.md#how-to-run-it-locally), locally. It's not possible to make use of deployed [live backend](http://gpullr.devbliss.com) with your local started frontend, because the GitHub OAuth login won't work.
+Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/master/README.md#how-to-run-it-locally), locally. It's not possible to make use of deployed [live backend](http://gpullr.devbliss.com) with your local started frontend, because the GitHub OAuth login won't work.
 
 Now you may start the auto-refreshing development process with the following command:
 `grunt serve`
