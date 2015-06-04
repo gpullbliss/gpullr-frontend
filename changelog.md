@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] 134 broken link
  - [refactor] optimise favicon & add fry.png
  - [feature] replace bootstrap css with less
  - [refactor] optimise less mixins
@@ -90,4 +91,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Wed Jun 03 16:37:06 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Thu Jun 04 08:44:35 CEST 2015
