@@ -30,7 +30,8 @@ describe('userSettingsCtrl', function () {
             var userSettingsDto = {
                 id: 1,
                 orderOptionDto: 'DESC',
-                repoBlackList: [1, 4, 5]
+                repoBlackList: [1, 4, 5],
+                desktopNotification: false
             };
 
             user = {id: 12345, username: 'testUser', avatarUrl: 'http://www.jira.de', userSettingsDto: userSettingsDto};
@@ -147,8 +148,9 @@ describe('userSettingsCtrl', function () {
 
             scope.saveBlacklist();
 
-            expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
-            expect(user.userSettingsDto.repoBlackList.length).toBe(0);
+            var testUser = angular.copy(user);
+            testUser.userSettingsDto.repoBlackList = [];
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
         });
 
         it('should send a fully populated list of (blacklisted) ids to the backend', function () {
@@ -175,9 +177,9 @@ describe('userSettingsCtrl', function () {
 
             scope.saveBlacklist();
 
-            expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
-            expect(user.userSettingsDto.repoBlackList.length).toBe(6);
-            expect(user.userSettingsDto.repoBlackList).toEqual([1, 2, 3, 4, 5, 6]);
+            var testUser = angular.copy(user);
+            testUser.userSettingsDto.repoBlackList = [1, 2, 3, 4, 5, 6];
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
         });
 
         it('should send a fully populated list of (blacklisted) ids to the backend', function () {
@@ -185,15 +187,15 @@ describe('userSettingsCtrl', function () {
 
             scope.checkAll();
             scope.saveBlacklist();
-            expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
-            expect(user.userSettingsDto.repoBlackList.length).toBe(0);
-            expect(user.userSettingsDto.repoBlackList).toEqual([]);
+
+            var testUser = angular.copy(user);
+            testUser.userSettingsDto.repoBlackList = [];
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
 
             scope.uncheckAll();
             scope.saveBlacklist();
-            expect(userSettingsService.persistUserSettings).toHaveBeenCalled();
-            expect(user.userSettingsDto.repoBlackList.length).toBe(6);
-            expect(user.userSettingsDto.repoBlackList).toEqual([1, 2, 3, 4, 5, 6]);
+            testUser.userSettingsDto.repoBlackList = [1, 2, 3, 4, 5, 6];
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
         });
 
         it('should list all repositories when the search query is empty', function () {
@@ -223,6 +225,19 @@ describe('userSettingsCtrl', function () {
             expect(scope.filteredRepos.length).toEqual(1);
             expect(scope.filteredRepos[0].id).toEqual(6);
 
+        });
+
+        it('save notification status', function () {
+            scope.$digest();
+            var testUser = angular.copy(user);
+
+            scope.saveNotificationStatus(true);
+            testUser.userSettingsDto.desktopNotification = true;
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
+
+            scope.saveNotificationStatus(false);
+            testUser.userSettingsDto.desktopNotification = false;
+            expect(userSettingsService.persistUserSettings).toHaveBeenCalledWith(testUser);
         });
     });
 });
