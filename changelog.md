@@ -2,6 +2,7 @@
 ### Version 0.1.0-SNAPSHOT
 
  - [bug] fixed navigation item highlighting after reload
+ - [bug] fixed missing url in stats area
  - [refactor] PRT 109 - aligned README documentation to current state of the application
  - [bug] 134 - fixed broken link
  - [bug] fix navi bubble for mobile screen
