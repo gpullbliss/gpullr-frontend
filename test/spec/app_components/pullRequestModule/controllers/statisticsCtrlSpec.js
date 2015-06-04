@@ -8,6 +8,7 @@ describe('statisticsCtrl', function () {
 
     beforeEach(function () {
         module('dashboardModule');
+        module('angularMoment');
 
         inject(function ($controller, _$rootScope_, _$state_) {
             $scope = _$rootScope_.$new();

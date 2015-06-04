@@ -14,6 +14,7 @@ describe('dashboardCtrl', function () {
 
     beforeEach(function () {
         module('pullRequestModule');
+        module('angularMoment');
 
         inject(function (_PullRequestService_, _userSettingsService_, $controller, _$interval_, _$rootScope_, _$q_) {
             pullRequestService = _PullRequestService_;

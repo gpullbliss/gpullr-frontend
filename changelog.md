@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] load correct locale for momentJs
  - [feature] PRT 31 - enable/disable desktop notifications at user settings
  - [refactor] optimise favicon & add fry.png
  - [feature] replace bootstrap css with less
@@ -91,4 +92,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Wed Jun 03 11:49:27 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Wed Jun 03 16:35:11 CEST 2015

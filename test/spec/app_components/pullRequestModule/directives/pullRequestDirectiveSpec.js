@@ -27,6 +27,7 @@ describe('pullRequestDirective', function () {
         });
         module('appTemplates');
         module('userModule');
+        module('angularMoment');
 
         inject(function (_$compile_, _$rootScope_, _userService_) {
             $compile = _$compile_;

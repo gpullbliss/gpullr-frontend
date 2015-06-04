@@ -14,6 +14,7 @@ describe('userSettingsCtrl', function () {
 
     beforeEach(function () {
         module('userModule');
+        module('angularMoment');
 
         inject(function (_repoService_, _userSettingsService_, $controller, _$q_, _$rootScope_, _userService_, _$filter_, _$timeout_) {
             userSettingsService = _userSettingsService_;

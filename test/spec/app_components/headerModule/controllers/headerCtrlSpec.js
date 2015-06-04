@@ -16,6 +16,7 @@ describe('headerCtrl', function () {
 
     beforeEach(function () {
         module('headerModule');
+        module('angularMoment');
 
         inject(function (_$controller_,
                          _$rootScope_,
