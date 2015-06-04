@@ -97,6 +97,7 @@ angular.module('translateModule')
                     none: 'hepsinden seçimi kaldır'
                 },
                 search: 'Arama'
-            }
+            },
+            desktopNotification: 'Desktop notifications'
         }
     });

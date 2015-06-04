@@ -38,6 +38,7 @@ describe('assignmentDirective', function () {
         module('userModule');
         module('pullRequestModule');
         module('appTemplates');
+        module('angularMoment');
 
         inject(function (_$compile_, _$rootScope_, _PullRequestService_, _userService_, _PullRequestCssClassService_) {
             $compile = _$compile_;

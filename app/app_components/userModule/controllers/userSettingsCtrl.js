@@ -2,10 +2,9 @@
 
 angular.module('userModule')
     .controller('userSettingsCtrl', [
-        '$scope', '$state', 'repoService', 'userSettingsService', 'userService', '$timeout', '$filter',
-        function ($scope, $state, repoService, userSettingsService, userService, $timeout, $filter) {
+        '$scope', '$state', '$rootScope', 'repoService', 'userSettingsService', 'userService', '$timeout', '$filter',
+        function ($scope, $state, $rootScope, repoService, userSettingsService, userService, $timeout, $filter) {
 
-            var currentUser = {};
             $scope.languages = {};
             var timeoutPromise;
             var repos = [];
@@ -45,11 +44,6 @@ angular.module('userModule')
                     })
 
                     .then(function (user) {
-                        currentUser = user;
-                        if (!user.userSettingsDto) {
-                            user.userSettingsDto = {};
-                        }
-
                         var blacklist = user.userSettingsDto.repoBlackList;
 
                         // uncheck user black listed repos
@@ -65,20 +59,26 @@ angular.module('userModule')
             }
 
             $scope.getUserLang = function () {
-                if (currentUser.userSettingsDto) {
-                    return currentUser.userSettingsDto.language;
+                if ($rootScope.user.userSettingsDto) {
+                    return $rootScope.user.userSettingsDto.language;
                 }
                 return 'en';
             };
 
             $scope.saveBlacklist = function () {
+                var currentUser = angular.copy($rootScope.user);
                 currentUser.userSettingsDto.repoBlackList = buildBlackList();
                 userSettingsService.persistUserSettings(currentUser);
             };
 
             $scope.saveUserLang = function (langKey) {
-                currentUser.userSettingsDto.language = langKey;
-                userSettingsService.persistUserSettings(currentUser);
+                $rootScope.user.userSettingsDto.language = langKey;
+                userSettingsService.persistUserSettings($rootScope.user);
+            };
+
+            $scope.saveNotificationStatus = function (value) {
+                $rootScope.user.userSettingsDto.desktopNotification = value;
+                userSettingsService.persistUserSettings($rootScope.user);
             };
 
             $scope.checkAll = function () {

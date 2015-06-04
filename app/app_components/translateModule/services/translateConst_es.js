@@ -96,6 +96,7 @@ angular.module('translateModule')
                     none: 'deseleccionar todas'
                 },
                 search: 'Busqueda'
-            }
+            },
+            desktopNotification: 'Desktop notifications'
         }
     });

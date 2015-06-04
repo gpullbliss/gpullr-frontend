@@ -1,8 +1,8 @@
 'use strict';
 angular.module('headerModule')
     .factory('desktopNotificationService',
-    ['$filter', '$cookieStore', 'notificationDropdownItemService',
-        function ($filter, $cookieStore, notificationDropdownItemService) {
+    ['$filter', '$cookieStore', '$rootScope', 'notificationDropdownItemService',
+        function ($filter, $cookieStore, $rootScope, notificationDropdownItemService) {
 
             var COOKIE_KEY = 'notifications';
 
@@ -37,10 +37,20 @@ angular.module('headerModule')
                     body: notificationDropdownItemService.convert(notification),
                     tag: notification.repoTitle,
                     lang: $filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 };
 
                 new Notification(title, options);
+            }
+
+            function hasDesktopNotificationDisbled() {
+                if (typeof $rootScope.user === 'undefined') {
+                    return true;
+                } else if (typeof $rootScope.user.userSettingsDto === 'undefined') {
+                    return true;
+                }
+
+                return !$rootScope.user.userSettingsDto.desktopNotification;
             }
 
             function sendNotificationsIfNew(notifications) {
@@ -50,10 +60,16 @@ angular.module('headerModule')
                             return;
                         }
 
+                        if (hasDesktopNotificationDisbled()) {
+                            return;
+                        }
+
                         notifications.forEach(sendNotification);
                         updateCookie(notifications);
                     });
+
                 }
+
             }
 
             return {
@@ -61,5 +77,6 @@ angular.module('headerModule')
             };
 
         }
+
     ]
 );

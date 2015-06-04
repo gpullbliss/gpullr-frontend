@@ -1,7 +1,9 @@
 
 ### Version 0.1.0-SNAPSHOT
 
- - [bug] 134 broken link
+ - [bug] fix navi bubble for mobile screen
+ - [bug] load correct locale for momentJs
+ - [feature] PRT 31 - enable/disable desktop notifications at user settings
  - [refactor] optimise favicon & add fry.png
  - [feature] replace bootstrap css with less
  - [refactor] optimise less mixins
@@ -91,4 +93,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Thu Jun 04 08:44:35 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Thu Jun 04 11:14:17 CEST 2015
