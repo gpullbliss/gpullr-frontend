@@ -7,6 +7,7 @@ describe('headerCtrl', function () {
         user,
         rootScope,
         scope,
+        state,
         notifications,
         notificationService,
         notificationDropdownItemService,
@@ -20,6 +21,7 @@ describe('headerCtrl', function () {
 
         inject(function (_$controller_,
                          _$rootScope_,
+                         _$state_,
                          _userService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
@@ -31,6 +33,7 @@ describe('headerCtrl', function () {
             userService = _userService_;
             rootScope = _$rootScope_;
             scope = rootScope.$new();
+            state = _$state_;
             notificationService = _notificationService_;
             notificationDropdownItemService = _notificationDropdownItemService_;
             desktopNotificationService = _desktopNotificationService_;
@@ -44,6 +47,8 @@ describe('headerCtrl', function () {
             };
 
             spyOn(userService, 'getCurrentUser');
+
+            spyOn(state, 'includes');
 
             spyOn(notificationService, 'getNotifications').and.callFake(function () {
                 var deferred = q.defer();
@@ -65,6 +70,7 @@ describe('headerCtrl', function () {
             controller = $controller('headerCtrl', {
                 $scope: scope,
                 $rootScope: rootScope,
+                $state: state,
                 userService: userService,
                 notificationService: notificationService,
                 notificationDropdownItemService: notificationDropdownItemService,
@@ -116,6 +122,26 @@ describe('headerCtrl', function () {
 
             // originally list is three items long
             expect(scope.notifications.length).toEqual(0);
+        });
+
+    });
+
+    describe('navigation item active state', function () {
+
+        it('top navigation item is active', function () {
+            scope.$digest();
+
+            scope.isStateActive('dashboard');
+            expect(state.includes).toHaveBeenCalledWith('dashboard');
+
+            scope.isStateActive('stats');
+            expect(state.includes).toHaveBeenCalledWith('stats');
+
+            scope.isStateActive('stats.today');
+            expect(state.includes).toHaveBeenCalledWith('stats');
+
+            scope.isStateActive('something.somewhat');
+            expect(state.includes).toHaveBeenCalledWith('something');
         });
 
     });
