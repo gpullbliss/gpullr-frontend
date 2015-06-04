@@ -15,7 +15,7 @@ The purpose of gPullR is to provide a handy tool for visualization and organizat
 
 ## Getting started
 ### Technology stack
-The following technologies needs to be installed before you can start running the application:
+The following technologies need to be installed before you can start running the application:
 
   * [npm](https://www.npmjs.com/)
   * [bower](http://bower.io/)
@@ -25,15 +25,16 @@ After you cloned the application `git clone https://github.com/devbliss/gpullr-f
 
 To setup the application initially, download an install all dependencies, type
 ```
-npm install (on some machines, this requires admin privileges)
+npm install
 bower install
 ```
-
+(on some machines, this requires admin privileges)
+ 
 Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/master/README.md#how-to-run-it-locally), locally. It's not possible to make use of deployed [live backend](http://gpullr.devbliss.com) with your local started frontend, because the GitHub OAuth login won't work.
 
 Now you may start the auto-refreshing development process with the following command:
 `grunt serve`
-Your default browser will load `http://localhost:8889/' and open the application when ready.
+Your default browser will load `http://localhost:8889/` and open the application when ready.
 
 To build the application, type
 `grunt build`
