@@ -3,6 +3,16 @@ The purpose of gPullR is to provide a handy tool for visualization and organizat
 
 ![components](/docs/components.png)
 
+-  [Getting started] (#getting-started)
+  -  [Technology stack] (#technology-stack)
+  -  [How to run it locally] (#how-to-run-it-locally)
+  -  [Deployment] (#deployment)
+  -  [Server provisioning] (#server-provisioning)
+-  [Using the application] (#using-the-application)
+  -  [GitHub OAuth login] (#github-oauth-login)
+  -  [Configuring the wallboard view] (#configuring-the-wallboard-view)
+-  [Technologies] (#technologies)
+
 ## Getting started
 ### Technology stack
 The following technologies needs to be installed before you can start running the application:
