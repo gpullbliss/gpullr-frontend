@@ -21,7 +21,7 @@ npm install (on some machines, this requires admin privileges)
 bower install
 ```
 
-Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/refactor/109_documentation/README.md#how-to-run-it-locally).
+Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/refactor/109_documentation/README.md#how-to-run-it-locally). It's not possible to make use of deployed live backend with your local started frontend, because the GitHub OAuth login won't work.
 
 Now you may start the auto-refreshing development process with the following command:
 `grunt serve`
@@ -43,22 +43,9 @@ Nginx is used to deliver the gPullR frontend and you can also find the nginx con
 
 ## Using the application
 ### GitHub OAuth login
-You have to choose a User to login from the dropdown, otherwise you can't assign any pullrequests to you,
-or filter pullrequest belonging to your project specific needs or interests.
+The only possible way to log into the application is to use your GitHub account with OAuth. GitHub will ask you to accept the gPullR permission access. If you do so and your GitHub account pass [some extra checks done at the gPullR backend](https://github.com/devbliss/gpullr-backend/blob/master/README.md#using-the-application), you're logged in and ready to use the application.
 
-Ensure to have the [gPullR backend][gpullr-backend] running locally, when using the default configuration of the Gruntfile.js.
-Optional you can use the already deployed live-backend by adapting the `host` of the `proxies` in the `grunt.initConfig` of the Gruntfile.js´as follows:
-
-    proxies: [{
-          context: '/api',
-          host: 'gpullr.devbliss.com',
-          port: 8888,
-          rewrite: {
-              '^/api': ''
-          }
-    }]
 ### Configuring the wallboard view
-
 To display all open pull requests on a wallboard monitor, use the wallboard view located under [http://gpullr.devbliss.com/wallboard](http://gpullr.devbliss.com/wallboard).
 You don't have to be logged in for that feature.
  
@@ -67,4 +54,10 @@ It is also possible to see only pull requests for a list of repositories. List t
 
 To show only the repositories standards and docbliss use e.g.: [http://gpullr.devbliss.com/wallboard?repos=standards;docbliss](http://gpullr.devbliss.com/wallboard?repos=standards;docbliss).
 
-[gpullr-backend]: https://github.com/devbliss/gpullr-backend/        "gPullR backend"
+# Technologies
+The project depends on the following key technologies:
+
+* [AngularJs] (https://angularjs.org/)
+* [npm] (https://www.npmjs.com/)
+* [Bower] (http://bower.io/)
+* [Grunt] (http://gruntjs.com/)
