@@ -10,7 +10,7 @@
                 data-ng-repeat="item in navBar"
                 data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
-                    <span class="iconFont {{item.state}}Icon visible-xs"></span>
+                    <span class="iconFont headernav-{{item.class}}-icon visible-xs"></span>
                     <span class="hidden-xs">{{item.title | translate}}</span>
                     <span data-ng-if="item.bubble && requestCount"
                           class="bubble">{{requestCount}}</span>
