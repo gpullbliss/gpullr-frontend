@@ -1,7 +1,7 @@
 'use strict';
 angular.module('userModule')
-    .factory('userService', ['$cacheFactory', '$http', '$rootScope', '$translate',
-        function ($cacheFactory, $http, $rootScope, $translate) {
+    .factory('userService', ['$cacheFactory', '$http', '$rootScope', '$translate', 'amMoment',
+        function ($cacheFactory, $http, $rootScope, $translate, amMoment) {
 
             function getCurrentUser() {
                 return $http.get('/api/users/me', {cache: true}).then(
@@ -27,6 +27,7 @@ angular.module('userModule')
                 var userSettings = user.userSettingsDto;
                 if (userSettings && userSettings.language) {
                     $translate.use(userSettings.language);
+                    amMoment.changeLocale(userSettings.language + '-short');
                 }
             }
 

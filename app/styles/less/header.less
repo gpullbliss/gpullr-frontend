@@ -36,9 +36,13 @@
     .navi {
         .linkItem {
             .floatL;
-            padding: 16px @defaultSpacing;
-            a {
+            > a {
                 .block;
+                padding: 16px @defaultSpacing;
+                &:hover{
+                    background-color: @black;
+                    text-decoration: none;
+                }
             }
             &.active, &.open {
                 background-color: @black;
@@ -62,6 +66,9 @@
         .notificationsIcon:before {
             .fontSet(23px, 19px);
             content: '\e609';
+        }
+        .button{
+            .block;
         }
     }
     .overlay {

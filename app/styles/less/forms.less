@@ -24,6 +24,7 @@
     &:hover{
         background-color: @dbLighterGray;
         color: @dbBlack;
+        text-decoration: none;
     }
     &.butChancel{
         background-color: @dbLighterGray;
@@ -44,5 +45,35 @@
     cursor: pointer;
     &:after{
         content: '\e605';
+    }
+}
+.toggleWrapper{
+    cursor: pointer;
+}
+.toggleBtn{
+    .borderRadius(@defaultSpacing);
+    background-color: @white;
+    display: block;
+    float: left;
+    height: 10px;
+    margin: 4px 5px 0 0;
+    position: relative;
+    width: 20px;
+    &:after{
+        .animation(40ms, linear, 0s, normal, 1, toggleBtnOn);
+        .borderRadius(50%);
+        .dimension(8px);
+        .position(absolute, 1px, null, null, 1px);
+        background-color: @dbGray;
+        content: '';
+        display: block;
+    }
+    .toggleOff &:after{
+        background-color: @dbBlack;
+        left: 11px;
+        .animation(40ms, linear, 0s, normal, 1, toggleBtnOff);
+    }
+    .toggleOff &{
+        background-color: @dbGreen;
     }
 }

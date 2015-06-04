@@ -33,6 +33,7 @@ describe('wallboardPullRequestDirective', function () {
             $provide.value('PullRequestCssClassService', pullRequestCssClassService);
         });
         module('appTemplates');
+        module('angularMoment');
 
         inject(function (_$compile_, _$rootScope_, _userService_) {
             $compile = _$compile_;

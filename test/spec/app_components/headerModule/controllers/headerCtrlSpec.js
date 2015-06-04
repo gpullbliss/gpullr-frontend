@@ -10,17 +10,20 @@ describe('headerCtrl', function () {
         notifications,
         notificationService,
         notificationDropdownItemService,
+        desktopNotificationService,
         q,
         httpBackend;
 
     beforeEach(function () {
         module('headerModule');
+        module('angularMoment');
 
         inject(function (_$controller_,
                          _$rootScope_,
                          _userService_,
                          _notificationService_,
                          _notificationDropdownItemService_,
+                         _desktopNotificationService_,
                          _$q_,
                          _$httpBackend_) {
 
@@ -30,6 +33,7 @@ describe('headerCtrl', function () {
             scope = rootScope.$new();
             notificationService = _notificationService_;
             notificationDropdownItemService = _notificationDropdownItemService_;
+            desktopNotificationService = _desktopNotificationService_;
             q = _$q_;
             httpBackend = _$httpBackend_;
 
@@ -51,6 +55,8 @@ describe('headerCtrl', function () {
 
             spyOn(notificationService, 'markNotificationRead');
 
+            spyOn(desktopNotificationService, 'sendNotificationsIfNew');
+
             // upon injecting the NotificationService the service immediately calles the backend
             // getNotifications endpoint.
             httpBackend.expectGET('/api/notifications').respond(notifications);
@@ -62,6 +68,7 @@ describe('headerCtrl', function () {
                 userService: userService,
                 notificationService: notificationService,
                 notificationDropdownItemService: notificationDropdownItemService,
+                desktopNotificationService: desktopNotificationService,
                 STATE_STATS: 'stats',
                 STATE_DASHBOARD: 'dashboard',
                 STATE_USER_SETTINGS: 'repoFilter'
@@ -82,6 +89,7 @@ describe('headerCtrl', function () {
             scope.$digest();
             expect(notificationService.getNotifications).toHaveBeenCalled();
             expect(scope.notifications.length).toEqual(3);
+            expect(desktopNotificationService.sendNotificationsIfNew).toHaveBeenCalledWith(notifications.userNotifications);
         });
 
         it('remove a notification from notification list upon clicking the X button', function () {
