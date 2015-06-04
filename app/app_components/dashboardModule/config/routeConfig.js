@@ -1,8 +1,11 @@
 'use strict';
 angular.module('dashboardModule')
     .constant('STATE_STATS', 'stats')
+    .constant('STATE_STATS_TODAY', 'stats.today')
+
     .config([
-        '$stateProvider', 'STATE_STATS', function ($stateProvider, STATE_STATS) {
+        '$stateProvider', 'STATE_STATS', 'STATE_STATS_TODAY',
+        function ($stateProvider, STATE_STATS, STATE_STATS_TODAY) {
             $stateProvider
                 .state(STATE_STATS, {
                     parent: 'page',
@@ -10,7 +13,7 @@ angular.module('dashboardModule')
                     templateUrl: 'app_components/dashboardModule/views/statistics.html',
                     url: '/stats'
                 })
-                .state('stats.today', {
+                .state(STATE_STATS_TODAY, {
                     data: {period: 'today'},
                     controller: 'statisticsDetailsCtrl',
                     templateUrl: 'app_components/dashboardModule/views/statisticsDetails.html',
@@ -34,4 +37,5 @@ angular.module('dashboardModule')
                     templateUrl: 'app_components/dashboardModule/views/statisticsDetails.html',
                     url: '/all-time'
                 });
-        }]);
+        }]
+);
