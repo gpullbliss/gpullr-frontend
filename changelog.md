@@ -1,7 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
- - [refactor] PRT 109 - alignt README documentation to current state of the application
+ - [refactor] PRT 109 - aligned README documentation to current state of the application
  - [bug] fix navi bubble for mobile screen
  - [bug] load correct locale for momentJs
  - [feature] PRT 31 - enable/disable desktop notifications at user settings
