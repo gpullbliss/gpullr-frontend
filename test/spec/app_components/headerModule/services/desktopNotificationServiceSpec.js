@@ -3,6 +3,7 @@
 describe('desktopNotificationService', function () {
     var filter,
         cookieStore,
+        rootScope,
         notificationDropdownItemService,
         service;
 
@@ -15,12 +16,19 @@ describe('desktopNotificationService', function () {
     beforeEach(function () {
         module('headerModule');
 
-        inject(function (desktopNotificationService, $filter, $cookieStore, _notificationDropdownItemService_) {
+        inject(function (desktopNotificationService, $filter, $cookieStore, $rootScope, _notificationDropdownItemService_) {
             service = desktopNotificationService;
             filter = $filter;
             cookieStore = $cookieStore;
+            rootScope = $rootScope;
             notificationDropdownItemService = _notificationDropdownItemService_;
         });
+
+        rootScope.user = {
+            userSettingsDto: {
+                desktopNotification: true
+            }
+        };
 
         spyOn(cookieStore, 'put');
         spyOn(cookieStore, 'remove');
@@ -67,7 +75,7 @@ describe('desktopNotificationService', function () {
     describe('when the Notification web API object', function () {
 
         beforeEach(function () {
-            spyOn(cookieStore, 'get').and.returnValue({});
+            spyOn(cookieStore, 'get').and.returnValue([]);
         });
 
         it('is not set in our browser', function () {
@@ -88,6 +96,60 @@ describe('desktopNotificationService', function () {
                 // call no callback -> permission not granted
             };
             window.Notification = fakeNotification;
+
+            service.sendNotificationsIfNew(newNotifications);
+
+            expect(notificationSpy).not.toHaveBeenCalled();
+
+            expect(cookieStore.get).not.toHaveBeenCalled();
+            expect(cookieStore.remove).not.toHaveBeenCalled();
+            expect(cookieStore.put).not.toHaveBeenCalled();
+
+            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
+        });
+
+    });
+
+    describe('user can toggle desktop notifications', function () {
+
+        beforeEach(function () {
+            spyOn(cookieStore, 'get').and.returnValue([]);
+        });
+
+        it('when user disabled desktop notifications', function () {
+            rootScope.user = {
+                userSettingsDto: {
+                    desktopNotification: false
+                }
+            };
+
+            service.sendNotificationsIfNew(newNotifications);
+
+            expect(notificationSpy).not.toHaveBeenCalled();
+
+            expect(cookieStore.get).not.toHaveBeenCalled();
+            expect(cookieStore.remove).not.toHaveBeenCalled();
+            expect(cookieStore.put).not.toHaveBeenCalled();
+
+            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
+        });
+
+        it('when desktop notifications are not available', function () {
+            rootScope.user = {};
+
+            service.sendNotificationsIfNew(newNotifications);
+
+            expect(notificationSpy).not.toHaveBeenCalled();
+
+            expect(cookieStore.get).not.toHaveBeenCalled();
+            expect(cookieStore.remove).not.toHaveBeenCalled();
+            expect(cookieStore.put).not.toHaveBeenCalled();
+
+            expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
+        });
+
+        it('when the user is not available', function () {
+            delete rootScope.user;
 
             service.sendNotificationsIfNew(newNotifications);
 
@@ -130,7 +192,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[0].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -139,7 +201,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[1].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
 
@@ -171,7 +233,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[0].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
             expect(notificationSpy).toHaveBeenCalledWith(
@@ -180,7 +242,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[1].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
 
@@ -207,7 +269,7 @@ describe('desktopNotificationService', function () {
                     body: convertedNotificationText,
                     tag: newNotifications[1].repoTitle,
                     lang: filter('translate')('global.bcp47'),
-                    icon: 'http://gpullr.devbliss.com/styles/img/favicon/favicon.png'
+                    icon: '/styles/img/notification.png'
                 }
             );
 

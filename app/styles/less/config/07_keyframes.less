@@ -111,40 +111,24 @@
     }
 });
 
-@-moz-keyframes mergeBubble {
-    0% {
-        .dimension(@smallBubbleWidth);
-        top: 188px;
-        left: 292px;
+.keyframes(toggleBtnOff, {
+    0%{
+        left: 1px;
+        background-color: @dbBlack;
     }
-    30% {
-        .dimension(@smallBubbleWidth);
-        top: 64px;
-        left: 169px;
+    100%{
+        left: 11px;
+        background-color: @dbGreen;
     }
-    40% {
-        .dimension(@bubbleWidth);
-        top: 30px;
-        left: 134px;
+});
+
+.keyframes(toggleBtnOn, {
+    0%{
+        left: 11px;
+        background-color: @dbGreen;
     }
-    50% {
-        .dimension(@smallBubbleWidth);
-        top: 64px;
-        left: 169px;
+    100%{
+        left: 1px;
+        background-color: @dbBlack;
     }
-    80% {
-        .dimension(@smallBubbleWidth);
-        top: 60px;
-        left: -7px;
-        opacity: 1;
-    }
-    81% {
-        opacity: 0;
-        .dimension(@smallBubbleWidth);
-        top: 60px;
-        left: -7px;
-    }
-    100% {
-        opacity: 0;
-    }
-}
+});
