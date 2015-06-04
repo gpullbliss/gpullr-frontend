@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] fixed navigation item highlighting after reload
  - [refactor] PRT 109 - aligned README documentation to current state of the application
  - [bug] 134 - fixed broken link
  - [bug] fix navi bubble for mobile screen
@@ -95,4 +96,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu Jun 04 13:09:47 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu Jun 04 16:23:18 CEST 2015
