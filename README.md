@@ -21,7 +21,7 @@ npm install (on some machines, this requires admin privileges)
 bower install
 ```
 
-Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/refactor/109_documentation/README.md#how-to-run-it-locally). It's not possible to make use of deployed live backend with your local started frontend, because the GitHub OAuth login won't work.
+Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/refactor/109_documentation/README.md#how-to-run-it-locally), locally. It's not possible to make use of deployed [live backend](http://gpullr.devbliss.com) with your local started frontend, because the GitHub OAuth login won't work.
 
 Now you may start the auto-refreshing development process with the following command:
 `grunt serve`
