@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] fix assign icon mobile
  - [bug] 133 modals closing on refresh
  - [bug] fixed german time-ago abbreviation
  - [bug] notification icon was not displayed
@@ -100,4 +101,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri Jun 05 14:36:27 CEST 2015
+-- Last change by: Tobias Arndt <tobias.arndt@devbliss.com> Fri Jun 05 16:20:11 CEST 2015
