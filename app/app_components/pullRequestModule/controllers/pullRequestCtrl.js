@@ -11,7 +11,6 @@ angular.module('pullRequestModule')
             var ACTION_ASSIGN_TO_ME = 'assignToMe',
                 ACTION_UNASSIGN_ME = 'unassignMe',
                 ACTION_CONFIRM_ASSIGN_TO_ME = 'confirmAssignToMe',
-                ACTION_OPEN_MODAL = 'modal',
                 defaultTitle = 'dashboard.pullRequest.assign.toMe';
 
             function determineAction(pullRequest) {
