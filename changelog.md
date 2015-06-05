@@ -1,7 +1,10 @@
 
 ### Version 0.1.0-SNAPSHOT
 
- - [bug] 133 modals closing on refresh
+ - [bug] fixed german time-ago abbreviation
+ - [bug] notification icon was not displayed
+ - [bug] fixed navigation item highlighting after reload
+ - [bug] fixed missing url in stats area
  - [refactor] PRT 109 - aligned README documentation to current state of the application
  - [bug] 134 - fixed broken link
  - [bug] fix navi bubble for mobile screen
@@ -96,4 +99,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri Jun 05 12:47:28 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu Jun 04 16:23:18 CEST 2015
