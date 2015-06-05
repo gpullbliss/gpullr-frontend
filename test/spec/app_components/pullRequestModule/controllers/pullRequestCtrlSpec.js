@@ -123,19 +123,23 @@ describe('pullRequestCtrl', function () {
     describe('getAssignmentStyle', function () {
 
         it('no assignee and no elder pull request', function () {
-
+            var style=$scope.getAssignmentStyle(prNotAssignedNoElders);
+            expect(style).toEqual('');
         });
 
         it('no assignee but elder pull requests exist', function () {
-
+            var style=$scope.getAssignmentStyle(prNotAssignedWithElders);
+            expect(style).toEqual('');
         });
 
         it('pull request already assigned to myself', function () {
-
+            var style=$scope.getAssignmentStyle(prAssignedToMe);
+            expect(style).toEqual('isAssignedToMe');
         });
 
         it('pull request assigned to somebody else', function () {
-
+            var style=$scope.getAssignmentStyle(prAssignedToSomebody);
+            expect(style).toEqual('isAssigned');
         });
 
     });
