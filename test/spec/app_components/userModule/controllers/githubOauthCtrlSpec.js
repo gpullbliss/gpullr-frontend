@@ -6,14 +6,16 @@ describe('githubOauthCtrl', function () {
         scope,
         $state,
         $stateParams,
-        $cookieStore,
+        $cookies,
         userService,
         notificationService,
         $q;
 
     notificationService = {
-        getNotifications: function () { },
-        startPolling: function () { }
+        getNotifications: function () {
+        },
+        startPolling: function () {
+        }
     };
 
     var cookieState = 'some-state',
@@ -28,14 +30,14 @@ describe('githubOauthCtrl', function () {
                          _$rootScope_,
                          _$state_,
                          _$stateParams_,
-                         _$cookieStore_,
+                         _$cookies_,
                          _userService_,
                          _$q_) {
             $controller = _$controller_;
             scope = _$rootScope_.$new();
             $state = _$state_;
             $stateParams = _$stateParams_;
-            $cookieStore = _$cookieStore_;
+            $cookies = _$cookies_;
             userService = _userService_;
             $q = _$q_;
 
@@ -65,7 +67,7 @@ describe('githubOauthCtrl', function () {
                     $scope: scope,
                     $state: $state,
                     $stateParams: $stateParams,
-                    $cookieStore: $cookieStore,
+                    $cookies: $cookies,
                     STATE_DASHBOARD: stateDashboard,
                     notificationService: notificationService
                 };
@@ -82,76 +84,76 @@ describe('githubOauthCtrl', function () {
     });
 
     describe('check the errorState when the state cookie', function () {
-        var cookieStore,
+        var cookies,
             stateParams,
             controller;
 
         beforeEach(function () {
-            cookieStore = angular.copy($cookieStore);
+            cookies = angular.copy($cookies);
             stateParams = angular.copy($stateParams);
         });
 
         it('is not set, the errorstate is true', function () {
-            spyOn(cookieStore, 'get');
-            spyOn(cookieStore, 'remove');
+            spyOn(cookies, 'get');
+            spyOn(cookies, 'remove');
 
-            controller = createController({$cookieStore: cookieStore});
+            controller = createController({$cookies: cookies});
 
             scope.$digest();
 
-            expect(cookieStore.get).toHaveBeenCalled();
-            expect(cookieStore.remove).toHaveBeenCalled();
+            expect(cookies.get).toHaveBeenCalled();
+            expect(cookies.remove).toHaveBeenCalled();
             expect(scope.errorState).toBeTruthy();
         });
 
         it('is different to the stateparams state, the errorstate is true', function () {
-            spyOn(cookieStore, 'get').and.returnValue(cookieState);
-            spyOn(cookieStore, 'remove');
+            spyOn(cookies, 'get').and.returnValue(cookieState);
+            spyOn(cookies, 'remove');
 
             stateParams.state = 'some other state';
 
-            controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
+            controller = createController({$stateParams: stateParams, $cookies: cookies});
 
             scope.$digest();
 
-            expect(cookieStore.get).toHaveBeenCalled();
-            expect(cookieStore.remove).toHaveBeenCalled();
+            expect(cookies.get).toHaveBeenCalled();
+            expect(cookies.remove).toHaveBeenCalled();
             expect(scope.errorState).toBeTruthy();
         });
 
         it('is the same as stateparams state, the errorstate is false', function () {
-            spyOn(cookieStore, 'get').and.returnValue(cookieState);
-            spyOn(cookieStore, 'remove');
+            spyOn(cookies, 'get').and.returnValue(cookieState);
+            spyOn(cookies, 'remove');
 
             stateParams.state = cookieState;
 
-            controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
+            controller = createController({$stateParams: stateParams, $cookies: cookies});
 
             scope.$digest();
 
-            expect(cookieStore.get).toHaveBeenCalled();
-            expect(cookieStore.remove).toHaveBeenCalled();
+            expect(cookies.get).toHaveBeenCalled();
+            expect(cookies.remove).toHaveBeenCalled();
             expect(scope.errorState).toBeFalsy();
         });
     });
 
 
     describe('when the state cookie is ok', function () {
-        var cookieStore,
+        var cookies,
             stateParams,
             controller;
 
         beforeEach(function () {
-            cookieStore = angular.copy($cookieStore);
-            spyOn(cookieStore, 'get').and.returnValue(cookieState);
-            spyOn(cookieStore, 'remove');
+            cookies = angular.copy($cookies);
+            spyOn(cookies, 'get').and.returnValue(cookieState);
+            spyOn(cookies, 'remove');
 
             stateParams = angular.copy($stateParams);
             stateParams.state = cookieState;
         });
 
         it('and the backend authentication went fine', function () {
-            controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
+            controller = createController({$stateParams: stateParams, $cookies: cookies});
 
             scope.$digest();
 
@@ -162,7 +164,7 @@ describe('githubOauthCtrl', function () {
         it('and the backend authentication went wrong', function () {
             stateParams.code = 'just-another-code';
 
-            controller = createController({$stateParams: stateParams, $cookieStore: cookieStore});
+            controller = createController({$stateParams: stateParams, $cookies: cookies});
 
             scope.$digest();
 
