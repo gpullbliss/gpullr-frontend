@@ -22,7 +22,7 @@
 
         <div class="listView clear">
             <section class="overflowH"
-                     data-ng-repeat="pr in pullRequests | filter: {assignee: 'null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'"
+                     data-ng-repeat="pr in pullRequests | with: 'assignee':false | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'"
                      data-dvb-pull-request
                      data-pull-request="pr"
                      data-age-property="'createdAt'"
@@ -45,7 +45,7 @@
         </div>
         <div class="listView clear">
             <section class="overflowH"
-                     data-ng-repeat="pr in pullRequests | filter: {assignee: '!null'} | orderBy: 'assignedAt': user.userSettingsDto.assignedPullRequestsOrdering === 'DESC'"
+                     data-ng-repeat="pr in pullRequests | with: 'assignee':true | orderBy: 'assignedAt': user.userSettingsDto.assignedPullRequestsOrdering === 'DESC'"
                      data-dvb-pull-request
                      data-pull-request="pr"
                      data-age-property="'assignedAt'"
