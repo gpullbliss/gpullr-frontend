@@ -18,7 +18,7 @@ angular.module('headerModule')
             }
 
             function notificationIsKnown(notification) {
-                var knownNotifications = $cookies.get(COOKIE_KEY);
+                var knownNotifications = $cookies.getObject(COOKIE_KEY);
 
                 if (typeof knownNotifications === 'undefined') {
                     return false;

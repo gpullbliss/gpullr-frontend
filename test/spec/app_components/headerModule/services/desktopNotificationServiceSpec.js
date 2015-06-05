@@ -75,7 +75,7 @@ describe('desktopNotificationService', function () {
     describe('when the Notification web API object', function () {
 
         beforeEach(function () {
-            spyOn(cookies, 'get').and.returnValue([]);
+            spyOn(cookies, 'getObject').and.returnValue([]);
         });
 
         it('is not set in our browser', function () {
@@ -84,7 +84,7 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.getObject).not.toHaveBeenCalled();
             expect(cookies.remove).not.toHaveBeenCalled();
             expect(cookies.putObject).not.toHaveBeenCalled();
 
@@ -101,7 +101,7 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.getObject).not.toHaveBeenCalled();
             expect(cookies.remove).not.toHaveBeenCalled();
             expect(cookies.putObject).not.toHaveBeenCalled();
 
@@ -113,7 +113,7 @@ describe('desktopNotificationService', function () {
     describe('user can toggle desktop notifications', function () {
 
         beforeEach(function () {
-            spyOn(cookies, 'get').and.returnValue([]);
+            spyOn(cookies, 'getObject').and.returnValue([]);
         });
 
         it('when user disabled desktop notifications', function () {
@@ -127,7 +127,7 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.getObject).not.toHaveBeenCalled();
             expect(cookies.remove).not.toHaveBeenCalled();
             expect(cookies.putObject).not.toHaveBeenCalled();
 
@@ -141,7 +141,7 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.getObject).not.toHaveBeenCalled();
             expect(cookies.remove).not.toHaveBeenCalled();
             expect(cookies.putObject).not.toHaveBeenCalled();
 
@@ -155,7 +155,7 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.getObject).not.toHaveBeenCalled();
             expect(cookies.remove).not.toHaveBeenCalled();
             expect(cookies.putObject).not.toHaveBeenCalled();
 
@@ -167,7 +167,7 @@ describe('desktopNotificationService', function () {
     describe('check notification list behaviour', function () {
 
         beforeEach(function () {
-            spyOn(cookies, 'get').and.returnValue([]);
+            spyOn(cookies, 'getObject').and.returnValue([]);
         });
 
         it('when that list is not set', function () {
@@ -175,7 +175,7 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.getObject).not.toHaveBeenCalled();
             expect(cookies.remove).not.toHaveBeenCalled();
             expect(cookies.putObject).not.toHaveBeenCalled();
 
@@ -205,7 +205,7 @@ describe('desktopNotificationService', function () {
                 }
             );
 
-            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.getObject.calls.count()).toEqual(2);
             expect(cookies.remove.calls.count()).toEqual(1);
             expect(cookies.putObject.calls.count()).toEqual(1);
             expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
@@ -222,7 +222,7 @@ describe('desktopNotificationService', function () {
         it('pass 2 new notifications and none was shown before', function () {
             var knownNotifications = [5];
 
-            spyOn(cookies, 'get').and.returnValue(knownNotifications);
+            spyOn(cookies, 'getObject').and.returnValue(knownNotifications);
 
             service.sendNotificationsIfNew(newNotifications);
 
@@ -246,7 +246,7 @@ describe('desktopNotificationService', function () {
                 }
             );
 
-            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.getObject.calls.count()).toEqual(2);
             expect(cookies.remove.calls.count()).toEqual(1);
             expect(cookies.putObject.calls.count()).toEqual(1);
             expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
@@ -258,7 +258,7 @@ describe('desktopNotificationService', function () {
             var knownNotifications = [5];
             knownNotifications.push(newNotifications[0].id);
 
-            spyOn(cookies, 'get').and.returnValue(knownNotifications);
+            spyOn(cookies, 'getObject').and.returnValue(knownNotifications);
 
             service.sendNotificationsIfNew(newNotifications);
 
@@ -273,7 +273,7 @@ describe('desktopNotificationService', function () {
                 }
             );
 
-            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.getObject.calls.count()).toEqual(2);
             expect(cookies.remove.calls.count()).toEqual(1);
             expect(cookies.putObject.calls.count()).toEqual(1);
             expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
@@ -286,13 +286,13 @@ describe('desktopNotificationService', function () {
             knownNotifications.push(newNotifications[0].id);
             knownNotifications.push(newNotifications[1].id);
 
-            spyOn(cookies, 'get').and.returnValue(knownNotifications);
+            spyOn(cookies, 'getObject').and.returnValue(knownNotifications);
 
             service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(0);
 
-            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.getObject.calls.count()).toEqual(2);
             expect(cookies.remove.calls.count()).toEqual(1);
             expect(cookies.putObject.calls.count()).toEqual(1);
             expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
