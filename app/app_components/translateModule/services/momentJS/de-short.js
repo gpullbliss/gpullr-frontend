@@ -52,7 +52,7 @@
             past : 'vor %s',
             s : 'Sek',
             m : processRelativeTime,
-            mm : '%d M',
+            mm : '%d m',
             h : processRelativeTime,
             hh : '%d h',
             d : processRelativeTime,
