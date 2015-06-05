@@ -1,0 +1,37 @@
+<!-- modal dialog for assigning pull requests while elder pull requests exist-->
+<div class="modalCheck modal fade" id="confirm-elder-modal">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <div class="mWrapper">
+            <div class="mHeader">
+                <a type="button" class="closeBtn" data-dismiss="modal"></a>
+                <h4>
+                    {{'dashboard.pullRequest.assign.checkModal.headline' | translate}}
+                </h4>
+            </div>
+            <div class="listView col-xs-12">
+                <section data-ng-repeat="elderPullRequest in elderPullRequests | orderBy:'createdAt'"
+                         class="{{getColorClassDependingOnAge(elderPullRequest.createdAt)}}">
+                    <div class="col-xs-10">
+                        <strong class="block ellipsis">#{{elderPullRequest.number}} {{elderPullRequest.title}}</strong>
+                        <strong class="block">from {{elderPullRequest.createdAt | date: 'dd.MM.yyyy HH:mm:ss'}}</strong>
+                    </div>
+
+                    <div class="col-xs-2">
+                        <a data-dismiss="modal"
+                           data-ng-click="confirmAssignment(elderPullRequest)"
+                           class="assignMe"
+                           title="{{dashboard.pullRequest.assign.toMe | translate}}">
+                        </a>
+                    </div>
+                </section>
+            </div>
+            <div class="mFooter">
+                <button class="button butCancel floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}
+                </button>
+                <button class="button floatR" data-dismiss="modal" data-ng-click="confirmAssignment(selectedPullRequest)">
+                    {{'dashboard.pullRequest.assign.checkModal.btn.assignSelected' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

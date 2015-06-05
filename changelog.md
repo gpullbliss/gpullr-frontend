@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] 133 modals closing on refresh
  - [bug] fixed german time-ago abbreviation
  - [bug] notification icon was not displayed
  - [bug] fixed navigation item highlighting after reload
@@ -99,4 +100,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu Jun 04 16:23:18 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri Jun 05 14:36:27 CEST 2015

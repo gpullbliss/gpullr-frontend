@@ -1,0 +1,22 @@
+<!-- modal dialog for already assigned pull requests-->
+<div class="modal fade" id="override-assignee-modal">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <div class="mWrapper">
+            <div class="mHeader">
+                <a type="button" class="closeBtn" data-dismiss="modal"></a>
+                <h4>
+                    {{'dashboard.pullRequest.assign.modal.headline' | translate}}
+                </h4>
+            </div>
+            <p class="mBody">{{'dashboard.pullRequest.assign.modal.text' | translate}}</p>
+
+            <div class="mFooter">
+                <button class="button butCancel floatL" data-dismiss="modal">{{'global.btn.cancel' | translate}}
+                </button>
+                <button class="button floatR" data-dismiss="modal" data-ng-click="confirmAssignment(selectedPullRequest)">
+                    {{'global.btn.confirm' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

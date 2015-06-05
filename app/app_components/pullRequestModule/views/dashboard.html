@@ -4,52 +4,22 @@
          data-ng-controller="systemNotificationsCtrl">
         <div class="alert"
              role="alert"
-             data-ng-repeat="msg in messages"> {{'dashboard.systemNotification.apiRateLimitReached' | translate: {resetTime: msg.validUntilParsed } }}</div>
-    </div>
-
-    <div class="contentWrapper">
-        <div class="row overflowH marginBottom">
-            <div class="col-xs-10">
-                <h3>{{'dashboard.headline.openRequest' | translate}}</h3>
-            </div>
-            <div class="col-xs-2">
-                <a title="{{'dashboard.filter.byTime' | translate}}"
-                   data-ng-click="orderUnassignedPrList(user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
-                   class="filterTimeOrder icon{{user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
-                   href="#"></a>
-            </div>
-        </div>
-
-        <div class="listView clear">
-            <section class="overflowH"
-                     data-ng-repeat="pr in pullRequests | filter: {assignee: 'null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'"
-                     data-dvb-pull-request
-                     data-pull-request="pr"
-                     data-age-property="'createdAt'"
-                     data-logged-in-user="user">
-            </section>
+             data-ng-repeat="msg in messages">{{'dashboard.systemNotification.apiRateLimitReached' | translate:
+                                              {resetTime: msg.validUntilParsed } }}
         </div>
     </div>
 
-    <div class="contentWrapper dMarginTop">
-        <div class="row overflowH marginBottom">
-            <div class="col-xs-10">
-                <h3>{{'dashboard.headline.assignedRequest' | translate}}</h3>
-            </div>
-            <div class="col-xs-2">
-                <a title="filtered by time {{user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'oldest' : 'newest'  }}"
-                   data-ng-click="orderAssignedPrList(user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
-                   class="filterTimeOrder icon{{user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
-                   href="#"></a>
-            </div>
-        </div>
-        <div class="listView clear">
-            <section class="overflowH"
-                     data-ng-repeat="pr in pullRequests | filter: {assignee: '!null'} | orderBy: 'assignedAt': user.userSettingsDto.assignedPullRequestsOrdering === 'DESC'"
-                     data-dvb-pull-request
-                     data-pull-request="pr"
-                     data-age-property="'assignedAt'"
-                     data-logged-in-user="user"></section>
-        </div>
+    <div data-ng-controller="pullRequestCtrl">
+        <!-- BEGIN include list of pull requests -->
+        <div data-ng-include
+             data-src="'app_components/pullRequestModule/views/dashboard/pullRequestList.html'"></div>
+        <!-- END include list of pull requests -->
+
+        <!-- BEGIN include modals -->
+        <div data-ng-include
+             data-src="'app_components/pullRequestModule/views/dashboard/modal/elderPullRequestModal.html'"></div>
+        <div data-ng-include
+             data-src="'app_components/pullRequestModule/views/dashboard/modal/overrideAssignmentModal.html'"></div>
+        <!-- END include modals -->
     </div>
 </div>
