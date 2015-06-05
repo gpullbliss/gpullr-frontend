@@ -56,10 +56,10 @@
     <a data-ng-if="pullRequest.elders.length > 0"
        data-target="#modalCheck{{pullRequest.id}}"
        data-ng-click="assignmentAction(pullRequest)"
-       data-toggle="{{elderCheckModal}}" class="assignMe {{assignmentStyle}}"
+       class="assignMe"
        title="{{assignTitle | translate}}">
         <img class="avatarWrapper"
-             data-ng-if="pullRequest.assignee"
+             data-ng-if="pullRequest.assignee133 modals closing on refresh"
              data-ng-src="{{pullRequest.assignee.avatarUrl}}">
     </a>
 

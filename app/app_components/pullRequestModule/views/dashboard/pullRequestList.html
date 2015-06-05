@@ -39,7 +39,7 @@
     <div class="listView clear">
         <div data-ng-repeat="pullRequest in pullRequests | filter: {assignee: '!null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'">
             <section data-ng-include
-                     data-ng-class="getColorClassDependingOnAge(pullRequest.createdAt)"
+                     data-ng-class="getColorClassDependingOnAge(pullRequest.assignedAt)"
                      data-src="'app_components/pullRequestModule/views/dashboard/pullRequest.html'">
             </section>
         </div>
