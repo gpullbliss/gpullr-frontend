@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] 133 modals closing on refresh
  - [refactor] PRT 109 - aligned README documentation to current state of the application
  - [bug] 134 - fixed broken link
  - [bug] fix navi bubble for mobile screen
@@ -95,4 +96,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu Jun 04 13:09:47 CEST 2015
+-- Last change by: Daniel Walldorf <daniel.walldorf@devbliss.com> Fri Jun 05 12:47:28 CEST 2015
