@@ -1,7 +1,12 @@
 'use strict';
 angular.module('headerModule')
-    .controller('headerCtrl', ['$scope', '$rootScope', '$interval', 'userService', 'notificationService', 'notificationDropdownItemService', 'desktopNotificationService', 'STATE_STATS_TODAY', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
-        function ($scope, $rootScope, $interval, userService, notificationService, notificationDropdownItemService, desktopNotificationService, STATE_STATS_TODAY, STATE_DASHBOARD, STATE_USER_SETTINGS) {
+    .controller('headerCtrl',
+    ['$scope', '$rootScope', '$interval', '$state',
+        'userService', 'notificationService', 'notificationDropdownItemService', 'desktopNotificationService',
+        'STATE_STATS_TODAY', 'STATE_DASHBOARD', 'STATE_USER_SETTINGS',
+        function ($scope, $rootScope, $interval, $state,
+                  userService, notificationService, notificationDropdownItemService, desktopNotificationService,
+                  STATE_STATS_TODAY, STATE_DASHBOARD, STATE_USER_SETTINGS) {
 
             function init() {
                 userService.getCurrentUser();
@@ -13,6 +18,8 @@ angular.module('headerModule')
                 $interval(function () {
                     updateNotifications();
                 }, 2e3);
+
+                $scope.$state = $state;
             }
 
             function setupNavBar() {
@@ -78,6 +85,17 @@ angular.module('headerModule')
                         break;
                     }
                 }
+            };
+
+            $scope.isStateActive = function (state) {
+                var separatorIndex = state.indexOf('.');
+
+                var generalizedState = state;
+                if (separatorIndex > 0) {
+                    generalizedState = state.substring(0, state.indexOf('.'));
+                }
+
+                return $state.includes(generalizedState);
             };
 
             init();

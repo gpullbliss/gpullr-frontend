@@ -6,7 +6,7 @@
     <nav class="floatL">
         <ul class="navi">
             <li class="{{item.state}} linkItem"
-                data-ui-sref-active="active"
+                data-ng-class="{active:isStateActive(item.state)}"
                 data-ng-repeat="item in navBar"
                 data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
@@ -24,7 +24,7 @@
                    class="overlayBtn"
                    data-toggle="dropdown"
                    title="{{notifications.length}} {{'navi.notifications.title' | translate}}">
-                    <span class="iconFont notificationsIcon visible-xs"></span>
+                    <span class="iconFont notifications-icon visible-xs"></span>
                     <span class="hidden-xs">{{'navi.linkNotifications' | translate}}</span>
                     <span class="bubble">{{notifications.length}}</span>
                 </a>
