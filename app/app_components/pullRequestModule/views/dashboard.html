@@ -4,13 +4,22 @@
          data-ng-controller="systemNotificationsCtrl">
         <div class="alert"
              role="alert"
-             data-ng-repeat="msg in messages"> {{'dashboard.systemNotification.apiRateLimitReached' | translate:
-                                               {resetTime: msg.validUntilParsed } }}
+             data-ng-repeat="msg in messages">{{'dashboard.systemNotification.apiRateLimitReached' | translate:
+                                              {resetTime: msg.validUntilParsed } }}
         </div>
     </div>
 
     <div data-ng-controller="pullRequestCtrl">
+        <!-- BEGIN include list of pull requests -->
         <div data-ng-include
              data-src="'app_components/pullRequestModule/views/dashboard/pullRequestList.html'"></div>
+        <!-- END include list of pull requests -->
+
+        <!-- BEGIN include modals -->
+        <div data-ng-include
+             data-src="'app_components/pullRequestModule/views/dashboard/modal/elderPullRequestModal.html'"></div>
+        <div data-ng-include
+             data-src="'app_components/pullRequestModule/views/dashboard/modal/overrideAssignmentModal.html'"></div>
+        <!-- END include modals -->
     </div>
 </div>
