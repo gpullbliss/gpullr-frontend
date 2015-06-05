@@ -2,7 +2,7 @@
 
 describe('desktopNotificationService', function () {
     var filter,
-        cookieStore,
+        cookies,
         rootScope,
         notificationDropdownItemService,
         service;
@@ -16,10 +16,10 @@ describe('desktopNotificationService', function () {
     beforeEach(function () {
         module('headerModule');
 
-        inject(function (desktopNotificationService, $filter, $cookieStore, $rootScope, _notificationDropdownItemService_) {
+        inject(function (desktopNotificationService, $filter, $cookies, $rootScope, _notificationDropdownItemService_) {
             service = desktopNotificationService;
             filter = $filter;
-            cookieStore = $cookieStore;
+            cookies = $cookies;
             rootScope = $rootScope;
             notificationDropdownItemService = _notificationDropdownItemService_;
         });
@@ -30,8 +30,8 @@ describe('desktopNotificationService', function () {
             }
         };
 
-        spyOn(cookieStore, 'put');
-        spyOn(cookieStore, 'remove');
+        spyOn(cookies, 'putObject');
+        spyOn(cookies, 'remove');
         spyOn(notificationDropdownItemService, 'convert').and.returnValue(convertedNotificationText);
 
         fakeNotification = (function () {
@@ -75,7 +75,7 @@ describe('desktopNotificationService', function () {
     describe('when the Notification web API object', function () {
 
         beforeEach(function () {
-            spyOn(cookieStore, 'get').and.returnValue([]);
+            spyOn(cookies, 'get').and.returnValue([]);
         });
 
         it('is not set in our browser', function () {
@@ -84,9 +84,9 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
+            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.remove).not.toHaveBeenCalled();
+            expect(cookies.putObject).not.toHaveBeenCalled();
 
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
@@ -101,9 +101,9 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
+            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.remove).not.toHaveBeenCalled();
+            expect(cookies.putObject).not.toHaveBeenCalled();
 
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
@@ -113,7 +113,7 @@ describe('desktopNotificationService', function () {
     describe('user can toggle desktop notifications', function () {
 
         beforeEach(function () {
-            spyOn(cookieStore, 'get').and.returnValue([]);
+            spyOn(cookies, 'get').and.returnValue([]);
         });
 
         it('when user disabled desktop notifications', function () {
@@ -127,9 +127,9 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
+            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.remove).not.toHaveBeenCalled();
+            expect(cookies.putObject).not.toHaveBeenCalled();
 
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
@@ -141,9 +141,9 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
+            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.remove).not.toHaveBeenCalled();
+            expect(cookies.putObject).not.toHaveBeenCalled();
 
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
@@ -155,9 +155,9 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
+            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.remove).not.toHaveBeenCalled();
+            expect(cookies.putObject).not.toHaveBeenCalled();
 
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
@@ -167,7 +167,7 @@ describe('desktopNotificationService', function () {
     describe('check notification list behaviour', function () {
 
         beforeEach(function () {
-            spyOn(cookieStore, 'get').and.returnValue([]);
+            spyOn(cookies, 'get').and.returnValue([]);
         });
 
         it('when that list is not set', function () {
@@ -175,9 +175,9 @@ describe('desktopNotificationService', function () {
 
             expect(notificationSpy).not.toHaveBeenCalled();
 
-            expect(cookieStore.get).not.toHaveBeenCalled();
-            expect(cookieStore.remove).not.toHaveBeenCalled();
-            expect(cookieStore.put).not.toHaveBeenCalled();
+            expect(cookies.get).not.toHaveBeenCalled();
+            expect(cookies.remove).not.toHaveBeenCalled();
+            expect(cookies.putObject).not.toHaveBeenCalled();
 
             expect(notificationDropdownItemService.convert).not.toHaveBeenCalled();
         });
@@ -205,10 +205,10 @@ describe('desktopNotificationService', function () {
                 }
             );
 
-            expect(cookieStore.get.calls.count()).toEqual(2);
-            expect(cookieStore.remove.calls.count()).toEqual(1);
-            expect(cookieStore.put.calls.count()).toEqual(1);
-            expect(cookieStore.put).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
+            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.remove.calls.count()).toEqual(1);
+            expect(cookies.putObject.calls.count()).toEqual(1);
+            expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
 
             expect(notificationDropdownItemService.convert.calls.count()).toEqual(2);
             expect(notificationDropdownItemService.convert).toHaveBeenCalledWith(newNotifications[0]);
@@ -222,7 +222,7 @@ describe('desktopNotificationService', function () {
         it('pass 2 new notifications and none was shown before', function () {
             var knownNotifications = [5];
 
-            spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
+            spyOn(cookies, 'get').and.returnValue(knownNotifications);
 
             service.sendNotificationsIfNew(newNotifications);
 
@@ -246,10 +246,10 @@ describe('desktopNotificationService', function () {
                 }
             );
 
-            expect(cookieStore.get.calls.count()).toEqual(2);
-            expect(cookieStore.remove.calls.count()).toEqual(1);
-            expect(cookieStore.put.calls.count()).toEqual(1);
-            expect(cookieStore.put).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
+            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.remove.calls.count()).toEqual(1);
+            expect(cookies.putObject.calls.count()).toEqual(1);
+            expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
 
             expect(notificationDropdownItemService.convert.calls.count()).toEqual(2);
         });
@@ -258,7 +258,7 @@ describe('desktopNotificationService', function () {
             var knownNotifications = [5];
             knownNotifications.push(newNotifications[0].id);
 
-            spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
+            spyOn(cookies, 'get').and.returnValue(knownNotifications);
 
             service.sendNotificationsIfNew(newNotifications);
 
@@ -273,10 +273,10 @@ describe('desktopNotificationService', function () {
                 }
             );
 
-            expect(cookieStore.get.calls.count()).toEqual(2);
-            expect(cookieStore.remove.calls.count()).toEqual(1);
-            expect(cookieStore.put.calls.count()).toEqual(1);
-            expect(cookieStore.put).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
+            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.remove.calls.count()).toEqual(1);
+            expect(cookies.putObject.calls.count()).toEqual(1);
+            expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
 
             expect(notificationDropdownItemService.convert.calls.count()).toEqual(1);
         });
@@ -286,16 +286,16 @@ describe('desktopNotificationService', function () {
             knownNotifications.push(newNotifications[0].id);
             knownNotifications.push(newNotifications[1].id);
 
-            spyOn(cookieStore, 'get').and.returnValue(knownNotifications);
+            spyOn(cookies, 'get').and.returnValue(knownNotifications);
 
             service.sendNotificationsIfNew(newNotifications);
 
             expect(notificationSpy.calls.count()).toEqual(0);
 
-            expect(cookieStore.get.calls.count()).toEqual(2);
-            expect(cookieStore.remove.calls.count()).toEqual(1);
-            expect(cookieStore.put.calls.count()).toEqual(1);
-            expect(cookieStore.put).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
+            expect(cookies.get.calls.count()).toEqual(2);
+            expect(cookies.remove.calls.count()).toEqual(1);
+            expect(cookies.putObject.calls.count()).toEqual(1);
+            expect(cookies.putObject).toHaveBeenCalledWith('notifications', expectedNotificationListToSave);
 
             expect(notificationDropdownItemService.convert.calls.count()).toEqual(0);
         });

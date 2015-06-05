@@ -1,24 +1,24 @@
 'use strict';
 angular.module('headerModule')
     .factory('desktopNotificationService',
-    ['$filter', '$cookieStore', '$rootScope', 'notificationDropdownItemService',
-        function ($filter, $cookieStore, $rootScope, notificationDropdownItemService) {
+    ['$filter', '$cookies', '$rootScope', 'notificationDropdownItemService',
+        function ($filter, $cookies, $rootScope, notificationDropdownItemService) {
 
             var COOKIE_KEY = 'notifications';
 
             function updateCookie(notificationList) {
-                $cookieStore.remove(COOKIE_KEY);
+                $cookies.remove(COOKIE_KEY);
 
                 var knownNotifications = [];
                 notificationList.forEach(function (notification) {
                     knownNotifications.push(notification.id);
                 });
 
-                $cookieStore.put(COOKIE_KEY, knownNotifications);
+                $cookies.putObject(COOKIE_KEY, knownNotifications);
             }
 
             function notificationIsKnown(notification) {
-                var knownNotifications = $cookieStore.get(COOKIE_KEY);
+                var knownNotifications = $cookies.get(COOKIE_KEY);
 
                 if (typeof knownNotifications === 'undefined') {
                     return false;
