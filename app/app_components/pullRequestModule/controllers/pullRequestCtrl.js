@@ -25,6 +25,22 @@ angular.module('pullRequestModule')
                 }
             }
 
+            function openModal(elem) {
+                try {
+                    elem.modal('show');
+                } catch (e) {
+                    // nothing to do - only happens when running tests
+                }
+            }
+
+            function closeModal(elem) {
+                try {
+                    elem.modal('hide');
+                } catch (e) {
+                    // nothing to do - only happens when running tests
+                }
+            }
+
             $scope.getAssignmentStyle = function (pullRequest) {
                 if (!pullRequest.assignee && pullRequest.elders.length === 0) {
                     return '';
@@ -47,11 +63,16 @@ angular.module('pullRequestModule')
                     case ACTION_CONFIRM_ELDER:
                         $scope.selectedPullRequest = selectedPr;
                         $scope.elderPullRequests = selectedPr.elders;
-                        angular.element('#confirm-elder-modal').modal('show');
+
+                        // display modal to confirm elder pull requests
+                        openModal(angular.element('#confirm-elder-modal'));
                         break;
                     case ACTION_CONFIRM_OVERRIDE_ASSIGNEE:
                         $scope.selectedPullRequest = selectedPr;
-                        angular.element('#override-assignee-modal').modal('show');
+
+                        // display modal to confirm override
+                        openModal(angular.element('#override-assignee-modal'));
+
                         break;
                     case ACTION_UNASSIGN_ME:
                         pullRequestService.unassignPullRequest(selectedPr.id);
@@ -61,7 +82,7 @@ angular.module('pullRequestModule')
 
             $scope.confirmAssignment = function (selectedPr) {
                 // for whatever reason, this modal (and only this) won't close otherwise...
-                angular.element('#confirm-elder-modal').modal('hide');
+                closeModal(angular.element('#confirm-elder-modal'));
 
                 // delete temporary vars
                 $scope.elderPullRequests = null;
