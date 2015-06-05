@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] ignore elder pullrequests with me as author
  - [bug] fixed displaying status of notification settings
  - [bug] 133 modals closing on refresh
  - [bug] fixed german time-ago abbreviation
@@ -101,4 +102,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri Jun 05 15:10:56 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri Jun 05 15:47:20 CEST 2015
