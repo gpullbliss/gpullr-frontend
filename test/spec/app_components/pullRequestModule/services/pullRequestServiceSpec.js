@@ -8,9 +8,9 @@ describe('pullRequestService', function () {
     beforeEach(function () {
         module('pullRequestModule');
 
-        inject(function (PullRequestService, _$httpBackend_) {
+        inject(function (pullRequestService, _$httpBackend_) {
             $httpBackend = _$httpBackend_;
-            service = PullRequestService;
+            service = pullRequestService;
         });
     });
 
