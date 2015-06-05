@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] notification icon was not displayed
  - [bug] fixed navigation item highlighting after reload
  - [bug] fixed missing url in stats area
  - [refactor] PRT 109 - aligned README documentation to current state of the application
