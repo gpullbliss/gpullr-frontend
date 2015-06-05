@@ -21,6 +21,10 @@ angular.module('pullRequestModule')
             return (pullRequest.assignee !== null);
         }
 
+        function iAmAuthor(pullRequest) {
+            return pullRequest.author.id === $rootScope.user.id;
+        }
+
         function enhanceEachWithListOfElderPullRequests(pullRequest, allPullRequests) {
             if (isAssigned(pullRequest)) {
                 return;
@@ -32,7 +36,7 @@ angular.module('pullRequestModule')
             for (var i = 0; i < length; i++) {
                 var otherPullRequest = allPullRequests[i];
 
-                if (isAssigned(otherPullRequest)) {
+                if (isAssigned(otherPullRequest) || iAmAuthor(otherPullRequest)) {
                     continue;
                 }
 
