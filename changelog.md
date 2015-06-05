@@ -1,6 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [feature] update bower dependencies (including AngularJS 1.4.0)
  - [bug] notification icon was not displayed
  - [bug] fixed navigation item highlighting after reload
  - [bug] fixed missing url in stats area
@@ -98,4 +99,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu Jun 04 16:23:18 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri Jun 05 13:13:08 CEST 2015
