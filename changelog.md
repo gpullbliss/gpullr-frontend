@@ -1,7 +1,7 @@
 
 ### Version 0.1.0-SNAPSHOT
 
- - [bug] fixed fixed german time-ago abbreviation
+ - [bug] fixed german time-ago abbreviation
  - [bug] notification icon was not displayed
  - [bug] fixed navigation item highlighting after reload
  - [bug] fixed missing url in stats area
