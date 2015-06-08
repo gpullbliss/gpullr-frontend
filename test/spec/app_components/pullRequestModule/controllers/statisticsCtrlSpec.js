@@ -3,15 +3,14 @@
 describe('statisticsCtrl', function () {
     var controller,
         $scope,
-        tabs,
-        $state;
+        tabs;
 
     beforeEach(function () {
         module('dashboardModule');
+        module('angularMoment');
 
-        inject(function ($controller, _$rootScope_, _$state_) {
+        inject(function ($controller, _$rootScope_) {
             $scope = _$rootScope_.$new();
-            $state = _$state_;
 
             tabs = [
                 {state: 'stats.today', title: 'ranking.tabs.day'},
@@ -20,11 +19,8 @@ describe('statisticsCtrl', function () {
                 {state: 'stats.all_time', title: 'ranking.tabs.allTime'}
             ];
 
-            spyOn($state, 'go');
-
             controller = $controller('statisticsCtrl', {
-                $scope: $scope,
-                $state: $state
+                $scope: $scope
             });
         });
     });
@@ -38,11 +34,6 @@ describe('statisticsCtrl', function () {
             for (var i = 0; i < tabsCount; i++) {
                 expect($scope.tabs[i]).toEqual(tabs[i]);
             }
-        });
-
-        it('check for $state.go() to today\'s ranking screen by default', function () {
-            $scope.$digest();
-            expect($state.go).toHaveBeenCalledWith('stats.today');
         });
     });
 });

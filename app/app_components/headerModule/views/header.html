@@ -1,17 +1,16 @@
-<header id="header"
-        class="col-xs-12">
+<header id="header" class="col-xs-12">
     <a class="logo"
        alt="{{'header.logoAlt' | translate}}"
        data-ui-sref="{{navBar[0].state}}"></a>
 
-    <nav class="pull-left">
+    <nav class="floatL">
         <ul class="navi">
             <li class="{{item.state}} linkItem"
-                data-ui-sref-active="active"
+                data-ng-class="{active:isStateActive(item.state)}"
                 data-ng-repeat="item in navBar"
                 data-ng-click="navigate(item)">
                 <a data-ui-sref="{{item.state}}">
-                    <span class="iconFont {{item.state}}Icon visible-xs"></span>
+                    <span class="iconFont headernav-{{item.class}}-icon visible-xs"></span>
                     <span class="hidden-xs">{{item.title | translate}}</span>
                     <span data-ng-if="item.bubble && requestCount"
                           class="bubble">{{requestCount}}</span>
@@ -25,7 +24,7 @@
                    class="overlayBtn"
                    data-toggle="dropdown"
                    title="{{notifications.length}} {{'navi.notifications.title' | translate}}">
-                    <span class="iconFont notificationsIcon visible-xs"></span>
+                    <span class="iconFont notifications-icon visible-xs"></span>
                     <span class="hidden-xs">{{'navi.linkNotifications' | translate}}</span>
                     <span class="bubble">{{notifications.length}}</span>
                 </a>
@@ -36,7 +35,7 @@
                         data-notification="item">
                         <p class="col-xs-11">{{toText(item)}}</p>
                         <a type="button"
-                           class="closeBtn col-xs-1"
+                           class="closeBtn"
                            data-dismiss="modal"
                            data-ng-click="markNotificationAsSeen($event, item.id)"></a>
                     </li>
@@ -55,7 +54,7 @@
 
     <a href="{{user.profileUrl}}"
        target="_blank"
-       class="pull-right"
+       class="floatR"
        data-ng-if="user">
         <span class="username hidden-xs">{{getName(user)}}</span>
         <img class="avatarWrapper"

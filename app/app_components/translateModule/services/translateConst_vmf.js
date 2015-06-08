@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstVmf', {
         global: {
+            bcp47: 'de-VMF',
             btn: {
                 save: 'schbeichern',
                 cancel: 'obbrechn',
@@ -41,8 +42,7 @@ angular.module('translateModule')
                 assignedRequest: 'zugwiesne Bullrequesds'
             },
             filter: {
-                byOldest: 'aaordna nooch ältester zuerschd',
-                byNewest: 'aaordna nooch jüngster zuerschd'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {
@@ -56,7 +56,7 @@ angular.module('translateModule')
                         headline: 'Dear Sir or Madam may I ask kindly for your attention to the older pull requests in your list. The author of the oldest pull request will be very pleased if you choose that pull request for review first.',
                         btn: {
                             assignSelected: 'Assign the one I selected',
-                            assignOldest: 'Assign oldest pull request',
+                            assignOldest: 'Assign oldest pull request'
                         }
                     }
                 },
@@ -97,6 +97,7 @@ angular.module('translateModule')
                     none: 'alla wechhaun'
                 },
                 search: 'suchn'
-            }
+            },
+            desktopNotification: 'Desgdobb Benochrichtigunga'
         }
     });

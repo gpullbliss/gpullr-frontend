@@ -1,6 +1,6 @@
 'use strict';
 angular.module('pullRequestModule')
-    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$stateParams', '$timeout', '$window', 'PullRequestService',
+    .controller('wallboardCtrl', ['$scope', '$rootScope', '$interval', '$stateParams', '$timeout', '$window', 'pullRequestService',
         function ($scope, $rootScope, $interval, $stateParams, $timeout, $window, pullRequestService) {
             var updatePullRequestsInterval,
                 getPullRequests,

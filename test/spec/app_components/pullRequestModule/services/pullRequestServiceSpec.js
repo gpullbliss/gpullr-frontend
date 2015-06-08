@@ -3,15 +3,22 @@
 describe('pullRequestService', function () {
     var service,
         $httpBackend,
+        $rootScope,
         response;
 
     beforeEach(function () {
         module('pullRequestModule');
 
-        inject(function (PullRequestService, _$httpBackend_) {
+        inject(function (pullRequestService, _$httpBackend_, _$rootScope_) {
             $httpBackend = _$httpBackend_;
-            service = PullRequestService;
+            $rootScope = _$rootScope_;
+            service = pullRequestService;
         });
+
+        $rootScope.user = {
+            id: 123456
+        };
+
     });
 
     afterEach(function () {
@@ -28,6 +35,7 @@ describe('pullRequestService', function () {
                     url: 'https://github.com/devbliss/manuals/pull/44',
                     repository: 'manuals',
                     author: {
+                        id: 3127128,
                         username: 'okarahan',
                         avatarUrl: 'https://avatars2.githubusercontent.com/u/3127128?v=3'
                     },
@@ -44,6 +52,7 @@ describe('pullRequestService', function () {
                     url: 'https://github.com/devbliss/manuals/pull/45',
                     repository: 'manuals',
                     author: {
+                        id: 496860,
                         username: 'bastien03',
                         avatarUrl: 'https://avatars3.githubusercontent.com/u/496860?v=3'
                     },
@@ -60,6 +69,7 @@ describe('pullRequestService', function () {
                     url: 'https://github.com/devbliss/ecosystem-course-aggregation/pull/49',
                     repository: 'ecosystem-course-aggregation',
                     author: {
+                        id: 1777303,
                         username: 'shafel',
                         avatarUrl: 'https://avatars3.githubusercontent.com/u/1777303?v=3'
                     },
@@ -115,6 +125,27 @@ describe('pullRequestService', function () {
                 expect(result).toEqual(expectedResult);
             });
 
+            it('returns correct data without elders', function () {
+                var result = null;
+                $rootScope.user = {
+                    id: item1.author.id
+                };
+
+                service.getPullRequests().then(function (pullRequests) {
+                    result = pullRequests;
+                });
+
+                item1.elders = [];
+                item2.elders = [];
+
+                var expectedResult = [
+                    item1, item2, item3
+                ];
+
+                $httpBackend.flush();
+                expect(result).toEqual(expectedResult);
+            });
+
             it('forwards error', function () {
                 response.respond(errorPayload.status, errorPayload.data);
 
@@ -140,6 +171,7 @@ describe('pullRequestService', function () {
                             url: 'https://github.com/devbliss/docbliss/pull/25',
                             repository: 'docbliss',
                             author: {
+                                id: 7847193,
                                 username: 'doernbrackandre',
                                 avatarUrl: 'https://avatars3.githubusercontent.com/u/7847193?v=3'
                             },
@@ -282,16 +314,17 @@ describe('pullRequestService', function () {
 
     describe('abbreviateLinesService', function () {
 
-        it('has more than 1000 lines', function(){
+        it('has more than 1000 lines', function () {
             var pull = {linesAdded: 1111, linesRemoved: 1599};
             expect(service.getAbbreviateLines(pull.linesAdded)).toEqual('1k');
             expect(service.getAbbreviateLines(pull.linesRemoved)).toEqual('2k');
         });
 
-        it('has less than 1000 lines', function(){
+        it('has less than 1000 lines', function () {
             var pull = {linesAdded: 111, linesRemoved: 222};
             expect(service.getAbbreviateLines(pull.linesAdded)).toEqual(111);
             expect(service.getAbbreviateLines(pull.linesRemoved)).toEqual(222);
         });
     });
-});
+})
+;

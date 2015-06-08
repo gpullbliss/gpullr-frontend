@@ -7,18 +7,23 @@ describe('headerCtrl', function () {
         user,
         rootScope,
         scope,
+        state,
         notifications,
         notificationService,
+        desktopNotificationService,
         q,
         httpBackend;
 
     beforeEach(function () {
         module('headerModule');
+        module('angularMoment');
 
         inject(function (_$controller_,
                          _$rootScope_,
+                         _$state_,
                          _userService_,
                          _notificationService_,
+                         _desktopNotificationService_,
                          _$q_,
                          _$httpBackend_) {
 
@@ -26,7 +31,9 @@ describe('headerCtrl', function () {
             userService = _userService_;
             rootScope = _$rootScope_;
             scope = rootScope.$new();
+            state = _$state_;
             notificationService = _notificationService_;
+            desktopNotificationService = _desktopNotificationService_;
             q = _$q_;
             httpBackend = _$httpBackend_;
 
@@ -38,6 +45,8 @@ describe('headerCtrl', function () {
 
             spyOn(userService, 'getCurrentUser');
 
+            spyOn(state, 'includes');
+
             spyOn(notificationService, 'getNotifications').and.callFake(function () {
                 var deferred = q.defer();
                 deferred.resolve(notifications);
@@ -48,6 +57,8 @@ describe('headerCtrl', function () {
 
             spyOn(notificationService, 'markNotificationRead');
 
+            spyOn(desktopNotificationService, 'sendNotificationsIfNew');
+
             // upon injecting the NotificationService the service immediately calles the backend
             // getNotifications endpoint.
             httpBackend.expectGET('/api/notifications').respond(notifications);
@@ -56,8 +67,10 @@ describe('headerCtrl', function () {
             controller = $controller('headerCtrl', {
                 $scope: scope,
                 $rootScope: rootScope,
+                $state: state,
                 userService: userService,
                 notificationService: notificationService,
+                desktopNotificationService: desktopNotificationService,
                 STATE_STATS: 'stats',
                 STATE_DASHBOARD: 'dashboard',
                 STATE_USER_SETTINGS: 'repoFilter'
@@ -78,6 +91,7 @@ describe('headerCtrl', function () {
             scope.$digest();
             expect(notificationService.getNotifications).toHaveBeenCalled();
             expect(scope.notifications.length).toEqual(3);
+            expect(desktopNotificationService.sendNotificationsIfNew).toHaveBeenCalledWith(notifications.userNotifications);
         });
 
         it('remove a notification from notification list upon clicking the X button', function () {
@@ -104,6 +118,26 @@ describe('headerCtrl', function () {
 
             // originally list is three items long
             expect(scope.notifications.length).toEqual(0);
+        });
+
+    });
+
+    describe('navigation item active state', function () {
+
+        it('top navigation item is active', function () {
+            scope.$digest();
+
+            scope.isStateActive('dashboard');
+            expect(state.includes).toHaveBeenCalledWith('dashboard');
+
+            scope.isStateActive('stats');
+            expect(state.includes).toHaveBeenCalledWith('stats');
+
+            scope.isStateActive('stats.today');
+            expect(state.includes).toHaveBeenCalledWith('stats');
+
+            scope.isStateActive('something.somewhat');
+            expect(state.includes).toHaveBeenCalledWith('something');
         });
 
     });

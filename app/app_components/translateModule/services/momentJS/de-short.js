@@ -54,7 +54,7 @@
             m : processRelativeTime,
             mm : '%d m',
             h : processRelativeTime,
-            hh : '%d s',
+            hh : '%d h',
             d : processRelativeTime,
             dd : processRelativeTime,
             M : processRelativeTime,

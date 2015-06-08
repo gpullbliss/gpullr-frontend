@@ -1,6 +1,26 @@
 
 ### Version 0.1.0-SNAPSHOT
 
+ - [bug] ignore elder pullrequests with me as author
+ - [bug] fixed displaying status of notification settings
+ - [bug] fix assign icon mobile
+ - [bug] 133 modals closing on refresh
+ - [bug] fixed german time-ago abbreviation
+ - [bug] notification icon was not displayed
+ - [bug] fixed navigation item highlighting after reload
+ - [bug] fixed missing url in stats area
+ - [refactor] PRT 109 - aligned README documentation to current state of the application
+ - [bug] 134 - fixed broken link
+ - [bug] fix navi bubble for mobile screen
+ - [bug] load correct locale for momentJs
+ - [feature] PRT 31 - enable/disable desktop notifications at user settings
+ - [refactor] optimise favicon & add fry.png
+ - [feature] replace bootstrap css with less
+ - [refactor] optimise less mixins
+ - [feature] PRT 31 - implemented desktop notifications
+ - [refactor] optimise time filter button
+ - [refactor] change DE to real DE wording
+ - [feature] redesign old PR modal
  - [refactor] PRT 121 removed grunt-devbliss-conventions plugin
  - [refactor] pullRequest related code refactoring
  - [feature] add abbreviate for ranking files and changed files
@@ -83,4 +103,4 @@
  - [bug] Fixed Makefile
  - [initial] initial commit
 
--- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Thu May 28 12:54:26 CEST 2015
+-- Last change by: Marco Reinwarth <marco.reinwarth@devbliss.com> Fri Jun 05 15:47:20 CEST 2015

@@ -1,0 +1,48 @@
+<!-- BEGIN list of unassigned pull requests -->
+<div class="contentWrapper">
+    <div class="row overflowH marginBottom">
+        <div class="col-xs-10">
+            <h3>{{'dashboard.headline.openRequest' | translate}}</h3>
+        </div>
+        <div class="col-xs-2">
+            <a title="{{'dashboard.filter.byTime' | translate}}"
+               data-ng-click="orderUnassignedPrList(user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
+               class="filterTimeOrder icon{{user.userSettingsDto.unassignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
+               href="#"></a>
+        </div>
+    </div>
+
+    <div class="listView clear">
+        <div data-ng-repeat="pullRequest in pullRequests | filter: {assignee: 'null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'">
+            <section data-ng-include
+                     data-ng-class="getColorClassDependingOnAge(pullRequest.createdAt)"
+                     data-src="'app_components/pullRequestModule/views/dashboard/pullRequest.html'">
+            </section>
+        </div>
+    </div>
+</div>
+<!-- END list of unassigned pull requests -->
+
+<!-- BEGIN list of assigned pull requests -->
+<div class="contentWrapper dMarginTop">
+    <div class="row overflowH marginBottom">
+        <div class="col-xs-10">
+            <h3>{{'dashboard.headline.assignedRequest' | translate}}</h3>
+        </div>
+        <div class="col-xs-2">
+            <a title="filtered by time {{user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'oldest' : 'newest'  }}"
+               data-ng-click="orderAssignedPrList(user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'DESC' : 'ASC')"
+               class="filterTimeOrder icon{{user.userSettingsDto.assignedPullRequestsOrdering === 'ASC' ? 'Newest' : 'Oldest' }}"
+               href="#"></a>
+        </div>
+    </div>
+    <div class="listView clear">
+        <div data-ng-repeat="pullRequest in pullRequests | filter: {assignee: '!null'} | orderBy: 'createdAt': user.userSettingsDto.unassignedPullRequestsOrdering === 'DESC'">
+            <section data-ng-include
+                     data-ng-class="getColorClassDependingOnAge(pullRequest.assignedAt)"
+                     data-src="'app_components/pullRequestModule/views/dashboard/pullRequest.html'">
+            </section>
+        </div>
+    </div>
+</div>
+<!-- END list of assigned pull requests -->

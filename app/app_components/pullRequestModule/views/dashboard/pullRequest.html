@@ -1,32 +1,88 @@
+<!-- BEGIN pull request author info -->
 <div class="col-sm-3 col-xs-6 authorBlock userBlock">
-    <img class="avatarWrapper" data-ng-src="{{pullRequest.author.avatarUrl}}">
+    <img class="avatarWrapper"
+         data-ng-src="{{pullRequest.author.avatarUrl}}">
     <a target="_blank" href="{{pullRequest.author.profileUrl}}" class="userName">
         <span>{{getName(pullRequest.author)}}</span>
         <span class="subName" data-ng-if="pullRequest.author.fullName">{{pullRequest.author.username}}</span>
     </a>
 </div>
+<!-- END pull request author info -->
+
+<!-- BEGIN pull request info -->
 <div class="col-sm-6 col-xs-12">
     <div class="facts prInfos">
         <a class="branchName" href="{{pullRequest.url}}" target="_blank">
             <strong>#{{pullRequest.number}} {{pullRequest.title}}</strong>
         </a>
+
         <div class="row">
             <strong class="col-lg-5 ellipsis">{{pullRequest.repoName}}</strong>
 
             <p class="stats col-lg-7">
-                <a title="{{'dashboard.pullRequest.infos.build' | translate}}: {{pullRequest.buildStatus}}" data-ng-href="{{pullRequest.buildUri}}"  data-ng-if="pullRequest.buildStatus" class="repoBuild {{pullRequest.buildStatus}}" target="_blank"></a>
+                <a title="{{'dashboard.pullRequest.infos.build' | translate}}: {{pullRequest.buildStatus}}"
+                   data-ng-href="{{pullRequest.buildUri}}"
+                   data-ng-if="pullRequest.buildStatus"
+                   class="repoBuild {{pullRequest.buildStatus}}"
+                   target="_blank">
+                </a>
                 <span title="{{'dashboard.pullRequest.infos.linesAdded' | translate}}" class="linesAdded">
                     +{{getAbbreviateLines(pullRequest.linesAdded)}}
                 </span>
                 <span title="{{'dashboard.pullRequest.infos.linesRemoved' | translate}}" class="linesRemoved">
                     -{{getAbbreviateLines(pullRequest.linesRemoved)}}
                 </span>
-                <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}" class="filesChanged"> {{getAbbreviateLines(pullRequest.filesChanged)}}</span>
-                <a href="{{pullRequest.url}}" title="{{'dashboard.pullRequest.infos.comments' | translate}}" data-ng-if="pullRequest.numberOfComments > 0" target="_blank" class="comments">{{pullRequest.numberOfComments}}</a>
+                <span title="{{'dashboard.pullRequest.infos.filesChanged' | translate}}"
+                      class="filesChanged">
+                    &nbsp;{{getAbbreviateLines(pullRequest.filesChanged)}}
+                </span>
+                <a href="{{pullRequest.url}}"
+                   title="{{'dashboard.pullRequest.infos.comments' | translate}}"
+                   data-ng-if="pullRequest.numberOfComments > 0"
+                   target="_blank"
+                   class="comments">
+                    {{pullRequest.numberOfComments}}
+                </a>
                 <span class="requestCreatedAt" data-am-time-ago="pullRequest.createdAt"></span>
                 <span data-ng-if="pullRequest.assignee && pullRequest.assignedAt" class="requestAssignedAt" data-am-time-ago="pullRequest.assignedAt"></span>
             </p>
         </div>
     </div>
 </div>
-<div data-dvb-assignment data-pull-request="pullRequest" class="assignment col-sm-3 col-xs-6" data-logged-in-user="loggedInUser"></div>
+<!-- END pull request info -->
+
+<!-- BEGIN assignment info and button -->
+<div class="assignment col-xs-6 col-sm-3 userBlock">
+    <a data-ng-if="pullRequest.elders.length > 0"
+       data-target="#modalCheck{{pullRequest.id}}"
+       data-ng-click="assignmentAction(pullRequest)"
+       class="assignMe"
+       title="{{assignTitle | translate}}">
+        <img class="avatarWrapper"
+             data-ng-if="pullRequest.assignee"
+             data-ng-src="{{pullRequest.assignee.avatarUrl}}">
+    </a>
+
+    <a data-ng-if="!pullRequest.elders || pullRequest.elders.length === 0"
+       data-target="#modal{{pullRequest.id}}"
+       data-ng-click="assignmentAction(pullRequest)"
+       data-toggle="{{assignmentModal}}"
+       class="assignMe {{getAssignmentStyle(pullRequest)}}"
+       title="{{assignTitle | translate}}">
+        <img class="avatarWrapper"
+             data-ng-if="pullRequest.assignee"
+             data-ng-src="{{pullRequest.assignee.avatarUrl}}">
+    </a>
+
+    <a data-ng-if="pullRequest.assignee"
+       target="_blank"
+       data-ng-href="pullRequest.assignee.profileUrl"
+       class="userName">
+        <span>{{getName(pullRequest.assignee)}}</span>
+        <span class="subName"
+              data-ng-if="pullRequest.assignee.fullName">
+            {{pullRequest.assignee.username}}
+        </span>
+    </a>
+</div>
+<!-- END assignment info and button -->

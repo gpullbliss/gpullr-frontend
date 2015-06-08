@@ -12,6 +12,7 @@ describe('rankingDirective', function () {
     beforeEach(function () {
         module('dashboardModule');
         module('appTemplates');
+        module('angularMoment');
 
         inject(function (_$compile_, _$rootScope_) {
             $compile = _$compile_;

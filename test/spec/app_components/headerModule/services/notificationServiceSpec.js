@@ -8,7 +8,7 @@ describe('notificationService', function () {
         service;
 
     beforeEach(function () {
-        module('dashboardModule');
+        module('headerModule');
 
         inject(function (notificationService, _$httpBackend_, _$interval_, _$q_, $filter) {
             service = notificationService;

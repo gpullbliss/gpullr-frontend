@@ -2,6 +2,7 @@
 angular.module('translateModule')
     .constant('TranslateConstPl', {
         global: {
+            bcp47: 'pl-PL',
             btn: {
                 save: 'Zachowaj',
                 cancel: 'Anuluj',
@@ -41,8 +42,7 @@ angular.module('translateModule')
                 openRequest: 'Otwarte prośby o połączenie'
             },
             filter: {
-                byOldest: 'najpierw najstarsze',
-                byNewest: 'najpierw najnowsze'
+                byTime: 'filter by time'
             },
             pullRequest: {
                 assign: {
@@ -56,7 +56,7 @@ angular.module('translateModule')
                         headline: 'Dear Sir or Madam may I ask kindly for your attention to the older pull requests in your list. The author of the oldest pull request will be very pleased if you choose that pull request for review first.',
                         btn: {
                             assignSelected: 'Assign the one I selected',
-                            assignOldest: 'Assign oldest pull request',
+                            assignOldest: 'Assign oldest pull request'
                         }
                     }
                 },
@@ -96,6 +96,7 @@ angular.module('translateModule')
                     none: 'wszystkie odznaczyć'
                 },
                 search: 'szukać'
-            }
+            },
+            desktopNotification: 'Desktop notifications'
         }
     });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pullRequestModule')
-    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'PullRequestService', 'userSettingsService',
+    .controller('dashboardCtrl', ['$scope', '$rootScope', '$interval', 'pullRequestService', 'userSettingsService',
         function ($scope, $rootScope, $interval, pullRequestService, userSettingsService) {
 
             var updatePullRequestsInterval;

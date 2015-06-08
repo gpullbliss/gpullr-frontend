@@ -1,15 +1,24 @@
 <div class="row">
     <div class="col-md-3" id="langSwitch">
-        <div class="contentWrapper overflowH">
+        <div class="contentWrapper overflowH marginBottom">
             <h3 class="marginBottom">{{'settings.headline.settings' | translate}}</h3>
             <ul class="marginBottom" data-ng-controller="translateCtrl">
                 <li data-ng-repeat="(languageKey, languageName) in languages">
-                    <span id="langToggle{{languageKey}}" data-ng-model="user.userSettingsDto.language" class="block {{user.userSettingsDto.language === languageKey ? 'active' : 'cPointer'}}"
-                       data-ng-click="saveUserLang(languageKey); changeLanguage(languageKey)">
+                    <span id="langToggle{{languageKey}}" data-ng-model="user.userSettingsDto.language"
+                          class="block {{user.userSettingsDto.language === languageKey ? 'active' : 'cPointer'}}"
+                          data-ng-click="saveUserLang(languageKey); changeLanguage(languageKey)">
                         {{languageName}}
                     </span>
                 </li>
             </ul>
+        </div>
+        <div class="contentWrapper overflowH">
+            <a class="toggleWrapper marginBottom block"
+               data-ng-class="{toggleOff : user.userSettingsDto.desktopNotification}"
+               data-ng-click="saveNotificationStatus(!user.userSettingsDto.desktopNotification)">
+                <span class="toggleBtn"></span>
+                {{'settings.desktopNotification' | translate}}
+            </a>
         </div>
     </div>
     <div class="col-md-9">
@@ -25,7 +34,7 @@
                 </button>
             </div>
 
-            <div class="row">
+            <div class="row overflowH">
                 <div class="marginBottom col-xs-12 col-md-8  col-sm-6">
                     <a class="button selectAllBtn"
                        data-ng-click="checkAll()"
@@ -42,15 +51,14 @@
                 </div>
             </div>
             <ul class="row">
-                <li class="col-md-4 col-sm-6"
-                    data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
-                    <label for="{{repo.name}}"
-                           data-ng-class="{striked : !repo.checked}">
-                        <input data-ng-model="repo.checked"
-                               id="{{repo.name}}"
-                               type="checkbox"/>
+                <li class="col-md-4 col-sm-6" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
+                    <a class="toggleWrapper marginBottom block"
+                       data-ng-class="{toggleOff : repo.checked}"
+                       data-ng-click="repo.checked = repo.checked? false : true"
+                       data-ng-model="repo.checked">
+                        <span class="toggleBtn"></span>
                         {{repo.name}}
-                    </label>
+                    </a>
                 </li>
             </ul>
         </div>

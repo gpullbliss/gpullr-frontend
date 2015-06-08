@@ -1,25 +1,19 @@
 #header{
     .navi .linkItem{
-        padding-bottom: 11px;
         a{
             position: relative;
+            padding-bottom: 11px;
         }
         .bubble{
-            .position(absolute, -16px, -@halfSpacing, null, null);
+            .position(absolute, 1px, @halfSpacing, none, none);
             background-color: transparent;
             padding: 0;
             font-weight: bold;
         }
         &.overlay{
             position: static;
-            .overlayBtn:after{
-                top: 30px;
-            }
             .overlayMenu{
                 width: 100%;
-            }
-            & .overlayBtn:after{
-                left: 0;
             }
         }
     }
@@ -30,7 +24,7 @@
         position: relative;
     }
     .avatarWrapper{
-        .dimension(@dashboardAvatarSizeSmall, @dashboardAvatarSizeSmall);
+        .dimension(@dashboardAvatarSizeSmall);
     }
     .userName{
         line-height: 1.2;
@@ -40,7 +34,7 @@
     }
     .assignment,
     .rank{
-        .position(absolute, 10px, 0, null, null)
+        .position(absolute, 10px, 0, none, none)
     }
     .stats{
         margin-top: @defaultSpacing;
@@ -56,6 +50,11 @@
     }
 }
 .assignMe {
-    .dimension(@dashboardAvatarSizeSmall, @dashboardAvatarSizeSmall);
-    .fontSet(@assignMeIconSizeSmall, @dashboardAvatarSizeSmall)
+    .dimension(@dashboardAvatarSizeSmall);
+    .fontSet(@assignMeIconSizeSmall)
+}
+.modal .mWrapper {
+    position: relative;
+    margin-left: @defaultSpacing;
+    margin-right: @defaultSpacing;
 }
