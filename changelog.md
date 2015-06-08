@@ -3,6 +3,7 @@
 
  - [bug] ignore elder pullrequests with me as author
  - [bug] fixed displaying status of notification settings
+ - [bug] fix assign icon mobile
  - [bug] 133 modals closing on refresh
  - [bug] fixed german time-ago abbreviation
  - [bug] notification icon was not displayed
