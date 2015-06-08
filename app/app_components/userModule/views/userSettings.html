@@ -4,20 +4,23 @@
             <h3 class="marginBottom">{{'settings.headline.settings' | translate}}</h3>
             <ul class="marginBottom" data-ng-controller="translateCtrl">
                 <li data-ng-repeat="(languageKey, languageName) in languages">
-                    <span id="langToggle{{languageKey}}" data-ng-model="user.userSettingsDto.language" class="block {{user.userSettingsDto.language === languageKey ? 'active' : 'cPointer'}}"
-                       data-ng-click="saveUserLang(languageKey); changeLanguage(languageKey)">
+                    <span id="langToggle{{languageKey}}" data-ng-model="user.userSettingsDto.language"
+                          class="block {{user.userSettingsDto.language === languageKey ? 'active' : 'cPointer'}}"
+                          data-ng-click="saveUserLang(languageKey); changeLanguage(languageKey)">
                         {{languageName}}
                     </span>
                 </li>
             </ul>
         </div>
         <div class="contentWrapper overflowH">
-            <a class="toggleWrapper marginBottom block" data-ng-class="{toggleOff : !user.userSettingsDto.desktopNotification}" data-ng-click="saveNotificationStatus(!user.userSettingsDto.desktopNotification)">
+            <a class="toggleWrapper marginBottom block"
+               data-ng-class="{toggleOff : user.userSettingsDto.desktopNotification}"
+               data-ng-click="saveNotificationStatus(!user.userSettingsDto.desktopNotification)">
                 <span class="toggleBtn"></span>
                 {{'settings.desktopNotification' | translate}}
             </a>
         </div>
-        </div>
+    </div>
     <div class="col-md-9">
         <div class="contentWrapper"
              id="repoFilter">
@@ -50,9 +53,9 @@
             <ul class="row">
                 <li class="col-md-4 col-sm-6" data-ng-repeat="repo in filteredRepos | orderBy:['name'] ">
                     <a class="toggleWrapper marginBottom block"
-                        data-ng-class="{toggleOff : repo.checked}"
-                        data-ng-click="repo.checked = repo.checked? false : true"
-                        data-ng-model="repo.checked">
+                       data-ng-class="{toggleOff : repo.checked}"
+                       data-ng-click="repo.checked = repo.checked? false : true"
+                       data-ng-model="repo.checked">
                         <span class="toggleBtn"></span>
                         {{repo.name}}
                     </a>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pullRequestModule')
-    .controller('pullRequestCtrl', ['$rootScope', '$scope', 'userService', 'PullRequestService', 'PullRequestCssClassService',
+    .controller('pullRequestCtrl', ['$rootScope', '$scope', 'userService', 'pullRequestService', 'PullRequestCssClassService',
         function ($rootScope, $scope, userService, pullRequestService, pullRequestCssClassService) {
 
             var ACTION_ASSIGN_TO_ME = 'assignToMe',

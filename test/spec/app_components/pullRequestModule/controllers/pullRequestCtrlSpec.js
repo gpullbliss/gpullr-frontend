@@ -53,12 +53,12 @@ describe('pullRequestCtrl', function () {
         module('angularMoment');
         module('pullRequestModule');
 
-        inject(function ($controller, _$rootScope_, _userService_, _PullRequestService_, _PullRequestCssClassService_) {
+        inject(function ($controller, _$rootScope_, _userService_, _pullRequestService_, _PullRequestCssClassService_) {
             _$rootScope_.user = currentUser;
 
             $scope = _$rootScope_.$new();
             userService = _userService_;
-            pullRequestService = _PullRequestService_;
+            pullRequestService = _pullRequestService_;
             pullRequestCssClassService = _PullRequestCssClassService_;
 
             spyOn(pullRequestService, 'assignPullRequest').and.callFake(function () {
