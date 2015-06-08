@@ -54,8 +54,7 @@ angular.module('headerModule')
             }
 
             function getNotificationMessage(notification) {
-                var text = '',
-                    inRepo = $filter('translate')('navi.notifications.inRepo');
+                var text = '';
 
                 switch (notification.type) {
                     case 'PULLREQUEST_CLOSED':
