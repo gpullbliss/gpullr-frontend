@@ -29,6 +29,8 @@ npm install
 bower install
 ```
 (on some machines, this requires admin privileges)
+
+Set the `github_client_id` in your `config/environments/(development/production).json` so you can login using OAuth.
  
 Start the [gPullR backend](https://github.com/devbliss/gpullr-backend/blob/master/README.md#how-to-run-it-locally), locally. It's not possible to make use of deployed [live backend](http://gpullr.devbliss.com) with your local started frontend, because the GitHub OAuth login won't work.
 
